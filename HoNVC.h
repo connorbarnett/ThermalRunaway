@@ -1,5 +1,5 @@
 //
-//  HoNViewController.h
+//  HoNVC.h
 //  HotOrNot
 //
 //  Created by Connor Barnett on 4/3/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HoNViewController : UIViewController
+@interface HoNVC : UIViewController
 
 @end
