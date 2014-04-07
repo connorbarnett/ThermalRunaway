@@ -1,5 +1,5 @@
 //
-//  GGView.h
+//  CompanyView.h
 //  HotOrNot
 //
 //  Created by Connor Barnett on 4/3/14.
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GGDraggableView.h"
+#import "DraggableView.h"
 
-@interface GGView : UIView
+@interface CompanyView : UIView
 - (id)initWithCompany:(NSString *)company;
-@property(nonatomic, strong) GGDraggableView *draggableView;
+@property(nonatomic, strong) DraggableView *draggableView;
 
 @end

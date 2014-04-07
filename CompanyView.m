@@ -1,18 +1,18 @@
 //
-//  GGView.m
+//  CompanyView.m
 //  HotOrNot
 //
 //  Created by Connor Barnett on 4/3/14.
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
 //
 
-#import "GGView.h"
-#import "GGDraggableView.h"
+#import "CompanyView.h"
+#import "DraggableView.h"
 
-@interface GGView ()
+@interface CompanyView ()
 @end
 
-@implementation GGView
+@implementation CompanyView
 
 - (id)initWithCompany:(NSString *)company
 {
@@ -26,7 +26,7 @@
 
 - (void)loadDraggableCustomViewWithCompany:(NSString *)company
 {
-    self.draggableView = [[GGDraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:company];
+    self.draggableView = [[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:company];
     [self addSubview:self.draggableView];
     
 }

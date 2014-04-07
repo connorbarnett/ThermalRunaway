@@ -1,20 +1,27 @@
 //
-//  GGDraggableView.m
+//  DraggableView.m
 //  HotOrNot
 //
 //  Created by Connor Barnett on 4/3/14.
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
 //
-#import "GGDraggableView.h"
-#import "GGOverlayView.h"
+#import "DraggableView.h"
+#import "OverlayView.h"
+#import "VotedCompanies.h"
 
-@interface GGDraggableView ()
-@property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+@interface DraggableView ()
+@property(strong, nonatomic) VotedCompanies *votedComapnies;
+@property(strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property(nonatomic) CGPoint originalPoint;
-@property(nonatomic, strong) GGOverlayView *overlayView;
+@property(nonatomic, strong) OverlayView *overlayView;
 @end
 
-@implementation GGDraggableView
+@implementation DraggableView
+
+-(VotedCompanies *)votedComapnies {
+    if(!_votedComapnies) _votedComapnies = [[VotedCompanies alloc] init];
+    return _votedComapnies;
+}
 
 - (id)initWithFrame:(CGRect)frame andCompany:(NSString *)company
 {
@@ -25,7 +32,7 @@
     [self addGestureRecognizer:self.panGestureRecognizer];
     self.company = company;
     [self loadImageAndStyle];
-    self.overlayView = [[GGOverlayView alloc] initWithFrame:self.bounds];
+    self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
     self.overlayView.alpha = 0;
     [self addSubview:self.overlayView];
     
@@ -68,6 +75,11 @@
         };
         case UIGestureRecognizerStateEnded: {
             if (fabs(xDistance) > 100) {
+                if(xDistance > 0) {
+                    [self.votedComapnies addCompanyToVotedCompanies:self.company];
+                } else {
+                    [self.votedComapnies subtractCompanyToVotedCompanies:self.company];
+                }
                 [self removeFromSuperview];
             }
             else {
@@ -78,17 +90,15 @@
         case UIGestureRecognizerStatePossible:break;
         case UIGestureRecognizerStateCancelled:break;
         case UIGestureRecognizerStateFailed:break;
-
     }
-
 }
 
 - (void)updateOverlay:(CGFloat)distance
 {
     if (distance > 0) {
-        self.overlayView.mode = GGOverlayViewModeRight;
+        self.overlayView.mode = OverlayViewModeRight;
     } else if (distance <= 0) {
-        self.overlayView.mode = GGOverlayViewModeLeft;
+        self.overlayView.mode = OverlayViewModeLeft;
     }
     CGFloat overlayStrength = MIN(fabsf(distance) / 100, 0.4);
     self.overlayView.alpha = overlayStrength;

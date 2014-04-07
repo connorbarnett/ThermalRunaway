@@ -35,7 +35,8 @@
     self.originalFrame = self.view.frame;
 }
 
--(void)theKeyboardAppeared:(NSNotification *)notification {
+-(void)theKeyboardAppeared:(NSNotification *)notification
+{
     self.startingHeightValue = self.view.frame.origin.y;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGFloat newBoundsY = self.view.frame.origin.y - keyboardSize.height + self.tabBarController.tabBar.frame.size.height;
@@ -47,13 +48,15 @@
     [UIView animateWithDuration:0.2 animations:^{self.view.frame = frame;}];
 }
 
-- (void) theKeyboardHid:(NSNotification *)notification {
+- (void) theKeyboardHid:(NSNotification *)notification
+{
     [UIView animateWithDuration:0.05 animations:^{
         self.view.frame = CGRectMake(0, self.startingHeightValue, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)sender {
+-(BOOL)textFieldShouldReturn:(UITextField *)sender
+{
     [sender resignFirstResponder];
     return YES;
 }

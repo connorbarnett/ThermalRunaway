@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB35008618EE3B9B009220E4 /* GGView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB35008518EE3B9B009220E4 /* GGView.m */; };
-		EB35008918EE3BC8009220E4 /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB35008818EE3BC8009220E4 /* GGDraggableView.m */; };
+		EB1D63A118F1FBA9009A78B9 /* VotedCompanies.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */; };
+		EB1D63A418F20506009A78B9 /* VoteCountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A318F20506009A78B9 /* VoteCountTVC.m */; };
+		EB1D63A718F20B48009A78B9 /* CompanyProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */; };
+		EB35008618EE3B9B009220E4 /* CompanyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB35008518EE3B9B009220E4 /* CompanyView.m */; };
+		EB35008918EE3BC8009220E4 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB35008818EE3BC8009220E4 /* DraggableView.m */; };
 		EB35008C18EE4051009220E4 /* HoNVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB35008B18EE4051009220E4 /* HoNVC.m */; };
 		EB3F101C18EE35FE0078FD8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3F101B18EE35FE0078FD8E /* Foundation.framework */; };
 		EB3F101E18EE35FE0078FD8E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3F101D18EE35FE0078FD8E /* CoreGraphics.framework */; };
@@ -24,7 +27,7 @@
 		EB3F104018EE35FF0078FD8E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3F101F18EE35FE0078FD8E /* UIKit.framework */; };
 		EB3F104818EE35FF0078FD8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB3F104618EE35FF0078FD8E /* InfoPlist.strings */; };
 		EB3F104A18EE35FF0078FD8E /* HotOrNotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F104918EE35FF0078FD8E /* HotOrNotTests.m */; };
-		EBB2D38818EE4985003021BF /* GGOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38718EE4985003021BF /* GGOverlayView.m */; };
+		EBB2D38818EE4985003021BF /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38718EE4985003021BF /* OverlayView.m */; };
 		EBB2D38B18EE4DBF003021BF /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38A18EE4DBF003021BF /* HomeVC.m */; };
 /* End PBXBuildFile section */
 
@@ -39,32 +42,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB35008418EE3B9B009220E4 /* GGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGView.h; sourceTree = "<group>"; };
-		EB35008518EE3B9B009220E4 /* GGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGView.m; sourceTree = "<group>"; };
-		EB35008718EE3BC8009220E4 /* GGDraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDraggableView.h; sourceTree = "<group>"; };
-		EB35008818EE3BC8009220E4 /* GGDraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDraggableView.m; sourceTree = "<group>"; };
+		EB1D639F18F1FBA9009A78B9 /* VotedCompanies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotedCompanies.h; sourceTree = "<group>"; };
+		EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotedCompanies.m; sourceTree = "<group>"; };
+		EB1D63A218F20506009A78B9 /* VoteCountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteCountTVC.h; sourceTree = "<group>"; };
+		EB1D63A318F20506009A78B9 /* VoteCountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteCountTVC.m; sourceTree = "<group>"; };
+		EB1D63A518F20B48009A78B9 /* CompanyProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyProfileVC.h; sourceTree = "<group>"; };
+		EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyProfileVC.m; sourceTree = "<group>"; };
+		EB35008418EE3B9B009220E4 /* CompanyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyView.h; sourceTree = "<group>"; };
+		EB35008518EE3B9B009220E4 /* CompanyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyView.m; sourceTree = "<group>"; };
+		EB35008718EE3BC8009220E4 /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
+		EB35008818EE3BC8009220E4 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 		EB35008A18EE4051009220E4 /* HoNVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoNVC.h; sourceTree = "<group>"; };
 		EB35008B18EE4051009220E4 /* HoNVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoNVC.m; sourceTree = "<group>"; };
-		EB3F101818EE35FE0078FD8E /* HotOrNot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotOrNot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB3F101818EE35FE0078FD8E /* Thermal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thermal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3F101B18EE35FE0078FD8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB3F101D18EE35FE0078FD8E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EB3F101F18EE35FE0078FD8E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		EB3F102318EE35FE0078FD8E /* HotOrNot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HotOrNot-Info.plist"; sourceTree = "<group>"; };
+		EB3F102318EE35FE0078FD8E /* Thermal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Thermal-Info.plist"; sourceTree = "<group>"; };
 		EB3F102518EE35FE0078FD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB3F102718EE35FE0078FD8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EB3F102918EE35FE0078FD8E /* HotOrNot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HotOrNot-Prefix.pch"; sourceTree = "<group>"; };
+		EB3F102918EE35FE0078FD8E /* Thermal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Thermal-Prefix.pch"; sourceTree = "<group>"; };
 		EB3F102A18EE35FE0078FD8E /* HoNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HoNAppDelegate.h; sourceTree = "<group>"; };
 		EB3F102B18EE35FE0078FD8E /* HoNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoNAppDelegate.m; sourceTree = "<group>"; };
 		EB3F102E18EE35FE0078FD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		EB3F103118EE35FE0078FD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		EB3F103618EE35FE0078FD8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		EB3F103C18EE35FF0078FD8E /* HotOrNotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotOrNotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB3F103C18EE35FF0078FD8E /* ThermalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThermalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3F103D18EE35FF0078FD8E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EB3F104518EE35FF0078FD8E /* HotOrNotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HotOrNotTests-Info.plist"; sourceTree = "<group>"; };
+		EB3F104518EE35FF0078FD8E /* ThermalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ThermalTests-Info.plist"; sourceTree = "<group>"; };
 		EB3F104718EE35FF0078FD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB3F104918EE35FF0078FD8E /* HotOrNotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotOrNotTests.m; sourceTree = "<group>"; };
-		EBB2D38618EE4985003021BF /* GGOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGOverlayView.h; sourceTree = "<group>"; };
-		EBB2D38718EE4985003021BF /* GGOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGOverlayView.m; sourceTree = "<group>"; };
+		EBB2D38618EE4985003021BF /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
+		EBB2D38718EE4985003021BF /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
 		EBB2D38918EE4DBF003021BF /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
 		EBB2D38A18EE4DBF003021BF /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,15 +105,21 @@
 		EB3F100F18EE35FE0078FD8E = {
 			isa = PBXGroup;
 			children = (
-				EBB2D38618EE4985003021BF /* GGOverlayView.h */,
-				EBB2D38718EE4985003021BF /* GGOverlayView.m */,
-				EB35008418EE3B9B009220E4 /* GGView.h */,
-				EB35008518EE3B9B009220E4 /* GGView.m */,
-				EB35008718EE3BC8009220E4 /* GGDraggableView.h */,
-				EB35008818EE3BC8009220E4 /* GGDraggableView.m */,
+				EBB2D38618EE4985003021BF /* OverlayView.h */,
+				EBB2D38718EE4985003021BF /* OverlayView.m */,
+				EB35008418EE3B9B009220E4 /* CompanyView.h */,
+				EB35008518EE3B9B009220E4 /* CompanyView.m */,
+				EB35008718EE3BC8009220E4 /* DraggableView.h */,
+				EB35008818EE3BC8009220E4 /* DraggableView.m */,
 				EB35008A18EE4051009220E4 /* HoNVC.h */,
 				EB35008B18EE4051009220E4 /* HoNVC.m */,
 				EB3F102D18EE35FE0078FD8E /* Main_iPhone.storyboard */,
+				EB1D639F18F1FBA9009A78B9 /* VotedCompanies.h */,
+				EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */,
+				EB1D63A218F20506009A78B9 /* VoteCountTVC.h */,
+				EB1D63A318F20506009A78B9 /* VoteCountTVC.m */,
+				EB1D63A518F20B48009A78B9 /* CompanyProfileVC.h */,
+				EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */,
 				EBB2D38918EE4DBF003021BF /* HomeVC.h */,
 				EBB2D38A18EE4DBF003021BF /* HomeVC.m */,
 				EB3F102118EE35FE0078FD8E /* HotOrNot */,
@@ -117,8 +132,8 @@
 		EB3F101918EE35FE0078FD8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EB3F101818EE35FE0078FD8E /* HotOrNot.app */,
-				EB3F103C18EE35FF0078FD8E /* HotOrNotTests.xctest */,
+				EB3F101818EE35FE0078FD8E /* Thermal.app */,
+				EB3F103C18EE35FF0078FD8E /* ThermalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,10 +162,10 @@
 		EB3F102218EE35FE0078FD8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EB3F102318EE35FE0078FD8E /* HotOrNot-Info.plist */,
+				EB3F102318EE35FE0078FD8E /* Thermal-Info.plist */,
 				EB3F102418EE35FE0078FD8E /* InfoPlist.strings */,
 				EB3F102718EE35FE0078FD8E /* main.m */,
-				EB3F102918EE35FE0078FD8E /* HotOrNot-Prefix.pch */,
+				EB3F102918EE35FE0078FD8E /* Thermal-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -167,7 +182,7 @@
 		EB3F104418EE35FF0078FD8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EB3F104518EE35FF0078FD8E /* HotOrNotTests-Info.plist */,
+				EB3F104518EE35FF0078FD8E /* ThermalTests-Info.plist */,
 				EB3F104618EE35FF0078FD8E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -186,9 +201,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB3F101718EE35FE0078FD8E /* HotOrNot */ = {
+		EB3F101718EE35FE0078FD8E /* Thermal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB3F104D18EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "HotOrNot" */;
+			buildConfigurationList = EB3F104D18EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "Thermal" */;
 			buildPhases = (
 				EB3F101418EE35FE0078FD8E /* Sources */,
 				EB3F101518EE35FE0078FD8E /* Frameworks */,
@@ -198,14 +213,14 @@
 			);
 			dependencies = (
 			);
-			name = HotOrNot;
+			name = Thermal;
 			productName = HotOrNot;
-			productReference = EB3F101818EE35FE0078FD8E /* HotOrNot.app */;
+			productReference = EB3F101818EE35FE0078FD8E /* Thermal.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EB3F103B18EE35FF0078FD8E /* HotOrNotTests */ = {
+		EB3F103B18EE35FF0078FD8E /* ThermalTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB3F105018EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "HotOrNotTests" */;
+			buildConfigurationList = EB3F105018EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "ThermalTests" */;
 			buildPhases = (
 				EB3F103818EE35FF0078FD8E /* Sources */,
 				EB3F103918EE35FF0078FD8E /* Frameworks */,
@@ -216,9 +231,9 @@
 			dependencies = (
 				EB3F104218EE35FF0078FD8E /* PBXTargetDependency */,
 			);
-			name = HotOrNotTests;
+			name = ThermalTests;
 			productName = HotOrNotTests;
-			productReference = EB3F103C18EE35FF0078FD8E /* HotOrNotTests.xctest */;
+			productReference = EB3F103C18EE35FF0078FD8E /* ThermalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -236,7 +251,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EB3F101318EE35FE0078FD8E /* Build configuration list for PBXProject "HotOrNot" */;
+			buildConfigurationList = EB3F101318EE35FE0078FD8E /* Build configuration list for PBXProject "Thermal" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -249,8 +264,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EB3F101718EE35FE0078FD8E /* HotOrNot */,
-				EB3F103B18EE35FF0078FD8E /* HotOrNotTests */,
+				EB3F101718EE35FE0078FD8E /* Thermal */,
+				EB3F103B18EE35FF0078FD8E /* ThermalTests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,13 +297,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB1D63A718F20B48009A78B9 /* CompanyProfileVC.m in Sources */,
 				EB35008C18EE4051009220E4 /* HoNVC.m in Sources */,
-				EBB2D38818EE4985003021BF /* GGOverlayView.m in Sources */,
+				EBB2D38818EE4985003021BF /* OverlayView.m in Sources */,
 				EB3F102C18EE35FE0078FD8E /* HoNAppDelegate.m in Sources */,
+				EB1D63A418F20506009A78B9 /* VoteCountTVC.m in Sources */,
 				EBB2D38B18EE4DBF003021BF /* HomeVC.m in Sources */,
+				EB1D63A118F1FBA9009A78B9 /* VotedCompanies.m in Sources */,
 				EB3F102818EE35FE0078FD8E /* main.m in Sources */,
-				EB35008918EE3BC8009220E4 /* GGDraggableView.m in Sources */,
-				EB35008618EE3B9B009220E4 /* GGView.m in Sources */,
+				EB35008918EE3BC8009220E4 /* DraggableView.m in Sources */,
+				EB35008618EE3B9B009220E4 /* CompanyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +323,7 @@
 /* Begin PBXTargetDependency section */
 		EB3F104218EE35FF0078FD8E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EB3F101718EE35FE0078FD8E /* HotOrNot */;
+			target = EB3F101718EE35FE0078FD8E /* Thermal */;
 			targetProxy = EB3F104118EE35FF0078FD8E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -425,9 +443,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HotOrNot/HotOrNot-Prefix.pch";
-				INFOPLIST_FILE = "HotOrNot/HotOrNot-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "HotOrNot/Thermal-Prefix.pch";
+				INFOPLIST_FILE = "HotOrNot/Thermal-Info.plist";
+				PRODUCT_NAME = Thermal;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -438,9 +456,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HotOrNot/HotOrNot-Prefix.pch";
-				INFOPLIST_FILE = "HotOrNot/HotOrNot-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "HotOrNot/Thermal-Prefix.pch";
+				INFOPLIST_FILE = "HotOrNot/Thermal-Info.plist";
+				PRODUCT_NAME = Thermal;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -460,8 +478,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "HotOrNotTests/HotOrNotTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "HotOrNotTests/ThermalTests-Info.plist";
+				PRODUCT_NAME = ThermalTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -478,8 +496,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HotOrNot/HotOrNot-Prefix.pch";
-				INFOPLIST_FILE = "HotOrNotTests/HotOrNotTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "HotOrNotTests/ThermalTests-Info.plist";
+				PRODUCT_NAME = ThermalTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -488,7 +506,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB3F101318EE35FE0078FD8E /* Build configuration list for PBXProject "HotOrNot" */ = {
+		EB3F101318EE35FE0078FD8E /* Build configuration list for PBXProject "Thermal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB3F104B18EE35FF0078FD8E /* Debug */,
@@ -497,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB3F104D18EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "HotOrNot" */ = {
+		EB3F104D18EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "Thermal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB3F104E18EE35FF0078FD8E /* Debug */,
@@ -506,7 +524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB3F105018EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "HotOrNotTests" */ = {
+		EB3F105018EE35FF0078FD8E /* Build configuration list for PBXNativeTarget "ThermalTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB3F105118EE35FF0078FD8E /* Debug */,

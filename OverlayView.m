@@ -1,18 +1,18 @@
 //
-//  GGOverlayView.m
+//  OverlayView.m
 //  HotOrNot
 //
 //  Created by Connor Barnett on 4/3/14.
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
 //
 
-#import "GGOverlayView.h"
+#import "OverlayView.h"
 
-@interface GGOverlayView ()
+@interface OverlayView ()
 @property (nonatomic, strong) UIImageView *imageView;
 @end
 
-@implementation GGOverlayView
+@implementation OverlayView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -24,12 +24,12 @@
     return self;
 }
 
-- (void)setMode:(GGOverlayViewMode)mode
+- (void)setMode:(OverlayViewMode)mode
 {
     if (_mode == mode) return;
     
     _mode = mode;
-    if (mode == GGOverlayViewModeLeft) {
+    if (mode == OverlayViewModeLeft) {
         self.imageView.image = [UIImage imageNamed:@"down"];
     } else {
         self.imageView.image = [UIImage imageNamed:@"up"];

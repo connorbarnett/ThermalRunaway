@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E2F6A4A6-4ACE-4CF7-A19C-8A4169F82BD2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HotOrNot</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7B70BA34-99EB-40CA-9AC0-020D59713829</key>
+		<string>https://github.com/connorbarnett/ThermalRunaway</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HotOrNot.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7B70BA34-99EB-40CA-9AC0-020D59713829</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/connorbarnett/ThermalRunaway</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7B70BA34-99EB-40CA-9AC0-020D59713829</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7B70BA34-99EB-40CA-9AC0-020D59713829</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HotOrNot</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -7,20 +7,26 @@
 //
 
 #import "HoNVC.h"
-#import "GGView.h"
-#import "GGDraggableView.h"
+#import "CompanyView.h"
+#import "DraggableView.h"
 
 @interface HoNVC ()
 
 @end
 
 @implementation HoNVC
+- (IBAction)skip:(id)sender {
+    UIView *toRemove = [[self.view subviews] lastObject];
+    [toRemove removeFromSuperview];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:[[GGDraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"nest"]];
-    [self.view addSubview:[[GGDraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"lyft"]];
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"nest"]];
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"lyft"]];
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"nextdoor"]];
+
 
 }
 

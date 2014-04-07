@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB3F101718EE35FE0078FD8E"
-               BuildableName = "HotOrNot.app"
-               BlueprintName = "HotOrNot"
-               ReferencedContainer = "container:HotOrNot.xcodeproj">
+               BuildableName = "Thermal.app"
+               BlueprintName = "Thermal"
+               ReferencedContainer = "container:Thermal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EB3F103B18EE35FF0078FD8E"
-               BuildableName = "HotOrNotTests.xctest"
-               BlueprintName = "HotOrNotTests"
-               ReferencedContainer = "container:HotOrNot.xcodeproj">
+               BuildableName = "ThermalTests.xctest"
+               BlueprintName = "ThermalTests"
+               ReferencedContainer = "container:Thermal.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB3F101718EE35FE0078FD8E"
-            BuildableName = "HotOrNot.app"
-            BlueprintName = "HotOrNot"
-            ReferencedContainer = "container:HotOrNot.xcodeproj">
+            BuildableName = "Thermal.app"
+            BlueprintName = "Thermal"
+            ReferencedContainer = "container:Thermal.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB3F101718EE35FE0078FD8E"
-            BuildableName = "HotOrNot.app"
-            BlueprintName = "HotOrNot"
-            ReferencedContainer = "container:HotOrNot.xcodeproj">
+            BuildableName = "Thermal.app"
+            BlueprintName = "Thermal"
+            ReferencedContainer = "container:Thermal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EB3F101718EE35FE0078FD8E"
-            BuildableName = "HotOrNot.app"
-            BlueprintName = "HotOrNot"
-            ReferencedContainer = "container:HotOrNot.xcodeproj">
+            BuildableName = "Thermal.app"
+            BlueprintName = "Thermal"
+            ReferencedContainer = "container:Thermal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
