@@ -2,6 +2,7 @@ ThermalRails::Application.routes.draw do
   get "test/index"
   resources :companies
   match '/increment',  to: 'companies#increment',       via: 'patch'
+  match '/lookup', to: 'companies#lookup',               via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

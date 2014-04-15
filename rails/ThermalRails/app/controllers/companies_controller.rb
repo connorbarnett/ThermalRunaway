@@ -50,6 +50,18 @@ class CompaniesController < ApplicationController
       end
     end
   end
+
+  # GET /lookup
+  #GET /lookup.json
+  # Looks up a company pertaining to a specific name
+  def lookup
+    @company = Company.find_by(name: params[:name])
+    puts params
+    respond_to do |format|
+      format.html { redirect_to @company}
+      format.json { render json: @company }
+    end
+  end
   
   # PATCH/PUT /increment
   # Need to pass in params of id and vote_type
