@@ -50,6 +50,34 @@ class CompaniesController < ApplicationController
       end
     end
   end
+  
+  # PATCH/PUT /increment
+  # Need to pass in params of id and vote_type
+  #increments the vote type's value by 1
+  #Potential update is to find over the name instead of id
+  def increment
+    @user = Company.find(params[:id])
+    vote_type = params[:vote_type]
+    if vote_type == "up_vote"
+      @user.up_votes = @user.up_votes + 1
+    end
+    if vote_type == "down_vote"
+      @user.down_votes = @user.down_votes + 1
+    end
+    if vote_type == "unknown_vote"
+      @user.num_unknown = @user.num_unknown + 1
+    end
+  
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Company was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /companies/1
   # DELETE /companies/1.json
