@@ -68,6 +68,7 @@
 - (void)prepareCompanyProfileVC:(CompanyProfileVC *)cpvc toDisplayName:(NSString *)companyName {
     cpvc.company = companyName;
     cpvc.title = companyName;
+    NSLog(@"%@", cpvc.company);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -87,6 +88,9 @@
         }
     }
 }
+
+#pragma mark - Networking
+
 
 
 @end

@@ -10,5 +10,4 @@
 
 @interface CompanyProfileVC : UIViewController
 @property(strong, nonatomic)NSString *company;
-
 @end

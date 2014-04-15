@@ -105,6 +105,7 @@
 		EB3F100F18EE35FE0078FD8E = {
 			isa = PBXGroup;
 			children = (
+				EB3F102D18EE35FE0078FD8E /* Main_iPhone.storyboard */,
 				EBB2D38618EE4985003021BF /* OverlayView.h */,
 				EBB2D38718EE4985003021BF /* OverlayView.m */,
 				EB35008418EE3B9B009220E4 /* CompanyView.h */,
@@ -113,7 +114,6 @@
 				EB35008818EE3BC8009220E4 /* DraggableView.m */,
 				EB35008A18EE4051009220E4 /* HoNVC.h */,
 				EB35008B18EE4051009220E4 /* HoNVC.m */,
-				EB3F102D18EE35FE0078FD8E /* Main_iPhone.storyboard */,
 				EB1D639F18F1FBA9009A78B9 /* VotedCompanies.h */,
 				EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */,
 				EB1D63A218F20506009A78B9 /* VoteCountTVC.h */,
