@@ -147,7 +147,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="zcf-lt-QKA" kind="push" identifier="detail" id="EaB-u5-2Nv"/>
+                                    <segue destination="qOA-XS-ksW" kind="push" identifier="detail" id="MB8-hb-Qyu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -163,19 +163,19 @@
             <point key="canvasLocation" x="1507" y="196"/>
         </scene>
         <!--Company ProfileVC-->
-        <scene sceneID="0sE-F4-ws8">
+        <scene sceneID="rTl-kq-m0f">
             <objects>
-                <viewController id="zcf-lt-QKA" customClass="CompanyProfileVC" sceneMemberID="viewController">
+                <viewController id="qOA-XS-ksW" customClass="CompanyProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Yhf-dg-Dsm"/>
-                        <viewControllerLayoutGuide type="bottom" id="3so-MU-mk5"/>
+                        <viewControllerLayoutGuide type="top" id="qGK-gY-sTh"/>
+                        <viewControllerLayoutGuide type="bottom" id="DCh-FF-czT"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OXd-F9-krL">
+                    <view key="view" contentMode="scaleToFill" id="y01-hg-pw9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-Hm-LSS">
-                                <rect key="frame" x="20" y="74" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0l-Nh-2xe">
+                                <rect key="frame" x="70" y="273" width="156" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -183,14 +183,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RDC-cJ-843"/>
+                    <navigationItem key="navigationItem" id="UrZ-r6-bZS"/>
                     <connections>
-                        <outlet property="nameLabel" destination="1Ye-Hm-LSS" id="Vaa-FK-j4i"/>
+                        <outlet property="companyLabel" destination="d0l-Nh-2xe" id="XAR-WI-jFz"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YFV-gB-45B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhN-KQ-Icn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2150" y="178"/>
+            <point key="canvasLocation" x="1944" y="195"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D2R-cV-27k">

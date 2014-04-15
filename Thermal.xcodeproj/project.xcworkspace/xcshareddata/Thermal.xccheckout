@@ -17,7 +17,13 @@
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+<<<<<<< HEAD
+		<key>7A62693B-175D-4E23-8837-A43053185540</key>
+		<string>../../../Spring2014/iOS/assignment5/Top Places</string>
+		<key>F2B4744F-85E8-466E-A986-5B301ACDE71E</key>
+=======
 		<key>E877B3DB-DD3D-482D-899B-08FB78B84264</key>
+>>>>>>> f999fcb16956ef5c3016ebd63a5bb4c2f88d2c6c
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -35,6 +41,14 @@
 			<string>E877B3DB-DD3D-482D-899B-08FB78B84264</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ThermalRunaway</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7A62693B-175D-4E23-8837-A43053185540</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Top Places</string>
 		</dict>
 	</array>
 </dict>
