@@ -1,4 +1,5 @@
 ThermalRails::Application.routes.draw do
+  get "test/index"
   resources :companies
 
   # The priority is based upon order of creation: first created -> highest priority.
