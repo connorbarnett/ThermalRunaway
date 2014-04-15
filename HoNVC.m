@@ -25,9 +25,10 @@
     [super viewDidLoad];
     [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"nest"]];
     [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"lyft"]];
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"facebook"]];
     [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"nextdoor"]];
-
-
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"asana"]];
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"snapchat"]];
 }
 
 - (void)didReceiveMemoryWarning
