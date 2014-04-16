@@ -4948,3 +4948,770 @@ Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
   [1m[36mVote Load (0.9ms)[0m  [1mSELECT "votes".* FROM "votes"[0m
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:07:06 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 49], ["updated_at", Wed, 16 Apr 2014 20:07:06 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:07:06 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:07:06 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 204 No Content in 6ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:07:07 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 50], ["updated_at", Wed, 16 Apr 2014 20:07:07 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:07:07 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:07:07 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:07:07 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 51], ["updated_at", Wed, 16 Apr 2014 20:07:07 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:07:07 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:07:07 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 2.3ms)
+  [1m[36mVote Load (1.0ms)[0m  [1mSELECT "votes".* FROM "votes"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes"
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:07:54 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 52], ["updated_at", Wed, 16 Apr 2014 20:07:54 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:07:54 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:07:54 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 5ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:07:55 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 53], ["updated_at", Wed, 16 Apr 2014 20:07:55 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:07:55 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:07:55 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 2.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:09:04 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 54], ["updated_at", Wed, 16 Apr 2014 20:09:04 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:09:04 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:09:04 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Completed 204 No Content in 28ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:09:06 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 55], ["updated_at", Wed, 16 Apr 2014 20:09:06 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:09:06 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:09:06 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-16 13:09:28 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/railties-4.0.4/lib/rails/templates/rails/welcome/index.html.erb (1.1ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/increment/" for 127.0.0.1 at 2014-04-16 13:09:34 -0700
+Processing by CompaniesController#increment as HTML
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `save' for nil:NilClass):
+  app/controllers/companies_controller.rb:91:in `block in increment'
+  app/controllers/companies_controller.rb:90:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 56], ["updated_at", Wed, 16 Apr 2014 20:09:41 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 20:09:41 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 20:09:41 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 7ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:09:41 -0700
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140416004619')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140414231146')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140415043233')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140415051313')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:18 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (8.4ms)
+  Rendered companies/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:19 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.9ms)
+  Rendered companies/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:30 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.9ms)
+  Rendered companies/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:40 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.8ms)
+  Rendered companies/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.7ms)
+  Rendered companies/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.6ms)
+  Rendered companies/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:41 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:42 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:42 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:42 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (2.1ms)
+  Rendered companies/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:12:50 -0700
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:13:25 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "newphoto"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=newphoto):
+  app/controllers/companies_controller.rb:114:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.5ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:14:55 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "newphoto"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=newphoto):
+  app/controllers/companies_controller.rb:123:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:14:57 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "newphoto"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=newphoto):
+  app/controllers/companies_controller.rb:123:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.6ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:15:18 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  Rendered companies/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 3ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <strong>Name:</strong>
+    5:   <%= @company.name %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/companies/show.html.erb:5:in `_app_views_companies_show_html_erb___798171584264167529_2158937820'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.2ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:16:18 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  Rendered companies/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 3ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <strong>Name:</strong>
+    5:   <%= @company.name %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/companies/show.html.erb:5:in `_app_views_companies_show_html_erb___798171584264167529_2158937820'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.7ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:16:18 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  Rendered companies/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 2ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <strong>Name:</strong>
+    5:   <%= @company.name %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/companies/show.html.erb:5:in `_app_views_companies_show_html_erb___798171584264167529_2158937820'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.4ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:16:19 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  Rendered companies/show.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 2ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <strong>Name:</strong>
+    5:   <%= @company.name %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/companies/show.html.erb:5:in `_app_views_companies_show_html_erb___798171584264167529_2158937820'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.8ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:16:20 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  Rendered companies/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 2ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <strong>Name:</strong>
+    5:   <%= @company.name %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/companies/show.html.erb:5:in `_app_views_companies_show_html_erb___798171584264167529_2158937820'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.4ms)
+
+
+Started GET "/companies/newphoto" for 127.0.0.1 at 2014-04-16 13:16:24 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "newphoto"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=newphoto):
+  app/controllers/companies_controller.rb:123:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.8ms)
+
+
+Started GET "/companies/newphoto/?id=1" for 127.0.0.1 at 2014-04-16 13:16:28 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "newphoto"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=newphoto):
+  app/controllers/companies_controller.rb:123:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.5ms)
+
+
+Started GET "/companies/newphoto/?id=1" for 127.0.0.1 at 2014-04-16 13:16:30 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"newphoto"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "newphoto"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=newphoto):
+  app/controllers/companies_controller.rb:123:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/newphoto" for 127.0.0.1 at 2014-04-16 13:16:39 -0700
+Processing by CompaniesController#newphoto as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/companies_controller.rb:25:in `newphoto'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140416004619')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140414231146')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140415043233')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140415051313')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-16 13:44:19 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/railties-4.0.4/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (6.3ms)
+  Rendered companies/new.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:22 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6h/TRURE+rN1OQcLm829gZ/HYnbX9GXGP0V2VH2COE8=", "company"=>{"name"=>"snapchat", "up_votes"=>"1", "down_votes"=>"4"}, "commit"=>"Create Company"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "companies" ("created_at", "down_votes", "name", "up_votes", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 16 Apr 2014 20:44:32 UTC +00:00], ["down_votes", 4], ["name", "snapchat"], ["up_votes", 1], ["updated_at", Wed, 16 Apr 2014 20:44:32 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 13:44:32 -0700
+
+
+Started GET "/companies" for 127.0.0.1 at 2014-04-16 13:44:34 -0700
+Processing by CompaniesController#index as HTML
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.2ms)

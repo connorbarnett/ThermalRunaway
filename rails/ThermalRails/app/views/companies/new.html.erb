@@ -1,5 +1,13 @@
 <h1>New company</h1>
-
 <%= render 'form' %>
 
 <%= link_to 'Back', companies_path %>
+
+<% form_tag '/upload/create', { :multipart => true } do %>
+    <p>
+    <%= file_field_tag 'upload[file]' %>
+    </p>
+    <p>
+    	<%= submit_tag "Upload" %>
+    </p>
+<% end %>
