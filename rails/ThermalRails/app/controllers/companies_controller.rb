@@ -68,8 +68,14 @@ class CompaniesController < ApplicationController
   #increments the vote type's value by 1
   #Potential update is to find over the name instead of id
   def increment
-    @user = Company.find(params[:id])
+    @user = Company.find_by(name params[:name])
     vote_type = params[:vote_type]
+   
+    @vote = Vote.new
+    @vote.company = params[:company]
+    @vote.vote_type = vote_type
+    @vote.vote_location = vote_location
+    
     if vote_type == "up_vote"
       @user.up_votes = @user.up_votes + 1
     end
@@ -81,7 +87,7 @@ class CompaniesController < ApplicationController
     end
   
     respond_to do |format|
-      if @user.save
+      if @user.save and @vote.save
         format.html { redirect_to @user, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
