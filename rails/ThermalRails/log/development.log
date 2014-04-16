@@ -4397,3 +4397,554 @@ Migrating to CreateVotes (20140416004619)
   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140416004619"]]
   [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/lookup" for 127.0.0.1 at 2014-04-16 01:24:26 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#lookup as HTML
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1
+Redirected to 
+Completed 500 Internal Server Error in 10ms
+
+ActionController::ActionControllerError (Cannot redirect to nil!):
+  app/controllers/companies_controller.rb:61:in `block (2 levels) in lookup'
+  app/controllers/companies_controller.rb:60:in `lookup'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/lookup/?name=Facebook" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+Processing by CompaniesController#lookup as HTML
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 65ms (Views: 63.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 01:24:41 -0700
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:26:49 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `name' for #<CompaniesController:0x00000101f7a3a8>):
+  app/controllers/companies_controller.rb:71:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.2ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:09 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `name' for #<CompaniesController:0x000001033b2a78>):
+  app/controllers/companies_controller.rb:71:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.9ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:11 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `name' for #<CompaniesController:0x00000101e75390>):
+  app/controllers/companies_controller.rb:71:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.4ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:24 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `name' for #<CompaniesController:0x00000103286b90>):
+  app/controllers/companies_controller.rb:71:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:40 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.8ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 31], ["updated_at", Wed, 16 Apr 2014 08:27:40 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:27:40 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:27:40 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 20ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:42 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 32], ["updated_at", Wed, 16 Apr 2014 08:27:42 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:27:42 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:27:42 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 204 No Content in 6ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:43 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 33], ["updated_at", Wed, 16 Apr 2014 08:27:43 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:27:43 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:27:43 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 7ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:49 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 34], ["updated_at", Wed, 16 Apr 2014 08:27:49 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:27:49 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:27:49 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 204 No Content in 17ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:27:50 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 35], ["updated_at", Wed, 16 Apr 2014 08:27:50 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:27:50 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:27:50 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 5ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:28:16 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 34ms
+
+NameError (undefined local variable or method `vote_type' for #<CompaniesController:0x0000010504e7b8>):
+  app/controllers/companies_controller.rb:75:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.9ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:28:38 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 12ms
+
+NameError (undefined local variable or method `vote_type' for #<CompaniesController:0x0000010332ed18>):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:28:40 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 4ms
+
+NameError (undefined local variable or method `vote_type' for #<CompaniesController:0x00000101f6ba88>):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:30:00 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 11ms
+
+NoMethodError (undefined method `up_votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:81:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.5ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:30:01 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `up_votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:81:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:09 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 36], ["updated_at", Wed, 16 Apr 2014 08:31:09 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:09 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:09 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 16ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:10 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 37], ["updated_at", Wed, 16 Apr 2014 08:31:10 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:10 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:10 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Completed 204 No Content in 6ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:11 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 38], ["updated_at", Wed, 16 Apr 2014 08:31:11 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:11 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:11 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 5ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:14 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 39], ["updated_at", Wed, 16 Apr 2014 08:31:14 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:14 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:14 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:21 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 40], ["updated_at", Wed, 16 Apr 2014 08:31:21 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:21 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:21 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 17ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:23 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 41], ["updated_at", Wed, 16 Apr 2014 08:31:23 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:23 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:23 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 204 No Content in 6ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:25 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 42], ["updated_at", Wed, 16 Apr 2014 08:31:25 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:25 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:25 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:56 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 43], ["updated_at", Wed, 16 Apr 2014 08:31:56 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:56 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:56 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 204 No Content in 21ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:31:59 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 44], ["updated_at", Wed, 16 Apr 2014 08:31:59 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:31:59 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:31:59 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 6ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:32:00 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 45], ["updated_at", Wed, 16 Apr 2014 08:32:00 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:32:00 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:32:00 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 204 No Content in 4ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/increment.json/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:32:04 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["up_votes", 46], ["updated_at", Wed, 16 Apr 2014 08:32:04 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:32:04 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:32:04 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/increment./?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:32:17 -0700
+
+ActionController::RoutingError (No route matches [GET] "/increment."):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/robertdunlevie/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/robertdunlevie/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/robertdunlevie/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (17.2ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.4ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 47], ["updated_at", Wed, 16 Apr 2014 08:32:21 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:32:21 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:32:21 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 7ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:21 -0700
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "companies" SET "up_votes" = ?, "updated_at" = ? WHERE "companies"."id" = 1  [["up_votes", 48], ["updated_at", Wed, 16 Apr 2014 08:32:30 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?)[0m  [["company", "Facebook"], ["created_at", Wed, 16 Apr 2014 08:32:30 UTC +00:00], ["updated_at", Wed, 16 Apr 2014 08:32:30 UTC +00:00], ["vote_location", "San_Francisco"], ["vote_type", "up_vote"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-16 01:32:30 -0700
+  [1m[36mVote Load (0.9ms)[0m  [1mSELECT "votes".* FROM "votes"[0m

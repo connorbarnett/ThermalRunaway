@@ -68,31 +68,32 @@ class CompaniesController < ApplicationController
   #increments the vote type's value by 1
   #Potential update is to find over the name instead of id
   def increment
-    @user = Company.find_by(name params[:name])
-    vote_type = params[:vote_type]
-   
+    @company = Company.find_by(name: params[:name])
+    vote_type = params[:vote_type] 
+
+
     @vote = Vote.new
-    @vote.company = params[:company]
+    @vote.company = params[:name]
     @vote.vote_type = vote_type
-    @vote.vote_location = vote_location
+    @vote.vote_location = params[:vote_location]
     
     if vote_type == "up_vote"
-      @user.up_votes = @user.up_votes + 1
+      @company.up_votes = @company.up_votes + 1
     end
     if vote_type == "down_vote"
-      @user.down_votes = @user.down_votes + 1
+      @company.down_votes = @company.down_votes + 1
     end
     if vote_type == "unknown_vote"
-      @user.num_unknown = @user.num_unknown + 1
+      @company.num_unknown = @company.num_unknown + 1
     end
   
     respond_to do |format|
-      if @user.save and @vote.save
-        format.html { redirect_to @user, notice: 'Company was successfully updated.' }
+      if @company.save and @vote.save
+        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
