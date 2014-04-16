@@ -23,9 +23,7 @@
     [super viewDidLoad];
     self.companyLabel.text = self.company;
     
-    NSString *str = [NSString stringWithFormat: @"%s%@", "http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/lookup.json/?name=", _company];
-    
-    NSLog(str);
+    NSString *str = [NSString stringWithFormat: @"%s%@", "http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/lookup.json/?name=", self.company];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:str] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
