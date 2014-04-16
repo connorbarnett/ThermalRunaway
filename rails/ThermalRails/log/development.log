@@ -4354,3 +4354,46 @@ Processing by CompaniesController#lookup as JSON
   Parameters: {"name"=>"Snapchat"}
   [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Snapchat' LIMIT 1
 Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/lookup.json/?name=Facebook" for 127.0.0.1 at 2014-04-15 14:26:50 -0700
+Processing by CompaniesController#lookup as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+  [1m[36mCompany Load (1.4ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.3ms)[0m  [1mUPDATE "companies" SET "num_unknown" = ?, "updated_at" = ? WHERE "companies"."id" = 1[0m  [["num_unknown", 3], ["updated_at", Tue, 15 Apr 2014 21:27:40 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "companies" SET "num_unknown" = ?, "updated_at" = ? WHERE "companies"."id" = 2[0m  [["num_unknown", 5], ["updated_at", Tue, 15 Apr 2014 21:28:01 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+
+
+Started GET "/lookup.json/?name=asdfasd" for 127.0.0.1 at 2014-04-15 15:16:30 -0700
+Processing by CompaniesController#lookup as JSON
+  Parameters: {"name"=>"asdfasd"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'asdfasd' LIMIT 1
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/lookup.json/?name=Facebook" for 127.0.0.1 at 2014-04-15 15:16:34 -0700
+Processing by CompaniesController#lookup as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/lookup.json/?name=Snapchat" for 127.0.0.1 at 2014-04-15 15:16:39 -0700
+Processing by CompaniesController#lookup as JSON
+  Parameters: {"name"=>"Snapchat"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Snapchat' LIMIT 1
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateVotes (20140416004619)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140416004619"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

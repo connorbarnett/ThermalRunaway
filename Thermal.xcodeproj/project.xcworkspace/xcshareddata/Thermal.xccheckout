@@ -5,25 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E9116B5A-F530-452D-86A2-F2ED3584B6FB</string>
+	<string>F30301A3-824F-437F-9AC8-C02FA6F676A5</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Thermal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E877B3DB-DD3D-482D-899B-08FB78B84264</key>
+		<key>2E243631-A2D9-40D4-87FD-170DAF7ADE23</key>
 		<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>7A62693B-175D-4E23-8837-A43053185540</key>
-		<string>../../../Spring2014/iOS/assignment5/Top Places</string>
-		<key>F2B4744F-85E8-466E-A986-5B301ACDE71E</key>
-=======
-		<key>E877B3DB-DD3D-482D-899B-08FB78B84264</key>
->>>>>>> f999fcb16956ef5c3016ebd63a5bb4c2f88d2c6c
+		<key>2E243631-A2D9-40D4-87FD-170DAF7ADE23</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -31,24 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E877B3DB-DD3D-482D-899B-08FB78B84264</string>
+	<string>2E243631-A2D9-40D4-87FD-170DAF7ADE23</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E877B3DB-DD3D-482D-899B-08FB78B84264</string>
+			<string>2E243631-A2D9-40D4-87FD-170DAF7ADE23</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ThermalRunaway</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7A62693B-175D-4E23-8837-A43053185540</string>
-			<key>IDESourceControlWCCName</key>
-			<string>Top Places</string>
 		</dict>
 	</array>
 </dict>
