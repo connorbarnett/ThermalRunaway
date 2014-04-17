@@ -69,28 +69,18 @@ class CompaniesController < ApplicationController
   #Potential update is to find over the name instead of id
   def increment
     @company = Company.find_by(name: params[:name])
-    vote_type = params[:vote_type] 
 
+    vote = Vote.new
+    vote.company = params[:name]
+    vote.vote_type = params[:vote_type] 
+    vote.vote_location = params[:vote_location]
 
-    @vote = Vote.new
-    @vote.company = params[:name]
-    @vote.vote_type = vote_type
-    @vote.vote_location = params[:vote_location]
-    
-    if vote_type == "up_vote"
-      @company.up_votes = @company.up_votes + 1
-    end
-    if vote_type == "down_vote"
-      @company.down_votes = @company.down_votes + 1
-    end
-    if vote_type == "unknown_vote"
-      @company.num_unknown = @company.num_unknown + 1
-    end
-  
+    @company.votes << vote
+
     respond_to do |format|
-      if @company.save and @vote.save
+      if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @company.votes }
       else
         format.html { render action: 'edit' }
         format.json { render json: @company.errors, status: :unprocessable_entity }
