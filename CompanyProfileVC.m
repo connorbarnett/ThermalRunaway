@@ -23,8 +23,12 @@
     [super viewDidLoad];
     self.companyLabel.text = @"JSON!";
     
+    NSString *str = [NSString stringWithFormat: @"%s%@", "http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/lookup.json/?name=", self.company];
+    
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:str] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"%@", json);
         dispatch_sync(dispatch_get_main_queue(), ^{
             self.unnecessaryJSONText.text = [NSString stringWithFormat:@"%@", json];
         });

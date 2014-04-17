@@ -51,6 +51,53 @@ class CompaniesController < ApplicationController
     end
   end
 
+  # GET /lookup
+  #GET /lookup.json
+  # Looks up a company pertaining to a specific name
+  def lookup
+    @company = Company.find_by(name: params[:name])
+    puts params
+    respond_to do |format|
+      format.html { redirect_to @company}
+      format.json { render json: @company }
+    end
+  end
+  
+  # PATCH/PUT /increment
+  # Need to pass in params of id and vote_type
+  #increments the vote type's value by 1
+  #Potential update is to find over the name instead of id
+  def increment
+    @company = Company.find_by(name: params[:name])
+    vote_type = params[:vote_type] 
+
+
+    @vote = Vote.new
+    @vote.company = params[:name]
+    @vote.vote_type = vote_type
+    @vote.vote_location = params[:vote_location]
+    
+    if vote_type == "up_vote"
+      @company.up_votes = @company.up_votes + 1
+    end
+    if vote_type == "down_vote"
+      @company.down_votes = @company.down_votes + 1
+    end
+    if vote_type == "unknown_vote"
+      @company.num_unknown = @company.num_unknown + 1
+    end
+  
+    respond_to do |format|
+      if @company.save and @vote.save
+        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
@@ -69,6 +116,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :up_votes, :down_votes)
+      params.require(:company).permit(:name, :up_votes, :down_votes, :vote_type, :vote_location)
     end
 end

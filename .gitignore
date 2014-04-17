@@ -15,4 +15,7 @@
 /rails/ThermalRails/log/*.log
 /rails/ThermalRails/tmp
 
+rails/ThermalRails/log/*.log
+rails/ThermalRails/tmp
+
 .DS_Store
