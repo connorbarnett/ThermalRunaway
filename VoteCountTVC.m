@@ -12,6 +12,7 @@
 
 @interface VoteCountTVC ()
 @property(strong, nonatomic) VotedCompanies *votedCompanies;
+@property(strong, nonatomic) NSArray *companiesFromServer;
 @end
 
 @implementation VoteCountTVC
@@ -28,6 +29,17 @@
     [self.tableView reloadData];
 }
 
+-(void)awakeFromNib
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSDictionary *test = [self.companiesFromServer objectAtIndex:1];
+        NSLog(@"%@", [test valueForKey:@"name"]);
+        
+    }];
+    [dataTask resume];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,18 +61,29 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.rankedVotedCompanies.count;
+    NSLog(@"%lu", (unsigned long)self.companiesFromServer.count);
+    return self.companiesFromServer.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Voted Company Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSString *company = self.rankedVotedCompanies[indexPath.row];
-    NSInteger voteCount = [self.votedCompanies retreiveVoteCount:company];
+    NSLog(@"%@", self.companiesFromServer);
+    NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
+    NSString *company = [companyInformation valueForKey:@"name"];
+    NSInteger voteCount = [self calculateVotes:companyInformation];
     cell.textLabel.text = company;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", (int)voteCount];
     return cell;
+}
+
+- (NSInteger)calculateVotes:(NSDictionary *)companyInformation {
+    NSString *upVoteCountStr = (NSString *)[companyInformation valueForKey:@"up_votes"];
+    NSInteger upVoteCount = [upVoteCountStr integerValue];
+    NSString *downVoteCountStr = (NSString *)[companyInformation valueForKey:@"down_votes"];
+    NSInteger downVoteCount = [downVoteCountStr integerValue];
+    return upVoteCount - downVoteCount;
 }
 
 #pragma mark - Navigation
