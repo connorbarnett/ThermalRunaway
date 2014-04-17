@@ -5,50 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E9116B5A-F530-452D-86A2-F2ED3584B6FB</string>
+	<string>BF5D36B7-5151-4112-A25F-A93514055DBF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Thermal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E877B3DB-DD3D-482D-899B-08FB78B84264</key>
-		<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
+		<key>1386795C-23DB-4467-83C3-AA45DEA84129</key>
+		<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>7A62693B-175D-4E23-8837-A43053185540</key>
-		<string>../../../Spring2014/iOS/assignment5/Top Places</string>
-		<key>F2B4744F-85E8-466E-A986-5B301ACDE71E</key>
-=======
-		<key>E877B3DB-DD3D-482D-899B-08FB78B84264</key>
->>>>>>> f999fcb16956ef5c3016ebd63a5bb4c2f88d2c6c
+		<key>1386795C-23DB-4467-83C3-AA45DEA84129</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
+	<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E877B3DB-DD3D-482D-899B-08FB78B84264</string>
+	<string>1386795C-23DB-4467-83C3-AA45DEA84129</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E877B3DB-DD3D-482D-899B-08FB78B84264</string>
+			<string>1386795C-23DB-4467-83C3-AA45DEA84129</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ThermalRunaway</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7A62693B-175D-4E23-8837-A43053185540</string>
-			<key>IDESourceControlWCCName</key>
-			<string>Top Places</string>
+			<string>Thermal</string>
 		</dict>
 	</array>
 </dict>
