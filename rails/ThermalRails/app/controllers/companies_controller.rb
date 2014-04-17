@@ -75,7 +75,9 @@ class CompaniesController < ApplicationController
     vote.vote_type = params[:vote_type] 
     vote.vote_location = params[:vote_location]
 
-    @company.votes << vote
+    if !@company.nil?
+      @company.votes << vote
+    end
 
     respond_to do |format|
       if @company.save
