@@ -5,6 +5,8 @@ class CreateVotes < ActiveRecord::Migration
       t.string :vote_type
       t.string :vote_location
 
+      t.belongs_to :company
+
       t.timestamps
     end
   end

@@ -5715,3 +5715,811 @@ Processing by CompaniesController#index as HTML
   [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
   Rendered companies/index.html.erb within layouts/application (2.6ms)
 Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20140414231146)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140414231146"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddImgUrlToCompany (20140415043233)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ADD "img_url" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140415043233"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddNumUnknownToCompanies (20140415051313)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ADD "num_unknown" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140415051313"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVotes (20140416004619)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "company_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140416004619"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "companies" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Thu, 17 Apr 2014 22:14:50 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:14:50 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["company_id", 1], ["created_at", Thu, 17 Apr 2014 22:14:50 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:14:50 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "companies" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Thu, 17 Apr 2014 22:15:31 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:15:31 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "votes" ("company_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["company_id", 2], ["created_at", Thu, 17 Apr 2014 22:15:31 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:15:31 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveUpVotesFromCompany (20140417222235)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mCREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "acompanies" ("id","name","up_votes","down_votes","created_at","updated_at","img_url","num_unknown") VALUES (1, NULL, NULL, NULL, '2014-04-17 22:14:50.222670', '2014-04-17 22:14:50.222670', NULL, NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "acompanies" ("id","name","up_votes","down_votes","created_at","updated_at","img_url","num_unknown") VALUES (2, NULL, NULL, NULL, '2014-04-17 22:15:31.102814', '2014-04-17 22:15:31.102814', NULL, NULL)
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "companies"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "acompanies"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "companies" ("id","name","down_votes","created_at","updated_at","img_url","num_unknown") VALUES (1, NULL, NULL, '2014-04-17 22:14:50.222670', '2014-04-17 22:14:50.222670', NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "companies" ("id","name","down_votes","created_at","updated_at","img_url","num_unknown") VALUES (2, NULL, NULL, '2014-04-17 22:15:31.102814', '2014-04-17 22:15:31.102814', NULL, NULL)[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "acompanies"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140417222235"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+Migrating to RemoveDownVotesFromCompany (20140417222248)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "acompanies" ("id","name","down_votes","created_at","updated_at","img_url","num_unknown") VALUES (1, NULL, NULL, '2014-04-17 22:14:50.222670', '2014-04-17 22:14:50.222670', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "acompanies" ("id","name","down_votes","created_at","updated_at","img_url","num_unknown") VALUES (2, NULL, NULL, '2014-04-17 22:15:31.102814', '2014-04-17 22:15:31.102814', NULL, NULL)[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "companies"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "acompanies"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "companies" ("id","name","created_at","updated_at","img_url","num_unknown") VALUES (1, NULL, '2014-04-17 22:14:50.222670', '2014-04-17 22:14:50.222670', NULL, NULL)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "companies" ("id","name","created_at","updated_at","img_url","num_unknown") VALUES (2, NULL, '2014-04-17 22:15:31.102814', '2014-04-17 22:15:31.102814', NULL, NULL)
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "acompanies"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140417222248"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveNumUnknownFromCompany (20140417222317)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "acompanies" ("id","name","created_at","updated_at","img_url","num_unknown") VALUES (1, NULL, '2014-04-17 22:14:50.222670', '2014-04-17 22:14:50.222670', NULL, NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "acompanies" ("id","name","created_at","updated_at","img_url","num_unknown") VALUES (2, NULL, '2014-04-17 22:15:31.102814', '2014-04-17 22:15:31.102814', NULL, NULL)
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "companies"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "acompanies"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "companies" ("id","name","created_at","updated_at","img_url") VALUES (1, NULL, '2014-04-17 22:14:50.222670', '2014-04-17 22:14:50.222670', NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "companies" ("id","name","created_at","updated_at","img_url") VALUES (2, NULL, '2014-04-17 22:15:31.102814', '2014-04-17 22:15:31.102814', NULL)[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "acompanies"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140417222317"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-17 15:33:40 -0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/railties-4.0.4/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:33:46 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 14ms
+
+NameError (undefined local variable or method `company' for #<CompaniesController:0x000001016b8f80>):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:33:55 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 8ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.7ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:34:51 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:35:25 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 35ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.8ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:43:33 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.5ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:43:34 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:43:34 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.7ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:43:35 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.6ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:43:35 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (23.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.7ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:16 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 8ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:17 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.0ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:17 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:18 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.1ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:18 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.0ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:18 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.9ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:19 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:45:19 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.3ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:52:46 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 11ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.3ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:52:47 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.1ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:52:48 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:78:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:53:04 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+Completed 500 Internal Server Error in 8ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:81:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.5ms)
+
+
+Started GET "/increment/?name=Facebook&vote_type=up_vote&vote_location=San_Francisco" for 127.0.0.1 at 2014-04-17 15:53:53 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook", "vote_type"=>"up_vote", "vote_location"=>"San_Francisco"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+Completed 500 Internal Server Error in 9ms
+
+NoMethodError (undefined method `save' for nil:NilClass):
+  app/controllers/companies_controller.rb:84:in `block in increment'
+  app/controllers/companies_controller.rb:83:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-17 15:54:14 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (38.3ms)
+  Rendered companies/new.html.erb within layouts/application (40.6ms)
+Completed 500 Internal Server Error in 43ms
+
+ActionView::Template::Error (undefined method `up_votes' for #<Company:0x00000103276f10>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :up_votes %><br>
+    20:     <%= f.number_field :up_votes %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :down_votes %><br>
+  app/views/companies/_form.html.erb:20:in `block in _app_views_companies__form_html_erb___1899574074782712685_2173821620'
+  app/views/companies/_form.html.erb:1:in `_app_views_companies__form_html_erb___1899574074782712685_2173821620'
+  app/views/companies/new.html.erb:2:in `_app_views_companies_new_html_erb___2097580898954756578_2173926720'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.8ms)
+  Rendered companies/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 47ms (Views: 45.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:18 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-17 15:55:23 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6h/TRURE+rN1OQcLm829gZ/HYnbX9GXGP0V2VH2COE8=", "company"=>{"name"=>"Facebook"}, "commit"=>"Create Company"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Thu, 17 Apr 2014 22:55:23 UTC +00:00], ["name", "Facebook"], ["updated_at", Thu, 17 Apr 2014 22:55:23 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/3
+Completed 302 Found in 8ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/companies/3" for 127.0.0.1 at 2014-04-17 15:55:23 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "3"]]
+  Rendered companies/show.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `up_votes' for #<Company:0x00000101fe88f8>):
+     7: 
+     8: <p>
+     9:   <strong>Up votes:</strong>
+    10:   <%= @company.up_votes %>
+    11: </p>
+    12: 
+    13: <p>
+  app/views/companies/show.html.erb:10:in `_app_views_companies_show_html_erb___4304075787169835717_2172688300'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.9ms)
+
+
+Started GET "/companies/3" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered companies/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:36 -0700
+
+
+Started GET "/companies/3" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "3"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-17 15:55:43 -0700
+
+
+Started GET "/companies" for 127.0.0.1 at 2014-04-17 15:55:45 -0700
+Processing by CompaniesController#index as HTML
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `up_votes' for #<Company:0x000001053f5e20>):
+    16:     <% @companies.each do |company| %>
+    17:       <tr>
+    18:         <td><%= company.name %></td>
+    19:         <td><%= company.up_votes %></td>
+    20:         <td><%= company.down_votes %></td>
+    21:         <td><%= link_to 'Show', company %></td>
+    22:         <td><%= link_to 'Edit', edit_company_path(company) %></td>
+  app/views/companies/index.html.erb:19:in `block in _app_views_companies_index_html_erb__3236923695804452913_2191539500'
+  app/views/companies/index.html.erb:16:in `_app_views_companies_index_html_erb__3236923695804452913_2191539500'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/companies" for 127.0.0.1 at 2014-04-17 15:55:45 -0700
+Processing by CompaniesController#index as HTML
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `up_votes' for #<Company:0x00000103121de0>):
+    16:     <% @companies.each do |company| %>
+    17:       <tr>
+    18:         <td><%= company.name %></td>
+    19:         <td><%= company.up_votes %></td>
+    20:         <td><%= company.down_votes %></td>
+    21:         <td><%= link_to 'Show', company %></td>
+    22:         <td><%= link_to 'Edit', edit_company_path(company) %></td>
+  app/views/companies/index.html.erb:19:in `block in _app_views_companies_index_html_erb__3236923695804452913_2173371220'
+  app/views/companies/index.html.erb:16:in `_app_views_companies_index_html_erb__3236923695804452913_2173371220'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.3ms)
+
+
+Started GET "/increment/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:56:26 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to 
+Completed 500 Internal Server Error in 3ms
+
+ActionController::ActionControllerError (Cannot redirect to nil!):
+  app/controllers/companies_controller.rb:85:in `block (2 levels) in increment'
+  app/controllers/companies_controller.rb:83:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.4ms)
+
+
+Started GET "/increment/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:57:01 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:57:01 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:57:01 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 47ms
+
+NameError (undefined local variable or method `company' for #<CompaniesController:0x000001052af0e8>):
+  app/controllers/companies_controller.rb:81:in `block in increment'
+  app/controllers/companies_controller.rb:80:in `increment'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.2ms)
+
+
+Started GET "/increment/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+Processing by CompaniesController#increment as HTML
+  Parameters: {"name"=>"Facebook"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:57:12 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:57:12 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/3
+Completed 302 Found in 19ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/companies/3" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "3"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-17 15:57:12 -0700
+
+
+Started GET "/increment.json/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:57:38 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:57:38 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:57:38 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/increment.json/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:57:50 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:57:50 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:57:50 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/increment.json/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:57:52 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:57:52 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:57:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/increment.json/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:58:37 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:58:37 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:58:37 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/increment.json/?name=Facebook" for 127.0.0.1 at 2014-04-17 15:58:48 -0700
+Processing by CompaniesController#increment as JSON
+  Parameters: {"name"=>"Facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'Facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["company", "Facebook"], ["company_id", 3], ["created_at", Thu, 17 Apr 2014 22:58:48 UTC +00:00], ["updated_at", Thu, 17 Apr 2014 22:58:48 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+Completed 200 OK in 20ms (Views: 2.7ms | ActiveRecord: 2.6ms)

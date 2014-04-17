@@ -5,15 +5,5 @@
   <%= @company.name %>
 </p>
 
-<p>
-  <strong>Up votes:</strong>
-  <%= @company.up_votes %>
-</p>
-
-<p>
-  <strong>Down votes:</strong>
-  <%= @company.down_votes %>
-</p>
-
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
