@@ -51,12 +51,11 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /lookup
-  #GET /lookup.json
+  # GET /companies/lookup
+  #GET /companies/lookup.json
   # Looks up a company pertaining to a specific name
   def lookup
     @company = Company.find_by(name: params[:name])
-    puts params
     respond_to do |format|
       format.html { redirect_to @company}
       format.json { render json: @company }
@@ -64,10 +63,9 @@ class CompaniesController < ApplicationController
   end
   
   # PATCH/PUT /increment
-  # Need to pass in params of id and vote_type
-  #increments the vote type's value by 1
-  #Potential update is to find over the name instead of id
-  def increment
+  # Records a single vote for a single company
+  # Need to pass in params of name, vote_type and vote_location
+  def vote
     @company = Company.find_by(name: params[:name])
 
     vote = Vote.new
@@ -82,11 +80,21 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { render json: @company.votes }
+        format.json { render json: @company }
       else
         format.html { render action: 'edit' }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  #GET /votes/lookup
+  #GET /votes/lookup.json
+  def voteLookup
+    @company = Company.find_by(name: params[:name])
+    respond_to do |format|
+      format.html { redirect_to @company}
+      format.json { render json: @company.votes }
     end
   end
 
