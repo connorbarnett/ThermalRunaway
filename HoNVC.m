@@ -29,6 +29,8 @@
     [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"nextdoor"]];
     [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"asana"]];
     [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"snapchat"]];
+    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:@"soundcloud"]];
+
 }
 
 - (void)didReceiveMemoryWarning
