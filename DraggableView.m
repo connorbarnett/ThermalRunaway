@@ -23,7 +23,7 @@
     return _votedComapnies;
 }
 
-- (id)initWithFrame:(CGRect)frame andCompany:(NSString *)company
+- (id)initWithFrame:(CGRect)frame company:(NSString *)company andUrl:(NSString *) companyUrl
 {
     self = [super initWithFrame:frame];
     if (!self) return nil;
@@ -31,7 +31,7 @@
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     self.company = company;
-    [self loadImageAndStyle];
+    [self loadImageAndStyle:companyUrl];
     self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
     self.overlayView.alpha = 0;
     [self addSubview:self.overlayView];
@@ -39,10 +39,21 @@
     return self;
 }
 
-- (void)loadImageAndStyle
+- (void)loadImageAndStyle:(NSString *) companyUrl
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.company]];
-    [self addSubview:imageView];
+    NSURL *imageURL = [NSURL URLWithString:companyUrl];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *image = [UIImage imageWithData:imageData];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [self addSubview:imageView];
+        });
+    });
+
     self.layer.cornerRadius = 8;
     self.layer.shadowOffset = CGSizeMake(7, 7);
     self.layer.shadowRadius = 5;

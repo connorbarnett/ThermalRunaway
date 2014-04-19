@@ -11,6 +11,6 @@
 @interface DraggableView : UIView
 @property(nonatomic, strong) NSString *company;
 @property(nonatomic) BOOL changeCompany;
-- (id)initWithFrame:(CGRect)frame andCompany:(NSString *)company;
+- (id)initWithFrame:(CGRect)frame company:(NSString *)company andUrl:(NSString *) companyUrl;
 
 @end

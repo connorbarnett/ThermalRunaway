@@ -26,7 +26,7 @@
 
 - (void)loadDraggableCustomViewWithCompany:(NSString *)company
 {
-    self.draggableView = [[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) andCompany:company];
+    self.draggableView = [[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:company andUrl:@"foo"];
     [self addSubview:self.draggableView];
     
 }
