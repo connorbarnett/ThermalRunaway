@@ -13,12 +13,14 @@
 @property(strong, nonatomic) VotedCompanies *votedComapnies;
 @property(strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property(nonatomic) CGPoint originalPoint;
-@property(nonatomic, strong) OverlayView *overlayView;
+@property(strong, nonatomic) OverlayView *overlayView;
+
 @end
 
 @implementation DraggableView
 
--(VotedCompanies *)votedComapnies {
+-(VotedCompanies *)votedComapnies
+{
     if(!_votedComapnies) _votedComapnies = [[VotedCompanies alloc] init];
     return _votedComapnies;
 }
@@ -35,7 +37,6 @@
     self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
     self.overlayView.alpha = 0;
     [self addSubview:self.overlayView];
-    
     return self;
 }
 
@@ -129,5 +130,6 @@
 {
     [self removeGestureRecognizer:self.panGestureRecognizer];
 }
+
 
 @end
