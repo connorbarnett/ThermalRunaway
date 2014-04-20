@@ -23,10 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self getCompanyDeck:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json" withResponse:^(NSArray *companiesFromServer){
-//        NSLog(@"this runs later, after the post completes");
-//        // change the UI to say "The post is done"
-//    }];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
