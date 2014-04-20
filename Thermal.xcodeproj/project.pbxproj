@@ -27,6 +27,7 @@
 		EB3F104018EE35FF0078FD8E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3F101F18EE35FE0078FD8E /* UIKit.framework */; };
 		EB3F104818EE35FF0078FD8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB3F104618EE35FF0078FD8E /* InfoPlist.strings */; };
 		EB3F104A18EE35FF0078FD8E /* HotOrNotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F104918EE35FF0078FD8E /* HotOrNotTests.m */; };
+		EB6D9C8D19047E8B003AD400 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */; };
 		EBB2D38818EE4985003021BF /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38718EE4985003021BF /* OverlayView.m */; };
 		EBB2D38B18EE4DBF003021BF /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38A18EE4DBF003021BF /* HomeVC.m */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		EB3F104518EE35FF0078FD8E /* ThermalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ThermalTests-Info.plist"; sourceTree = "<group>"; };
 		EB3F104718EE35FF0078FD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB3F104918EE35FF0078FD8E /* HotOrNotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotOrNotTests.m; sourceTree = "<group>"; };
+		EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EBB2D38618EE4985003021BF /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		EBB2D38718EE4985003021BF /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
 		EBB2D38918EE4DBF003021BF /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB6D9C8D19047E8B003AD400 /* CoreLocation.framework in Frameworks */,
 				EB3F101E18EE35FE0078FD8E /* CoreGraphics.framework in Frameworks */,
 				EB3F102018EE35FE0078FD8E /* UIKit.framework in Frameworks */,
 				EB3F101C18EE35FE0078FD8E /* Foundation.framework in Frameworks */,
@@ -141,6 +144,7 @@
 		EB3F101A18EE35FE0078FD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */,
 				EB3F101B18EE35FE0078FD8E /* Foundation.framework */,
 				EB3F101D18EE35FE0078FD8E /* CoreGraphics.framework */,
 				EB3F101F18EE35FE0078FD8E /* UIKit.framework */,

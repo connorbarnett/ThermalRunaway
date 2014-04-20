@@ -34,9 +34,6 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSDictionary *test = [self.companiesFromServer objectAtIndex:1];
-//        NSLog(@"%@", [test valueForKey:@"name"]);
-        
     }];
     [dataTask resume];
 }
