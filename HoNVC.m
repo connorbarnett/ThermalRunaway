@@ -15,7 +15,7 @@
 @property(strong, nonatomic) CLLocationManager *manager;
 @property(strong, nonatomic) CLGeocoder *geocoder;
 @property(strong, nonatomic) CLPlacemark *placemark;
-
+@property(strong, nonatomic) NSArray *companiesFromServer;
 @end
 
 @implementation HoNVC
@@ -45,14 +45,32 @@
     self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
-    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"nest" andUrl:@"http://www.technewsworld.com/images/rw734591/home-energy-consumption.jpg"]];
-    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"Lyft" andUrl:@"http://upload.wikimedia.org/wikipedia/commons/4/48/Lyft_logo.jpg"]];
+//    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"nest" andUrl:@"http://www.technewsworld.com/images/rw734591/home-energy-consumption.jpg"]];
+//    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"Lyft" andUrl:@"http://upload.wikimedia.org/wikipedia/commons/4/48/Lyft_logo.jpg"]];
 //    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"facebook" andUrl:@"http://www.underconsideration.com/brandnew/archives/facebook_logo_detail.gif"]];
 //    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"nextdoor" andUrl:@"https://nextdoor.com/static/nextdoorv2/images/newsroom/logo-white-large.png"]];
 //    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"asana" andUrl:@"http://readwrite.com/files/files/files/enterprise/images/asana_logo_0411.png"]];
 //    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"snapchat" andUrl:@"http://upload.wikimedia.org/wikipedia/en/5/5e/Snapchat_logo.png"]];
 //    [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:@"soundcloud" andUrl:@"http://www.bobsima.com/img/Widgets/SoundCloud_Color.png"]];
 
+//    [self getCompanyDeck:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json" withResponse:^(NSArray *companiesFromServer){
+//        NSLog(@"this runs later, after the post completes");
+//        // change the UI to say "The post is done"
+//    }];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+       self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (NSDictionary *companyCard in self.companiesFromServer) {
+                NSString *companyName = [companyCard objectForKey:@"name"];
+                NSString *companyUrl = [companyCard objectForKey:@"img_url"];
+
+                [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
+            }
+        });
+    }];
+    [dataTask resume];
 }
 
 - (void)didReceiveMemoryWarning
