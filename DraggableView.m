@@ -86,13 +86,30 @@
             break;
         };
         case UIGestureRecognizerStateEnded: {
-            if (fabs(xDistance) > 100) {
+            if (fabs(xDistance) > 100) {//case where vote has been issued
+                NSString *voteType;
                 if(xDistance > 0) {
-                    [self.votedComapnies addCompanyToVotedCompanies:self.company];
+                    voteType = @"up_vote";
                 } else {
-                    [self.votedComapnies subtractCompanyToVotedCompanies:self.company];
+                    voteType = @"down_vote";
                 }
-                [self removeFromSuperview];
+                NSURL *URL = [NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/vote"];
+                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+                // Set request type
+                request.HTTPMethod = @"GET";
+                
+                // Set params to be sent to the server
+                NSString *params = [NSString stringWithFormat:@"name=%@&vote_type=%@&vote_location=foo", self.company, voteType];
+                // Encoding type
+                NSData *data = [params dataUsingEncoding:NSUTF8StringEncoding];
+                // Add values and contenttype to the http header
+                [request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
+                [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+                [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)[data length]] forHTTPHeaderField:@"Content-Length"];
+                [request setHTTPBody:data];
+                
+                // Send the request
+                [NSURLConnection connectionWithRequest:request delegate:self];
             }
             else {
                 [self resetViewPositionAndTransformations];
