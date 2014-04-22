@@ -1,7 +1,7 @@
 ThermalRails::Application.routes.draw do
   get "test/index"
   resources :companies
-  match '/vote',  to: 'companies#vote',       via: 'get'
+  match '/vote',  to: 'companies#vote',       via: 'post'
   match '/vote.json', to: 'companies#vote', via: 'post'
   match '/company/lookup', to: 'companies#lookup',    via: 'get'
   match '/vote/lookup', to: 'companies#voteLookup', via: 'get'
