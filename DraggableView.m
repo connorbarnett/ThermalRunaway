@@ -130,6 +130,7 @@
                 NSURLResponse *response;
                 NSError *err;
                 NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+                [self removeFromSuperview];
                 
             }
             else {
