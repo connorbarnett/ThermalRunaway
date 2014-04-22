@@ -7906,3 +7906,503 @@ Processing by CompaniesController#index as JSON
   [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
   Rendered companies/index.json.jbuilder (2.1ms)
 Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20140414231146)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140414231146"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddImgUrlToCompany (20140415043233)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ADD "img_url" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140415043233"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddNumUnknownToCompanies (20140415051313)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "companies" ADD "num_unknown" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140415051313"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVotes (20140416004619)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "company_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140416004619"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveUpVotesFromCompany (20140417222235)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mCREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "companies"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "acompanies"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "acompanies"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140417222235"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to RemoveDownVotesFromCompany (20140417222248)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  CREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "companies"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "acompanies"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "acompanies"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140417222248"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveNumUnknownFromCompany (20140417222317)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "companies"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "companies"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255)) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "acompanies"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "acompanies"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140417222317"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:51:46 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (34.4ms)
+  Rendered companies/new.html.erb within layouts/application (35.8ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:51 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.6ms)
+  Rendered companies/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 13:51:55 -0700
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:52:00 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.5ms)
+  Rendered companies/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:03 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FGzaqIJLMK3/RsDHsRboJKusi3PwGPaG/iChtLSy/j4=", "company"=>{"name"=>"snapchat", "img_url"=>"http://upload.wikimedia.org/wikipedia/en/5/5e/Snapchat_logo.png"}, "commit"=>"Create Company"}
+Unpermitted parameters: img_url
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.6ms)[0m  [1mINSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 22 Apr 2014 20:52:30 UTC +00:00], ["name", "snapchat"], ["updated_at", Tue, 22 Apr 2014 20:52:30 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 8ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:30 -0700
+
+
+Started GET "/companies" for 127.0.0.1 at 2014-04-22 13:52:47 -0700
+Processing by CompaniesController#index as HTML
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-22 13:52:48 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (3.0ms)
+  Rendered companies/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FGzaqIJLMK3/RsDHsRboJKusi3PwGPaG/iChtLSy/j4=", "company"=>{"name"=>"soundcloud", "img_url"=>"http://www.bobsima.com/img/Widgets/SoundCloud_Color.png"}, "commit"=>"Create Company"}
+Unpermitted parameters: img_url
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 22 Apr 2014 20:52:54 UTC +00:00], ["name", "soundcloud"], ["updated_at", Tue, 22 Apr 2014 20:52:54 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/2
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/companies/2" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 13:52:54 -0700
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:52:59 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:53:25 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:53:38 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.2ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:54:39 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.2ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:55:33 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.4ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies/1.json" for 127.0.0.1 at 2014-04-22 13:55:35 -0700
+Processing by CompaniesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered companies/show.json.jbuilder (9.3ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined local variable or method `img_url' for #<#<Class:0x00000103bdb628>:0x000001013c2a88>):
+    1: json.extract! @company, :id, :name, img_url, :created_at, :updated_at
+  app/views/companies/show.json.jbuilder:1:in `_app_views_companies_show_json_jbuilder___977572475679975932_2157840240'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.7ms)
+
+
+Started GET "/companies/2.json" for 127.0.0.1 at 2014-04-22 13:55:35 -0700
+Processing by CompaniesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered companies/show.json.jbuilder (6.0ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined local variable or method `img_url' for #<#<Class:0x00000103bdb628>:0x00000103b165a8>):
+    1: json.extract! @company, :id, :name, img_url, :created_at, :updated_at
+  app/views/companies/show.json.jbuilder:1:in `_app_views_companies_show_json_jbuilder___977572475679975932_2157840240'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (27.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:55:57 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.9ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:56:46 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:57:01 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:57:02 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:57:03 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:57:03 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:57:03 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 13:58:13 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.2ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255)) [0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "company_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140417222317')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140414231146')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140415043233')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140415051313')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140416004619')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140417222235')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140417222248')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "companies" ("created_at", "img_url", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 22 Apr 2014 20:59:44 UTC +00:00], ["img_url", "http://upload.wikimedia.org/wikipedia/en/5/5e/Snapchat_logo.png"], ["name", "snapchat"], ["updated_at", Tue, 22 Apr 2014 20:59:44 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "companies" ("created_at", "img_url", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 22 Apr 2014 21:00:11 UTC +00:00], ["img_url", "http://www.bobsima.com/img/Widgets/SoundCloud_Color.png"], ["name", "soundcloud"], ["updated_at", Tue, 22 Apr 2014 21:00:11 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:21 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:22 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:22 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.9ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:23 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (0.9ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:23 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.7ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:23 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (0.6ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:24 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.6ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:31 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (5.7ms)
+Completed 200 OK in 19ms (Views: 9.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:00:50 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.6ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)

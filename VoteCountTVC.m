@@ -32,7 +32,7 @@
 -(void)awakeFromNib
 {
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://localhost:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     }];
     [dataTask resume];

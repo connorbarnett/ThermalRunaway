@@ -121,7 +121,7 @@
 //
                 
                 
-                NSURL *url = [NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/vote.json"];
+                NSURL *url = [NSURL URLWithString:@"http://localhost:3000/vote.json"];
                 NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
                 [request setHTTPMethod:@"POST"];
                 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
