@@ -1,7 +1,8 @@
 ThermalRails::Application.routes.draw do
   get "test/index"
   resources :companies
-  match '/vote',  to: 'companies#vote',       via: 'post'
+  match '/vote',  to: 'companies#vote',       via: 'get'
+  match '/vote.json', to: 'companies#vote', via: 'post'
   match '/company/lookup', to: 'companies#lookup',    via: 'get'
   match '/vote/lookup', to: 'companies#voteLookup', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
