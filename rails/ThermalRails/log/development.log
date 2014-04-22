@@ -8406,6 +8406,7 @@ Processing by CompaniesController#index as JSON
   [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
   Rendered companies/index.json.jbuilder (1.6ms)
 Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+<<<<<<< HEAD
 
 
 Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:04:10 -0700
@@ -10319,6 +10320,88 @@ Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
 Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 15:30:04 -0700
 Processing by CompaniesController#vote as JSON
   Parameters: {"vote_type"=>"up_vote", "name"=>"soundcloud", "vote_location"=>"Foo123", "company"=>{"name"=>"soundcloud"}}
+=======
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20140414231146)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140414231146"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddImgUrlToCompany (20140415043233)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "companies" ADD "img_url" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140415043233"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddNumUnknownToCompanies (20140415051313)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "companies" ADD "num_unknown" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140415051313"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVotes (20140416004619)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "company_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140416004619"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveUpVotesFromCompany (20140417222235)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "up_votes" integer, "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "companies"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "companies"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "acompanies"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "acompanies"
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140417222235"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to RemoveDownVotesFromCompany (20140417222248)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "down_votes" integer, "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) 
+  [1m[36m (0.2ms)[0m  [1mSELECT * FROM "companies"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "companies"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "acompanies"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "acompanies"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140417222248"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveNumUnknownFromCompany (20140417222317)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "acompanies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255), "num_unknown" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "companies"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "companies"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "img_url" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "acompanies"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "acompanies"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140417222317"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "companies" ("created_at", "img_url", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 22 Apr 2014 21:27:16 UTC +00:00], ["img_url", "http://upload.wikimedia.org/wikipedia/en/5/5e/Snapchat_logo.png"], ["name", "snapchat"], ["updated_at", Tue, 22 Apr 2014 21:27:16 UTC +00:00]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "companies" ("created_at", "img_url", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Tue, 22 Apr 2014 21:27:43 UTC +00:00], ["img_url", "http://www.bobsima.com/img/Widgets/SoundCloud_Color.png"], ["name", "soundcloud"], ["updated_at", Tue, 22 Apr 2014 21:27:43 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:28:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.4ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (12.0ms)
+Completed 200 OK in 58ms (Views: 21.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:28:35 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.2ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 14:28:41 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"soundcloud", "vote_type"=>"down_vote", "vote_location"=>"Foo123", "company"=>{"name"=>"soundcloud"}}
+>>>>>>> 895e9f81fb811fc8df504549cb1f480945312b8c
 Can't verify CSRF token authenticity
 Completed 422 Unprocessable Entity in 1ms
 
@@ -10326,7 +10409,11 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
   actionpack (4.0.4) lib/action_controller/metal/request_forgery_protection.rb:166:in `handle_unverified_request'
   actionpack (4.0.4) lib/action_controller/metal/request_forgery_protection.rb:173:in `handle_unverified_request'
   actionpack (4.0.4) lib/action_controller/metal/request_forgery_protection.rb:180:in `verify_authenticity_token'
+<<<<<<< HEAD
   activesupport (4.0.4) lib/active_support/callbacks.rb:377:in `_run__1278541131022576117__process_action__callbacks'
+=======
+  activesupport (4.0.4) lib/active_support/callbacks.rb:377:in `_run__4491192136144220955__process_action__callbacks'
+>>>>>>> 895e9f81fb811fc8df504549cb1f480945312b8c
   activesupport (4.0.4) lib/active_support/callbacks.rb:80:in `run_callbacks'
   actionpack (4.0.4) lib/abstract_controller/callbacks.rb:17:in `process_action'
   actionpack (4.0.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
@@ -10361,7 +10448,11 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
   activerecord (4.0.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
   activerecord (4.0.4) lib/active_record/migration.rb:373:in `call'
   actionpack (4.0.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+<<<<<<< HEAD
   activesupport (4.0.4) lib/active_support/callbacks.rb:373:in `_run__2055447167828042147__call__callbacks'
+=======
+  activesupport (4.0.4) lib/active_support/callbacks.rb:373:in `_run__229144512286173144__call__callbacks'
+>>>>>>> 895e9f81fb811fc8df504549cb1f480945312b8c
   activesupport (4.0.4) lib/active_support/callbacks.rb:80:in `run_callbacks'
   actionpack (4.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
   actionpack (4.0.4) lib/action_dispatch/middleware/reloader.rb:64:in `call'
@@ -10403,6 +10494,7 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
   bin/rails:4:in `<main>'
 
 
+<<<<<<< HEAD
   Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
   Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
   Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
@@ -10594,3 +10686,23 @@ Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 15:33:01 -0700
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 15:33:01 -0700
   [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+=======
+  Rendered /Users/connorbarnett/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/connorbarnett/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (10.3ms)
+  Rendered /Users/connorbarnett/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /Users/connorbarnett/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.0ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:30:52 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (2.5ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 14:30:52 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.3ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.9ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms)
+>>>>>>> 895e9f81fb811fc8df504549cb1f480945312b8c
