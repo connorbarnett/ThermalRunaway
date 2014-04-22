@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  # protect_from_forgery with: :null_session, :if => Company.create { |c| c.request.format == 'application/json' }
+  protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
+
 
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
@@ -118,6 +119,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :up_votes, :down_votes, :vote_type, :vote_location)
+      params.require(:company).permit(:name, :img_url, :vote_type, :vote_location)
     end
 end
