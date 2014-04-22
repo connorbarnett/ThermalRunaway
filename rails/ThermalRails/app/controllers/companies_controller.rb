@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  protect_from_forgery with: :null_session, :if => Company.vote { |c| c.request.format == 'application/json' }
+  # protect_from_forgery with: :null_session, :if => Company.create { |c| c.request.format == 'application/json' }
 
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
