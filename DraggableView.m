@@ -88,15 +88,16 @@
         case UIGestureRecognizerStateEnded: {
             if (fabs(xDistance) > 100) {//case where vote has been issued
                 NSString *voteType;
+                NSLog(@"adding a vote");
                 if(xDistance > 0) {
                     voteType = @"up_vote";
                 } else {
                     voteType = @"down_vote";
                 }
-                NSURL *URL = [NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/vote"];
+                NSURL *URL = [NSURL URLWithString:@"localhost:3000/vote"];
                 NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
                 // Set request type
-                request.HTTPMethod = @"GET";
+                request.HTTPMethod = @"POST";
                 
                 // Set params to be sent to the server
                 NSString *params = [NSString stringWithFormat:@"name=%@&vote_type=%@&vote_location=foo", self.company, voteType];
