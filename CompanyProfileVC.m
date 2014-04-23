@@ -32,8 +32,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     // 2
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-<<<<<<< HEAD
+
     // 3
     [manager GET:@"company/lookup.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         self.unnecessaryJSONText.text = [(NSDictionary *)responseObject valueForKey:@"name"];
@@ -45,16 +44,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
                                                       otherButtonTitles:nil];
             [alertView show];
         }];
-=======
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:str] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.unnecessaryJSONText.text = [NSString stringWithFormat:@"There are currently %lu votes for %@", (unsigned long)json.count, self.company];
-        });
-    }];
-    [dataTask resume];
->>>>>>> ffa2e26d5d455ed6e09232fa1f04625456c895c7
+
 }
 
 
