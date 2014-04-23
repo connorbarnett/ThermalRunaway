@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
 //
 
+#import "AFNetworking.h"
 #import "CompanyProfileVC.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
+
+static NSString * const BaseURLString = @"http://localhost:3000/";
 
 @interface CompanyProfileVC ()
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
@@ -22,17 +25,25 @@
 {
     [super viewDidLoad];
     self.companyLabel.text = self.company;
+
+    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
+    NSDictionary *parameters = @{@"name" : self.company};
     
-    NSString *str = [NSString stringWithFormat: @"%s%@", "http://localhost:3000/vote/lookup.json/?name=", self.company];
+    // 2
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:str] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.unnecessaryJSONText.text = [NSString stringWithFormat:@"There are currently %d votes for %@", json.count, self.company];
-        });
-    }];
-    [dataTask resume];
+    // 3
+    [manager GET:@"company/lookup.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.unnecessaryJSONText.text = [(NSDictionary *)responseObject valueForKey:@"name"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+                                                                message:[error localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }];
 }
 
 

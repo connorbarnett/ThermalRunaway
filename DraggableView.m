@@ -8,6 +8,7 @@
 #import "DraggableView.h"
 #import "OverlayView.h"
 #import "VotedCompanies.h"
+#import "HoNManager.h"
 
 @interface DraggableView ()
 @property(strong, nonatomic) VotedCompanies *votedComapnies;
@@ -94,20 +95,8 @@
                 } else {
                     voteType = @"down_vote";
                 }
-                NSDictionary *dictionary =  @{ @"name" : self.company, @"vote_type" : voteType, @"vote_location" : @"Foo123" };
-                NSError *error = nil;
-                NSData *jsonInputData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&error];
-                NSString *jsonInputString = [[NSString alloc] initWithData:jsonInputData encoding:NSUTF8StringEncoding];
-                
-                NSURL *url = [NSURL URLWithString:@"http://localhost:3000/vote.json"];
-                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-                [request setHTTPMethod:@"POST"];
-                [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                [request setValue:@"application/json" forHTTPHeaderField:@"accept"];
-                [request setHTTPBody:[jsonInputString dataUsingEncoding:NSUTF8StringEncoding]];
-                NSURLResponse *response;
-                NSError *err;
-                [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+                HoNManager *myManager = [HoNManager sharedHoNManager];
+                [myManager castVote:voteType forCompany:self.company andLocation:@"tempLoc"];
                 [self removeFromSuperview];
                 
             }

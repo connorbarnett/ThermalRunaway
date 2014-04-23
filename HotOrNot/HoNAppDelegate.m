@@ -7,12 +7,15 @@
 //
 
 #import "HoNAppDelegate.h"
+#import "HoNManager.h"
 
 @implementation HoNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+//    //[myHonManager clearUserDefaults];
+    [myHonManager loadCompanyCards];
     return YES;
 }
 							

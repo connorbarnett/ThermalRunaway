@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
 //
 
+#include "AFNetworking.h"
 #import "VoteCountTVC.h"
 #import "VotedCompanies.h"
 #import "CompanyProfileVC.h"
@@ -16,7 +17,7 @@
 @end
 
 @implementation VoteCountTVC
-
+static NSString * const BaseURLString = @"http://localhost:3000/";
 - (VotedCompanies *)votedCompanies
 {
     if(!_votedCompanies) _votedCompanies = [[VotedCompanies alloc] init];
@@ -31,12 +32,28 @@
 
 -(void)awakeFromNib
 {
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://localhost:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSString *string = [NSString stringWithFormat:@"%@companies.json/", BaseURLString];
+    NSURL *url = [NSURL URLWithString:string];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+        self.companiesFromServer = responseObject;
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
     }];
-    [dataTask resume];
+    [operation start];
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,8 +106,10 @@
                 // yes ... is the destination an ImageViewController?
                 if ([segue.destinationViewController isKindOfClass:[CompanyProfileVC class]]) {
                     // yes ... then we know how to prepare for that segue!
+                    NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
                     [self prepareCompanyProfileVC:segue.destinationViewController
-                                      toDisplayName:self.rankedVotedCompanies[indexPath.row]];
+                                    toDisplayName:[companyInformation valueForKey:@"name"]
+                     ];
                 }
             }
         }
@@ -100,6 +119,7 @@
 #pragma mark - Networking
 
 - (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company {
+    
     NSString *url = [NSString stringWithFormat:@"%@%@",@"http://localhost:3000/vote/lookup.json/?name=",company];
     NSLog(@"url is %@", url);
     NSURLSession *session = [NSURLSession sharedSession];
@@ -109,6 +129,7 @@
         NSLog(@"%@", voteData);
     }];
     [dataTask resume];
+    
 }
 
 @end

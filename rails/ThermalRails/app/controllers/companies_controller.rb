@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.sort_by{|company| company[:name]}
   end
 
   # GET /companies/1
@@ -54,8 +54,8 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/lookup
-  #GET /companies/lookup.json
+  # GET /company/lookup
+  #GET /company/lookup.json
   # Looks up a company pertaining to a specific name
   def lookup
     @company = Company.find_by(name: params[:name])
@@ -65,7 +65,7 @@ class CompaniesController < ApplicationController
     end
   end
   
-  # PATCH/PUT /increment
+  # PATCH/PUT /vote
   # Records a single vote for a single company
   # Need to pass in params of name, vote_type and vote_location
   def vote
@@ -95,10 +95,16 @@ class CompaniesController < ApplicationController
   #GET /vote/lookup.json
   def voteLookup
     @company = Company.find_by(name: params[:name])
+    vote_type = params[:vote_type]
     respond_to do |format|
       format.html { redirect_to @company}
-      format.json { render json: @company.votes }
+      if vote_type.nil?
+        format.json { render json: @company.votes }
+      else
+        format.json {render json: @company.votes.where(vote_type: vote_type)}
+      end
     end
+
   end
 
   #GET /vote/count
@@ -107,7 +113,11 @@ class CompaniesController < ApplicationController
     @company = Company.find_by(name: params[:name])
     respond_to do |format|
       format.html { redirect_to @company}
-      format.json { render json: @company.votes.count }
+      if vote_type.nil?
+        format.json { render json: @company.votes.count }
+      else
+        format.json {render json: @company.votes.where(vote_type: vote_type).count}
+      end
     end
   end
 

@@ -7,6 +7,11 @@
 //
 
 #import "VotedCompanies.h"
+#include "HoNManager.h"
+
+@interface VotedCompanies ()
+@property(strong, nonatomic) NSArray *companyDeck;
+@end
 
 @implementation VotedCompanies
 - (void)addCompanyToVotedCompanies:(NSString *)newCompany

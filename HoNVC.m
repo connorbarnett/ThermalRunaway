@@ -9,6 +9,7 @@
 #import "HoNVC.h"
 #import "CompanyView.h"
 #import "DraggableView.h"
+#include "HoNManager.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
@@ -32,6 +33,12 @@
     return _geocoder;
 }
 
+-(void)awakeFromNib{
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    //    //[myHonManager clearUserDefaults];
+    [myHonManager loadCompanyCards];
+}
+
 - (IBAction)skip:(id)sender
 {
     UIView *toRemove = [[self.view subviews] lastObject];
@@ -41,22 +48,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    [myHonManager loadCompanyCards];
     self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://localhost:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-       self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            for (NSDictionary *companyCard in self.companiesFromServer) {
-                NSString *companyName = [companyCard objectForKey:@"name"];
-                NSString *companyUrl = [companyCard objectForKey:@"img_url"];
 
-                [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
-            }
-        });
-    }];
-    [dataTask resume];
+    NSArray *companyDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
+    
+    for (NSDictionary *companyCard in companyDeck) {
+        NSString *companyName = [companyCard objectForKey:@"name"];
+        NSString *companyUrl = [companyCard objectForKey:@"img_url"];
+        
+        [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
