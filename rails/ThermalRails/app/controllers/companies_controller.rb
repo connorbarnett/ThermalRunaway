@@ -91,13 +91,23 @@ class CompaniesController < ApplicationController
     end
   end
 
-  #GET /votes/lookup
-  #GET /votes/lookup.json
+  #GET /vote/lookup
+  #GET /vote/lookup.json
   def voteLookup
     @company = Company.find_by(name: params[:name])
     respond_to do |format|
       format.html { redirect_to @company}
       format.json { render json: @company.votes }
+    end
+  end
+
+  #GET /vote/count
+  #GET /vote/count.json
+  def voteCount
+    @company = Company.find_by(name: params[:name])
+    respond_to do |format|
+      format.html { redirect_to @company}
+      format.json { render json: @company.votes.count }
     end
   end
 

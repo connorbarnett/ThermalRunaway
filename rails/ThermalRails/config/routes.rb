@@ -5,6 +5,7 @@ ThermalRails::Application.routes.draw do
   match '/vote.json', to: 'companies#vote', via: 'post'
   match '/company/lookup', to: 'companies#lookup',    via: 'get'
   match '/vote/lookup', to: 'companies#voteLookup', via: 'get'
+  match '/vote/count', to: 'companies#voteCount', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

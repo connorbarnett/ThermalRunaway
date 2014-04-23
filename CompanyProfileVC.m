@@ -21,16 +21,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.companyLabel.text = @"JSON!";
+    self.companyLabel.text = self.company;
     
-    NSString *str = [NSString stringWithFormat: @"%s%@", "http://localhost:3000/company/lookup.json/?name=", self.company];
+    NSString *str = [NSString stringWithFormat: @"%s%@", "http://localhost:3000/vote/lookup.json/?name=", self.company];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:str] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"%@", json);
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self.unnecessaryJSONText.text = [NSString stringWithFormat:@"%@", json];
+            self.unnecessaryJSONText.text = [NSString stringWithFormat:@"There are currently %d votes for %@", json.count, self.company];
         });
     }];
     [dataTask resume];

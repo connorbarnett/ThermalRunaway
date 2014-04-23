@@ -10706,3 +10706,2021 @@ Processing by CompaniesController#index as JSON
   Rendered companies/index.json.jbuilder (1.9ms)
 Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms)
 >>>>>>> 895e9f81fb811fc8df504549cb1f480945312b8c
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:03:56 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (6.7ms)
+Completed 200 OK in 20ms (Views: 10.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:03:56 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 17:03:59 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"vote_type"=>"up_vote", "name"=>"facebook", "vote_location"=>"Foo123", "company"=>{"name"=>"facebook"}}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "facebook"], ["company_id", 3], ["created_at", Wed, 23 Apr 2014 00:03:59 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 00:03:59 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "up_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 40ms (Views: 0.3ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 17:04:01 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"vote_type"=>"down_vote", "name"=>"soundcloud", "vote_location"=>"Foo123", "company"=>{"name"=>"soundcloud"}}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 23 Apr 2014 00:04:01 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 00:04:01 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "down_vote"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 17:04:06 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"vote_type"=>"up_vote", "name"=>"snapchat", "vote_location"=>"Foo123", "company"=>{"name"=>"snapchat"}}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 23 Apr 2014 00:04:06 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 00:04:06 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mVote Load (1.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+
+
+Started GET "/vote/lookup/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+Processing by CompaniesController#voteLookup as HTML
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 17:11:24 -0700
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:11:37 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:11:53 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat'
+Completed 500 Internal Server Error in 7ms
+
+NoMethodError (undefined method `votes' for #<ActiveRecord::Relation::ActiveRecord_Relation_Company:0x000001018a6108>):
+  app/controllers/companies_controller.rb:100:in `block (2 levels) in voteLookup'
+  app/controllers/companies_controller.rb:98:in `voteLookup'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (22.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:12:09 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat'[0m
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `votes' for #<ActiveRecord::Relation::ActiveRecord_Relation_Company:0x00000103b1e2a8>):
+  app/controllers/companies_controller.rb:100:in `block (2 levels) in voteLookup'
+  app/controllers/companies_controller.rb:98:in `voteLookup'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.5ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:12:10 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat'
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `votes' for #<ActiveRecord::Relation::ActiveRecord_Relation_Company:0x0000010681e050>):
+  app/controllers/companies_controller.rb:100:in `block (2 levels) in voteLookup'
+  app/controllers/companies_controller.rb:98:in `voteLookup'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.3ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:12:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 13ms (Views: 4.6ms | ActiveRecord: 0.7ms)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat'
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat'[0m
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:15:59 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 33ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/vote/count/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+Processing by CompaniesController#voteCount as HTML
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-22 17:17:58 -0700
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:19:31 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:19:31 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.9ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 17:19:43 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"vote_type"=>"up_vote", "name"=>"facebook", "vote_location"=>"Foo123", "company"=>{"name"=>"facebook"}}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "facebook"], ["company_id", 3], ["created_at", Wed, 23 Apr 2014 00:19:43 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 00:19:43 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "up_vote"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 17:19:44 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"vote_type"=>"up_vote", "name"=>"soundcloud", "vote_location"=>"Foo123", "company"=>{"name"=>"soundcloud"}}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 23 Apr 2014 00:19:44 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 00:19:44 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "up_vote"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 17:19:46 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"vote_type"=>"up_vote", "name"=>"snapchat", "vote_location"=>"Foo123", "company"=>{"name"=>"snapchat"}}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 23 Apr 2014 00:19:46 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 00:19:46 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "up_vote"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:19:49 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?namesnapchat" for 127.0.0.1 at 2014-04-22 17:19:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"namesnapchat"=>nil}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:110:in `block (2 levels) in voteCount'
+  app/controllers/companies_controller.rb:108:in `voteCount'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.8ms)
+
+
+Started GET "/vote/count.json/?namesoundcloud" for 127.0.0.1 at 2014-04-22 17:19:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"namesoundcloud"=>nil}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:110:in `block (2 levels) in voteCount'
+  app/controllers/companies_controller.rb:108:in `voteCount'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.5ms)
+
+
+Started GET "/vote/count.json/?namefacebook" for 127.0.0.1 at 2014-04-22 17:19:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"namefacebook"=>nil}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:110:in `block (2 levels) in voteCount'
+  app/controllers/companies_controller.rb:108:in `voteCount'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.6ms)
+
+
+Started GET "/vote/count.json/?namesnapchat" for 127.0.0.1 at 2014-04-22 17:19:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"namesnapchat"=>nil}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:110:in `block (2 levels) in voteCount'
+  app/controllers/companies_controller.rb:108:in `voteCount'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (16.3ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.7ms)
+
+
+Started GET "/vote/count.json/?namesoundcloud" for 127.0.0.1 at 2014-04-22 17:19:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"namesoundcloud"=>nil}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:110:in `block (2 levels) in voteCount'
+  app/controllers/companies_controller.rb:108:in `voteCount'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.7ms)
+
+
+Started GET "/vote/count.json/?namefacebook" for 127.0.0.1 at 2014-04-22 17:19:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"namefacebook"=>nil}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `votes' for nil:NilClass):
+  app/controllers/companies_controller.rb:110:in `block (2 levels) in voteCount'
+  app/controllers/companies_controller.rb:108:in `voteCount'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:20:07 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.4ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:20:07 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:20:19 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:20:19 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:20:19 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:20:45 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:20:45 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.1ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:20:47 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:20:47 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:20:47 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:20:47 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:20:47 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:20:47 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:21:49 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.5ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:21:49 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (0.9ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:21:51 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:21:51 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:21:51 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:21:51 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:21:51 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:21:51 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:22:26 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.3ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:22:26 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:22:28 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:22:28 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:22:28 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:22:28 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:22:28 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:22:28 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:22:41 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:23:55 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:23:55 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:23:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:23:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:23:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:23:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/count.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:23:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/count.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:23:56 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:25:58 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.2ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:25:58 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.6ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:25:59 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:25:59 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:25:59 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:25:59 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:25:59 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:25:59 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:26:43 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:26:43 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:26:44 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:26:44 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:26:44 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:26:44 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:26:44 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:26:44 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/company/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:30 -0700
+Processing by CompaniesController#lookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:27:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:34 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:27:34 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:34 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:27:39 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.4ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:27:39 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.2ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:40 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:27:41 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:41 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:41 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:27:41 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:41 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/company/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:45 -0700
+Processing by CompaniesController#lookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:47 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:27:47 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:47 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:27:51 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:27:51 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:27:51 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:29:02 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:29:02 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:29:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:29:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:29:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:29:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:29:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:29:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:29:04 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:29:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:29:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:29:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:29:14 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:29:21 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:29:21 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:29:21 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:29:22 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:30:31 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.5ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:30:31 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:30:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:30:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:30:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:30:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 17ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:30:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:30:32 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:30:33 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:31:01 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.4ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:31:01 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:31:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:31:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:31:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:31:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:31:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:31:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:31:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:31:24 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.5ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:31:24 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:31:27 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:31:27 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:31:27 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:31:27 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:31:27 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:31:27 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:31:28 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:32:15 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.5ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:32:15 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:32:16 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:33:41 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:33:41 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:33:52 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.4ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:33:52 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:33:54 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:33:54 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:33:54 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:33:54 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:33:54 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:33:54 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:33:58 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:33:58 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:33:58 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:33:58 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:01 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:01 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:01 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:02 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:03 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:04 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:06 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:06 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:06 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:06 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:09 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:09 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:09 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:09 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:11 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:11 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:11 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:12 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:13 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:35 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:35 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:35 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:36 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:37 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:37 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:37 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:38 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:39 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:39 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:39 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:47 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:49 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:49 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:49 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:49 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:34:50 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:34:50 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:34:50 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 16ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:36:44 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:36:44 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.2ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:37:18 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.4ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 17:37:18 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.0ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:37:19 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:19 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:37:19 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:37:19 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:19 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:37:19 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:22 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:37:22 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:37:22 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:24 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:37:28 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:28 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:37:28 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:28 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=snapchat" for 127.0.0.1 at 2014-04-22 17:37:29 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"snapchat"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/lookup.json/?name=soundcloud" for 127.0.0.1 at 2014-04-22 17:37:29 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vote/lookup.json/?name=facebook" for 127.0.0.1 at 2014-04-22 17:37:29 -0700
+Processing by CompaniesController#voteLookup as JSON
+  Parameters: {"name"=>"facebook"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms)

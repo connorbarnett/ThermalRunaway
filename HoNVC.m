@@ -44,7 +44,6 @@
     self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
-    NSLog(@"loading the views now");
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://localhost:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
        self.companiesFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];

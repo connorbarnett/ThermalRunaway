@@ -65,21 +65,11 @@
 {
     static NSString *CellIdentifier = @"Voted Company Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSLog(@"%@", self.companiesFromServer);
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
-    NSInteger voteCount = [self calculateVotes:companyInformation];
     cell.textLabel.text = company;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", (int)voteCount];
+    [self getVoteCount:cell forCompany:company];
     return cell;
-}
-
-- (NSInteger)calculateVotes:(NSDictionary *)companyInformation {
-    NSString *upVoteCountStr = (NSString *)[companyInformation valueForKey:@"up_votes"];
-    NSInteger upVoteCount = [upVoteCountStr integerValue];
-    NSString *downVoteCountStr = (NSString *)[companyInformation valueForKey:@"down_votes"];
-    NSInteger downVoteCount = [downVoteCountStr integerValue];
-    return upVoteCount - downVoteCount;
 }
 
 #pragma mark - Navigation
@@ -109,6 +99,16 @@
 
 #pragma mark - Networking
 
-
+- (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company {
+    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://localhost:3000/vote/lookup.json/?name=",company];
+    NSLog(@"url is %@", url);
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSArray *voteData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [voteData count]];
+        NSLog(@"%@", voteData);
+    }];
+    [dataTask resume];
+}
 
 @end
