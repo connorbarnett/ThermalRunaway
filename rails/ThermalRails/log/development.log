@@ -12724,3 +12724,85 @@ Processing by CompaniesController#voteLookup as JSON
   [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1[0m
   [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
 Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 22:58:26 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.8ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (21.3ms)
+Completed 200 OK in 67ms (Views: 32.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 22:58:26 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.3ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 23:00:34 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (3.2ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 23:00:34 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (3.1ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 23:00:39 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"facebook", "vote_type"=>"down_vote", "vote_location"=>"Foo123", "company"=>{"name"=>"facebook"}}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.8ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "facebook"], ["company_id", 3], ["created_at", Wed, 23 Apr 2014 06:00:39 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 06:00:39 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "down_vote"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 54ms (Views: 0.5ms | ActiveRecord: 8.9ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 23:00:44 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"soundcloud", "vote_type"=>"down_vote", "vote_location"=>"Foo123", "company"=>{"name"=>"soundcloud"}}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 23 Apr 2014 06:00:44 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 06:00:44 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "down_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-22 23:01:45 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"snapchat", "vote_type"=>"up_vote", "vote_location"=>"Foo123", "company"=>{"name"=>"snapchat"}}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 23 Apr 2014 06:01:45 UTC +00:00], ["updated_at", Wed, 23 Apr 2014 06:01:45 UTC +00:00], ["vote_location", "Foo123"], ["vote_type", "up_vote"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 23:01:56 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.4ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (3.6ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-22 23:01:56 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.8ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms)

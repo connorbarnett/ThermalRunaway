@@ -29,14 +29,10 @@
 {
     self = [super initWithFrame:frame];
     if (!self) return nil;
-    
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     self.company = company;
     [self loadImageAndStyle:companyUrl];
-    self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
-    self.overlayView.alpha = 0;
-    [self addSubview:self.overlayView];
     return self;
 }
 
@@ -52,6 +48,9 @@
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             [self addSubview:imageView];
+            self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
+            self.overlayView.alpha = 0;
+            [self addSubview:self.overlayView];
         });
     });
 
