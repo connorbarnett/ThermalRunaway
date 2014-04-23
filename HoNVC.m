@@ -42,6 +42,9 @@
 - (IBAction)skip:(id)sender
 {
     UIView *toRemove = [[self.view subviews] lastObject];
+    HoNManager *manager = [HoNManager sharedHoNManager];
+    DraggableView *toRemoveTmp = (DraggableView *)toRemove;
+    [manager castVote:@"unknown_vote" forCompany:toRemoveTmp.company andLocation:@"TEMPLOC"];
     [toRemove removeFromSuperview];
 }
 
