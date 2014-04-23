@@ -29,7 +29,7 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:str] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self.unnecessaryJSONText.text = [NSString stringWithFormat:@"There are currently %d votes for %@", json.count, self.company];
+            self.unnecessaryJSONText.text = [NSString stringWithFormat:@"There are currently %lu votes for %@", (unsigned long)json.count, self.company];
         });
     }];
     [dataTask resume];
