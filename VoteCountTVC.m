@@ -125,7 +125,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSArray *voteData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [voteData count]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[voteData count]];
         NSLog(@"%@", voteData);
     }];
     [dataTask resume];
