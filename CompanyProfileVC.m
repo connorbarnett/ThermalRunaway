@@ -8,6 +8,7 @@
 
 #import "AFNetworking.h"
 #import "CompanyProfileVC.h"
+#import "HoNManager.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
 
@@ -25,17 +26,17 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 {
     [super viewDidLoad];
     self.companyLabel.text = self.company;
-
+    
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     NSDictionary *parameters = @{@"name" : self.company};
-    
-    // 2
+
+
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
-    // 3
-    [manager GET:@"company/lookup.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.unnecessaryJSONText.text = [(NSDictionary *)responseObject valueForKey:@"name"];
+    
+    [manager GET:@"vote/lookup.json" parameters:parameters success:^(NSURLSessionDataTask *task, NSArray *responseObject) {
+        self.unnecessaryJSONText.text = [NSString stringWithFormat:@"%@ has been voted on %d times!", self.company, [responseObject count]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Reading Companies"
                                                                 message:[error localizedDescription]

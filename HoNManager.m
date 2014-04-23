@@ -37,7 +37,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 
 - (void)loadCompanyCards {
-    self.manager.delegate = self;
+//    self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
     NSLog(@"loading cards");
