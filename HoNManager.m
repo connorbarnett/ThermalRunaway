@@ -23,7 +23,23 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     return sharedHoNManager;
 }
 
+-(CLLocationManager *)manager
+{
+    if(!_manager) _manager = [[CLLocationManager alloc] init];
+    return _manager;
+}
+
+-(CLGeocoder *)geocoder
+{
+    if(!_geocoder) _geocoder = [[CLGeocoder alloc] init];
+    return _geocoder;
+}
+
+
 - (void)loadCompanyCards {
+    self.manager.delegate = self;
+    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.manager startUpdatingLocation];
     NSLog(@"loading cards");
     if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
         NSLog(@"preparing to make a network call");
@@ -50,6 +66,8 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc{
+    
+    
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : loc};
     
@@ -78,5 +96,30 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     self = [super init];
     return self;
 }
+
+#pragma mark - CLLocationManagerDelegate Methods
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"Error: %@", error);
+    NSLog(@"Failed to get location!");
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"Location: %@", newLocation);
+    CLLocation * currentLocation = newLocation;
+    //    if(currentLocation != nil) {
+    //        NSLog(@"Lat: %.8f", currentLocation.coordinate.latitude);
+    //        NSLog(@"Long: %.8f", currentLocation.coordinate.longitude);
+    //    }
+    [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if(error == nil && placemarks.count > 0) {
+            self.placemark = [placemarks lastObject];
+            NSLog(@"placemark %@ %@ \n %@ %@ \n %@ \n %@", self.placemark.subThoroughfare, self.placemark.thoroughfare, self.placemark.postalCode, self.placemark.locality, self.placemark.administrativeArea, self.placemark.country);
+        } else {
+            NSLog(@"Error %@", error.debugDescription);
+        }
+    }];
+}
+
 
 @end
