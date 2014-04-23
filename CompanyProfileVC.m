@@ -45,7 +45,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
                                                       otherButtonTitles:nil];
             [alertView show];
         }];
-
 }
 
 
