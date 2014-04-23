@@ -94,32 +94,10 @@
                 } else {
                     voteType = @"down_vote";
                 }
-//                NSURL *URL = [NSURL URLWithString:@"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/vote"];
-//                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-//                // Set request type
-//                request.HTTPMethod = @"POST";
-//                
                 NSDictionary *dictionary =  @{ @"name" : self.company, @"vote_type" : voteType, @"vote_location" : @"Foo123" };
-//
-//                // Set params to be sent to the server
-////                NSString *params = [NSString stringWithFormat:@"name=%@&vote_type=%@&vote_location=foo", self.company, voteType];
-//                // Encoding type
                 NSError *error = nil;
-//                NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
-//                // Add values and contenttype to the http header
-//                [request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
-//                [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//                [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)[data length]] forHTTPHeaderField:@"Content-Length"];
-//                [request setHTTPBody:data];
-//                
-//                // Send the request
-//                [NSURLConnection connectionWithRequest:request delegate:self];
-//                
-
                 NSData *jsonInputData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&error];
                 NSString *jsonInputString = [[NSString alloc] initWithData:jsonInputData encoding:NSUTF8StringEncoding];
-//
-                
                 
                 NSURL *url = [NSURL URLWithString:@"http://localhost:3000/vote.json"];
                 NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -129,7 +107,7 @@
                 [request setHTTPBody:[jsonInputString dataUsingEncoding:NSUTF8StringEncoding]];
                 NSURLResponse *response;
                 NSError *err;
-                NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+                [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
                 [self removeFromSuperview];
                 
             }
