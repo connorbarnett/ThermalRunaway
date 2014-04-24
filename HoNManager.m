@@ -54,6 +54,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 -(void)loadCompanyVoteCards:(NSString *) companyName{
+    NSLog(@"getting votes for %@", companyName);
     NSString *votesKey = [NSString stringWithFormat:@"votesDeckFor%@",companyName];
     if(![[NSUserDefaults standardUserDefaults] valueForKey:votesKey]){
         NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/vote/lookup.json/?name=%@",companyName];
@@ -64,6 +65,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         }];
     [dataTask resume];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVoteInfoFor%@",companyName] object:nil];
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc{

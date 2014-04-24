@@ -10,10 +10,12 @@
 #import "VoteCountTVC.h"
 #import "VotedCompanies.h"
 #import "CompanyProfileVC.h"
+#import "HoNManager.h"
 
 @interface VoteCountTVC ()
 @property(strong, nonatomic) VotedCompanies *votedCompanies;
 @property(strong, nonatomic) NSArray *companiesFromServer;
+@property(strong, nonatomic) NSMutableArray *companyVotesFromServer;
 @end
 
 @implementation VoteCountTVC
@@ -32,31 +34,35 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 -(void)awakeFromNib
 {
-    NSString *string = [NSString stringWithFormat:@"%@companies.json/", BaseURLString];
-    NSURL *url = [NSURL URLWithString:string];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-        self.companiesFromServer = responseObject;
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Reading Companies"
-                                                            message:[error localizedDescription]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }];
-    [operation start];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCompanyInfo"
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self setDeck];
+                                                  }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    [myHonManager loadCompanyCards];
+}
+
+-(void) setDeck {
+    NSLog(@"Setting deck");
+    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    for(NSDictionary *item in  _companiesFromServer){
+        NSString *company = [item valueForKey:@"name"];
+        [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVoteInfoFor%@",company]
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [self addVoteCountforCompany:company];
+                                                      }];
+        [myHonManager loadCompanyVoteCards:company];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -83,10 +89,20 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     static NSString *CellIdentifier = @"Voted Company Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
+    NSArray *companyVoteInfo = [_companyVotesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
     cell.textLabel.text = company;
-    [self getVoteCount:cell forCompany:company];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ul",[companyVoteInfo count]];
     return cell;
+}
+
+- (void) addVoteCountforCompany:(NSString *)companyName{
+    NSLog(@"adding vote count for %@", companyName
+          );
+    NSString *votesKey = [NSString stringWithFormat:@"votesDeckFor%@",companyName];
+    NSArray *votes = [[NSUserDefaults standardUserDefaults] valueForKey:votesKey];
+    [_companyVotesFromServer addObject:votes];
+    
 }
 
 #pragma mark - Navigation
@@ -118,18 +134,17 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 #pragma mark - Networking
 
-- (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company {
-    
-    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://localhost:3000/vote/lookup.json/?name=",company];
-    NSLog(@"url is %@", url);
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSArray *voteData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[voteData count]];
-        NSLog(@"%@", voteData);
-    }];
-    [dataTask resume];
-    
-}
+//- (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company {
+//    
+//    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://localhost:3000/vote/lookup.json/?name=",company];
+//    NSLog(@"url is %@", url);
+//    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSArray *voteData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[voteData count]];
+//        NSLog(@"%@", voteData);
+//    }];
+//    [dataTask resume];
+//}
 
 @end
