@@ -50,6 +50,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         }];
     [dataTask resume];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
 }
 
 -(void)loadCompanyVoteCards:(NSString *) companyName{
@@ -77,7 +78,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     [manager POST:@"vote.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Made succesful POST Request");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Posting Vote"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"

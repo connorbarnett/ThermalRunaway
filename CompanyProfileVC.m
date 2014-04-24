@@ -36,7 +36,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
     
     [manager GET:@"vote/lookup.json" parameters:parameters success:^(NSURLSessionDataTask *task, NSArray *responseObject) {
-        self.unnecessaryJSONText.text = [NSString stringWithFormat:@"%@ has been voted on %d times!", self.company, [responseObject count]];
+        self.unnecessaryJSONText.text = [NSString stringWithFormat:@"%@ has been voted on %lu times!", self.company, (unsigned long)[responseObject count]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Reading Companies"
                                                                 message:[error localizedDescription]

@@ -14,15 +14,26 @@
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
-@property(strong, nonatomic) NSArray *companiesFromServer;
+@property(strong, nonatomic) NSMutableArray *companiesFromServer;
 @end
 
 @implementation HoNVC
 
 -(void)awakeFromNib{
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    //    //[myHonManager clearUserDefaults];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCompanyInfo"
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self setDeck];
+                                                  }];
+
     [myHonManager loadCompanyCards];
+}
+
+-(NSMutableArray *)companiesFromServer {
+    if(!_companiesFromServer) _companiesFromServer = [[NSMutableArray alloc] init];
+    return _companiesFromServer;
 }
 
 - (IBAction)skip:(id)sender
@@ -37,23 +48,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    [myHonManager loadCompanyCards];
-    
-    NSArray *companyDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
-    
-    for (NSDictionary *companyCard in companyDeck) {
+    for (NSDictionary *companyCard in self.companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         NSString *companyUrl = [companyCard objectForKey:@"img_url"];
-        
         [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
     }
+}
+
+-(void) setDeck {
+    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

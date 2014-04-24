@@ -16661,3 +16661,46 @@ Processing by CompaniesController#index as JSON
   Rendered companies/index.json.jbuilder (2.8ms)
 Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms)
 >>>>>>> ffa2e26d5d455ed6e09232fa1f04625456c895c7
+
+
+Started GET "/companies.json/" for 127.0.0.1 at 2014-04-23 23:15:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.7ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (7.4ms)
+Completed 200 OK in 60ms (Views: 17.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-23 23:15:34 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-23 23:15:34 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.3ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json" for 127.0.0.1 at 2014-04-23 23:15:34 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (1.8ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/" for 127.0.0.1 at 2014-04-23 23:23:47 -0700
+Processing by CompaniesController#index as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered companies/index.json.jbuilder (1.6ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/" for 127.0.0.1 at 2014-04-23 23:24:02 -0700
+Processing by CompaniesController#index as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered companies/index.json.jbuilder (2.1ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms)
