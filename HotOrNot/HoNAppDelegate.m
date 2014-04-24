@@ -13,9 +13,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-////    //[myHonManager clearUserDefaults];
-//    [myHonManager loadCompanyCards];
     return YES;
 }
 							
