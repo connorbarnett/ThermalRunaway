@@ -22,7 +22,7 @@
 -(void)awakeFromNib{
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     //    //[myHonManager clearUserDefaults];
-    [myHonManager loadCompanyCards];
+//    [myHonManager loadCompanyCards];
 }
 
 - (IBAction)skip:(id)sender

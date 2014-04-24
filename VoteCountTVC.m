@@ -44,7 +44,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Reading Companies"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
