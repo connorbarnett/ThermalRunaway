@@ -8,11 +8,22 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all.sort_by{|company| company[:name]}
+    map = Hash.new
+    @companies.each{ |company|
+      puts company;
+      map[company.name] = {company: @company, votes: company.votes}
+    }
+      
+    respond_to do |format|
+      format.html {render json: @companies }
+      format.json { render json: map }
+    end
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+
   end
 
   # GET /companies/new
@@ -59,9 +70,11 @@ class CompaniesController < ApplicationController
   # Looks up a company pertaining to a specific name
   def lookup
     @company = Company.find_by(name: params[:name])
+    map = { company: @company, votes: @company.votes }
+    
     respond_to do |format|
       format.html { redirect_to @company}
-      format.json { render json: @company }
+      format.json { render json: map }
     end
   end
   
