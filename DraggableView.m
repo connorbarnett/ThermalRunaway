@@ -96,6 +96,7 @@
                 }
                 HoNManager *myManager = [HoNManager sharedHoNManager];
                 [myManager castVote:voteType forCompany:self.company andLocation:@"tempLoc"];
+                [myManager removeTopCompanyFromDeck];
                 [self removeFromSuperview];
                 
             }

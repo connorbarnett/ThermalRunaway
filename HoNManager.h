@@ -25,5 +25,7 @@
 - (void)loadVoteTypesForCompany:(NSString *) company;
 - (void)clearUserDefaults;
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc;
-//- (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company;
+- (void)addCompanyToDeck:(NSString *)companyName withUrl:(NSString *)companyUrl;
+- (void)removeTopCompanyFromDeck;
+- (BOOL)deckEmpty;
 @end

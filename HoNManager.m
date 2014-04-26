@@ -9,10 +9,14 @@
 #include "AFNetworking.h"
 #import "HoNManager.h"
 
+@interface HoNManager ()
+@property(strong, atomic) NSMutableArray *currentDeck;
+@end
+
 @implementation HoNManager
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -40,6 +44,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 //    self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
+    NSLog(@"starting to network");
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -69,8 +74,18 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 //    }
 //    else
 //        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
+}
 
+-(void)addCompanyToDeck:(NSString *)companyName withUrl:(NSString *)companyUrl{
+    if(!_currentDeck) _currentDeck = [[NSMutableArray alloc] init];
+    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, @"img_url", companyUrl, nil];
+    [_currentDeck addObject:curCompany];
+}
+
+- (void)removeTopCompanyFromDeck{
+    if(!_currentDeck) return;
     
+    [_currentDeck removeLastObject];
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc{
@@ -91,6 +106,10 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
                                                   otherButtonTitles:nil];
         [alertView show];
     }];
+}
+
+- (BOOL)deckEmpty{
+    return [_currentDeck count] == 0;
 }
 
 -(void)clearUserDefaults{
