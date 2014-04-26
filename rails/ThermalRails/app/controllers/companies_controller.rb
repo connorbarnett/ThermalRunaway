@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all.sort_by{|company| company[:name]}
+    @companies = Company.all.paginate(params).order("created_at desc")
     arr = Array.new
     @companies.each{ |company|
       arr.push({name: company.name, img_url: company.img_url, votes: company.votes})

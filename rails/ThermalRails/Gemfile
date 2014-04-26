@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'will_paginate', '3.0.4'
+
 #to supress webrick errors
 gem 'thin'
 
