@@ -37,12 +37,13 @@ static
 -(void)updateInfo{
     NSLog(@"updating info");
     _companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",_company]];
-    _companyLabel.text = _company;
     int numUpVotes = [[_companyInfo objectForKey:@"up_votes"] intValue];
     int numDownVotes = [[_companyInfo objectForKey:@"down_votes"] intValue];
     int numUnknownVotes = [[_companyInfo objectForKey:@"unknown_votes"] intValue];
-
-    _unnecessaryJSONText.text = [NSString stringWithFormat:@"%d Total Votes:\n    %d Up Votes\n    %d Down Votes\n    %d Unknown Votes", numUpVotes + numDownVotes + numUnknownVotes, numUpVotes,numDownVotes,numUnknownVotes];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        _companyLabel.text = _company;
+        _unnecessaryJSONText.text = [NSString stringWithFormat:@"%d Total Votes:\n    %d Up Votes\n    %d Down Votes\n    %d Unknown Votes", numUpVotes + numDownVotes + numUnknownVotes, numUpVotes,numDownVotes,numUnknownVotes];
+    });
 }
 
 /*

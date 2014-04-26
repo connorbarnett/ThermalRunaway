@@ -57,7 +57,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 - (void)loadVoteTypesForCompany:(NSString *) company {
     NSString *defaultsKey = [NSString stringWithFormat:@"voteInfoFor%@",company];
-    if(![[NSUserDefaults standardUserDefaults] valueForKey:defaultsKey]){
+//    if(![[NSUserDefaults standardUserDefaults] valueForKey:defaultsKey]){
         NSURLSession *session = [NSURLSession sharedSession];
         NSString *urlString = [NSString stringWithFormat:@"%@vote/count.json/?name=%@",BaseURLString, company];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -66,9 +66,9 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
             [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
         }];
         [dataTask resume];
-    }
-    else
-        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
+//    }
+//    else
+//        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
 
     
 }
