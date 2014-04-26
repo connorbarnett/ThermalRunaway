@@ -54,6 +54,7 @@
     for (NSDictionary *companyCard in self.companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         NSString *companyUrl = [companyCard objectForKey:@"img_url"];
+        NSLog(@"adding view for %@",companyName);
         [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
     }
 }

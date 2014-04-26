@@ -12,7 +12,7 @@
 @implementation HoNManager
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://localhost:3000/";
+static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -40,19 +40,19 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 //    self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
-    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
+//    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
         NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://localhost:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
         [[NSUserDefaults standardUserDefaults] synchronize];
             NSLog(@"shit inside");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
         }];
     [dataTask resume];
-    }
-    else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
-    }
+//    }
+//    else{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
+//    }
 }
 
 - (void)loadVoteTypesForCompany:(NSString *) company {

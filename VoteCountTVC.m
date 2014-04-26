@@ -19,7 +19,7 @@
 @end
 
 @implementation VoteCountTVC
-static NSString * const BaseURLString = @"http://localhost:3000/";
+
 - (VotedCompanies *)votedCompanies
 {
     if(!_votedCompanies) _votedCompanies = [[VotedCompanies alloc] init];
