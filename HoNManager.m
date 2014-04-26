@@ -41,16 +41,14 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 
 - (void)loadCompanyCards {
-//    self.manager.delegate = self;
+    self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
-    NSLog(@"starting to network");
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-            NSLog(@"shit inside");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
         }];
     [dataTask resume];

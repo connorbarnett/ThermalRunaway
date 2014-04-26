@@ -7,11 +7,9 @@
 //
 #import "DraggableView.h"
 #import "OverlayView.h"
-#import "VotedCompanies.h"
 #import "HoNManager.h"
 
 @interface DraggableView ()
-@property(strong, nonatomic) VotedCompanies *votedComapnies;
 @property(strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property(nonatomic) CGPoint originalPoint;
 @property(strong, nonatomic) OverlayView *overlayView;
@@ -19,12 +17,6 @@
 @end
 
 @implementation DraggableView
-
--(VotedCompanies *)votedComapnies
-{
-    if(!_votedComapnies) _votedComapnies = [[VotedCompanies alloc] init];
-    return _votedComapnies;
-}
 
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company andUrl:(NSString *) companyUrl
 {

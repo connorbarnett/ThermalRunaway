@@ -41,12 +41,11 @@
     DraggableView *toRemoveTmp = (DraggableView *)toRemove;
     if([_myHonManager deckEmpty]){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
-                                                            message:@"Sorry, there are no more companies for you to vote one"
+                                                            message:@"Sorry, there are no more companies for you to vote on!"
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
         [alertView show];
-
     }
     else {
         [_myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company andLocation:@"TEMPLOC"];
@@ -67,6 +66,7 @@
         NSString *companyUrl = [companyCard objectForKey:@"img_url"];
         [_myHonManager addCompanyToDeck:companyName withUrl:companyUrl];
         [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
+        [self.view setNeedsDisplay];
     }
 }
 

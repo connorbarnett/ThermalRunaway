@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB1D63A118F1FBA9009A78B9 /* VotedCompanies.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */; };
 		EB1D63A418F20506009A78B9 /* VoteCountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A318F20506009A78B9 /* VoteCountTVC.m */; };
 		EB1D63A718F20B48009A78B9 /* CompanyProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */; };
 		EB35008618EE3B9B009220E4 /* CompanyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB35008518EE3B9B009220E4 /* CompanyView.m */; };
@@ -61,8 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB1D639F18F1FBA9009A78B9 /* VotedCompanies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotedCompanies.h; sourceTree = "<group>"; };
-		EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotedCompanies.m; sourceTree = "<group>"; };
 		EB1D63A218F20506009A78B9 /* VoteCountTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteCountTVC.h; sourceTree = "<group>"; };
 		EB1D63A318F20506009A78B9 /* VoteCountTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteCountTVC.m; sourceTree = "<group>"; };
 		EB1D63A518F20B48009A78B9 /* CompanyProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyProfileVC.h; sourceTree = "<group>"; };
@@ -175,8 +172,6 @@
 				EB35008818EE3BC8009220E4 /* DraggableView.m */,
 				EB35008A18EE4051009220E4 /* HoNVC.h */,
 				EB35008B18EE4051009220E4 /* HoNVC.m */,
-				EB1D639F18F1FBA9009A78B9 /* VotedCompanies.h */,
-				EB1D63A018F1FBA9009A78B9 /* VotedCompanies.m */,
 				EB1D63A218F20506009A78B9 /* VoteCountTVC.h */,
 				EB1D63A318F20506009A78B9 /* VoteCountTVC.m */,
 				FFF1C341190767BD00A24A99 /* HoNManager.h */,
@@ -434,7 +429,6 @@
 				FF283660190788FB00B683A1 /* UIButton+AFNetworking.m in Sources */,
 				FF28365E190788FB00B683A1 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FF283655190788FB00B683A1 /* AFHTTPRequestOperationManager.m in Sources */,
-				EB1D63A118F1FBA9009A78B9 /* VotedCompanies.m in Sources */,
 				EB3F102818EE35FE0078FD8E /* main.m in Sources */,
 				FF283658190788FB00B683A1 /* AFSecurityPolicy.m in Sources */,
 				EB35008918EE3BC8009220E4 /* DraggableView.m in Sources */,

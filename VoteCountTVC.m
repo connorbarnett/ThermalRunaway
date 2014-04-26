@@ -8,23 +8,16 @@
 
 #include "AFNetworking.h"
 #import "VoteCountTVC.h"
-#import "VotedCompanies.h"
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
 
 @interface VoteCountTVC ()
-@property(strong, nonatomic) VotedCompanies *votedCompanies;
 @property(strong, nonatomic) NSArray *companiesFromServer;
 @property(strong, nonatomic) NSMutableArray *companyVotesFromServer;
 @end
 
 @implementation VoteCountTVC
 
-- (VotedCompanies *)votedCompanies
-{
-    if(!_votedCompanies) _votedCompanies = [[VotedCompanies alloc] init];
-    return _votedCompanies;
-}
 
 -(void)setRankedVotedCompanies:(NSMutableArray *)rankedVotedCompanies
 {
