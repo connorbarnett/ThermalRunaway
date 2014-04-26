@@ -48,7 +48,7 @@
         [alertView show];
     }
     else {
-        [_myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company andLocation:@"TEMPLOC"];
+        [_myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company];
         [_myHonManager removeTopCompanyFromDeck];
         [toRemove removeFromSuperview];
     }

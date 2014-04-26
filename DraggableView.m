@@ -87,7 +87,7 @@
                     voteType = @"down_vote";
                 }
                 HoNManager *myManager = [HoNManager sharedHoNManager];
-                [myManager castVote:voteType forCompany:self.company andLocation:@"tempLoc"];
+                [myManager castVote:voteType forCompany:self.company];
                 [myManager removeTopCompanyFromDeck];
                 [self removeFromSuperview];
                 

@@ -12,19 +12,18 @@
 
 
 @interface HoNManager : NSObject
-@property(strong, nonatomic) CLLocationManager *manager;
-@property(strong, nonatomic) CLGeocoder *geocoder;
-@property(strong, nonatomic) CLPlacemark *placemark;
+
 
 + (id)sharedHoNManager;
 
 -(CLLocationManager *)manager;
 -(CLGeocoder *)geocoder;
 
+- (void)startLocationServices;
 - (void)loadCompanyCards;
 - (void)loadVoteTypesForCompany:(NSString *) company;
 - (void)clearUserDefaults;
-- (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc;
+- (void)castVote:(NSString *)vote_type forCompany:(NSString *)company;
 - (void)addCompanyToDeck:(NSString *)companyName withUrl:(NSString *)companyUrl;
 - (void)removeTopCompanyFromDeck;
 - (BOOL)deckEmpty;

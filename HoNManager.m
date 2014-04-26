@@ -9,11 +9,15 @@
 #include "AFNetworking.h"
 #import "HoNManager.h"
 
-@interface HoNManager ()
-@property(strong, atomic) NSMutableArray *currentDeck;
+@interface HoNManager () <CLLocationManagerDelegate>
+@property(strong, nonatomic) CLLocationManager *manager;
+@property(strong, nonatomic) CLGeocoder *geocoder;
+@property(strong, nonatomic) CLPlacemark *placemark;
+@property(strong, nonatomic) NSMutableArray *currentDeck;
+@property(strong, atomic)CLLocation *lastLocation;
 @end
 
-@implementation HoNManager
+@implementation HoNManager 
 
 //Needs to change to ec2 eventually
 static NSString * const BaseURLString = @"http://localhost:3000/";
@@ -39,11 +43,21 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     return _geocoder;
 }
 
+-(NSMutableArray *)currentDeck
+{
+    if(!_currentDeck) _currentDeck = [[NSMutableArray alloc] init];
+    return _currentDeck;
+}
 
-- (void)loadCompanyCards {
+- (void)startLocationServices{
     self.manager.delegate = self;
+    [self.manager setDelegate:self];
+    self.manager.distanceFilter = kCLDistanceFilterNone;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
+}
+
+- (void)loadCompanyCards {
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -75,22 +89,25 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 -(void)addCompanyToDeck:(NSString *)companyName withUrl:(NSString *)companyUrl{
-    if(!_currentDeck) _currentDeck = [[NSMutableArray alloc] init];
     NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, @"img_url", companyUrl, nil];
-    [_currentDeck addObject:curCompany];
+    [self.currentDeck addObject:curCompany];
 }
 
 - (void)removeTopCompanyFromDeck{
-    if(!_currentDeck) return;
+    if(!self.currentDeck) return;
     
-    [_currentDeck removeLastObject];
+    [self.currentDeck removeLastObject];
 }
 
-- (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc{
+- (BOOL)deckEmpty{
+    return [self.currentDeck count] == 0;
+}
+
+- (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
     
     
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : loc};
+    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude]};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -104,10 +121,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
                                                   otherButtonTitles:nil];
         [alertView show];
     }];
-}
-
-- (BOOL)deckEmpty{
-    return [_currentDeck count] == 0;
 }
 
 -(void)clearUserDefaults{
@@ -127,19 +140,16 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     NSLog(@"Failed to get location!");
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"Location: %@", newLocation);
-    CLLocation * currentLocation = newLocation;
-    //    if(currentLocation != nil) {
-    //        NSLog(@"Lat: %.8f", currentLocation.coordinate.latitude);
-    //        NSLog(@"Long: %.8f", currentLocation.coordinate.longitude);
-    //    }
-    [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        if(error == nil && placemarks.count > 0) {
-            self.placemark = [placemarks lastObject];
-            NSLog(@"placemark %@ %@ \n %@ %@ \n %@ \n %@", self.placemark.subThoroughfare, self.placemark.thoroughfare, self.placemark.postalCode, self.placemark.locality, self.placemark.administrativeArea, self.placemark.country);
-        } else {
+    self.lastLocation = [locations lastObject];
+    NSLog(@"Last Location: %@", self.lastLocation);
+        if(self.lastLocation != nil) {
+            NSLog(@"Lat: %.8f", self.lastLocation.coordinate.latitude);
+            NSLog(@"Long: %.8f", self.lastLocation.coordinate.longitude);
+        }
+    [self.geocoder reverseGeocodeLocation:self.lastLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if(error != nil){
             NSLog(@"Error %@", error.debugDescription);
         }
     }];
