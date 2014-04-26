@@ -48,24 +48,10 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         }];
+        
     [dataTask resume];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
-}
-
--(void)loadCompanyVoteCards:(NSString *) companyName{
-    NSLog(@"getting votes for %@", companyName);
-    NSString *votesKey = [NSString stringWithFormat:@"votesDeckFor%@",companyName];
-    if(![[NSUserDefaults standardUserDefaults] valueForKey:votesKey]){
-        NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/vote/lookup.json/?name=%@",companyName];
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:votesKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        }];
-    [dataTask resume];
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVoteInfoFor%@",companyName] object:nil];
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc{

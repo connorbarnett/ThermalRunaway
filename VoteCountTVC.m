@@ -50,19 +50,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 -(void) setDeck {
-    NSLog(@"Setting deck");
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
-    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    for(NSDictionary *item in  _companiesFromServer){
-        NSString *company = [item valueForKey:@"name"];
-        [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVoteInfoFor%@",company]
-                                                          object:nil
-                                                           queue:nil
-                                                      usingBlock:^(NSNotification *note) {
-                                                          [self addVoteCountforCompany:company];
-                                                      }];
-        [myHonManager loadCompanyVoteCards:company];
-    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -91,18 +79,10 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
     NSArray *companyVoteInfo = [_companyVotesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
+    NSArray *votes = [companyInformation valueForKey:@"votes"];
     cell.textLabel.text = company;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ul",[companyVoteInfo count]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[votes count]];
     return cell;
-}
-
-- (void) addVoteCountforCompany:(NSString *)companyName{
-    NSLog(@"adding vote count for %@", companyName
-          );
-    NSString *votesKey = [NSString stringWithFormat:@"votesDeckFor%@",companyName];
-    NSArray *votes = [[NSUserDefaults standardUserDefaults] valueForKey:votesKey];
-    [_companyVotesFromServer addObject:votes];
-    
 }
 
 #pragma mark - Navigation
@@ -132,19 +112,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     }
 }
 
-#pragma mark - Networking
+//#pragma mark - Networking
 
-//- (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company {
-//    
-//    NSString *url = [NSString stringWithFormat:@"%@%@",@"http://localhost:3000/vote/lookup.json/?name=",company];
-//    NSLog(@"url is %@", url);
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        NSArray *voteData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[voteData count]];
-//        NSLog(@"%@", voteData);
-//    }];
-//    [dataTask resume];
-//}
 
 @end

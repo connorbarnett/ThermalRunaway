@@ -8,15 +8,14 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all.sort_by{|company| company[:name]}
-    map = Hash.new
+    arr = Array.new
     @companies.each{ |company|
-      puts company;
-      map[company.name] = {company: @company, votes: company.votes}
+      arr.push({name: company.name, img_url: company.img_url, votes: company.votes})
     }
       
     respond_to do |format|
-      format.html {render json: @companies }
-      format.json { render json: map }
+      format.html {render json: @companies }#temporary
+      format.json { render json: arr }
     end
   end
 
