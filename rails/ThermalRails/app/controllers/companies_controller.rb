@@ -121,15 +121,17 @@ class CompaniesController < ApplicationController
 
   #GET /vote/count
   #GET /vote/count.json
+  #Given company name, returns count of each vote type
   def voteCount
     @company = Company.find_by(name: params[:name])
+    votes = Hash.new
+    votes["up_votes"] = @company.votes.where(vote_type: "up_vote").count
+    votes["down_votes"] = @company.votes.where(vote_type: "down_vote").count
+    votes["unknown_votes"] = @company.votes.where(vote_type: "unknown_vote").count
+
     respond_to do |format|
       format.html { redirect_to @company}
-      if vote_type.nil?
-        format.json { render json: @company.votes.count }
-      else
-        format.json {render json: @company.votes.where(vote_type: vote_type).count}
-      end
+      format.json { render json: votes }
     end
   end
 

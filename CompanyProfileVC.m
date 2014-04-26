@@ -11,13 +11,12 @@
 #import "HoNManager.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
-
-static NSString * const BaseURLString = @"http://localhost:3000/";
-
+static
 @interface CompanyProfileVC ()
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 @property (weak, nonatomic) IBOutlet UITextView *unnecessaryJSONText;
-
+@property (weak, nonatomic) NSDictionary *companyInfo;
+@property(strong, nonatomic) HoNManager *myHonManager;
 @end
 
 @implementation CompanyProfileVC
@@ -25,29 +24,26 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.companyLabel.text = self.company;
-    
-    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    NSDictionary *parameters = @{@"name" : self.company};
-
-
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    
-    [manager GET:@"vote/lookup.json" parameters:parameters success:^(NSURLSessionDataTask *task, NSArray *responseObject) {
-        self.unnecessaryJSONText.text = [NSString stringWithFormat:@"%@ has been voted on %lu times!", self.company, (unsigned long)[responseObject count]];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Reading Companies"
-                                                                message:[error localizedDescription]
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }];
+    _myHonManager = [HoNManager sharedHoNManager];
+    [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVotesFor%@",_company]
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self updateInfo];
+                                                  }];
+    [_myHonManager loadVoteTypesForCompany:_company];
 }
 
+-(void)updateInfo{
+    NSLog(@"updating info");
+    _companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",_company]];
+    _companyLabel.text = _company;
+    int numUpVotes = [[_companyInfo objectForKey:@"up_votes"] intValue];
+    int numDownVotes = [[_companyInfo objectForKey:@"down_votes"] intValue];
+    int numUnknownVotes = [[_companyInfo objectForKey:@"unknown_votes"] intValue];
 
+    _unnecessaryJSONText.text = [NSString stringWithFormat:@"%d Total Votes:\n    %d Up Votes\n    %d Down Votes\n    %d Unknown Votes", numUpVotes + numDownVotes + numUnknownVotes, numUpVotes,numDownVotes,numUnknownVotes];
+}
 
 /*
 #pragma mark - Navigation

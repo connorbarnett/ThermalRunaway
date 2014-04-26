@@ -45,17 +45,10 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    [myHonManager loadCompanyCards];
 }
 
 -(void) setDeck {
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    self.rankedVotedCompanies = [self.votedCompanies retreiveSortedCompanies];
 }
 
 #pragma mark - Table view data source
@@ -77,7 +70,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     static NSString *CellIdentifier = @"Voted Company Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
-    NSArray *companyVoteInfo = [_companyVotesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
     NSArray *votes = [companyInformation valueForKey:@"votes"];
     cell.textLabel.text = company;
@@ -111,8 +103,5 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         }
     }
 }
-
-//#pragma mark - Networking
-
 
 @end

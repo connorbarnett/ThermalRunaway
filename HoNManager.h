@@ -22,7 +22,7 @@
 -(CLGeocoder *)geocoder;
 
 - (void)loadCompanyCards;
-- (void)loadCompanyVoteCards:(NSString *) companyName;
+- (void)loadVoteTypesForCompany:(NSString *) company;
 - (void)clearUserDefaults;
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc;
 //- (void) getVoteCount:(UITableViewCell *)cell forCompany:(NSString *)company;

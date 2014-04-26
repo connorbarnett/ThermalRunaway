@@ -15,11 +15,13 @@
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
 @property(strong, nonatomic) NSMutableArray *companiesFromServer;
+@property(strong, nonatomic) HoNManager *myHonManager;
 @end
 
 @implementation HoNVC
 
 -(void)awakeFromNib{
+    _myHonManager = [HoNManager sharedHoNManager];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCompanyInfo"
                                                       object:nil
                                                        queue:nil
@@ -45,8 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    [myHonManager loadCompanyCards];
 }
 
 -(void) setDeck {

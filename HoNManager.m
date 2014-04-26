@@ -40,18 +40,37 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 //    self.manager.delegate = self;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
-    NSLog(@"loading cards");
     if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
-        NSLog(@"preparing to make a network call");
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:@"http://localhost:3000/companies.json"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+            NSLog(@"shit inside");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
         }];
-        
     [dataTask resume];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
+    else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
+    }
+}
+
+- (void)loadVoteTypesForCompany:(NSString *) company {
+    NSString *defaultsKey = [NSString stringWithFormat:@"voteInfoFor%@",company];
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:defaultsKey]){
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSString *urlString = [NSString stringWithFormat:@"%@vote/count.json/?name=%@",BaseURLString, company];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:defaultsKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
+        }];
+        [dataTask resume];
+    }
+    else
+        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
+
+    
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company andLocation:(NSString *)loc{
@@ -60,7 +79,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : loc};
     
-    // 2
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager POST:@"vote.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
