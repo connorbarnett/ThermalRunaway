@@ -9,6 +9,7 @@
 #import "AFNetworking.h"
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
+#import "CompanyGraph.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
 static
@@ -49,6 +50,7 @@ static
         self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
         self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
         self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
+        [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:@[@1, @60, @30, @100, @50, @70, @5]]];
     });
 }
 
