@@ -22,7 +22,7 @@
 
 -(void)awakeFromNib{
     _myHonManager = [HoNManager sharedHoNManager];
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCompanyInfo"
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCurDeckInfo"
                                                       object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
@@ -63,7 +63,7 @@
 
 -(void) setDeck {
     NSLog(@"setting deck");
-    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
+    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"curCompanyDeck"];
     for (NSDictionary *companyCard in _companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         NSString *companyUrl = [companyCard objectForKey:@"img_url"];

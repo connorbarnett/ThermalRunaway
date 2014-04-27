@@ -3,6 +3,8 @@ ThermalRails::Application.routes.draw do
   resources :companies
   match '/vote',  to: 'companies#vote',       via: 'post'
   match '/vote.json', to: 'companies#vote', via: 'post'
+  match '/company/getall', to: 'companies#getall', via: 'get'
+  match '/company/getall.json', to: 'companies#all', via: 'get'
   match '/company/lookup', to: 'companies#lookup',    via: 'get'
   match '/vote/lookup', to: 'companies#voteLookup', via: 'get'
   match '/vote/count', to: 'companies#voteCount', via: 'get'

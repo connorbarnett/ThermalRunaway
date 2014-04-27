@@ -18,20 +18,13 @@
 
 @implementation VoteCountTVC
 
-
--(void)setRankedVotedCompanies:(NSMutableArray *)rankedVotedCompanies
-{
-    _rankedVotedCompanies = rankedVotedCompanies;
-    [self.tableView reloadData];
-}
-
 -(void)awakeFromNib
 {
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCompanyInfo"
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"allCompanyDataLoaded"
                                                       object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
-                                                      [self setDeck];
+                                                      [self setTableDeck];
                                                   }];
 }
 
@@ -40,8 +33,10 @@
     [super viewDidLoad];
 }
 
--(void) setDeck {
-    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
+-(void) setTableDeck {
+    NSLog(@"setting table deck");
+    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"allCompanyInfo"];
+    NSLog(@"%d",[self.companiesFromServer count]);
 }
 
 #pragma mark - Table view data source
@@ -64,9 +59,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
-    NSArray *votes = [companyInformation valueForKey:@"votes"];
+    int netTotal = [[companyInformation objectForKey:@"netTotal"] intValue];
     cell.textLabel.text = company;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[votes count]];
+    if(netTotal > 0){
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"+%d",netTotal];
+        UIColor *color = [UIColor greenColor];
+        [cell.detailTextLabel setTextColor:color];
+    }
+    else{
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"-%d",netTotal];
+        UIColor *color = [UIColor redColor];
+        [cell.detailTextLabel setTextColor:color];
+    }
     return cell;
 }
 

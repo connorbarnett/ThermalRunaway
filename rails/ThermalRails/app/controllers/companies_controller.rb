@@ -19,6 +19,22 @@ class CompaniesController < ApplicationController
     end
   end
 
+  #GET /company/getall
+  #GET /company/getall.json
+  def getall
+    companies = Company.all;
+    arr = Array.new
+    companies.each{ |company|
+      net = company.votes.where(vote_type: "up_vote").count - company.votes.where(vote_type: "down_vote").count
+
+      arr.push({name: company.name, img_url: company.img_url,  netTotal: net, votes: company.votes})
+    }
+      
+    respond_to do |format|
+      format.html {render json: @companies }#temporary
+      format.json { render json: arr }
+    end
+  end
   # GET /companies/1
   # GET /companies/1.json
   def show

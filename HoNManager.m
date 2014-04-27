@@ -66,19 +66,29 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     [self.manager startUpdatingLocation];
 }
 
-- (void)loadCompanyCards {
+- (void)loadAllCompanyCards{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"allCompanyInfo"];
+        NSLog(@"%d",[[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count]);
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"allCompanyDataLoaded" object:nil];
+    }];
+    [dataTask resume];
+}
+
+- (void)loadDeck {
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
-    NSLog(@"loading page number %zu",self.curPage);
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0){//no cards loaded so we start over, for now
                 [self resetPageCount];
-                [self loadCompanyCards];
+                [self loadDeck];
             }
             else{
-                [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"curCompanyDeck"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCurDeckInfo" object:nil];
             }
         }];
     [dataTask resume];
@@ -122,7 +132,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 - (void)loadNextDeck{
     [self incrementPageCount];
-    [self loadCompanyCards];
+    [self loadDeck];
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{

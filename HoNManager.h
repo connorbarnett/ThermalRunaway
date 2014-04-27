@@ -20,7 +20,8 @@
 -(CLGeocoder *)geocoder;
 
 - (void)startLocationServices;
-- (void)loadCompanyCards;
+- (void)loadAllCompanyCards;
+- (void)loadDeck;
 - (void)loadVoteTypesForCompany:(NSString *) company;
 - (void)clearUserDefaults;
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company;

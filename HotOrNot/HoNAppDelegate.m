@@ -14,9 +14,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    [myHonManager loadAllCompanyCards];
     [myHonManager startLocationServices];
     [myHonManager resetPageCount];
-    [myHonManager loadCompanyCards];
+    [myHonManager loadDeck];
     return YES;
 }
 							
