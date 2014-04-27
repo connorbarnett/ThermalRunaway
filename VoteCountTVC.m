@@ -36,7 +36,7 @@
 -(void) setTableDeck {
     NSLog(@"setting table deck");
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"allCompanyInfo"];
-    NSLog(@"%d",[self.companiesFromServer count]);
+    NSLog(@"%lu",(unsigned long)[self.companiesFromServer count]);
 }
 
 #pragma mark - Table view data source
@@ -78,7 +78,6 @@
 
 - (void)prepareCompanyProfileVC:(CompanyProfileVC *)cpvc toDisplayName:(NSString *)companyName {
     cpvc.company = companyName;
-    cpvc.title = companyName;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
