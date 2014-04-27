@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all.sort_by{|company| company[:name]}
+    @companies = Company.paginate(:order => "name ASC", :page => params[:page], :per_page => 2)
     arr = Array.new
     @companies.each{ |company|
       arr.push({name: company.name, img_url: company.img_url, votes: company.votes})
@@ -153,6 +153,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :img_url, :vote_type, :vote_location)
+      params.require(:company).permit(:name, :img_url, :vote_type, :vote_location, :page)
     end
 end

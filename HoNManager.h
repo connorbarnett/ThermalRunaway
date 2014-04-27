@@ -27,4 +27,7 @@
 - (void)addCompanyToDeck:(NSString *)companyName withUrl:(NSString *)companyUrl;
 - (void)removeTopCompanyFromDeck;
 - (BOOL)deckEmpty;
+- (void)loadNextDeck;
+- (void)incrementPageCount;
+- (void)resetPageCount;
 @end

@@ -39,7 +39,7 @@
 {
     UIView *toRemove = [[self.view subviews] lastObject];
     DraggableView *toRemoveTmp = (DraggableView *)toRemove;
-    if([_myHonManager deckEmpty]){
+    if([self.myHonManager deckEmpty]){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
                                                             message:@"Sorry, there are no more companies for you to vote on!"
                                                            delegate:nil
@@ -48,9 +48,11 @@
         [alertView show];
     }
     else {
-        [_myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company];
-        [_myHonManager removeTopCompanyFromDeck];
+        [self.myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company];
+        [self.myHonManager removeTopCompanyFromDeck];
         [toRemove removeFromSuperview];
+        if([self.myHonManager deckEmpty])
+            [self.myHonManager loadNextDeck];
     }
 }
 
@@ -60,11 +62,12 @@
 }
 
 -(void) setDeck {
-    _companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
+    NSLog(@"setting deck");
+    self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"];
     for (NSDictionary *companyCard in _companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         NSString *companyUrl = [companyCard objectForKey:@"img_url"];
-        [_myHonManager addCompanyToDeck:companyName withUrl:companyUrl];
+        [self.myHonManager addCompanyToDeck:companyName withUrl:companyUrl];
         [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
         [self.view setNeedsDisplay];
     }

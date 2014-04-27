@@ -10,6 +10,7 @@
 #import "HoNManager.h"
 
 @interface HoNManager () <CLLocationManagerDelegate>
+@property size_t curPage;
 @property(strong, nonatomic) CLLocationManager *manager;
 @property(strong, nonatomic) CLGeocoder *geocoder;
 @property(strong, nonatomic) CLPlacemark *placemark;
@@ -31,6 +32,14 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     return sharedHoNManager;
 }
 
+- (void)incrementPageCount {
+    self.curPage++;
+}
+
+- (void)resetPageCount{
+    self.curPage = 1;
+}
+
 -(CLLocationManager *)manager
 {
     if(!_manager) _manager = [[CLLocationManager alloc] init];
@@ -50,8 +59,8 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 - (void)startLocationServices{
-    self.manager.delegate = self;
-    [self.manager setDelegate:self];
+//    self.manager.delegate = self;
+//    [self.manager setDelegate:self];
     self.manager.distanceFilter = kCLDistanceFilterNone;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
@@ -59,11 +68,18 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 - (void)loadCompanyCards {
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
+    NSLog(@"loading page number %zu",self.curPage);
         NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0){//no cards loaded so we start over, for now
+                [self resetPageCount];
+                [self loadCompanyCards];
+            }
+            else{
+                [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"companyDeck"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
+            }
         }];
     [dataTask resume];
 //    }
@@ -100,12 +116,16 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 - (BOOL)deckEmpty{
-    return [self.currentDeck count] == 0;
+    BOOL deckEmpty = [self.currentDeck count] == 0;
+    return deckEmpty;
+}
+
+- (void)loadNextDeck{
+    [self incrementPageCount];
+    [self loadCompanyCards];
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
-    
-    
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude]};
     

@@ -90,6 +90,8 @@
                 [myManager castVote:voteType forCompany:self.company];
                 [myManager removeTopCompanyFromDeck];
                 [self removeFromSuperview];
+                if([myManager deckEmpty])
+                    [myManager loadNextDeck];
                 
             }
             else {
