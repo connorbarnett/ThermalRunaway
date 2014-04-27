@@ -34,9 +34,14 @@
 }
 
 -(void) setTableDeck {
-    NSLog(@"setting table deck");
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"allCompanyInfo"];
-    NSLog(@"%lu",(unsigned long)[self.companiesFromServer count]);
+    NSLog(@"reloading");
+    [self.tableView reloadData];
+}
+
+- (IBAction)refresh:(id)sender {
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    [myHonManager loadAllCompanyCards];
 }
 
 #pragma mark - Table view data source
