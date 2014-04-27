@@ -239,7 +239,6 @@
         <!--Navigation Controller - rankings-->
         <scene sceneID="D2R-cV-27k">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rsi-hU-VCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e9S-q7-IYT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="rankings" image="ChartUp" id="yOp-g1-rO2"/>
                     <toolbarItems/>
@@ -252,6 +251,7 @@
                         <segue destination="VRd-XJ-1mC" kind="relationship" relationship="rootViewController" id="5H0-dd-Baf"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rsi-hU-VCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947" y="178"/>
         </scene>

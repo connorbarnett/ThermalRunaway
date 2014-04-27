@@ -82,6 +82,14 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0){//no cards loaded so we start over, for now
+                dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
+                                                                    message:@"Sorry, you've already voted on all companies.  Vote again on your previous companies!"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"Ok"
+                                                          otherButtonTitles:nil];
+                [alertView show];
+                });
                 [self resetPageCount];
                 [self loadDeck];
             }

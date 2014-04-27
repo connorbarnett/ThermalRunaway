@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.paginate(:order => "name ASC", :page => params[:page], :per_page => 2)
+    @companies = Company.paginate(:order => "name ASC", :page => params[:page], :per_page => 10)
     arr = Array.new
     @companies.each{ |company|
       arr.push({name: company.name, img_url: company.img_url, votes: company.votes})
