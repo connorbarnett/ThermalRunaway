@@ -41,16 +41,16 @@ static
 -(void)updateInfo{
     NSLog(@"updating info");
     self.companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",self.company]];
-    int numUpVotes = [[_companyInfo objectForKey:@"up_votes"] intValue];
-    int numDownVotes = [[_companyInfo objectForKey:@"down_votes"] intValue];
-    int numUnknownVotes = [[_companyInfo objectForKey:@"unknown_votes"] intValue];
+    int numUpVotes = [[self.companyInfo objectForKey:@"up_votes"] intValue];
+    int numDownVotes = [[self.companyInfo objectForKey:@"down_votes"] intValue];
+    int numUnknownVotes = [[self.companyInfo objectForKey:@"unknown_votes"] intValue];
     dispatch_sync(dispatch_get_main_queue(), ^{
         self.companyLabel.text = self.company;
         self.blurredCompanyImage.image = [UIImage imageNamed:@"snapblur"];
         self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
         self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
         self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
-        [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:@[@1, @60, @30, @100, @50, @70, @5]]];
+        [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
     });
 }
 

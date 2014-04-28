@@ -140,10 +140,12 @@ class CompaniesController < ApplicationController
   #Given company name, returns count of each vote type
   def voteCount
     @company = Company.find_by(name: params[:name])
+    trendingArray = recentTrendingArray(@company)
     votes = Hash.new
     votes["up_votes"] = @company.votes.where(vote_type: "up_vote").count
     votes["down_votes"] = @company.votes.where(vote_type: "down_vote").count
     votes["unknown_votes"] = @company.votes.where(vote_type: "unknown_vote").count
+    votes["trendingArray"] = trendingArray
 
     respond_to do |format|
       format.html { redirect_to @company}
@@ -165,6 +167,20 @@ class CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+    end
+
+    #gets an array of a companies net vote count over the last 10 days
+    def recentTrendingArray(company)
+      i = 0
+      votes = company.votes
+      trendingArray = Array.new
+      while i < 10
+        net = votes.where("vote_type = 'up_vote' AND created_at <=  ?", i.days.ago).count
+        net -= votes.where("vote_type = 'down_vote' AND created_at <=  ?", i.days.ago).count
+        trendingArray.push(net)
+        i += 1
+      end
+      trendingArray
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
