@@ -12,6 +12,7 @@
 #import "HoNManager.h"
 
 @interface VoteCountTVC ()
+@property (strong, nonatomic) IBOutlet UITableView *reloadWheel;
 @property(strong, nonatomic) NSArray *companiesFromServer;
 @property(strong, nonatomic) NSMutableArray *companyVotesFromServer;
 @end
@@ -35,7 +36,7 @@
 
 -(void) setTableDeck {
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"allCompanyInfo"];
-    NSLog(@"reloading");
+//    NSLog(@"reloading");
     [self.tableView reloadData];
 }
 

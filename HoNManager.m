@@ -70,7 +70,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"allCompanyInfo"];
-        NSLog(@"%lu",(unsigned long)[[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count]);
             [[NSUserDefaults standardUserDefaults] synchronize];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"allCompanyDataLoaded" object:nil];
     }];

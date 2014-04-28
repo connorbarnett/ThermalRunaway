@@ -114,7 +114,7 @@
             </objects>
             <point key="canvasLocation" x="472" y="-84"/>
         </scene>
-        <!--Vote CountTVC-->
+        <!--Vote CountTVC - Item-->
         <scene sceneID="SgC-5C-hZx">
             <objects>
                 <tableViewController id="VRd-XJ-1mC" customClass="VoteCountTVC" sceneMemberID="viewController">
@@ -156,6 +156,7 @@
                             <outlet property="delegate" destination="VRd-XJ-1mC" id="xWk-Yi-D6c"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="RsM-3Q-bw6"/>
                     <navigationItem key="navigationItem" id="vHr-Ff-dRb">
                         <barButtonItem key="rightBarButtonItem" title="Refresh" id="Pc7-y4-KkT">
                             <connections>

@@ -27,14 +27,14 @@ static
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _myHonManager = [HoNManager sharedHoNManager];
+    self.myHonManager = [HoNManager sharedHoNManager];
     [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVotesFor%@",self.company]
                                                       object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
                                                       [self updateInfo];
                                                   }];
-    [_myHonManager loadVoteTypesForCompany:_company];
+    [self.myHonManager loadVoteTypesForCompany:self.company];
 }
 
 -(void)updateInfo{
@@ -44,7 +44,7 @@ static
     int numDownVotes = [[_companyInfo objectForKey:@"down_votes"] intValue];
     int numUnknownVotes = [[_companyInfo objectForKey:@"unknown_votes"] intValue];
     dispatch_sync(dispatch_get_main_queue(), ^{
-        self.companyLabel.text = _company;
+        self.companyLabel.text = self.company;
         self.blurredCompanyImage.image = [UIImage imageNamed:@"snapblur"];
         self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
         self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
