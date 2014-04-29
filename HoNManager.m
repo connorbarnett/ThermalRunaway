@@ -16,6 +16,7 @@
 @property(strong, nonatomic) CLPlacemark *placemark;
 @property(strong, nonatomic) NSMutableArray *currentDeck;
 @property(strong, atomic)CLLocation *lastLocation;
+@property BOOL hasUpatedDeck;
 @end
 
 @implementation HoNManager 
@@ -80,7 +81,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0){//no cards loaded so we start over, for now
+            if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0 && self.hasUpatedDeck){//no cards loaded so we start over, for now
                 dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
                                                                     message:@"Sorry, you've already voted on all companies.  Vote again on your previous companies!"
@@ -89,10 +90,22 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
                                                           otherButtonTitles:nil];
                 [alertView show];
                 });
+                self.hasUpatedDeck = false;
                 [self resetPageCount];
                 [self loadDeck];
             }
+            else if(!self.hasUpatedDeck){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Companies"
+                                                                        message:[error localizedDescription]
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"Ok"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                });
+            }
             else{
+                self.hasUpatedDeck = true;
                 [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"curCompanyDeck"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCurDeckInfo" object:nil];

@@ -21,6 +21,11 @@
 @implementation HoNVC
 
 -(void)awakeFromNib{
+
+}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
     _myHonManager = [HoNManager sharedHoNManager];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCurDeckInfo"
                                                       object:nil
@@ -54,11 +59,6 @@
         if([self.myHonManager deckEmpty])
             [self.myHonManager loadNextDeck];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 -(void) setDeck {
