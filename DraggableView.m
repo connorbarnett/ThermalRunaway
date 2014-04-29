@@ -17,6 +17,7 @@
 @end
 
 @implementation DraggableView
+static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
 
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company andUrl:(NSString *) companyUrl
 {
@@ -31,7 +32,7 @@
 
 - (void)loadImageAndStyle:(NSString *) companyUrl
 {
-    NSURL *imageURL = [NSURL URLWithString:companyUrl];
+    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, self.company]];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
