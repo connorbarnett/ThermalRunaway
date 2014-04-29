@@ -10,7 +10,7 @@ class CompaniesController < ApplicationController
     @companies = Company.paginate(:order => "name ASC", :page => params[:page], :per_page => 10)
     arr = Array.new
     @companies.each{ |company|
-      arr.push({name: company.name, img_url: company.img_url, votes: company.votes})
+      arr.push({name: company.name, votes: company.votes})
     }
       
     respond_to do |format|
@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
     companies.each{ |company|
       net = company.votes.where(vote_type: "up_vote").count - company.votes.where(vote_type: "down_vote").count
 
-      arr.push({name: company.name, img_url: company.img_url,  netTotal: net, votes: company.votes})
+      arr.push({name: company.name,  netTotal: net, votes: company.votes})
     }
       
     respond_to do |format|
@@ -185,6 +185,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :img_url, :vote_type, :vote_location, :page)
+      params.require(:company).permit(:name, :vote_type, :vote_location, :page)
     end
 end

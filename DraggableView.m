@@ -19,18 +19,18 @@
 @implementation DraggableView
 static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
 
-- (id)initWithFrame:(CGRect)frame company:(NSString *)company andUrl:(NSString *) companyUrl
+- (id)initWithFrame:(CGRect)frame company:(NSString *)company
 {
     self = [super initWithFrame:frame];
     if (!self) return nil;
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     self.company = company;
-    [self loadImageAndStyle:companyUrl];
+    [self loadImageAndStyle];
     return self;
 }
 
-- (void)loadImageAndStyle:(NSString *) companyUrl
+- (void)loadImageAndStyle
 {
     NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, self.company]];
     

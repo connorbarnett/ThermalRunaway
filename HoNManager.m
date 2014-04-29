@@ -121,8 +121,8 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 //        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
 }
 
--(void)addCompanyToDeck:(NSString *)companyName withUrl:(NSString *)companyUrl{
-    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, @"img_url", companyUrl, nil];
+-(void)addCompanyToDeck:(NSString *)companyName{
+    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, nil];
     [self.currentDeck addObject:curCompany];
 }
 

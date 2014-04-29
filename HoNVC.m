@@ -66,9 +66,8 @@
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"curCompanyDeck"];
     for (NSDictionary *companyCard in _companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
-        NSString *companyUrl = [companyCard objectForKey:@"img_url"];
-        [self.myHonManager addCompanyToDeck:companyName withUrl:companyUrl];
-        [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName andUrl:companyUrl]];
+        [self.myHonManager addCompanyToDeck:companyName];
+        [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName]];
         [self.view setNeedsDisplay];
     }
 }

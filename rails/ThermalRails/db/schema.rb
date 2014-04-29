@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417222317) do
+ActiveRecord::Schema.define(version: 20140429002726) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "img_url"
   end
 
   create_table "votes", force: true do |t|
