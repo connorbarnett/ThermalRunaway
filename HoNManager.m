@@ -22,6 +22,7 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
+//static NSString * const BaseURLString = @"ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
 static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
@@ -94,7 +95,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
                 [self resetPageCount];
                 [self loadDeck];
             }
-            else if(!self.hasUpatedDeck){
+            else if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Companies"
                                                                         message:[error localizedDescription]

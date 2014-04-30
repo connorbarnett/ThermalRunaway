@@ -73,7 +73,7 @@
         [cell.detailTextLabel setTextColor:color];
     }
     else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"-%d",netTotal];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",netTotal];
         UIColor *color = [UIColor redColor];
         [cell.detailTextLabel setTextColor:color];
     }
