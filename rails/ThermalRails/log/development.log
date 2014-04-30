@@ -29015,3 +29015,2095 @@ DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate 
   [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
   [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
 Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 18:10:21 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 4]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 5]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 6]]
+  [1m[36mVote Load (0.5ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 62ms (Views: 56.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 18:10:21 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 14]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 14]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.4ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 4]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 5]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 6]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 11]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 12]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 13]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 14]]
+Completed 200 OK in 69ms (Views: 51.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 18:11:36 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 60ms (Views: 53.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 18:11:36 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 14]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 11]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 12]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
+Completed 200 OK in 76ms (Views: 43.9ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:11:57 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 01:11:57 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:11:57 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:11:59 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 01:11:59 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:11:59 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:00 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"samsung", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'samsung' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "samsung"], ["company_id", 10], ["created_at", Wed, 30 Apr 2014 01:12:00 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:00 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:01 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"quora", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'quora' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "quora"], ["company_id", 9], ["created_at", Wed, 30 Apr 2014 01:12:01 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:01 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:03 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"linkedin", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'linkedin' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "linkedin"], ["company_id", 8], ["created_at", Wed, 30 Apr 2014 01:12:03 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:03 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:10 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"google", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'google' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "google"], ["company_id", 7], ["created_at", Wed, 30 Apr 2014 01:12:10 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:10 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:11 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"facebook", "vote_location"=>"0.000000,0.000000", "vote_type"=>"unknown_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'facebook' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "facebook"], ["company_id", 3], ["created_at", Wed, 30 Apr 2014 01:12:11 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:11 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "unknown_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:11 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"box", "vote_location"=>"0.000000,0.000000", "vote_type"=>"unknown_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'box' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "box"], ["company_id", 6], ["created_at", Wed, 30 Apr 2014 01:12:11 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:11 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "unknown_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:11 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"apple", "vote_location"=>"0.000000,0.000000", "vote_type"=>"unknown_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'apple' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "apple"], ["company_id", 5], ["created_at", Wed, 30 Apr 2014 01:12:11 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:11 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "unknown_vote"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 18:12:12 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 11]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 12]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 13]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 14]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:12 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"airbnb", "vote_location"=>"0.000000,0.000000", "vote_type"=>"unknown_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'airbnb' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "airbnb"], ["company_id", 4], ["created_at", Wed, 30 Apr 2014 01:12:12 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:12 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "unknown_vote"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:18 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"wealthfront", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'wealthfront' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "wealthfront"], ["company_id", 14], ["created_at", Wed, 30 Apr 2014 01:12:18 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:18 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:19 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"uber", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'uber' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "uber"], ["company_id", 13], ["created_at", Wed, 30 Apr 2014 01:12:19 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:19 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:19 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"twitter", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'twitter' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "twitter"], ["company_id", 12], ["created_at", Wed, 30 Apr 2014 01:12:19 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:19 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:12:20 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"square", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'square' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "square"], ["company_id", 11], ["created_at", Wed, 30 Apr 2014 01:12:20 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:12:20 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/companies.json/?page=3" for 127.0.0.1 at 2014-04-29 18:12:20 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"3"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 20[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 18:12:20 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.3ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 63ms (Views: 55.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-29 18:12:29 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-30 01:12:29.862452')  [["company_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-30 01:12:29.863587')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-29 01:12:29.864309')  [["company_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-29 01:12:29.865024')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-28 01:12:29.865774')  [["company_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-28 01:12:29.866505')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-27 01:12:29.867216')  [["company_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-27 01:12:29.867933')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-26 01:12:29.868643')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-26 01:12:29.869268')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-25 01:12:29.869788')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-25 01:12:29.870278')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-24 01:12:29.870913')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-24 01:12:29.871606')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-23 01:12:29.872285')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-23 01:12:29.872883')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-22 01:12:29.873438')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-22 01:12:29.873990')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-21 01:12:29.874946')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-21 01:12:29.875546')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'unknown_vote'  [["company_id", 2]]
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/vote/count.json/?name=airbnb" for 127.0.0.1 at 2014-04-29 18:12:34 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"airbnb"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'airbnb' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-30 01:12:34.038397')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-30 01:12:34.039549')[0m  [["company_id", 4]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-29 01:12:34.040405')  [["company_id", 4]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-29 01:12:34.059352')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-28 01:12:34.060139')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-28 01:12:34.060655')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-27 01:12:34.061157')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-27 01:12:34.061681')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-26 01:12:34.062237')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-26 01:12:34.062724')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-25 01:12:34.063194')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-25 01:12:34.063682')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-24 01:12:34.064166')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-24 01:12:34.064644')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-23 01:12:34.065126')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-23 01:12:34.065602')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-22 01:12:34.066094')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-22 01:12:34.066586')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-21 01:12:34.067086')  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-21 01:12:34.067606')[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'unknown_vote'  [["company_id", 4]]
+Completed 200 OK in 34ms (Views: 0.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 18:17:35 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 57ms (Views: 52.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 18:17:35 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 14]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 11]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 12]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
+Completed 200 OK in 66ms (Views: 48.4ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:17:49 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 01:17:49 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:17:49 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 18:17:50 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 01:17:50 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 01:17:50 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 18:17:54 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 14]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 14]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 4]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 5]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 6]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 11]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 12]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 13]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 14]]
+Completed 200 OK in 72ms (Views: 53.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 18:24:07 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 57ms (Views: 52.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 18:24:07 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 14]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 11]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 12]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
+Completed 200 OK in 86ms (Views: 52.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:29:02 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 4]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 5]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 6]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 57ms (Views: 52.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:29:02 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 14]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 14]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 4]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 5]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 6]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 11]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 12]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 13]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 14]]
+Completed 200 OK in 88ms (Views: 54.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:29:24 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 67ms (Views: 61.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:29:24 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 14]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 11]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 12]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
+Completed 200 OK in 83ms (Views: 49.6ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:29:34 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:29:34 UTC +00:00], ["updated_at", Wed, 30 Apr 2014 04:29:34 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDeviceIdToVotes (20140430043626)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "votes" ADD "device_id" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140430043626"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:37:35 -0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 85ms (Views: 73.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:37:35 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 14]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 11]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 12]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
+Completed 200 OK in 73ms (Views: 54.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:37:53 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 14]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 14]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.5ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 3]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 4]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 5]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 6]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 11]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 12]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 13]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 14]]
+Completed 200 OK in 80ms (Views: 61.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:37:53 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 53ms (Views: 48.1ms | ActiveRecord: 1.6ms)
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company" varchar(255), "vote_type" varchar(255), "vote_location" varchar(255), "company_id" integer, "created_at" datetime, "updated_at" datetime, "device_id" varchar(255)) 
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140430043626')
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140414231146')[0m
+  [1m[35m (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140415043233')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140415051313')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140416004619')
+  [1m[36m (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140417222235')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140417222248')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140417222317')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140429002726')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-29 21:39:20 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/railties-4.0.4/lib/rails/templates/rails/welcome/index.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.9ms)
+  Rendered companies/new.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 23ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:24 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o2Ww0AyfWfG2DvlegitCN9FkQnnnJG1gs1Be3f6qyAc=", "company"=>{"name"=>"snapchat"}, "commit"=>"Create Company"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 30 Apr 2014 04:39:27 UTC +00:00], ["name", "snapchat"], ["updated_at", Wed, 30 Apr 2014 04:39:27 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/15
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/companies/15" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "15"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:27 -0700
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.5ms)
+  Rendered companies/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:30 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o2Ww0AyfWfG2DvlegitCN9FkQnnnJG1gs1Be3f6qyAc=", "company"=>{"name"=>"soundcloud"}, "commit"=>"Create Company"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 30 Apr 2014 04:39:33 UTC +00:00], ["name", "soundcloud"], ["updated_at", Wed, 30 Apr 2014 04:39:33 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/companies/16
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/companies/16" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "16"]]
+  Rendered companies/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:39:33 -0700
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:39:42 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 7]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 8]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 9]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 10]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 15]]
+Completed 200 OK in 48ms (Views: 43.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:39:42 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 8]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 8]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 11]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 12]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 13]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 13]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 14]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 14]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 15]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 15]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 16]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 16]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 3]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 4]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 5]]
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 6]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 7]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 8]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 10]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 11]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 12]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 13]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 14]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 15]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 16]]
+Completed 200 OK in 84ms (Views: 60.1ms | ActiveRecord: 5.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:40:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:40:50 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+
+
+Started GET "/companies" for 127.0.0.1 at 2014-04-29 21:41:10 -0700
+Processing by CompaniesController#index as HTML
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies" for 127.0.0.1 at 2014-04-29 21:41:10 -0700
+Processing by CompaniesController#index as HTML
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (11.8ms)
+  Rendered companies/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 81ms (Views: 80.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies/new" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+Processing by CompaniesController#new as HTML
+  Rendered companies/_form.html.erb (1.2ms)
+  Rendered companies/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:13 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o2Ww0AyfWfG2DvlegitCN9FkQnnnJG1gs1Be3f6qyAc=", "company"=>{"name"=>"snapchat"}, "commit"=>"Create Company"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 30 Apr 2014 04:41:17 UTC +00:00], ["name", "snapchat"], ["updated_at", Wed, 30 Apr 2014 04:41:17 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/companies/1
+Completed 302 Found in 23ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/companies/1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered companies/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:17 -0700
+
+
+Started POST "/companies" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+Processing by CompaniesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o2Ww0AyfWfG2DvlegitCN9FkQnnnJG1gs1Be3f6qyAc=", "company"=>{"name"=>"soundcloud"}, "commit"=>"Create Company"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "companies" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 30 Apr 2014 04:41:24 UTC +00:00], ["name", "soundcloud"], ["updated_at", Wed, 30 Apr 2014 04:41:24 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/companies/2
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/companies/2" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered companies/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/companies.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/test.css?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/companies.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-29 21:41:24 -0700
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "companies"
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:41:32 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.0ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 34ms (Views: 0.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:41:32 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:41:40 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"BDD5E767-CB7C-43F6-8334-FDC8518C9AD0", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+Completed 500 Internal Server Error in 9ms
+
+NameError (undefined local variable or method `parms' for #<CompaniesController:0x00000101cb38b8>):
+  app/controllers/companies_controller.rb:106:in `vote'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.2ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:41:58 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"43B1C954-2510-4507-A4D7-5103E97DDEEA", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:41:58 UTC +00:00], ["device_id", "43B1C954-2510-4507-A4D7-5103E97DDEEA"], ["updated_at", Wed, 30 Apr 2014 04:41:58 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 37ms (Views: 0.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:41:58 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:41:58 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:42:06 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.0ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:43:20 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 15ms (Views: 5.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:43:20 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.0ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:24 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"02E20E55-957C-4547-A4CC-4573FEF2E742", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:43:24 UTC +00:00], ["device_id", "02E20E55-957C-4547-A4CC-4573FEF2E742"], ["updated_at", Wed, 30 Apr 2014 04:43:24 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:25 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"637B2848-5E79-4D02-8C20-0FD19E7ACB96", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:43:25 UTC +00:00], ["device_id", "637B2848-5E79-4D02-8C20-0FD19E7ACB96"], ["updated_at", Wed, 30 Apr 2014 04:43:25 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:43:25 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:43:25 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:43:28 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:33 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"8E942C76-B752-4ED6-BFC2-F187CEC6527F", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:43:33 UTC +00:00], ["device_id", "8E942C76-B752-4ED6-BFC2-F187CEC6527F"], ["updated_at", Wed, 30 Apr 2014 04:43:33 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:43:36 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:43:42 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:42 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"3F0B9E51-DA5B-43EB-B1A1-7042C26CA30C", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:43:42 UTC +00:00], ["device_id", "3F0B9E51-DA5B-43EB-B1A1-7042C26CA30C"], ["updated_at", Wed, 30 Apr 2014 04:43:42 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:43:42 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:45 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"574F2408-A28F-4960-9C47-388F4E12721E", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:43:45 UTC +00:00], ["device_id", "574F2408-A28F-4960-9C47-388F4E12721E"], ["updated_at", Wed, 30 Apr 2014 04:43:45 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:46 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"4BB19EE5-781F-41FD-8443-E184DBEB960B", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:43:46 UTC +00:00], ["device_id", "4BB19EE5-781F-41FD-8443-E184DBEB960B"], ["updated_at", Wed, 30 Apr 2014 04:43:46 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:43:46 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:43:46 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:49 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"E7247EE9-E7F2-405E-95DF-9428EE3C0BDA", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:43:49 UTC +00:00], ["device_id", "E7247EE9-E7F2-405E-95DF-9428EE3C0BDA"], ["updated_at", Wed, 30 Apr 2014 04:43:49 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:43:49 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"9AA0C79B-59BF-4C94-9F35-5D07C04574A7", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:43:49 UTC +00:00], ["device_id", "9AA0C79B-59BF-4C94-9F35-5D07C04574A7"], ["updated_at", Wed, 30 Apr 2014 04:43:49 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:43:49 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:43:49 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:43:53 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:44:28 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 37ms (Views: 26.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:44:28 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:44:36 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"05CD9488-5570-4BC5-95F8-E2D53ECE1106", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:44:36 UTC +00:00], ["device_id", "05CD9488-5570-4BC5-95F8-E2D53ECE1106"], ["updated_at", Wed, 30 Apr 2014 04:44:36 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:44:36 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"E5F115C1-612D-4F91-A5F5-A81473244E40", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:44:36 UTC +00:00], ["device_id", "E5F115C1-612D-4F91-A5F5-A81473244E40"], ["updated_at", Wed, 30 Apr 2014 04:44:36 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:44:36 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:44:36 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:44:41 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"C478F800-6951-4192-8C3A-ACCCF761559D", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:44:41 UTC +00:00], ["device_id", "C478F800-6951-4192-8C3A-ACCCF761559D"], ["updated_at", Wed, 30 Apr 2014 04:44:41 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:44:41 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"1F348C3D-2430-4435-AA6F-AA16A2D407BA", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:44:41 UTC +00:00], ["device_id", "1F348C3D-2430-4435-AA6F-AA16A2D407BA"], ["updated_at", Wed, 30 Apr 2014 04:44:41 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:44:41 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:44:41 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:44:45 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"3C728501-CA28-4153-8779-884B7EE1037E", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"up_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:44:45 UTC +00:00], ["device_id", "3C728501-CA28-4153-8779-884B7EE1037E"], ["updated_at", Wed, 30 Apr 2014 04:44:45 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "up_vote"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:44:45 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"26D9D6C8-692B-4798-9090-148A5B80FF46", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:44:45 UTC +00:00], ["device_id", "26D9D6C8-692B-4798-9090-148A5B80FF46"], ["updated_at", Wed, 30 Apr 2014 04:44:45 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "down_vote"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:44:45 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "companies"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:44:45 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/vote/count.json/?name=soundcloud" for 127.0.0.1 at 2014-04-29 21:44:48 -0700
+Processing by CompaniesController#voteCount as JSON
+  Parameters: {"name"=>"soundcloud"}
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-30 04:44:48.951095')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-30 04:44:48.952035')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-29 04:44:48.952622')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-29 04:44:48.953287')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-28 04:44:48.954214')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-28 04:44:48.954710')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-27 04:44:48.955400')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-27 04:44:48.956005')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-26 04:44:48.956487')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-26 04:44:48.957040')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-25 04:44:48.957657')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-25 04:44:48.958387')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-24 04:44:48.959154')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-24 04:44:48.960468')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-23 04:44:48.960996')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-23 04:44:48.961570')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-22 04:44:48.962325')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-22 04:44:48.962830')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-04-21 04:44:48.963363')  [["company_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-04-21 04:44:48.964406')[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'unknown_vote'  [["company_id", 2]]
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:44:50 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/companies/getall" for 127.0.0.1 at 2014-04-29 21:45:23 -0700
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"getall"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", "getall"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Company with id=getall):
+  app/controllers/companies_controller.rb:172:in `set_company'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.5ms)
+
+
+Started GET "/company/getall/" for 127.0.0.1 at 2014-04-29 21:45:36 -0700
+Processing by CompaniesController#getall as HTML
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/company/getall/.json" for 127.0.0.1 at 2014-04-29 21:45:43 -0700
+
+ActionController::RoutingError (No route matches [GET] "/company/getall/.json"):
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  thin (1.6.2) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.2) lib/thin/connection.rb:84:in `catch'
+  thin (1.6.2) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.2) lib/thin/connection.rb:53:in `process'
+  thin (1.6.2) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.6.2) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.2) lib/thin/server.rb:162:in `start'
+  rack (1.5.2) lib/rack/handler/thin.rb:16:in `run'
+  rack (1.5.2) lib/rack/server.rb:264:in `start'
+  railties (4.0.4) lib/rails/commands/server.rb:84:in `start'
+  railties (4.0.4) lib/rails/commands.rb:76:in `block in <top (required)>'
+  railties (4.0.4) lib/rails/commands.rb:71:in `tap'
+  railties (4.0.4) lib/rails/commands.rb:71:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (23.4ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:45:48 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:46:19 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 18ms (Views: 7.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:47:24 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 50ms (Views: 7.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:49:01 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:49:11 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:49:20 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:49:20 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:49:29 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 20ms (Views: 3.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-04-29 21:49:29 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 2]]
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:49:34 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"61A3345F-60B8-4A45-940A-E20174B725AE", "name"=>"soundcloud", "vote_location"=>"0.000000,0.000000", "vote_type"=>"unknown_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'soundcloud' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "soundcloud"], ["company_id", 2], ["created_at", Wed, 30 Apr 2014 04:49:34 UTC +00:00], ["device_id", "61A3345F-60B8-4A45-940A-E20174B725AE"], ["updated_at", Wed, 30 Apr 2014 04:49:34 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "unknown_vote"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/companies.json/?page=2" for 127.0.0.1 at 2014-04-29 21:49:34 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"2"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.3ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 10[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "companies"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-04-29 21:49:34 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"5898D2B9-9DDD-44D2-9BE5-429877097E89", "name"=>"snapchat", "vote_location"=>"0.000000,0.000000", "vote_type"=>"unknown_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'snapchat' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "snapchat"], ["company_id", 1], ["created_at", Wed, 30 Apr 2014 04:49:34 UTC +00:00], ["device_id", "5898D2B9-9DDD-44D2-9BE5-429877097E89"], ["updated_at", Wed, 30 Apr 2014 04:49:34 UTC +00:00], ["vote_location", "0.000000,0.000000"], ["vote_type", "unknown_vote"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-04-29 21:49:34 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate at /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@railstutorial_rails_4_0/gems/will_paginate-3.0.4/lib/will_paginate/active_record.rb:154)
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.3ms)

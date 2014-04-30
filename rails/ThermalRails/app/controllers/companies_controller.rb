@@ -30,6 +30,9 @@ class CompaniesController < ApplicationController
       arr.push({name: company.name,  netTotal: net, votes: company.votes})
     }
       
+    arr.sort_by {|elem| -elem[:netTotal] }
+    puts "sorting the array"
+
     respond_to do |format|
       format.html {render json: @companies }#temporary
       format.json { render json: arr }
@@ -103,6 +106,7 @@ class CompaniesController < ApplicationController
     vote.company = params[:name]
     vote.vote_type = params[:vote_type] 
     vote.vote_location = params[:vote_location]
+    vote.device_id = params[:device_id]
 
     if !@company.nil?
       @company.votes << vote
@@ -185,6 +189,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :vote_type, :vote_location, :page)
+      params.require(:company).permit(:name, :vote_type, :vote_location, :page, :device_id)
     end
 end
