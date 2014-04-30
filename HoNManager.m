@@ -157,15 +157,11 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
-    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-    NSString *uuidString = (NSString *)CFBridgingRelease(CFUUIDCreateString(NULL,uuidRef));
-    
-    CFRelease(uuidRef);
-    
+    NSUUID *deviceId = [[UIDevice currentDevice] identifierForVendor];
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     
     
-    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude], @"device_id" : uuidString};
+    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude], @"device_id" : [deviceId UUIDString]};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
