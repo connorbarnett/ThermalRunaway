@@ -81,7 +81,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
         case UIGestureRecognizerStateEnded: {
             if (fabs(xDistance) > 100) {//case where vote has been issued
                 NSString *voteType;
-                NSLog(@"adding a vote");
                 if(xDistance > 0) {
                     voteType = @"up_vote";
                 } else {

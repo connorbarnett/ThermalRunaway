@@ -74,8 +74,10 @@
     }
     else{
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",netTotal];
-        UIColor *color = [UIColor redColor];
-        [cell.detailTextLabel setTextColor:color];
+        if(netTotal < 0){
+            UIColor *color = [UIColor redColor];
+            [cell.detailTextLabel setTextColor:color];
+        }
     }
     return cell;
 }

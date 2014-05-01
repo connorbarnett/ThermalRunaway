@@ -23,8 +23,8 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-static NSString * const BaseURLString = @"http://localhost:3000/";
+static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+//static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -63,7 +63,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 -(NSString *)deviceId
 {
-    NSLog(@"setting the deviceid");
     if(!_deviceId) {
         NSUUID *deviceId = [[UIDevice currentDevice] identifierForVendor];
         _deviceId = [deviceId UUIDString];
