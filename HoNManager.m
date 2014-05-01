@@ -80,13 +80,26 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 - (void)loadAllCompanyCards{
     NSLog(@"loading all company cards");
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"allCompanyInfo"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"allCompanyDataLoaded" object:nil];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *companyCards = (NSDictionary *)responseObject;
+        [[NSUserDefaults standardUserDefaults] setObject:companyCards forKey:@"allCompanyInfo"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"allCompanyDataLoaded" object:nil];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Company Cards"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
     }];
-    [dataTask resume];
+    
+    [operation start];
 }
 
 - (void)loadDeck {
@@ -97,7 +110,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//            NSLog(responseObject);
             NSDictionary *curDeck = (NSDictionary *)responseObject;
             if([curDeck count] > 0){
                 [[NSUserDefaults standardUserDefaults] setObject:curDeck forKey:@"curCompanyDeck"];
@@ -130,18 +142,27 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 - (void)loadVoteTypesForCompany:(NSString *) company {
     NSString *defaultsKey = [NSString stringWithFormat:@"voteInfoFor%@",company];
-//    if(![[NSUserDefaults standardUserDefaults] valueForKey:defaultsKey]){
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSString *urlString = [NSString stringWithFormat:@"%@vote/count.json/?name=%@",BaseURLString, company];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:defaultsKey];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
-        }];
-        [dataTask resume];
-//    }
-//    else
-//        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@vote/count.json/?name=%@",BaseURLString, company]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *companyVoteInfo = (NSDictionary *)responseObject;
+        [[NSUserDefaults standardUserDefaults] setObject:companyVoteInfo forKey:defaultsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Company Information"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    [operation start];
 }
 
 -(void)addCompanyToDeck:(NSString *)companyName{
