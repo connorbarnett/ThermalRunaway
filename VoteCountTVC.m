@@ -29,6 +29,13 @@
                                                   }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    HoNManager *myHonManager = [HoNManager sharedHoNManager];
+    [myHonManager loadAllCompanyCards];
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
