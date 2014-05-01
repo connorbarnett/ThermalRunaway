@@ -16,14 +16,15 @@
 @property(strong, nonatomic) CLPlacemark *placemark;
 @property(strong, nonatomic) NSMutableArray *currentDeck;
 @property(strong, atomic)CLLocation *lastLocation;
+@property(strong, nonatomic)NSString *deviceId;
 @property BOOL hasUpatedDeck;
 @end
 
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-//static NSString * const BaseURLString = @"http://localhost:3000/";
+//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -58,6 +59,16 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 {
     if(!_currentDeck) _currentDeck = [[NSMutableArray alloc] init];
     return _currentDeck;
+}
+
+-(NSString *)deviceId
+{
+    NSLog(@"setting the deviceid");
+    if(!_deviceId) {
+        NSUUID *deviceId = [[UIDevice currentDevice] identifierForVendor];
+        _deviceId = [deviceId UUIDString];
+    }
+    return _deviceId;
 }
 
 - (void)startLocationServices{
@@ -157,11 +168,10 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
-    NSUUID *deviceId = [[UIDevice currentDevice] identifierForVendor];
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     
     
-    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude], @"device_id" : [deviceId UUIDString]};
+    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude], @"device_id" : self.deviceId};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

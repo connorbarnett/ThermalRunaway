@@ -29,9 +29,9 @@ class CompaniesController < ApplicationController
 
       arr.push({name: company.name,  netTotal: net, votes: company.votes})
     }
-      
+    puts arr
     arr.sort_by {|elem| -elem[:netTotal] }
-    puts "sorting the array"
+    puts arr
 
     respond_to do |format|
       format.html {render json: @companies }#temporary
