@@ -15,12 +15,22 @@
 @property (strong, nonatomic) IBOutlet UITableView *reloadWheel;
 @property(strong, nonatomic) NSArray *companiesFromServer;
 @property(strong, nonatomic) NSMutableArray *companyVotesFromServer;
+@property(strong, nonatomic) HoNManager *myHonManager;
+@property BOOL pageHasAppeared;
 @end
 
 @implementation VoteCountTVC
 
+-(HoNManager *)myHonManager
+{
+    if(!_myHonManager) _myHonManager = [HoNManager sharedHoNManager];
+    return _myHonManager;
+}
+
 -(void)awakeFromNib
 {
+    self.pageHasAppeared = false;
+    NSLog(@"setting notification");
     [[NSNotificationCenter defaultCenter] addObserverForName:@"allCompanyDataLoaded"
                                                       object:nil
                                                        queue:nil
@@ -32,10 +42,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    [myHonManager loadAllCompanyCards];
-    [self.tableView reloadData];
+    [self.myHonManager loadAllCompanyCards];
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,8 +52,9 @@
 
 -(void) setTableDeck {
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"allCompanyInfo"];
-//    NSLog(@"reloading");
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 - (IBAction)refresh:(id)sender {
@@ -72,6 +82,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
+    NSLog(@"updating for %@", company);
     int netTotal = [[companyInformation objectForKey:@"netTotal"] intValue];
     cell.textLabel.text = company;
     if(netTotal > 0){

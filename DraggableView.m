@@ -13,11 +13,18 @@
 @property(strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property(nonatomic) CGPoint originalPoint;
 @property(strong, nonatomic) OverlayView *overlayView;
+@property(strong, nonatomic) HoNManager *myHonManager;
 
 @end
 
 @implementation DraggableView
 static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
+
+-(HoNManager *)myHonManager
+{
+    if(!_myHonManager) _myHonManager = [HoNManager sharedHoNManager];
+    return _myHonManager;
+}
 
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company
 {
@@ -86,12 +93,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 } else {
                     voteType = @"down_vote";
                 }
-                HoNManager *myManager = [HoNManager sharedHoNManager];
-                [myManager castVote:voteType forCompany:self.company];
-                [myManager removeTopCompanyFromDeck];
+                [self.myHonManager castVote:voteType forCompany:self.company];
+                [self.myHonManager removeTopCompanyFromDeck];
                 [self removeFromSuperview];
-                if([myManager deckEmpty])
-                    [myManager loadNextDeck];
+                if([self.myHonManager deckEmpty])
+                    [self.myHonManager loadNextDeck];
                 
             }
             else {

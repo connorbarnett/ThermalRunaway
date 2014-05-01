@@ -23,8 +23,8 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-//static NSString * const BaseURLString = @"http://localhost:3000/";
+//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -79,6 +79,8 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)loadAllCompanyCards{
+    NSLog(@"loading all company cards");
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"allCompanyInfo"];

@@ -26,10 +26,15 @@ static
 @implementation CompanyProfileVC
 static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
 
+-(HoNManager *)myHonManager
+{
+    if(!_myHonManager) _myHonManager = [HoNManager sharedHoNManager];
+    return _myHonManager;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.myHonManager = [HoNManager sharedHoNManager];
     [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVotesFor%@",self.company]
                                                       object:nil
                                                        queue:nil

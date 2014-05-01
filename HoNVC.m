@@ -24,9 +24,14 @@
 
 }
 
+-(HoNManager *)myHonManager
+{
+    if(!_myHonManager) _myHonManager = [HoNManager sharedHoNManager];
+    return _myHonManager;
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    _myHonManager = [HoNManager sharedHoNManager];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCurDeckInfo"
                                                       object:nil
                                                        queue:nil
@@ -68,8 +73,8 @@
         NSString *companyName = [companyCard objectForKey:@"name"];
         [self.myHonManager addCompanyToDeck:companyName];
         dispatch_async(dispatch_get_main_queue(), ^{
-        [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName]];
-        [self.view setNeedsDisplay];
+            [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName]];
+            [self.view setNeedsDisplay];
         });
     }
 }
