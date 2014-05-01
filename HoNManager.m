@@ -17,7 +17,6 @@
 @property(strong, nonatomic) NSMutableArray *currentDeck;
 @property(strong, atomic)CLLocation *lastLocation;
 @property(strong, nonatomic)NSString *deviceId;
-@property BOOL hasUpatedDeck;
 @end
 
 @implementation HoNManager 
@@ -92,43 +91,41 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 
 - (void)loadDeck {
 //    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0 && self.hasUpatedDeck){//no cards loaded so we start over, for now
-                dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
-                                                                    message:@"Sorry, you've already voted on all companies.  Vote again on your previous companies!"
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"Ok"
-                                                          otherButtonTitles:nil];
-                [alertView show];
-                });
-                self.hasUpatedDeck = false;
-                [self resetPageCount];
-                [self loadDeck];
-            }
-            else if([[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] count] == 0){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Companies"
-                                                                        message:[error localizedDescription]
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"Ok"
-                                                              otherButtonTitles:nil];
-                    [alertView show];
-                });
-            }
-            else{
-                self.hasUpatedDeck = true;
-                [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil] forKey:@"curCompanyDeck"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            NSLog(responseObject);
+            NSDictionary *curDeck = (NSDictionary *)responseObject;
+            if([curDeck count] > 0){
+                [[NSUserDefaults standardUserDefaults] setObject:curDeck forKey:@"curCompanyDeck"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCurDeckInfo" object:nil];
             }
-        }];
-    [dataTask resume];
-//    }
-//    else{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCompanyInfo" object:nil];
-//    }
+            else{
+               dispatch_async(dispatch_get_main_queue(), ^{
+                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
+                                                                             message:@"Sorry, you've already voted on all companies.  Vote again on your previous companies!"
+                                                                             delegate:nil
+                                                                             cancelButtonTitle:@"Ok"
+                                                                             otherButtonTitles:nil];
+                   [alertView show];
+                    });
+                    [self resetPageCount];
+                    [self loadDeck];
+            }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Company Deck"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+                  
+    [operation start];
 }
 
 - (void)loadVoteTypesForCompany:(NSString *) company {
