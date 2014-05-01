@@ -31315,6 +31315,7 @@ DEPRECATION WARNING: #apply_finder_options is deprecated. (called from paginate 
   [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC LIMIT 10 OFFSET 0[0m
   [1m[35mVote Load (0.1ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
   [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 2]]
+<<<<<<< HEAD
 Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms)
 
 
@@ -31353,3 +31354,6 @@ Started GET "/assets/test.js?body=1" for 127.0.0.1 at 2014-04-30 20:28:53 -0700
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-30 20:28:53 -0700
+=======
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+>>>>>>> 658ab98e5cd61e36393239af0f6c442b8cfb7682
