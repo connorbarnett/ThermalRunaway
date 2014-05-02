@@ -60,18 +60,38 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
     [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
     
-    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
+
+        NSLog(@"networking");
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imageData];
+
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                self.blurredCompanyImage.image = [imageView image];
+                
+            });
+            [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@blur",self.company]];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        });
+    }
+    else{
+        NSLog(@"not networking");
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]];
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:imageData];
+            
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             self.blurredCompanyImage.image = [imageView image];
+            
         });
-    });
+    }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-
 }
 
 /*
