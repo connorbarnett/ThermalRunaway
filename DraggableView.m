@@ -96,9 +96,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             CGAffineTransform scaleTransform = CGAffineTransformScale(transform, scale, scale);
             self.transform = scaleTransform;
             self.center = CGPointMake(self.originalPoint.x + xDistance, self.originalPoint.y + yDistance);
-            
             [self updateOverlay:xDistance];
-            
             break;
         };
         case UIGestureRecognizerStateEnded: {
@@ -109,6 +107,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 } else {
                     voteType = @"down_vote";
                 }
+                NSDictionary *voteDetails = @{@"company": self.company, @"voteType":voteType};
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"votedOnCompany" object:voteDetails];
                 [self.myHonManager castVote:voteType forCompany:self.company];
                 [self.myHonManager removeTopCompanyFromDeck];
                 if([self.myHonManager deckEmpty])

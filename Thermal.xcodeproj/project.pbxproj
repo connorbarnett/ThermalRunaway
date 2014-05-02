@@ -28,7 +28,6 @@
 		EB6D9C8D19047E8B003AD400 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */; };
 		EBA1B723190DA780008B36ED /* CompanyGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA1B722190DA780008B36ED /* CompanyGraph.m */; };
 		EBB2D38818EE4985003021BF /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38718EE4985003021BF /* OverlayView.m */; };
-		EBB2D38B18EE4DBF003021BF /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38A18EE4DBF003021BF /* HomeVC.m */; };
 		FF283654190788FB00B683A1 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283630190788FB00B683A1 /* AFHTTPRequestOperation.m */; };
 		FF283655190788FB00B683A1 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283632190788FB00B683A1 /* AFHTTPRequestOperationManager.m */; };
 		FF283656190788FB00B683A1 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283634190788FB00B683A1 /* AFHTTPSessionManager.m */; };
@@ -93,8 +92,6 @@
 		EBA1B722190DA780008B36ED /* CompanyGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraph.m; sourceTree = "<group>"; };
 		EBB2D38618EE4985003021BF /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		EBB2D38718EE4985003021BF /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
-		EBB2D38918EE4DBF003021BF /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
-		EBB2D38A18EE4DBF003021BF /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 		FF28362F190788FB00B683A1 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FF283630190788FB00B683A1 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FF283631190788FB00B683A1 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -183,8 +180,6 @@
 				FFF1C342190767BD00A24A99 /* HoNManager.m */,
 				EB1D63A518F20B48009A78B9 /* CompanyProfileVC.h */,
 				EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */,
-				EBB2D38918EE4DBF003021BF /* HomeVC.h */,
-				EBB2D38A18EE4DBF003021BF /* HomeVC.m */,
 				FFC130B919133B9F00A99035 /* MBProgressHUD.h */,
 				FFC130BA19133B9F00A99035 /* MBProgressHUD.m */,
 				EB3F102118EE35FE0078FD8E /* HotOrNot */,
@@ -426,7 +421,6 @@
 				FF283656190788FB00B683A1 /* AFHTTPSessionManager.m in Sources */,
 				EB1D63A418F20506009A78B9 /* VoteCountTVC.m in Sources */,
 				FF283657190788FB00B683A1 /* AFNetworkReachabilityManager.m in Sources */,
-				EBB2D38B18EE4DBF003021BF /* HomeVC.m in Sources */,
 				FF283661190788FB00B683A1 /* UIImageView+AFNetworking.m in Sources */,
 				FF283662190788FB00B683A1 /* UIProgressView+AFNetworking.m in Sources */,
 				FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */,
