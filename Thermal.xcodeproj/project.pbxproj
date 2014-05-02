@@ -363,7 +363,7 @@
 				ORGANIZATIONNAME = "Cbo Games";
 				TargetAttributes = {
 					EB3F101718EE35FE0078FD8E = {
-						DevelopmentTeam = WNQJCMA3E9;
+						DevelopmentTeam = 8B3LJPM6FF;
 					};
 					EB3F103B18EE35FF0078FD8E = {
 						TestTargetID = EB3F101718EE35FE0078FD8E;

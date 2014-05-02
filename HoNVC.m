@@ -71,7 +71,7 @@
     for (NSDictionary *companyCard in _companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         [self.myHonManager addCompanyToDeck:companyName];
-        [curDeck addObject:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName]];
+        [curDeck addObject:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 300, 300) company:companyName]];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         for(UIView *view in curDeck){
