@@ -25,13 +25,11 @@ class CompaniesController < ApplicationController
     companies = Company.all;
     arr = Array.new
     companies.each{ |company|
-      net = company.votes.where(vote_type: "up_vote").count - company.votes.where(vote_type: "down_vote").count
+      netTotal = company.votes.where(vote_type: "up_vote").count - company.votes.where(vote_type: "down_vote").count
 
-      arr.push({name: company.name,  netTotal: net, votes: company.votes})
+      arr.push({name: company.name,  netTotal: netTotal, votes: company.votes})
     }
-    puts arr
     arr.sort_by {|elem| -elem[:netTotal] }
-    puts arr
 
     respond_to do |format|
       format.html {render json: @companies }#temporary

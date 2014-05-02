@@ -70,16 +70,14 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)startLocationServices{
-//    self.manager.delegate = self;
-//    [self.manager setDelegate:self];
+    self.manager.delegate = self;
+    [self.manager setDelegate:self];
     self.manager.distanceFilter = kCLDistanceFilterNone;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.manager startUpdatingLocation];
 }
 
 - (void)loadAllCompanyCards{
-    NSLog(@"loading all company cards");
-    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -189,7 +187,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     
     
-    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.longitude,self.lastLocation.coordinate.latitude], @"device_id" : self.deviceId};
+    NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

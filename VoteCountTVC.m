@@ -31,7 +31,6 @@
 -(void)awakeFromNib
 {
     self.pageHasAppeared = false;
-    NSLog(@"setting notification");
     [[NSNotificationCenter defaultCenter] addObserverForName:@"allCompanyDataLoaded"
                                                       object:nil
                                                        queue:nil
@@ -84,7 +83,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
-    NSLog(@"updating for %@", company);
     int netTotal = [[companyInformation objectForKey:@"netTotal"] intValue];
     cell.textLabel.text = company;
     if(netTotal > 0){
