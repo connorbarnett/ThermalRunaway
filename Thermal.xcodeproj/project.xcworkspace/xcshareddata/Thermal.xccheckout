@@ -5,46 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2048C698-2C63-4B89-8ED1-CFAC48680141</string>
+	<string>7B83D628-F40E-4FC8-9BEC-9275C1E436E2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Thermal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>32FDEBA3-F285-44D5-9917-759A862A8785</key>
-		<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
-		<key>90EDA3CB-FF8D-40AC-9354-E03EA66395F6</key>
-		<string>https://github.com/jdg/MBProgressHUD.git</string>
+		<key>C5ED046D-86EB-41E4-AA59-90B6E458047E</key>
+		<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0DD4ECA7-582F-4C8E-8A99-6751F60A5F60</key>
+		<key>C5ED046D-86EB-41E4-AA59-90B6E458047E</key>
 		<string>../..</string>
-		<key>90EDA3CB-FF8D-40AC-9354-E03EA66395F6</key>
-		<string>../../MBProgressHUD</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0DD4ECA7-582F-4C8E-8A99-6751F60A5F60</string>
+	<string>C5ED046D-86EB-41E4-AA59-90B6E458047E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>90EDA3CB-FF8D-40AC-9354-E03EA66395F6</string>
-			<key>IDESourceControlWCCName</key>
-			<string>MBProgressHUD</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>32FDEBA3-F285-44D5-9917-759A862A8785</string>
+			<string>C5ED046D-86EB-41E4-AA59-90B6E458047E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Thermal</string>
 		</dict>

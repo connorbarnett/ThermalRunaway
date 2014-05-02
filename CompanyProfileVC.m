@@ -11,6 +11,7 @@
 #import "HoNManager.h"
 #import "CompanyGraph.h"
 #import "MBProgressHUD.h"
+#import "GraphView.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
 static
@@ -31,6 +32,21 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return _myHonManager;
 }
 
+-(void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeGraph:) name:@"graphSwipe" object:nil];
+}
+
+- (void) changeGraph:(NSNotification *)notification{
+    NSNumber *graphType = [notification object];
+    if([graphType integerValue] == 1) {
+        self.view = [[GraphView alloc] initWithGraphType:@"rankings"];
+        
+    } else {
+        self.view = [[GraphView alloc] initWithGraphType:@"votes"];
+        
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -55,7 +71,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
     self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
     self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
-    [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 220, 280, 260) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
+
+    //NOTE FOR BOB- This will become initWithGraphType: andData: once we have
+    //retreived the data array from our server. This version of the initializer
+    //creates a dummy local array
+    [self.view addSubview:[[GraphView alloc] initWithGraphType:@"ranking"]];
     
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
