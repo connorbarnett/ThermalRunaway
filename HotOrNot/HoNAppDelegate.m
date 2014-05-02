@@ -13,8 +13,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-    {
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+//    {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
             [[NSUserDefaults standardUserDefaults] synchronize];
@@ -25,7 +25,7 @@
                                                   otherButtonTitles:nil];
             [alertView show];
             });
-    }
+//    }
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     [myHonManager loadAllCompanyCards];
     [myHonManager startLocationServices];
