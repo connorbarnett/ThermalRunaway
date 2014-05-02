@@ -62,6 +62,7 @@
 {
     UIView *toRemove = [[self.view subviews] lastObject];
     DraggableView *toRemoveTmp = (DraggableView *)toRemove;
+
     if([self.myHonManager deckEmpty]){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
                                                             message:@"Sorry, there are no more companies for you to vote on!"
@@ -73,8 +74,8 @@
     else {
         [self.myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company];
         self.confirmationLabel.text = [NSString stringWithFormat:@"skipped %@", toRemoveTmp.company];
-        [self.myHonManager removeTopCompanyFromDeck];
         [toRemove removeFromSuperview];
+        [self.myHonManager removeTopCompanyFromDeck];
         if([self.myHonManager deckEmpty])
             [self.myHonManager loadNextDeck];
     }
@@ -90,9 +91,8 @@
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         for(UIView *view in curDeck){
-            [self.view insertSubview:view atIndex:1];
+            [self.view addSubview:view];
         }
-        [self.view setNeedsDisplay];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
