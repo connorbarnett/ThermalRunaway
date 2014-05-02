@@ -80,7 +80,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 - (void)dragged:(UIPanGestureRecognizer *)gestureRecognizer
 {
     CGFloat xDistance = [gestureRecognizer translationInView:self].x;
-    CGFloat yDistance = [gestureRecognizer translationInView:self].y;
     
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
@@ -95,7 +94,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             CGAffineTransform transform = CGAffineTransformMakeRotation(rotationAngel);
             CGAffineTransform scaleTransform = CGAffineTransformScale(transform, scale, scale);
             self.transform = scaleTransform;
-            self.center = CGPointMake(self.originalPoint.x + xDistance, self.originalPoint.y + yDistance);
+            self.center = CGPointMake(self.originalPoint.x + xDistance, self.originalPoint.y);
             [self updateOverlay:xDistance];
             break;
         };
