@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
     companies.each{ |company|
       netTotal = company.votes.where(vote_type: "up_vote").count - company.votes.where(vote_type: "down_vote").count
 
-      arr.push({name: company.name,  netTotal: netTotal, votes: company.votes})
+      arr.push({name: company.name,  netTotal: netTotal})
     }
     arr.sort_by {|elem| -elem[:netTotal] }
 
@@ -94,7 +94,7 @@ class CompaniesController < ApplicationController
     end
   end
   
-  # PATCH/PUT /vote
+  # POST /vote
   # Records a single vote for a single company
   # Need to pass in params of name, vote_type and vote_location
   def vote
