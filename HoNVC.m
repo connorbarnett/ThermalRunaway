@@ -73,7 +73,7 @@
         NSString *companyName = [companyCard objectForKey:@"name"];
         [self.myHonManager addCompanyToDeck:companyName];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:companyName]];
+            [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 300, 300) company:companyName]];
             [self.view setNeedsDisplay];
         });
     }
