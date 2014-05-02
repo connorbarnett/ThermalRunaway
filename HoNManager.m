@@ -89,10 +89,10 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"allCompanyDataLoaded" object:nil];
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Company Cards"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company cards"
                                                             message:[error localizedDescription]
                                                            delegate:nil
-                                                  cancelButtonTitle:@"Ok"
+                                                  cancelButtonTitle:@"ok"
                                                   otherButtonTitles:nil];
         [alertView show];
     }];
@@ -115,10 +115,10 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
             }
             else{
                dispatch_async(dispatch_get_main_queue(), ^{
-                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
-                                                                             message:@"Sorry, you've already voted on all companies.  Vote again on your previous companies!"
+                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"company deck empty"
+                                                                             message:@"sorry, you've already voted on all companies.  vote again on your previous companies!"
                                                                              delegate:nil
-                                                                             cancelButtonTitle:@"Ok"
+                                                                             cancelButtonTitle:@"ok"
                                                                              otherButtonTitles:nil];
                    [alertView show];
                     });
