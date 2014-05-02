@@ -16,6 +16,7 @@
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
 @property(strong, nonatomic) NSMutableArray *companiesFromServer;
+@property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
 @property(strong, nonatomic) HoNManager *myHonManager;
 @end
 
@@ -36,7 +37,20 @@
                                                       [self setDeck];
 
                                                   }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(incomingVote:) name:@"votedOnCompany" object:nil];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void) incomingVote:(NSNotification *)notification{
+    NSDictionary *companyInfo = [notification object];
+    NSString *voteType = [companyInfo objectForKey:@"voteType"];
+    NSString *voteTypeForConfirmationLabel;
+    if([voteType isEqualToString:@"up_vote"]) {
+        voteTypeForConfirmationLabel = @"yes";
+    } else {
+        voteTypeForConfirmationLabel = @"no";
+    }
+    self.confirmationLabel.text = [NSString stringWithFormat:@"voted %@ on %@", voteTypeForConfirmationLabel, [companyInfo objectForKey:@"company"]];
 }
 
 -(NSMutableArray *)companiesFromServer {
@@ -59,6 +73,7 @@
     }
     else {
         [self.myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company];
+        self.confirmationLabel.text = [NSString stringWithFormat:@"skipped %@", toRemoveTmp.company];
         [toRemove removeFromSuperview];
         [self.myHonManager removeTopCompanyFromDeck];
         if([self.myHonManager deckEmpty])
