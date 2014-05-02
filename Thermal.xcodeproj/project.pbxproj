@@ -28,8 +28,6 @@
 		EB6D9C8D19047E8B003AD400 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */; };
 		EBA1B723190DA780008B36ED /* CompanyGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA1B722190DA780008B36ED /* CompanyGraph.m */; };
 		EBB2D38818EE4985003021BF /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38718EE4985003021BF /* OverlayView.m */; };
-		EBC064DC19141C940081358F /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC064DA19141C940081358F /* GraphView.m */; };
-		EBC064DF19141C9C0081358F /* DraggableGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC064DD19141C9C0081358F /* DraggableGraphView.m */; };
 		FF283654190788FB00B683A1 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283630190788FB00B683A1 /* AFHTTPRequestOperation.m */; };
 		FF283655190788FB00B683A1 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283632190788FB00B683A1 /* AFHTTPRequestOperationManager.m */; };
 		FF283656190788FB00B683A1 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283634190788FB00B683A1 /* AFHTTPSessionManager.m */; };
@@ -47,6 +45,8 @@
 		FF283662190788FB00B683A1 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28364F190788FB00B683A1 /* UIProgressView+AFNetworking.m */; };
 		FF283663190788FB00B683A1 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */; };
 		FF283664190788FB00B683A1 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */; };
+		FFB2B7F41914541200649C0F /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB2B7F21914541200649C0F /* GraphView.m */; };
+		FFB2B7F71914543D00649C0F /* DraggableGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB2B7F61914543D00649C0F /* DraggableGraphView.m */; };
 		FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC130BA19133B9F00A99035 /* MBProgressHUD.m */; };
 		FFF1C343190767BD00A24A99 /* HoNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C342190767BD00A24A99 /* HoNManager.m */; };
 /* End PBXBuildFile section */
@@ -94,10 +94,6 @@
 		EBA1B722190DA780008B36ED /* CompanyGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraph.m; sourceTree = "<group>"; };
 		EBB2D38618EE4985003021BF /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		EBB2D38718EE4985003021BF /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
-		EBC064DA19141C940081358F /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphView.m; path = "../../Downloads/TinderLikeAnimations-master/TinderLikeAnimations/GraphView.m"; sourceTree = "<group>"; };
-		EBC064DB19141C940081358F /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphView.h; path = "../../Downloads/TinderLikeAnimations-master/TinderLikeAnimations/GraphView.h"; sourceTree = "<group>"; };
-		EBC064DD19141C9C0081358F /* DraggableGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableGraphView.m; path = "../../Downloads/TinderLikeAnimations-master/TinderLikeAnimations/DraggableGraphView.m"; sourceTree = "<group>"; };
-		EBC064DE19141C9C0081358F /* DraggableGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableGraphView.h; path = "../../Downloads/TinderLikeAnimations-master/TinderLikeAnimations/DraggableGraphView.h"; sourceTree = "<group>"; };
 		FF28362F190788FB00B683A1 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FF283630190788FB00B683A1 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FF283631190788FB00B683A1 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -134,6 +130,10 @@
 		FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		FF283652190788FB00B683A1 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		FFB2B7F21914541200649C0F /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		FFB2B7F31914541200649C0F /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		FFB2B7F51914543D00649C0F /* DraggableGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableGraphView.h; sourceTree = "<group>"; };
+		FFB2B7F61914543D00649C0F /* DraggableGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableGraphView.m; sourceTree = "<group>"; };
 		FFC130B919133B9F00A99035 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		FFC130BA19133B9F00A99035 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		FFF1C341190767BD00A24A99 /* HoNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoNManager.h; sourceTree = "<group>"; };
@@ -269,10 +269,10 @@
 		EBC064D919141C7E0081358F /* NewGraphingCode */ = {
 			isa = PBXGroup;
 			children = (
-				EBC064DD19141C9C0081358F /* DraggableGraphView.m */,
-				EBC064DE19141C9C0081358F /* DraggableGraphView.h */,
-				EBC064DA19141C940081358F /* GraphView.m */,
-				EBC064DB19141C940081358F /* GraphView.h */,
+				FFB2B7F51914543D00649C0F /* DraggableGraphView.h */,
+				FFB2B7F61914543D00649C0F /* DraggableGraphView.m */,
+				FFB2B7F31914541200649C0F /* GraphView.h */,
+				FFB2B7F21914541200649C0F /* GraphView.m */,
 			);
 			name = NewGraphingCode;
 			sourceTree = "<group>";
@@ -429,12 +429,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF283654190788FB00B683A1 /* AFHTTPRequestOperation.m in Sources */,
+				FFB2B7F41914541200649C0F /* GraphView.m in Sources */,
 				EB1D63A718F20B48009A78B9 /* CompanyProfileVC.m in Sources */,
 				EB35008C18EE4051009220E4 /* HoNVC.m in Sources */,
 				EBB2D38818EE4985003021BF /* OverlayView.m in Sources */,
 				EB3F102C18EE35FE0078FD8E /* HoNAppDelegate.m in Sources */,
 				FF28365D190788FB00B683A1 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EBA1B723190DA780008B36ED /* CompanyGraph.m in Sources */,
+				FFB2B7F71914543D00649C0F /* DraggableGraphView.m in Sources */,
 				FF28365C190788FB00B683A1 /* AFURLSessionManager.m in Sources */,
 				FF283656190788FB00B683A1 /* AFHTTPSessionManager.m in Sources */,
 				EB1D63A418F20506009A78B9 /* VoteCountTVC.m in Sources */,
@@ -443,12 +445,10 @@
 				FF283662190788FB00B683A1 /* UIProgressView+AFNetworking.m in Sources */,
 				FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */,
 				FF28365B190788FB00B683A1 /* AFURLResponseSerialization.m in Sources */,
-				EBC064DF19141C9C0081358F /* DraggableGraphView.m in Sources */,
 				FF283663190788FB00B683A1 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FF28365A190788FB00B683A1 /* AFURLRequestSerialization.m in Sources */,
 				FF283659190788FB00B683A1 /* AFURLConnectionOperation.m in Sources */,
 				FF283660190788FB00B683A1 /* UIButton+AFNetworking.m in Sources */,
-				EBC064DC19141C940081358F /* GraphView.m in Sources */,
 				FF28365E190788FB00B683A1 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FF283655190788FB00B683A1 /* AFHTTPRequestOperationManager.m in Sources */,
 				EB3F102818EE35FE0078FD8E /* main.m in Sources */,

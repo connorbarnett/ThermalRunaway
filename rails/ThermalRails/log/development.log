@@ -31489,3 +31489,5 @@ Processing by CompaniesController#getall as JSON
 Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mCompany Load (0.8ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies"
