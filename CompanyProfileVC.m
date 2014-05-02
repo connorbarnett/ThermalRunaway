@@ -16,8 +16,6 @@
 static
 @interface CompanyProfileVC ()
 @property (weak, nonatomic) NSDictionary *companyInfo;
-@property (weak, nonatomic) IBOutlet UIImageView *blurredCompanyImage;
-@property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upLabel;
 @property (weak, nonatomic) IBOutlet UILabel *downLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unknownLabel;
@@ -53,12 +51,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     int numUpVotes = [[self.companyInfo objectForKey:@"up_votes"] intValue];
     int numDownVotes = [[self.companyInfo objectForKey:@"down_votes"] intValue];
     int numUnknownVotes = [[self.companyInfo objectForKey:@"unknown_votes"] intValue];
-    self.companyLabel.text = self.company;
     
     self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
     self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
     self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
-    [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
+    [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 220, 280, 260) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
     
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
@@ -70,8 +67,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
                 UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
                 imageView.contentMode = UIViewContentModeScaleAspectFit;
-                self.blurredCompanyImage.image = [imageView image];
-                
             });
             [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@blur",self.company]];
             [[NSUserDefaults standardUserDefaults] synchronize];
@@ -84,7 +79,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
-            self.blurredCompanyImage.image = [imageView image];
         });
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];

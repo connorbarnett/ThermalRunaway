@@ -104,6 +104,7 @@
 
 - (void)prepareCompanyProfileVC:(CompanyProfileVC *)cpvc toDisplayName:(NSString *)companyName {
     cpvc.company = companyName;
+    cpvc.title = companyName;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

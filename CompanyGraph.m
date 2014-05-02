@@ -11,19 +11,20 @@
 @implementation CompanyGraph
 
 #define MAX_RANKING 100
+int max;
+int min;
+int difference;
+
 
 - (id)initWithFrame:(CGRect)frame andVotesArray:(NSArray *)votesArray
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.votes = [[NSArray alloc] initWithArray:votesArray];
-        [self setBackgroundColor:[UIColor grayColor]];
-        // Initialization code
+        [self setBackgroundColor:[UIColor lightGrayColor]];
     }
     return self;
 }
-
-
 
 - (void)drawRect:(CGRect)rect
 {
@@ -34,6 +35,9 @@
 
 - (void)drawScale
 {
+    [self findMin];
+    [self findMax];
+    difference = max - min;
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double heightScaleFactor = height/10;
@@ -49,6 +53,26 @@
 
 }
 
+-(void) findMax
+{
+    NSNumber *tempMax = (NSNumber *)[self.votes firstObject];
+    for (int i = 0; i < self.votes.count; i++) {
+        if((NSNumber *)[self.votes objectAtIndex:i] > tempMax) tempMax = (NSNumber *)[self.votes objectAtIndex:i];
+    }
+    max = [tempMax integerValue];
+    
+}
+
+-(void) findMin
+{
+    NSNumber *tempMin = (NSNumber *)[self.votes firstObject];
+    for (int i = 0; i < self.votes.count; i++) {
+        if((NSNumber *)[self.votes objectAtIndex:i] < tempMin) tempMin = (NSNumber *)[self.votes objectAtIndex:i];
+    }
+    min = [tempMin integerValue];
+}
+
+
 -(void)plotGraph
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -59,7 +83,7 @@
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double widthScaleFactor = width/(self.votes.count-1);
-    double heightScaleFactor = height/MAX_RANKING;
+    double heightScaleFactor = height/difference;
     for(int i = 0; i < self.votes.count-1; i++) {
         NSNumber *rank = [self.votes objectAtIndex:i];
         NSNumber *nextRank = [self.votes objectAtIndex:i+1];
