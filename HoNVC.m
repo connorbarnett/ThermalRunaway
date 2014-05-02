@@ -21,10 +21,6 @@
 
 @implementation HoNVC
 
--(void)awakeFromNib{
-
-}
-
 -(HoNManager *)myHonManager
 {
     if(!_myHonManager) _myHonManager = [HoNManager sharedHoNManager];

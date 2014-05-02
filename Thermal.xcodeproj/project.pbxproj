@@ -19,7 +19,6 @@
 		EB3F102818EE35FE0078FD8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F102718EE35FE0078FD8E /* main.m */; };
 		EB3F102C18EE35FE0078FD8E /* HoNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F102B18EE35FE0078FD8E /* HoNAppDelegate.m */; };
 		EB3F102F18EE35FE0078FD8E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3F102D18EE35FE0078FD8E /* Main_iPhone.storyboard */; };
-		EB3F103218EE35FE0078FD8E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3F103018EE35FE0078FD8E /* Main_iPad.storyboard */; };
 		EB3F103718EE35FE0078FD8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB3F103618EE35FE0078FD8E /* Images.xcassets */; };
 		EB3F103E18EE35FF0078FD8E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3F103D18EE35FF0078FD8E /* XCTest.framework */; };
 		EB3F103F18EE35FF0078FD8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3F101B18EE35FE0078FD8E /* Foundation.framework */; };
@@ -83,7 +82,6 @@
 		EB3F102A18EE35FE0078FD8E /* HoNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HoNAppDelegate.h; sourceTree = "<group>"; };
 		EB3F102B18EE35FE0078FD8E /* HoNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoNAppDelegate.m; sourceTree = "<group>"; };
 		EB3F102E18EE35FE0078FD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		EB3F103118EE35FE0078FD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		EB3F103618EE35FE0078FD8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EB3F103C18EE35FF0078FD8E /* ThermalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThermalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3F103D18EE35FF0078FD8E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -220,7 +218,8 @@
 		EB3F102118EE35FE0078FD8E /* HotOrNot */ = {
 			isa = PBXGroup;
 			children = (
-				EB3F105318EE360E0078FD8E /* temporarilyuseless */,
+				EB3F102A18EE35FE0078FD8E /* HoNAppDelegate.h */,
+				EB3F102B18EE35FE0078FD8E /* HoNAppDelegate.m */,
 				EB3F103618EE35FE0078FD8E /* Images.xcassets */,
 				EB3F102218EE35FE0078FD8E /* Supporting Files */,
 			);
@@ -254,16 +253,6 @@
 				EB3F104618EE35FF0078FD8E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		EB3F105318EE360E0078FD8E /* temporarilyuseless */ = {
-			isa = PBXGroup;
-			children = (
-				EB3F102A18EE35FE0078FD8E /* HoNAppDelegate.h */,
-				EB3F102B18EE35FE0078FD8E /* HoNAppDelegate.m */,
-				EB3F103018EE35FE0078FD8E /* Main_iPad.storyboard */,
-			);
-			name = temporarilyuseless;
 			sourceTree = "<group>";
 		};
 		EB696F7B190DBAF900B65939 /* Graphing Code */ = {
@@ -405,7 +394,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB3F103218EE35FE0078FD8E /* Main_iPad.storyboard in Resources */,
 				EB3F103718EE35FE0078FD8E /* Images.xcassets in Resources */,
 				EB3F102F18EE35FE0078FD8E /* Main_iPhone.storyboard in Resources */,
 				EB3F102618EE35FE0078FD8E /* InfoPlist.strings in Resources */,
@@ -493,14 +481,6 @@
 			);
 			name = Main_iPhone.storyboard;
 			path = HotOrNot;
-			sourceTree = "<group>";
-		};
-		EB3F103018EE35FE0078FD8E /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB3F103118EE35FE0078FD8E /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		EB3F104618EE35FF0078FD8E /* InfoPlist.strings */ = {
