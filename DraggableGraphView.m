@@ -23,7 +23,7 @@
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     [self setBackgroundColor:[UIColor lightGrayColor]];
-    [UIView animateWithDuration:3.0
+    [UIView animateWithDuration:1.0
                      animations:^{
                          self.center = original;
                          self.transform = CGAffineTransformMakeRotation(0);
@@ -47,7 +47,7 @@
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     [self setBackgroundColor:[UIColor lightGrayColor]];
-    [UIView animateWithDuration:3.0
+    [UIView animateWithDuration:1.0
                      animations:^{
                          self.center = original;
                          self.transform = CGAffineTransformMakeRotation(0);
@@ -82,14 +82,8 @@
             break;
         };
         case UIGestureRecognizerStateEnded: {
-            if((([self.graphType isEqualToString:@"votes"]) && (xDistance) > 50) || ([self.graphType isEqualToString:@"rankings"] && (xDistance <-50))) {
-                
+            if((([self.graphType isEqualToString:@"votes"]) && (xDistance) > 80) || ([self.graphType isEqualToString:@"rankings"] && (xDistance <-80))) {
                 [self slowlyRemoveView:xDistance];
-                if([self.graphType isEqualToString:@"votes"]) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"graphSwipe" object:@1];
-                } else {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"graphSwipe" object:@0];
-                }
             } else {
                 [self resetViewPositionAndTransformations];
                 break;
@@ -112,13 +106,18 @@
 }
 
 - (void)slowlyRemoveView:(CGFloat) xDistance {
-    [UIView animateWithDuration:3.0
+    [UIView animateWithDuration:1.0
                      animations:^{
                          self.center = CGPointMake(xDistance*2, self.originalPoint.y);
                          self.transform = CGAffineTransformMakeRotation(0);
                      }
                     completion:^(BOOL finished) {
                         [self removeFromSuperview];
+                        if([self.graphType isEqualToString:@"votes"]) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"graphSwipe" object:@1];
+                        } else {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"graphSwipe" object:@0];
+                        }
                     }
      ];
 }
