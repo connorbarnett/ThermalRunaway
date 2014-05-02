@@ -10,6 +10,7 @@
 #import "VoteCountTVC.h"
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
+#import "MBProgressHUD.h"
 
 @interface VoteCountTVC ()
 @property (strong, nonatomic) IBOutlet UITableView *reloadWheel;
@@ -53,13 +54,14 @@
 -(void) setTableDeck {
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"allCompanyInfo"];
     dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.tableView reloadData];
     });
 }
 
 - (IBAction)refresh:(id)sender {
-    HoNManager *myHonManager = [HoNManager sharedHoNManager];
-    [myHonManager loadAllCompanyCards];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.myHonManager loadAllCompanyCards];
 }
 
 #pragma mark - Table view data source

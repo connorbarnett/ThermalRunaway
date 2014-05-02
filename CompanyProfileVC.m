@@ -10,6 +10,7 @@
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
 #import "CompanyGraph.h"
+#import "MBProgressHUD.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
 static
@@ -45,28 +46,48 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 }
 
 -(void)updateInfo{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     NSLog(@"updating info");
     self.companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",self.company]];
     int numUpVotes = [[self.companyInfo objectForKey:@"up_votes"] intValue];
     int numDownVotes = [[self.companyInfo objectForKey:@"down_votes"] intValue];
     int numUnknownVotes = [[self.companyInfo objectForKey:@"unknown_votes"] intValue];
-    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.companyLabel.text = self.company;
-            
-            self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
-            self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
-            self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
-            [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
+    self.companyLabel.text = self.company;
+    
+    self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
+    self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
+    self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
+    [self.view addSubview:[[CompanyGraph alloc] initWithFrame:CGRectMake(20, 280, 280, 200) andVotesArray:[self.companyInfo objectForKey:@"trendingArray"]]];
+    
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imageData];
 
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                self.blurredCompanyImage.image = [imageView image];
+                
+            });
+            [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@blur",self.company]];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        });
+    }
+    else{
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]];
+        dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:imageData];
+            
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             self.blurredCompanyImage.image = [imageView image];
         });
-    });
+    }
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 /*

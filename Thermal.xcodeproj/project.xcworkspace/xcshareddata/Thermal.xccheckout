@@ -10,8 +10,10 @@
 	<string>Thermal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0DD4ECA7-582F-4C8E-8A99-6751F60A5F60</key>
-		<string>https://github.com/connorbarnett/ThermalRunaway</string>
+		<key>32FDEBA3-F285-44D5-9917-759A862A8785</key>
+		<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
+		<key>90EDA3CB-FF8D-40AC-9354-E03EA66395F6</key>
+		<string>https://github.com/jdg/MBProgressHUD.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>0DD4ECA7-582F-4C8E-8A99-6751F60A5F60</key>
 		<string>../..</string>
+		<key>90EDA3CB-FF8D-40AC-9354-E03EA66395F6</key>
+		<string>../../MBProgressHUD</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/connorbarnett/ThermalRunaway</string>
@@ -32,7 +36,15 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0DD4ECA7-582F-4C8E-8A99-6751F60A5F60</string>
+			<string>90EDA3CB-FF8D-40AC-9354-E03EA66395F6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MBProgressHUD</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>32FDEBA3-F285-44D5-9917-759A862A8785</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Thermal</string>
 		</dict>

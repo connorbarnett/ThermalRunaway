@@ -13,6 +13,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Welcome to Thermal Runaway!"
+                                                            message:@"Here you can rate your favorite companies by swiping them left and right"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Get Started"
+                                                  otherButtonTitles:nil];
+            [alertView show];
+            });
+    }
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     [myHonManager loadAllCompanyCards];
     [myHonManager startLocationServices];

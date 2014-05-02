@@ -11,6 +11,7 @@
 #import "DraggableView.h"
 #include "HoNManager.h"
 #import <CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
@@ -19,10 +20,6 @@
 @end
 
 @implementation HoNVC
-
--(void)awakeFromNib{
-
-}
 
 -(HoNManager *)myHonManager
 {
@@ -37,7 +34,9 @@
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
                                                       [self setDeck];
+
                                                   }];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 -(NSMutableArray *)companiesFromServer {
@@ -67,16 +66,20 @@
 }
 
 -(void) setDeck {
-    NSLog(@"setting deck");
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"curCompanyDeck"];
+    NSMutableArray *curDeck = [[NSMutableArray alloc] init];
     for (NSDictionary *companyCard in _companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         [self.myHonManager addCompanyToDeck:companyName];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.view addSubview:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 300, 300) company:companyName]];
-            [self.view setNeedsDisplay];
-        });
+        [curDeck addObject:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 300, 300) company:companyName]];
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for(UIView *view in curDeck){
+            [self.view insertSubview:view atIndex:1];
+        }
+        [self.view setNeedsDisplay];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
 }
 
 - (void)didReceiveMemoryWarning
