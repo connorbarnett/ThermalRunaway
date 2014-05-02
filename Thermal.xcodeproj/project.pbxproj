@@ -47,6 +47,7 @@
 		FF283662190788FB00B683A1 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28364F190788FB00B683A1 /* UIProgressView+AFNetworking.m */; };
 		FF283663190788FB00B683A1 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */; };
 		FF283664190788FB00B683A1 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */; };
+		FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC130BA19133B9F00A99035 /* MBProgressHUD.m */; };
 		FFF1C343190767BD00A24A99 /* HoNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C342190767BD00A24A99 /* HoNManager.m */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,8 @@
 		FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		FF283652190788FB00B683A1 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		FFC130B919133B9F00A99035 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		FFC130BA19133B9F00A99035 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		FFF1C341190767BD00A24A99 /* HoNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoNManager.h; sourceTree = "<group>"; };
 		FFF1C342190767BD00A24A99 /* HoNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoNManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +187,8 @@
 				EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */,
 				EBB2D38918EE4DBF003021BF /* HomeVC.h */,
 				EBB2D38A18EE4DBF003021BF /* HomeVC.m */,
+				FFC130B919133B9F00A99035 /* MBProgressHUD.h */,
+				FFC130BA19133B9F00A99035 /* MBProgressHUD.m */,
 				EB3F102118EE35FE0078FD8E /* HotOrNot */,
 				EB3F104318EE35FF0078FD8E /* HotOrNotTests */,
 				EB3F101A18EE35FE0078FD8E /* Frameworks */,
@@ -436,6 +441,7 @@
 				EBB2D38B18EE4DBF003021BF /* HomeVC.m in Sources */,
 				FF283661190788FB00B683A1 /* UIImageView+AFNetworking.m in Sources */,
 				FF283662190788FB00B683A1 /* UIProgressView+AFNetworking.m in Sources */,
+				FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */,
 				FF28365B190788FB00B683A1 /* AFURLResponseSerialization.m in Sources */,
 				FF283663190788FB00B683A1 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FF28365A190788FB00B683A1 /* AFURLRequestSerialization.m in Sources */,

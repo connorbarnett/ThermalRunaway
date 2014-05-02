@@ -10,6 +10,7 @@
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
 #import "CompanyGraph.h"
+#import "MBProgressHUD.h"
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
 static
@@ -32,10 +33,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return _myHonManager;
 }
 
-- (void)awakeFromNib{
-    NSLog(@"awoken from nib");
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,6 +46,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 }
 
 -(void)updateInfo{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     NSLog(@"updating info");
     self.companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",self.company]];
     int numUpVotes = [[self.companyInfo objectForKey:@"up_votes"] intValue];
@@ -71,6 +70,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             self.blurredCompanyImage.image = [imageView image];
         });
     });
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+
 }
 
 /*
