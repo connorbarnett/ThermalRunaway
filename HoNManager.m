@@ -103,7 +103,6 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)loadDeck {
-//    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
