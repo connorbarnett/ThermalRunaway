@@ -22,8 +22,8 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-static NSString * const BaseURLString = @"http://localhost:3000/";
+static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+//static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -103,7 +103,6 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 - (void)loadDeck {
-//    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"companyDeck"]){
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@companies.json/?page=%zu",BaseURLString, self.curPage]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
