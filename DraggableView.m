@@ -95,10 +95,9 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 }
                 [self.myHonManager castVote:voteType forCompany:self.company];
                 [self.myHonManager removeTopCompanyFromDeck];
-                [self removeFromSuperview];
                 if([self.myHonManager deckEmpty])
                     [self.myHonManager loadNextDeck];
-                
+                [self removeFromSuperview];
             }
             else {
                 [self resetViewPositionAndTransformations];
