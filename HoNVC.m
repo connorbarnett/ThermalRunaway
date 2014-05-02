@@ -64,10 +64,10 @@
     DraggableView *toRemoveTmp = (DraggableView *)toRemove;
 
     if([self.myHonManager deckEmpty]){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Company Deck Empty"
-                                                            message:@"Sorry, there are no more companies for you to vote on!"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"company deck empty"
+                                                            message:@"sorry, there are no more companies for you to vote on!"
                                                            delegate:nil
-                                                  cancelButtonTitle:@"Ok"
+                                                  cancelButtonTitle:@"ok"
                                                   otherButtonTitles:nil];
         [alertView show];
     }
