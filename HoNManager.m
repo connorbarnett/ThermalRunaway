@@ -133,7 +133,6 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
                                                   otherButtonTitles:nil];
         [alertView show];
     }];
-                  
     [operation start];
 }
 
@@ -185,8 +184,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    
-    
+
     NSDictionary *parameters = @{@"vote_type": vote_type, @"name" : company, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
@@ -213,8 +211,6 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     self = [super init];
     return self;
 }
-
-
 
 #pragma mark - CLLocationManagerDelegate Methods
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
