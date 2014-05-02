@@ -41,11 +41,6 @@
 
                                                   }];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    hud.mode = MBProgressHUDModeAnnularDeterminate;
-//    hud.labelText = @"Loading";
-
 }
 
 -(NSMutableArray *)companiesFromServer {
@@ -75,7 +70,6 @@
 }
 
 -(void) setDeck {
-    NSLog(@"setting deck");
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"curCompanyDeck"];
     NSMutableArray *curDeck = [[NSMutableArray alloc] init];
     for (NSDictionary *companyCard in _companiesFromServer) {

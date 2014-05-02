@@ -62,8 +62,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
-
-        NSLog(@"networking");
     
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
@@ -80,7 +78,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
         });
     }
     else{
-        NSLog(@"not networking");
         NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]];
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:imageData];
@@ -88,7 +85,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             self.blurredCompanyImage.image = [imageView image];
-            
         });
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];

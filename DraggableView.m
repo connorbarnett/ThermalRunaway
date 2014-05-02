@@ -39,11 +39,27 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
 - (void)loadImageAndStyle
 {
-    NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, self.company]];
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@image",self.company]]){
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, self.company]];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imageData];
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                [self addSubview:imageView];
+                self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
+                self.overlayView.alpha = 0;
+                [self addSubview:self.overlayView];
+            });
+            [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@image",self.company]];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        });
+    }
+    else{
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@image",self.company]];
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:imageData];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -53,8 +69,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             self.overlayView.alpha = 0;
             [self addSubview:self.overlayView];
         });
-    });
-
+    }
+    
     self.layer.cornerRadius = 8;
     self.layer.shadowOffset = CGSizeMake(7, 7);
     self.layer.shadowRadius = 5;
