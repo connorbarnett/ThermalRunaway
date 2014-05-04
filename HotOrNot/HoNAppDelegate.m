@@ -13,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//TODO: Comment if statement back in for deploy
 //    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
 //    {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -30,7 +31,6 @@
     [myHonManager loadAllCompanyCards];
     [myHonManager startLocationServices];
     [myHonManager resetPageCount];
-    [myHonManager loadDeck];
     return YES;
 }
 							
