@@ -31491,3 +31491,81 @@ Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
   [1m[36mCompany Load (0.8ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
   [1m[35mCompany Load (0.3ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36mCompany Load (1.7ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (1.7ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "companies"
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY name ASC[0m
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY votes.count ASC
+SQLite3::SQLException: no such column: votes.count: SELECT "companies".* FROM "companies"   ORDER BY votes.count ASC
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36mCompany Load (0.8ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:08:44.665939')  [["company_id", 1]]
+SQLite3::SQLException: unrecognized token: ":": SELECT COUNT(*) FROM "votes"  WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:08:44.665939')
+  [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:10:04.587916')  [["company_id", 1]]
+SQLite3::SQLException: unrecognized token: ":": SELECT COUNT(*) FROM "votes"  WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:10:04.587916')
+  [1m[36mCompany Load (0.8ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:11:51.689299')  [["company_id", 1]]
+SQLite3::SQLException: unrecognized token: ":": SELECT COUNT(*) FROM "votes"  WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:11:51.689299')
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mVote Load (0.3ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."company_id" = ?  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:12:21.223604')[0m  [["company_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:12:42.350998' AND created_at >= '2014-05-03 21:12:42.351105')  [["company_id", 1]]
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCompany Load (0.2ms)[0m  SELECT "companies".* FROM "companies" ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:13:15.655198')[0m  [["company_id", 1]]
+SQLite3::SQLException: unrecognized token: ":": SELECT COUNT(*) FROM "votes"  WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:13:15.655198')
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:13:25.128633')  [["company_id", 1]]
+SQLite3::SQLException: unrecognized token: ":": SELECT COUNT(*) FROM "votes"  WHERE "votes"."company_id" = ? AND (vote_type: 'up_vote' AND created_at <= '2014-05-02 21:13:25.128633')
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:13:32.796908')[0m  [["company_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:13:32.798233')  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:13:47.016811')[0m  [["company_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:13:47.018176')  [["company_id", 1]]
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:14:02.294899')  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:14:02.295883')[0m  [["company_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:14:13.949878')  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:14:13.950940')[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:14:13.951972')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:14:13.952640')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:16:02.658467')  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:16:02.659357')[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:16:02.659912')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:16:02.660453')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:17:53.891870')  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:17:53.892963')[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:17:53.893801')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:17:53.894454')[0m  [["company_id", 2]]
+  [1m[36mCompany Load (0.9ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:18:41.930040')  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:18:41.935270')[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:18:41.936471')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:18:41.937044')[0m  [["company_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:21:56.019374')  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:21:56.020727')[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:21:56.021838')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:21:56.022622')[0m  [["company_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:22:52.089693')  [["company_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:22:52.090717')[0m  [["company_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:22:52.091570')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:22:52.092361')[0m  [["company_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:25:25.385461')  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:25:25.386805')[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'up_vote' AND created_at <= '2014-05-02 21:25:25.402918')  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND (vote_type = 'down_vote' AND created_at <= '2014-05-02 21:25:25.403498')[0m  [["company_id", 2]]
