@@ -139,7 +139,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 - (void)loadVoteTypesForCompany:(NSString *) company {
     NSString *defaultsKey = [NSString stringWithFormat:@"voteInfoFor%@",company];
 
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@vote/count.json/?name=%@",BaseURLString, company]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/voteinfo.json/?name=%@",BaseURLString, company]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];

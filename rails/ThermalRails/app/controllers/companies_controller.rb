@@ -108,10 +108,10 @@ class CompaniesController < ApplicationController
   end
 
 
-  #GET /vote/count
-  #GET /vote/count.json
-  #Given company name, returns count of each vote type
-  def voteCount
+  #GET /vote/info
+  #GET /vote/info.json
+  #Given company name, returns info about companies votes over time
+  def voteInfo
     @company = Company.find_by(name: params[:name])
     trendingArray = recentTrendingArray(@company)
     rankingArray = recentRankingArray(@company)
