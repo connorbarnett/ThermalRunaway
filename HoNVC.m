@@ -15,6 +15,7 @@
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 @property(strong, nonatomic) NSMutableArray *companiesFromServer;
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
 @property(strong, nonatomic) HoNManager *myHonManager;
@@ -35,7 +36,6 @@
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
                                                       [self setDeck];
-
                                                   }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(incomingVote:) name:@"votedOnCompany" object:nil];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -51,6 +51,14 @@
         voteTypeForConfirmationLabel = @"no";
     }
     self.confirmationLabel.text = [NSString stringWithFormat:@"voted %@ on %@", voteTypeForConfirmationLabel, [companyInfo objectForKey:@"company"]];
+//    DraggableView *currCompany = (DraggableView *)[[self.view subviews] lastObject];
+    int index = self.view.subviews.count -2;
+    if([[self.view.subviews objectAtIndex:index] isKindOfClass:[DraggableView class]]) {
+        DraggableView *currCompany = (DraggableView *)[[self.view subviews] objectAtIndex:index];
+        self.companyLabel.text = currCompany.company;
+    } else {
+        self.companyLabel.text = @"";
+    }
 }
 
 -(NSMutableArray *)companiesFromServer {
@@ -78,7 +86,15 @@
         [self.myHonManager removeTopCompanyFromDeck];
         if([self.myHonManager deckEmpty])
             [self.myHonManager loadNextDeck];
+        if(![self.myHonManager deckEmpty]) {
+            [self setCompanyLabel];
+        }
     }
+}
+-(void)setCompanyLabel
+{
+    DraggableView *currCompany = (DraggableView *)[[self.view subviews] lastObject];
+    self.companyLabel.text = currCompany.company;
 }
 
 -(void) setDeck {
@@ -93,6 +109,7 @@
         for(UIView *view in curDeck){
             [self.view addSubview:view];
         }
+        [self setCompanyLabel];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }

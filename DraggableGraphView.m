@@ -12,7 +12,7 @@
 - (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType
 {
     self = [super initWithFrame:frame];
-    CGPoint original = CGPointMake(160, 300);
+    CGPoint original = CGPointMake(160, 320);
     CGFloat startingX = -400;
     if ([graphType isEqualToString:@"votes"]) {
         startingX = -(startingX);
@@ -23,7 +23,7 @@
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     [self setBackgroundColor:[UIColor lightGrayColor]];
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:0.2
                      animations:^{
                          self.center = original;
                          self.transform = CGAffineTransformMakeRotation(0);
@@ -106,9 +106,9 @@
 }
 
 - (void)slowlyRemoveView:(CGFloat) xDistance {
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:0.2
                      animations:^{
-                         self.center = CGPointMake(xDistance*2, self.originalPoint.y);
+                         self.center = CGPointMake(xDistance*4, self.originalPoint.y);
                          self.transform = CGAffineTransformMakeRotation(0);
                      }
                     completion:^(BOOL finished) {

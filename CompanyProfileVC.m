@@ -12,6 +12,8 @@
 #import "CompanyGraph.h"
 #import "MBProgressHUD.h"
 #import "GraphView.h"
+#import "DraggableGraphView.h"
+
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
 static
@@ -20,6 +22,7 @@ static
 @property (weak, nonatomic) IBOutlet UILabel *upLabel;
 @property (weak, nonatomic) IBOutlet UILabel *downLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unknownLabel;
+@property (weak, nonatomic) IBOutlet UILabel *graphLabel;
 @property(strong, nonatomic) HoNManager *myHonManager;
 @end
 
@@ -40,10 +43,13 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 - (void) changeGraph:(NSNotification *)notification{
     NSNumber *graphType = [notification object];
     if([graphType integerValue] == 1) {
-        self.view = [[GraphView alloc] initWithGraphType:@"rankings"];
+        [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings"]];
+        self.graphLabel.text = @"rankings graph";
         
     } else {
-        self.view = [[GraphView alloc] initWithGraphType:@"votes"];
+        [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"votes"]];
+        self.graphLabel.text = @"votes graph";
+
         
     }
 }
@@ -76,7 +82,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     //NOTE FOR BOB- This will become initWithGraphType: andData: once we have
     //retreived the data array from our server. This version of the initializer
     //creates a dummy local array
-    [self.view addSubview:[[GraphView alloc] initWithGraphType:@"ranking"]];
+    [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings"]];
     
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];

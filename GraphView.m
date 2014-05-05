@@ -12,9 +12,7 @@
 {
     self = [super init];
     if (!self) return nil;
-
     self.backgroundColor = [UIColor whiteColor];
-
     [self loadDraggableCustomView];
 
     return self;
@@ -25,7 +23,7 @@
     self = [super init];
     if (!self) return nil;
     self.backgroundColor = [UIColor whiteColor];
-    self.draggableView = [[DraggableGraphView alloc] initWithFrame:CGRectMake(0, 60, 320, 320) andGraphType:graphType];
+    self.draggableView = [[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:graphType];
     [self addSubview:self.draggableView];
     return self;
 }
@@ -35,15 +33,14 @@
     self = [super init];
     if (!self) return nil;
     self.backgroundColor = [UIColor whiteColor];
-    self.draggableView = [[DraggableGraphView alloc] initWithFrame:CGRectMake(0, 60, 320, 320) andGraphType:graphType andData:data];
+    self.draggableView = [[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:graphType andData:data];
     [self addSubview:self.draggableView];
     return self;
 }
 
 - (void)loadDraggableCustomView
 {
-    self.draggableView = [[DraggableGraphView alloc] initWithFrame:CGRectMake(60, 60, 330, 330) andGraphType:@"rankings"];
-
+    self.draggableView = [[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings"];
     [self addSubview:self.draggableView];
 }
 
