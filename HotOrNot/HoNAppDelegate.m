@@ -13,15 +13,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//TODO: Comment if statement back in for deploy
 //    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
 //    {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Welcome to Thermal Runaway!"
-                                                            message:@"Here you can rate your favorite companies by swiping them left and right"
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"welcome to thermal runaway!"
+                                                            message:@"here you can rate your favorite companies by swiping them left and right"
                                                            delegate:nil
-                                                  cancelButtonTitle:@"Get Started"
+                                                  cancelButtonTitle:@"get started"
                                                   otherButtonTitles:nil];
             [alertView show];
             });
@@ -30,7 +31,6 @@
     [myHonManager loadAllCompanyCards];
     [myHonManager startLocationServices];
     [myHonManager resetPageCount];
-    [myHonManager loadDeck];
     return YES;
 }
 							

@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
 
-
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
@@ -80,19 +79,6 @@ class CompaniesController < ApplicationController
       end
     end
   end
-
-  # GET /company/lookup
-  #GET /company/lookup.json
-  # Looks up a company pertaining to a specific name
-  def lookup
-    @company = Company.find_by(name: params[:name])
-    map = { company: @company, votes: @company.votes }
-    
-    respond_to do |format|
-      format.html { redirect_to @company}
-      format.json { render json: map }
-    end
-  end
   
   # POST /vote
   # Records a single vote for a single company
@@ -121,26 +107,11 @@ class CompaniesController < ApplicationController
     end
   end
 
-  #GET /vote/lookup
-  #GET /vote/lookup.json
-  def voteLookup
-    @company = Company.find_by(name: params[:name])
-    vote_type = params[:vote_type]
-    respond_to do |format|
-      format.html { redirect_to @company}
-      if vote_type.nil?
-        format.json { render json: @company.votes }
-      else
-        format.json {render json: @company.votes.where(vote_type: vote_type)}
-      end
-    end
 
-  end
-
-  #GET /vote/count
-  #GET /vote/count.json
-  #Given company name, returns count of each vote type
-  def voteCount
+  #GET /vote/info
+  #GET /vote/info.json
+  #Given company name, returns info about companies votes over time
+  def voteInfo
     @company = Company.find_by(name: params[:name])
     trendingArray = recentTrendingArray(@company)
     rankingArray = recentRankingArray(@company)
@@ -189,8 +160,6 @@ class CompaniesController < ApplicationController
 
             arr.push({name: company.name,  netTotal: netTotal})
           }
-          
-
 
           arr.sort_by {|elem| -elem[:netTotal] }
           puts arr

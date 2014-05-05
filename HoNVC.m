@@ -39,6 +39,9 @@
                                                   }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(incomingVote:) name:@"votedOnCompany" object:nil];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if([self.myHonManager deckEmpty]){
+        [self.myHonManager loadDeck];
+    }
 }
 
 - (void) incomingVote:(NSNotification *)notification{
