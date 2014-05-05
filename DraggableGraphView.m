@@ -135,7 +135,7 @@
         [self plotVoteGraph];
     } else {
         [self drawScaleForRankGraph];
-        [self plotGraphRankGraph];
+        [self plotRankGraph];
     }
 }
 
@@ -150,14 +150,14 @@
     CGContextSetLineWidth(context, 2.0);
     for(int i = 0; i < 10; i++) {
         int currentHeight = (i+1)*heightScaleFactor;
-        CGContextMoveToPoint(context, 0, currentHeight); //start at this point
-        CGContextAddLineToPoint(context, width, currentHeight); //draw to this point
+        CGContextMoveToPoint(context, 0, currentHeight);
+        CGContextAddLineToPoint(context, width, currentHeight);
     }
     CGContextStrokePath(context);
     
 }
 
--(void)plotGraphRankGraph
+-(void)plotRankGraph
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
@@ -169,8 +169,12 @@
     for(int i = 0; i < self.data.count-1; i++) {
         NSNumber *rank = [self.data objectAtIndex:i];
         NSNumber *nextRank = [self.data objectAtIndex:i+1];
-        CGContextMoveToPoint(context, i*widthScaleFactor, [rank integerValue]*heightScaleFactor); //start at this point
-        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, [nextRank integerValue]*heightScaleFactor); //draw to this point
+        CGContextMoveToPoint(context, i*widthScaleFactor, [rank integerValue]*heightScaleFactor);
+        if(i == (self.data.count-2)) {
+            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, [nextRank integerValue]*heightScaleFactor-20, 20, 20) andRank:nextRank];
+        }
+        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, [rank integerValue]*heightScaleFactor-20, 20, 20) andRank:rank];
+        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, [nextRank integerValue]*heightScaleFactor);
         CGContextStrokePath(context);
     }
 }
@@ -185,8 +189,8 @@
     CGContextSetLineWidth(context, 2.0);
     for(int i = 0; i < 10; i++) {
         int currentHeight = (i+1)*heightScaleFactor;
-        CGContextMoveToPoint(context, 0, currentHeight); //start at this point
-        CGContextAddLineToPoint(context, width, currentHeight); //draw to this point
+        CGContextMoveToPoint(context, 0, currentHeight);
+        CGContextAddLineToPoint(context, width, currentHeight);
     }
     CGContextStrokePath(context);
     
@@ -204,12 +208,24 @@
     for(int i = 0; i < self.data.count-1; i++) {
         NSNumber *rank = [self.data objectAtIndex:i];
         NSNumber *nextRank = [self.data objectAtIndex:i+1];
-        CGContextMoveToPoint(context, i*widthScaleFactor, [rank integerValue]*heightScaleFactor); //start at this point
-        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, [nextRank integerValue]*heightScaleFactor); //draw to this point
+        CGContextMoveToPoint(context, i*widthScaleFactor, [rank integerValue]*heightScaleFactor);
+        if(i == (self.data.count-2)) {
+            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, [nextRank integerValue]*heightScaleFactor-20, 20, 20) andRank:nextRank];
+        }
+        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, [rank integerValue]*heightScaleFactor-20, 20, 20) andRank:rank];
+        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, [nextRank integerValue]*heightScaleFactor);
         CGContextStrokePath(context);
     }
 }
 
+-(void)addLabelInPosition:(CGRect)rect andRank:(NSNumber*)rank
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
+    label.text = [NSString stringWithFormat:@"%d", [rank integerValue]];
+    label.font = [UIFont fontWithName:@"DIN Alternate" size:17];
+    label.textColor = [UIColor darkTextColor];
+    [self addSubview:label];
+}
 
 
 
