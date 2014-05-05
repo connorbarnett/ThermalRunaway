@@ -81,6 +81,8 @@
 {
     static NSString *CellIdentifier = @"Voted Company Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.font = [UIFont fontWithName:@"DIN Alternate" size:17];
+
     NSDictionary *companyInformation = [self.companiesFromServer objectAtIndex:indexPath.row];
     NSString *company = [companyInformation valueForKey:@"name"];
     int netTotal = [[companyInformation objectForKey:@"netTotal"] intValue];
