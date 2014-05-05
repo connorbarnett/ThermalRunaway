@@ -146,31 +146,31 @@ class CompaniesController < ApplicationController
 
     #gets an array of a companies ranking among others over the last 10 days
     def recentRankingArray(company)
-      i = 0
+      i = 6
       if company.nil?
         return Array.new
       else
         companies = Company.all;
         rankingArray = Array.new
-        while i < 10
+        while i >= 0
           arr = Array.new
           companies.each{ |company|
-            netTotal = company.votes.where("vote_type = 'up_vote' AND created_at <= ?", i.days.ago).count
-            netTotal -= company.votes.where("vote_type = 'down_vote' AND created_at <=  ?", i.days.ago).count
+            netTotal = company.votes.where("vote_type = 'up_vote' AND created_at <= ? AND created_at >= ?", i.days.ago, (i+1).days.ago).count
+            netTotal -= company.votes.where("vote_type = 'down_vote' AND created_at <=  ? AND created_at >= ?", i.days.ago, (i+1).days.ago).count
 
             arr.push({name: company.name,  netTotal: netTotal})
           }
-
-          arr.sort_by {|elem| -elem[:netTotal] }
-          puts arr
+         
+          arr.sort_by! {|elem| -elem[:netTotal] }
+           
           index = arr.index {|elem| elem[:name] == company.name }
           if index.nil?
             rankingArray.push(-1)
           else
-            rankingArray.push(index)
+            rankingArray.push(index + 1)#so the first company is ranked first, not 0
           end
 
-          i += 1
+          i -= 1
         end
       end
       rankingArray
@@ -178,15 +178,15 @@ class CompaniesController < ApplicationController
 
     #gets an array of a companies net vote count over the last 10 days
     def recentTrendingArray(company)
-      i = 0
+      i = 6
       votes = company.votes
       trendingArray = Array.new
-      while i < 10
+      while i >= 0 
 
         net = votes.where("vote_type = 'up_vote' AND created_at <=  ?", i.days.ago).count
         net -= votes.where("vote_type = 'down_vote' AND created_at <=  ?", i.days.ago).count
         trendingArray.push(net)
-        i += 1
+        i -= 1
       end
       trendingArray
     end
