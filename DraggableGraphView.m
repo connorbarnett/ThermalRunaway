@@ -123,9 +123,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [super drawRect:rect];
     if([self.graphType isEqualToString:@"votes"]) {
-        [self drawScaleForVoteGraph];
         [self plotVoteGraph];
     } else {
         [self drawScaleForRankGraph];
@@ -173,43 +171,58 @@
     }
 }
 
-- (void)drawScaleForVoteGraph
-{
-    float width = self.bounds.size.width;
-    float height = self.bounds.size.height;
-    double heightScaleFactor = height/10;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    CGContextSetLineWidth(context, 2.0);
-    for(int i = 0; i < 10; i++) {
-        int currentHeight = (i+1)*heightScaleFactor;
-        CGContextMoveToPoint(context, 0, currentHeight);
-        CGContextAddLineToPoint(context, width, currentHeight);
-    }
-    CGContextStrokePath(context);
-    
-}
 
 -(void)plotVoteGraph
 {
+
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor yellowColor].CGColor);
     CGContextSetLineWidth(context, 4.0);
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double widthScaleFactor = width/(self.data.count-1);
-    double heightScaleFactor = height/100;
+    double heightScaleFactor = height/([self findMostExtremeCount]*2);
     for(int i = 0; i < self.data.count-1; i++) {
-        NSNumber *rank = [self.data objectAtIndex:i];
-        NSNumber *nextRank = [self.data objectAtIndex:i+1];
-        CGContextMoveToPoint(context, i*widthScaleFactor, [rank integerValue]*heightScaleFactor);
+        NSNumber *count = [self.data objectAtIndex:i];
+        NSNumber *nextCount = [self.data objectAtIndex:i+1];
+        CGContextMoveToPoint(context, i*widthScaleFactor, height/2 - [count integerValue]*heightScaleFactor);
         if(i == (self.data.count-2)) {
-            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, [nextRank integerValue]*heightScaleFactor-20, 20, 20) andRank:nextRank];
+            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, height/2 - [nextCount integerValue]*heightScaleFactor-20, 20, 20) andRank:nextCount];
         }
-        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, [rank integerValue]*heightScaleFactor-20, 20, 20) andRank:rank];
-        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, [nextRank integerValue]*heightScaleFactor);
+        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, height/2 - [count integerValue]*heightScaleFactor-20, 20, 20) andRank:count];
+        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, height/2 - [nextCount integerValue]*heightScaleFactor);
         CGContextStrokePath(context);
     }
+}
+
+-(int)findMin
+{
+    int min = [(NSNumber *)[self.data firstObject] integerValue];
+    for(int i = 0; i < self.data.count; i++) {
+        if([(NSNumber *)[self.data objectAtIndex:i] integerValue] < min) min = [(NSNumber *)[self.data objectAtIndex:i] integerValue];
+    }
+    return min;
+}
+
+-(int)findMax
+{
+    int max = [(NSNumber *)[self.data firstObject] integerValue];
+    for(int i = 0; i < self.data.count; i++) {
+        if([(NSNumber *)[self.data objectAtIndex:i] integerValue] > max) max = [(NSNumber *)[self.data objectAtIndex:i] integerValue];
+    }
+    return max;
+}
+
+-(int)findDifference
+{
+    return [self findMax] - [self findMin];
+}
+
+-(int) findMostExtremeCount
+{
+    int max = [self findMax];
+    int min = [self findMin];
+    return (fabs(min) > fabs(max)) ? fabs(min) : fabs(max);
 }
 
 -(void)addLabelInPosition:(CGRect)rect andRank:(NSNumber*)rank
@@ -220,7 +233,5 @@
     label.textColor = [UIColor darkTextColor];
     [self addSubview:label];
 }
-
-
 
 @end
