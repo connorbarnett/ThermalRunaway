@@ -24,6 +24,8 @@ static
 @property (weak, nonatomic) IBOutlet UILabel *unknownLabel;
 @property (weak, nonatomic) IBOutlet UILabel *graphLabel;
 @property(strong, nonatomic) HoNManager *myHonManager;
+@property(strong, atomic) NSArray *rankingArray;
+@property(strong, atomic) NSArray *votesArray;
 @end
 
 @implementation CompanyProfileVC
@@ -43,11 +45,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 - (void) changeGraph:(NSNotification *)notification{
     NSNumber *graphType = [notification object];
     if([graphType integerValue] == 1) {
-        [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings"]];
+        [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings" andData:self.rankingArray]];
         self.graphLabel.text = @"rankings graph";
         
     } else {
-        [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"votes"]];
+        [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"votes" andData:self.votesArray]];
         self.graphLabel.text = @"votes graph";
 
         
@@ -69,7 +71,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 -(void)updateInfo{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-    NSLog(@"updating info");
     self.companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",self.company]];
     int numUpVotes = [[self.companyInfo objectForKey:@"up_votes"] intValue];
     int numDownVotes = [[self.companyInfo objectForKey:@"down_votes"] intValue];
@@ -78,11 +79,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.upLabel.text = [NSString stringWithFormat:@"%d", numUpVotes];
     self.downLabel.text = [NSString stringWithFormat:@"%d", numDownVotes];
     self.unknownLabel.text = [NSString stringWithFormat:@"%d haven't heard of it", numUnknownVotes];
-
-    //NOTE FOR BOB- This will become initWithGraphType: andData: once we have
-    //retreived the data array from our server. This version of the initializer
-    //creates a dummy local array
-    [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings"]];
+    
+    self.votesArray = [self.companyInfo objectForKey:@"trendingArray"];
+    self.rankingArray = [self.companyInfo objectForKey:@"rankingArray"];
+    
+    [self.view addSubview:[[DraggableGraphView alloc] initWithFrame:CGRectMake(20, 240, 300, 240) andGraphType:@"rankings" andData:self.rankingArray]];
     
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@blur",self.company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@blur.png",ImgsURLString, self.company]];
