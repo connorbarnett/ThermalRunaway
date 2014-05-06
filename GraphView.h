@@ -1,7 +1,4 @@
 //
-// Created by guti on 1/17/14.
-//
-// No bugs for you!
 //
 
 
