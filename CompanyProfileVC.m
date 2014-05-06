@@ -71,7 +71,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 -(void)updateInfo{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-    NSLog(@"updating info");
     self.companyInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"voteInfoFor%@",self.company]];
     int numUpVotes = [[self.companyInfo objectForKey:@"up_votes"] intValue];
     int numDownVotes = [[self.companyInfo objectForKey:@"down_votes"] intValue];

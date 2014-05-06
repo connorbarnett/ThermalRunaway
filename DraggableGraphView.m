@@ -9,28 +9,28 @@
 
 @implementation DraggableGraphView
 
-- (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType
-{
-    self = [super initWithFrame:frame];
-    CGPoint original = CGPointMake(160, 320);
-    CGFloat startingX = -400;
-    if ([graphType isEqualToString:@"votes"]) {
-        startingX = -(startingX);
-    }
-    self.frame = CGRectMake(startingX, 160, self.frame.size.width, self.frame.size.height);
-    if (!self) return nil;
-    self.graphType = [[NSString alloc] initWithString:graphType];
-    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
-    [self addGestureRecognizer:self.panGestureRecognizer];
-    [self setBackgroundColor:[UIColor lightGrayColor]];
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         self.center = original;
-                         self.transform = CGAffineTransformMakeRotation(0);
-                     }
-     ];
-    return self;
-}
+//- (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType
+//{
+//    self = [super initWithFrame:frame];
+//    CGPoint original = CGPointMake(160, 320);
+//    CGFloat startingX = -400;
+//    if ([graphType isEqualToString:@"votes"]) {
+//        startingX = -(startingX);
+//    }
+//    self.frame = CGRectMake(startingX, 160, self.frame.size.width, self.frame.size.height);
+//    if (!self) return nil;
+//    self.graphType = [[NSString alloc] initWithString:graphType];
+//    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
+//    [self addGestureRecognizer:self.panGestureRecognizer];
+//    [self setBackgroundColor:[UIColor lightGrayColor]];
+//    [UIView animateWithDuration:0.2
+//                     animations:^{
+//                         self.center = original;
+//                         self.transform = CGAffineTransformMakeRotation(0);
+//                     }
+//     ];
+//    return self;
+//}
 
 - (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType andData:(NSArray *)data
 {
@@ -54,12 +54,6 @@
                      }
      ];
     return self;
-}
-
--(NSArray *)data
-{
-    if(!_data) _data = [[NSArray alloc] initWithObjects:@50, @60, @40, @70, @10, @20, @5, nil];
-    return _data;
 }
 
 - (void)dragged:(UIPanGestureRecognizer *)gestureRecognizer

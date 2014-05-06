@@ -338,11 +338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CompanyProfileVC.m"
-            timestampString = "421020500.190608"
+            timestampString = "421022699.815381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-updateInfo"
             landmarkType = "5">
          </BreakpointContent>
