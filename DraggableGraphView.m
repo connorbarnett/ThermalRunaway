@@ -9,28 +9,28 @@
 
 @implementation DraggableGraphView
 
-//- (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType
-//{
-//    self = [super initWithFrame:frame];
-//    CGPoint original = CGPointMake(160, 320);
-//    CGFloat startingX = -400;
-//    if ([graphType isEqualToString:@"votes"]) {
-//        startingX = -(startingX);
-//    }
-//    self.frame = CGRectMake(startingX, 160, self.frame.size.width, self.frame.size.height);
-//    if (!self) return nil;
-//    self.graphType = [[NSString alloc] initWithString:graphType];
-//    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
-//    [self addGestureRecognizer:self.panGestureRecognizer];
-//    [self setBackgroundColor:[UIColor lightGrayColor]];
-//    [UIView animateWithDuration:0.2
-//                     animations:^{
-//                         self.center = original;
-//                         self.transform = CGAffineTransformMakeRotation(0);
-//                     }
-//     ];
-//    return self;
-//}
+- (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType
+{
+    self = [super initWithFrame:frame];
+    CGPoint original = CGPointMake(160, 320);
+    CGFloat startingX = -400;
+    if ([graphType isEqualToString:@"votes"]) {
+        startingX = -(startingX);
+    }
+    self.frame = CGRectMake(startingX, 160, self.frame.size.width, self.frame.size.height);
+    if (!self) return nil;
+    self.graphType = [[NSString alloc] initWithString:graphType];
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
+    [self addGestureRecognizer:self.panGestureRecognizer];
+    [self setBackgroundColor:[UIColor lightGrayColor]];
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.center = original;
+                         self.transform = CGAffineTransformMakeRotation(0);
+                     }
+     ];
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType andData:(NSArray *)data
 {
@@ -136,11 +136,11 @@
 {
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
-    double heightScaleFactor = height/10;
+    double heightScaleFactor = height/4;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(context, 2.0);
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 5; i++) {
         int currentHeight = (i+1)*heightScaleFactor;
         CGContextMoveToPoint(context, 0, currentHeight);
         CGContextAddLineToPoint(context, width, currentHeight);
@@ -157,7 +157,7 @@
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double widthScaleFactor = width/(self.data.count-1);
-    double heightScaleFactor = height/100;
+    double heightScaleFactor = height/20;
     for(int i = 0; i < self.data.count-1; i++) {
         NSNumber *rank = [self.data objectAtIndex:i];
         NSNumber *nextRank = [self.data objectAtIndex:i+1];
