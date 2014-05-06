@@ -66,6 +66,19 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                                                       [self updateInfo];
                                                   }];
     [self.myHonManager loadVoteTypesForCompany:self.company];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasViewedProfileOnce"])
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasViewedProfileOnce"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"welcome to company profile page!"
+                                                                message:@"here you can view a company's rating over time and swipe long to see their votes across time"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"got it"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        });
+    }
 }
 
 -(void)updateInfo{

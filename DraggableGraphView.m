@@ -9,29 +9,6 @@
 
 @implementation DraggableGraphView
 
-//- (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType
-//{
-//    self = [super initWithFrame:frame];
-//    CGPoint original = CGPointMake(160, 320);
-//    CGFloat startingX = -400;
-//    if ([graphType isEqualToString:@"votes"]) {
-//        startingX = -(startingX);
-//    }
-//    self.frame = CGRectMake(startingX, 160, self.frame.size.width, self.frame.size.height);
-//    if (!self) return nil;
-//    self.graphType = [[NSString alloc] initWithString:graphType];
-//    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
-//    [self addGestureRecognizer:self.panGestureRecognizer];
-//    [self setBackgroundColor:[UIColor lightGrayColor]];
-//    [UIView animateWithDuration:0.2
-//                     animations:^{
-//                         self.center = original;
-//                         self.transform = CGAffineTransformMakeRotation(0);
-//                     }
-//     ];
-//    return self;
-//}
-
 - (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType andData:(NSArray *)data
 {
     self = [super initWithFrame:frame];
@@ -195,40 +172,40 @@
     }
 }
 
--(int)findMin
+-(long)findMin
 {
-    int min = [(NSNumber *)[self.data firstObject] integerValue];
+    long min = [(NSNumber *)[self.data firstObject] integerValue];
     for(int i = 0; i < self.data.count; i++) {
         if([(NSNumber *)[self.data objectAtIndex:i] integerValue] < min) min = [(NSNumber *)[self.data objectAtIndex:i] integerValue];
     }
     return min;
 }
 
--(int)findMax
+-(long)findMax
 {
-    int max = [(NSNumber *)[self.data firstObject] integerValue];
+    long max = [(NSNumber *)[self.data firstObject] integerValue];
     for(int i = 0; i < self.data.count; i++) {
         if([(NSNumber *)[self.data objectAtIndex:i] integerValue] > max) max = [(NSNumber *)[self.data objectAtIndex:i] integerValue];
     }
     return max;
 }
 
--(int)findDifference
+-(long)findDifference
 {
     return [self findMax] - [self findMin];
 }
 
--(int) findMostExtremeCount
+-(long) findMostExtremeCount
 {
-    int max = [self findMax];
-    int min = [self findMin];
+    long max = [self findMax];
+    long min = [self findMin];
     return (fabs(min) > fabs(max)) ? fabs(min) : fabs(max);
 }
 
 -(void)addLabelInPosition:(CGRect)rect andRank:(NSNumber*)rank
 {
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
-    label.text = [NSString stringWithFormat:@"%d", [rank integerValue]];
+    label.text = [NSString stringWithFormat:@"%ld", (long)[rank integerValue]];
     label.font = [UIFont fontWithName:@"DIN Alternate" size:17];
     label.textColor = [UIColor darkTextColor];
     [self addSubview:label];

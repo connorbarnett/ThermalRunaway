@@ -55,7 +55,7 @@
     }
     self.confirmationLabel.text = [NSString stringWithFormat:@"voted %@ on %@", voteTypeForConfirmationLabel, [companyInfo objectForKey:@"company"]];
 //    DraggableView *currCompany = (DraggableView *)[[self.view subviews] lastObject];
-    int index = self.view.subviews.count -2;
+    long index = self.view.subviews.count -2;
     if([[self.view.subviews objectAtIndex:index] isKindOfClass:[DraggableView class]]) {
         DraggableView *currCompany = (DraggableView *)[[self.view subviews] objectAtIndex:index];
         self.companyLabel.text = currCompany.company;

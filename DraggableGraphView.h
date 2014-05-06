@@ -8,6 +8,5 @@
 
 
 @interface DraggableGraphView : UIView
-- (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType;
 - (id)initWithFrame:(CGRect)frame andGraphType:(NSString *)graphType andData:(NSArray *)data;
 @end
