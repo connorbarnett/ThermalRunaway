@@ -113,11 +113,11 @@
 {
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
-    double heightScaleFactor = height/10;
+    double heightScaleFactor = height/4;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(context, 2.0);
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 5; i++) {
         int currentHeight = (i+1)*heightScaleFactor;
         CGContextMoveToPoint(context, 0, currentHeight);
         CGContextAddLineToPoint(context, width, currentHeight);
@@ -134,7 +134,7 @@
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double widthScaleFactor = width/(self.data.count-1);
-    double heightScaleFactor = height/100;
+    double heightScaleFactor = height/20;
     for(int i = 0; i < self.data.count-1; i++) {
         NSNumber *rank = [self.data objectAtIndex:i];
         NSNumber *nextRank = [self.data objectAtIndex:i+1];
