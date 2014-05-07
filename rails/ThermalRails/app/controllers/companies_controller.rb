@@ -28,8 +28,8 @@ class CompaniesController < ApplicationController
 
       arr.push({name: company.name,  netTotal: netTotal})
     }
-    arr.sort_by {|elem| -elem[:netTotal] }
-
+    arr.sort_by! {|elem| -elem[:netTotal] }
+    puts arr
     respond_to do |format|
       format.html {render json: @companies }#temporary
       format.json { render json: arr }
