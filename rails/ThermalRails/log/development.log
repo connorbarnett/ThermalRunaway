@@ -45804,3 +45804,41 @@ Processing by CompaniesController#getall as JSON
   [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 3]]
   [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 3]]
 Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-08 12:38:45 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/robertdunlevie/.rvm/gems/ruby-2.0.0-p451@global/gems/railties-4.0.4/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/companies.json/?page=1" for 127.0.0.1 at 2014-05-08 12:38:56 -0700
+Processing by CompaniesController#index as JSON
+  Parameters: {"page"=>"1"}
+  [1m[36mCompany Load (0.5ms)[0m  [1mSELECT "companies".* FROM "companies" LIMIT 5 OFFSET 0[0m
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/company/getall.json" for 127.0.0.1 at 2014-05-08 12:38:57 -0700
+Processing by CompaniesController#getall as JSON
+  [1m[35mCompany Load (0.1ms)[0m  SELECT "companies".* FROM "companies"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'up_vote'[0m  [["company_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."company_id" = ? AND "votes"."vote_type" = 'down_vote'  [["company_id", 3]]
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/vote.json" for 127.0.0.1 at 2014-05-08 12:38:58 -0700
+Processing by CompaniesController#vote as JSON
+  Parameters: {"device_id"=>"85A518B6-7FCA-4818-B442-4F17DD1F30C5", "name"=>"uber", "vote_location"=>"51.509980,-0.133700", "vote_type"=>"down_vote"}
+Can't verify CSRF token authenticity
+  [1m[36mCompany Load (0.1ms)[0m  [1mSELECT "companies".* FROM "companies" WHERE "companies"."name" = 'uber' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "votes" ("company", "company_id", "created_at", "device_id", "updated_at", "vote_location", "vote_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["company", "uber"], ["company_id", 3], ["created_at", Thu, 08 May 2014 19:38:58 UTC +00:00], ["device_id", "85A518B6-7FCA-4818-B442-4F17DD1F30C5"], ["updated_at", Thu, 08 May 2014 19:38:58 UTC +00:00], ["vote_location", "51.509980,-0.133700"], ["vote_type", "down_vote"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 2.3ms)
