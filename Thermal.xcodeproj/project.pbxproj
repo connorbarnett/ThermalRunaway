@@ -27,6 +27,7 @@
 		EB3F104A18EE35FF0078FD8E /* HotOrNotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3F104918EE35FF0078FD8E /* HotOrNotTests.m */; };
 		EB6D9C8D19047E8B003AD400 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */; };
 		EBB2D38818EE4985003021BF /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2D38718EE4985003021BF /* OverlayView.m */; };
+		EBDC422D191C718C00B8AC9D /* ComparisonViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDC422C191C718C00B8AC9D /* ComparisonViewVC.m */; };
 		FF283654190788FB00B683A1 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283630190788FB00B683A1 /* AFHTTPRequestOperation.m */; };
 		FF283655190788FB00B683A1 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283632190788FB00B683A1 /* AFHTTPRequestOperationManager.m */; };
 		FF283656190788FB00B683A1 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283634190788FB00B683A1 /* AFHTTPSessionManager.m */; };
@@ -90,6 +91,8 @@
 		EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EBB2D38618EE4985003021BF /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		EBB2D38718EE4985003021BF /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		EBDC422B191C718C00B8AC9D /* ComparisonViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComparisonViewVC.h; sourceTree = "<group>"; };
+		EBDC422C191C718C00B8AC9D /* ComparisonViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComparisonViewVC.m; sourceTree = "<group>"; };
 		FF28362F190788FB00B683A1 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FF283630190788FB00B683A1 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FF283631190788FB00B683A1 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 		EB3F100F18EE35FE0078FD8E = {
 			isa = PBXGroup;
 			children = (
+				EBDC422B191C718C00B8AC9D /* ComparisonViewVC.h */,
+				EBDC422C191C718C00B8AC9D /* ComparisonViewVC.m */,
 				FF28362E190788FB00B683A1 /* AFNetworking */,
 				FF283642190788FB00B683A1 /* UIKit+AFNetworking */,
 				EB3F102D18EE35FE0078FD8E /* Main_iPhone.storyboard */,
@@ -427,6 +432,7 @@
 				FF283658190788FB00B683A1 /* AFSecurityPolicy.m in Sources */,
 				EB35008918EE3BC8009220E4 /* DraggableView.m in Sources */,
 				FF283664190788FB00B683A1 /* UIWebView+AFNetworking.m in Sources */,
+				EBDC422D191C718C00B8AC9D /* ComparisonViewVC.m in Sources */,
 				EB35008618EE3B9B009220E4 /* CompanyView.m in Sources */,
 				FFF1C343190767BD00A24A99 /* HoNManager.m in Sources */,
 				FF28365F190788FB00B683A1 /* UIAlertView+AFNetworking.m in Sources */,
