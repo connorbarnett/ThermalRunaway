@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.paginate(:order => "name ASC", :page => params[:page], :per_page => 5)
+    @companies = Company.paginate(:page => params[:page], :per_page => 5)
     arr = Array.new
     @companies.each{ |company|
       arr.push({name: company.name})
@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
 
       arr.push({name: company.name,  netTotal: netTotal})
     }
-    arr.sort_by {|elem| -elem[:netTotal] }
+    arr.sort_by! {|elem| -elem[:netTotal] }
 
     respond_to do |format|
       format.html {render json: @companies }#temporary
