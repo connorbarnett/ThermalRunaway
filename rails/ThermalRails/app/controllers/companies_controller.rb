@@ -18,6 +18,10 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def compare
+    puts hello world
+  end
+
   #GET /company/getall
   #GET /company/getall.json
   def getall

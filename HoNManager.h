@@ -25,6 +25,7 @@
 - (void)loadVoteTypesForCompany:(NSString *) company;
 - (void)clearUserDefaults;
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company;
+- (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany;
 - (void)addCompanyToDeck:(NSString *)companyName;
 - (void)removeTopCompanyFromDeck;
 - (BOOL)deckEmpty;

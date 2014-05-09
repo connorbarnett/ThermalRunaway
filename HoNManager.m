@@ -201,6 +201,25 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     }];
 }
 
+- (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany{
+    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
+    
+    NSDictionary *parameters = @{@"winningCompany" : winningCompany, @"losingCompany" : losingCompany, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId};
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager POST:@"compare.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Made succesful POST Request");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Posting Vote"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+}
+
 -(void)clearUserDefaults{
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
