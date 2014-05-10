@@ -239,7 +239,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 - (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany{
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
     
-    NSDictionary *parameters = @{@"winningCompany" : winningCompany, @"losingCeompany" : losingCompany, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId};
+    NSDictionary *parameters = @{@"winningCompany" : winningCompany, @"losingCompany" : losingCompany, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

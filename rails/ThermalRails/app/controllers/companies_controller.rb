@@ -102,6 +102,9 @@ class CompaniesController < ApplicationController
   
   def compare
     winningCompany = Company.find_by(name: params[:winningCompany])
+    puts params[:winningCompany]
+
+    puts params[:losingCompany]
     losingCompany = Company.find_by(name: params[:losingCompany])
     comparison = Comparison.new
     comparison.winningCompany = params[:winningCompany]
@@ -109,8 +112,10 @@ class CompaniesController < ApplicationController
     comparison.deviceId = params[:device_id]
     comparison.voteLocation = params[:vote_location]
 
-    puts winningCompany
-    puts comparison
+    # puts winningCompany.name
+    # puts losingCompany.name + "ASD"
+
+    # puts comparison
 
     if !winningCompany.nil?
       winningCompany.comparisons << comparison
