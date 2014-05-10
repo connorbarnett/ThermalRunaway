@@ -18,10 +18,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def compare
-    puts hello world
-  end
-
   #GET /company/getall
   #GET /company/getall.json
   def getall
@@ -84,6 +80,31 @@ class CompaniesController < ApplicationController
     end
   end
   
+  def compare
+    winningCompany = Company.find_by(name: params[:winningCompany])
+    losingCompany = Company.find_by(name: params[:losingCompany])
+    comparison = Comparison.new
+    comparison.winningCompany = params[:winningCompany]
+    comparison.losingCompany = params[:losingCompany]
+    comparison.deviceId = params[:device_id]
+    comparison.voteLocation = params[:vote_location]
+
+    if !winningCompany.nil?
+      winningCompany.comparisons << comparison
+
+    if !losingCompany.nil?
+      losingCompany.comparisons << comparison
+
+    respond_to do |format|
+      if winningCompany.save and losingCompany.save
+        format.html { redirect_to winningCompany, notice: 'Comparison succesfully recorded.' }
+        format.json { render json: winningCompany }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: winningCompany, status: :unprocessable_entity }
+    end
+  end
+
   # POST /vote
   # Records a single vote for a single company
   # Need to pass in params of name, vote_type and vote_location
