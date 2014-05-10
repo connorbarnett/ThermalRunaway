@@ -23,6 +23,7 @@
 @end
 
 @implementation ComparisonViewVC
+static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
 
 -(HoNManager *)myHonManager
 {
@@ -45,12 +46,14 @@
 
 -(void)updateCompanyCards
 {
-    NSArray *curComparisonDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"curComparisonDeck"];
-    for (NSDictionary *companyCard in curComparisonDeck) {
-        NSString *companyName = [companyCard objectForKey:@"name"];
-        [self.companies addObject:companyName];
+    if([self.companies count] == 0){
+        NSArray *curComparisonDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"curComparisonDeck"];
+        for (NSDictionary *companyCard in curComparisonDeck) {
+            NSString *companyName = [companyCard objectForKey:@"name"];
+            [self.companies addObject:companyName];
+        }
     }
-    
+    NSLog(@"%lu",(unsigned long)[self.companies count]);
     int firstCompanyIndex = arc4random() % [self.companies count];
     int secondCompanyIndex = arc4random() % [self.companies count];
     while (secondCompanyIndex == firstCompanyIndex) {
@@ -60,10 +63,48 @@
     
     NSString *secondCompanyStr = [self.companies objectAtIndex:secondCompanyIndex];
 
-    [self.firstButton setImage:[UIImage imageNamed:firstCompanyStr] forState:UIControlStateNormal];
-    self.firstCompanyLabel.text = firstCompanyStr;
-    [self.secondButton setImage:[UIImage imageNamed:secondCompanyStr] forState:UIControlStateNormal];
-    self.secondCompanyLabel.text = secondCompanyStr;
+    [self loadImageDataForCompany:firstCompanyStr andSide:true];
+    [self loadImageDataForCompany:secondCompanyStr andSide:false];
+}
+
+- (void)loadImageDataForCompany:(NSString *) company andSide:(BOOL *)first{
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@compareimage",company]]){
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, company]];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imageData];
+                if(first){
+                    [self.firstButton setImage:image forState:UIControlStateNormal];
+                    self.firstCompanyLabel.text = company;
+                }
+                else{
+                    [self.secondButton setImage:image forState:UIControlStateNormal];
+                    self.secondCompanyLabel.text = company;
+                }
+            });
+            [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@compareimage",company]];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        });
+        
+    }
+    else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@compareimage",company]];
+            UIImage *image = [UIImage imageWithData:imageData];
+            if(first){
+                [self.firstButton setImage:image forState:UIControlStateNormal];
+                self.firstCompanyLabel.text = company;
+            }
+            else{
+                [self.secondButton setImage:image forState:UIControlStateNormal];
+                self.secondCompanyLabel.text = company;
+            }
+        });
+    }
+
 }
 
 - (void)viewDidLoad
