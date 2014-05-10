@@ -89,11 +89,16 @@ class CompaniesController < ApplicationController
     comparison.deviceId = params[:device_id]
     comparison.voteLocation = params[:vote_location]
 
+    puts winningCompany
+    puts comparison
+
     if !winningCompany.nil?
       winningCompany.comparisons << comparison
+    end
 
     if !losingCompany.nil?
       losingCompany.comparisons << comparison
+    end
 
     respond_to do |format|
       if winningCompany.save and losingCompany.save
@@ -102,6 +107,7 @@ class CompaniesController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.json { render json: winningCompany, status: :unprocessable_entity }
+      end
     end
   end
 
