@@ -45,6 +45,7 @@
 
 -(void)updateCompanyCards
 {
+    NSLog(@"updating company cards");
     int firstCompanyIndex = arc4random() % [self.companies count];
     int secondCompanyIndex = arc4random() % [self.companies count];
     while (secondCompanyIndex == firstCompanyIndex) {
@@ -62,8 +63,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self updateCompanyCards];
-    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCurComparisonDeckInfo"
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self updateCompanyCards];
+                                                  }];
+    [self.myHonManager loadComparisonsDeck];
 }
 
 -(NSArray *)companies

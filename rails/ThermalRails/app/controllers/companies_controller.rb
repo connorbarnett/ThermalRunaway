@@ -35,6 +35,26 @@ class CompaniesController < ApplicationController
       format.json { render json: arr }
     end
   end
+
+  #GET /company/getcomparisons
+  #GET /company/getcomparisons.json
+  def getcomparisons
+    device_id = params[:device_id]
+    companies = Company.all
+    arr = Array.new
+    companies.each{ |company|
+      votes = company.votes
+      if votes.where(device_id: device_id).count != 0
+        arr.push(company)#for now just adding everything
+      end
+    }
+
+    respond_to do |format|
+      format.html {render json: companies }#temporary
+      format.json { render json: arr }
+    end
+  end
+
   # GET /companies/1
   # GET /companies/1.json
   def show
