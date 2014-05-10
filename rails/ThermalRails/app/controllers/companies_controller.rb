@@ -44,9 +44,9 @@ class CompaniesController < ApplicationController
     arr = Array.new
     companies.each{ |company|
       votes = company.votes
-      if votes.where(device_id: device_id).count != 0
+      # if votes.where(device_id: device_id).count != 0
         arr.push(company)#for now just adding everything
-      end
+      # end
     }
 
     respond_to do |format|

@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *secondButton;
 @property (weak, nonatomic) IBOutlet UIButton *firstButton;
 
-@property (strong, nonatomic) NSArray* companies;
+@property (strong, nonatomic) NSMutableArray* companies;
 @property (weak, nonatomic) IBOutlet UILabel *firstCompanyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondCompanyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *topConfirmationLabel;
@@ -45,7 +45,12 @@
 
 -(void)updateCompanyCards
 {
-    NSLog(@"updating company cards");
+    NSArray *curComparisonDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"curComparisonDeck"];
+    for (NSDictionary *companyCard in curComparisonDeck) {
+        NSString *companyName = [companyCard objectForKey:@"name"];
+        [self.companies addObject:companyName];
+    }
+    
     int firstCompanyIndex = arc4random() % [self.companies count];
     int secondCompanyIndex = arc4random() % [self.companies count];
     while (secondCompanyIndex == firstCompanyIndex) {
@@ -54,6 +59,7 @@
     NSString *firstCompanyStr = [self.companies objectAtIndex:firstCompanyIndex];
     
     NSString *secondCompanyStr = [self.companies objectAtIndex:secondCompanyIndex];
+
     [self.firstButton setImage:[UIImage imageNamed:firstCompanyStr] forState:UIControlStateNormal];
     self.firstCompanyLabel.text = firstCompanyStr;
     [self.secondButton setImage:[UIImage imageNamed:secondCompanyStr] forState:UIControlStateNormal];
@@ -72,9 +78,9 @@
     [self.myHonManager loadComparisonsDeck];
 }
 
--(NSArray *)companies
+-(NSMutableArray *)companies
 {
-    if(!_companies) _companies = [NSArray arrayWithObjects:@"nextdoor", @"facebook", @"soundcloud", @"lyft", @"asana", @"ideo", nil];
+    if(!_companies) _companies = [[NSMutableArray alloc] init];
     return _companies;
 }
 
