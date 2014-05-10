@@ -53,7 +53,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             [self.companies addObject:companyName];
         }
     }
-    NSLog(@"%lu",(unsigned long)[self.companies count]);
+
     int firstCompanyIndex = arc4random() % [self.companies count];
     int secondCompanyIndex = arc4random() % [self.companies count];
     while (secondCompanyIndex == firstCompanyIndex) {
@@ -77,6 +77,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage *image = [UIImage imageWithData:imageData];
                 if(first){
+                    NSLog(@"logging");
                     [self.firstButton setImage:image forState:UIControlStateNormal];
                     self.firstCompanyLabel.text = company;
                 }
