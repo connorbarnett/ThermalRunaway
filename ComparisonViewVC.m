@@ -31,6 +31,12 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return _myHonManager;
 }
 
+- (IBAction)comparisonSkipped:(id)sender {
+    [self updateCompanyCards];
+    self.topConfirmationLabel.text = [NSString stringWithFormat:@"skipped %@", self.firstCompanyLabel.text];
+    self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"and %@", self.secondCompanyLabel.text];
+}
+
 - (IBAction)firstCardTouched:(id)sender{
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.secondCompanyLabel.text];
