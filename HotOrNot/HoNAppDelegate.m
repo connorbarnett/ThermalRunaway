@@ -28,7 +28,7 @@
     }
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     [myHonManager loadAllCompanyCards];
-    [myHonManager startLocationServices];
+//    [myHonManager startLocationServices];
     [myHonManager resetPageCount];
     return YES;
 }
