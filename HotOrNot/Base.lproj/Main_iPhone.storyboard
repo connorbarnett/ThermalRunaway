@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eyF-RW-MVZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eyF-RW-MVZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -132,7 +132,7 @@
             </objects>
             <point key="canvasLocation" x="1481" y="602"/>
         </scene>
-        <!--Comparison ViewVC-->
+        <!--Comparison ViewVC - compare-->
         <scene sceneID="un8-Sw-69T">
             <objects>
                 <viewController id="tUi-Mf-REd" customClass="ComparisonViewVC" sceneMemberID="viewController">
@@ -198,7 +198,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="xr7-2u-DF1"/>
+                    <tabBarItem key="tabBarItem" title="compare" image="scale" id="xr7-2u-DF1"/>
                     <connections>
                         <outlet property="bottomConfirmationLabel" destination="T0N-7g-TpU" id="WUY-VZ-fmO"/>
                         <outlet property="firstButton" destination="0rl-4u-Ys2" id="v2D-Bs-jpJ"/>
@@ -355,6 +355,7 @@
         <image name="Opposite_Arrows" width="23" height="24"/>
         <image name="logo" width="960" height="960"/>
         <image name="nest" width="318" height="159"/>
+        <image name="scale" width="32" height="32"/>
         <image name="snapchat" width="300" height="225"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
