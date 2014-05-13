@@ -368,12 +368,9 @@
         <image name="ChartUp" width="25" height="21"/>
         <image name="Opposite_Arrows" width="23" height="24"/>
         <image name="logo" width="960" height="960"/>
-<<<<<<< HEAD
         <image name="nest" width="318" height="159"/>
         <image name="scale" width="32" height="32"/>
         <image name="snapchat" width="300" height="225"/>
-=======
->>>>>>> aadfd89454a9f8ae1fe765a1a084f709b12bdc93
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

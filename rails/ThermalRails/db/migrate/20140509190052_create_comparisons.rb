@@ -6,8 +6,6 @@ class CreateComparisons < ActiveRecord::Migration
       t.string :deviceId
       t.string :voteLocation
 
-      t.belongs_to :company
-
       t.timestamps
     end
   end
