@@ -56,6 +56,29 @@
     [super viewWillAppear:animated];
     self.screenName = @"About Screen";
 }
+- (IBAction)shareButton:(id)sender {
+    NSString *text = @"check out thermal runaway, the new way to rate your favorite companies!";
+    NSURL *url = [NSURL URLWithString:@"http://stanford.edu/"];
+    UIImage *image = [UIImage imageNamed:@"logo"];
+
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:@[text, url, image]
+     applicationActivities:nil];
+    
+    controller.excludedActivityTypes = @[UIActivityTypeMessage,
+                                         UIActivityTypePrint,
+                                         UIActivityTypeCopyToPasteboard,
+                                         UIActivityTypeAssignToContact,
+                                         UIActivityTypeSaveToCameraRoll,
+                                         UIActivityTypeAddToReadingList,
+                                         UIActivityTypePostToFlickr,
+                                         UIActivityTypePostToVimeo,
+                                         UIActivityTypePostToTencentWeibo,
+                                         UIActivityTypeAirDrop];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
 
 - (void) incomingVote:(NSNotification *)notification{
     NSDictionary *companyInfo = [notification object];
