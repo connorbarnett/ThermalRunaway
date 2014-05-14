@@ -19,6 +19,7 @@
 @property(strong, nonatomic) NSMutableArray *companiesFromServer;
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
 @property(strong, nonatomic) HoNManager *myHonManager;
+@property(strong, atomic) NSString *screenName;
 @end
 
 @implementation HoNVC
@@ -42,6 +43,11 @@
     if([self.myHonManager deckEmpty]){
         [self.myHonManager loadDeck];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.screenName = @"About Screen";
 }
 
 - (void) incomingVote:(NSNotification *)notification{

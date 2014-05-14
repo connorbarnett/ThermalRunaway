@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513062525) do
+ActiveRecord::Schema.define(version: 20140513223936) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -20,16 +20,9 @@ ActiveRecord::Schema.define(version: 20140513062525) do
   end
 
   create_table "comparisons", force: true do |t|
-    t.string   "winningCompany"
-    t.string   "losingCompany"
-    t.string   "deviceId"
-    t.string   "voteLocation"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_id"
   end
-
-  add_index "comparisons", ["company_id"], name: "index_comparisons_on_company_id"
 
   create_table "votes", force: true do |t|
     t.string   "company"

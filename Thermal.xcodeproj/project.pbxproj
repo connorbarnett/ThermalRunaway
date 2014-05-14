@@ -45,6 +45,13 @@
 		FF283662190788FB00B683A1 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28364F190788FB00B683A1 /* UIProgressView+AFNetworking.m */; };
 		FF283663190788FB00B683A1 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */; };
 		FF283664190788FB00B683A1 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */; };
+		FF876B5419230C6B00FC0C24 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = FF876B2119230C6B00FC0C24 /* Changelog.txt */; };
+		FF876B7319230C6B00FC0C24 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = FF876B5319230C6B00FC0C24 /* Readme.txt */; };
+		FF876B7819230C7300FC0C24 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF876B7719230C7300FC0C24 /* libGoogleAnalyticsServices.a */; };
+		FF876B7A19230F1800FC0C24 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF876B7919230F1800FC0C24 /* CoreData.framework */; };
+		FF876B7C19230F2200FC0C24 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF876B7B19230F2200FC0C24 /* AdSupport.framework */; };
+		FF876B7E19230F3400FC0C24 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF876B7D19230F3400FC0C24 /* SystemConfiguration.framework */; };
+		FF876B8019230F9F00FC0C24 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF876B7F19230F9F00FC0C24 /* libz.dylib */; };
 		FFB2B7F71914543D00649C0F /* DraggableGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB2B7F61914543D00649C0F /* DraggableGraphView.m */; };
 		FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC130BA19133B9F00A99035 /* MBProgressHUD.m */; };
 		FFF1C343190767BD00A24A99 /* HoNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C342190767BD00A24A99 /* HoNManager.m */; };
@@ -129,6 +136,19 @@
 		FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		FF283652190788FB00B683A1 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		FF876B2119230C6B00FC0C24 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
+		FF876B4D19230C6B00FC0C24 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		FF876B4E19230C6B00FC0C24 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		FF876B4F19230C6B00FC0C24 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		FF876B5019230C6B00FC0C24 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		FF876B5119230C6B00FC0C24 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		FF876B5219230C6B00FC0C24 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		FF876B5319230C6B00FC0C24 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		FF876B7719230C7300FC0C24 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		FF876B7919230F1800FC0C24 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FF876B7B19230F2200FC0C24 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		FF876B7D19230F3400FC0C24 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FF876B7F19230F9F00FC0C24 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FFB2B7F51914543D00649C0F /* DraggableGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableGraphView.h; sourceTree = "<group>"; };
 		FFB2B7F61914543D00649C0F /* DraggableGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableGraphView.m; sourceTree = "<group>"; };
 		FFC130B919133B9F00A99035 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -142,9 +162,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF876B8019230F9F00FC0C24 /* libz.dylib in Frameworks */,
+				FF876B7E19230F3400FC0C24 /* SystemConfiguration.framework in Frameworks */,
+				FF876B7C19230F2200FC0C24 /* AdSupport.framework in Frameworks */,
+				FF876B7A19230F1800FC0C24 /* CoreData.framework in Frameworks */,
 				EB6D9C8D19047E8B003AD400 /* CoreLocation.framework in Frameworks */,
 				EB3F101E18EE35FE0078FD8E /* CoreGraphics.framework in Frameworks */,
 				EB3F102018EE35FE0078FD8E /* UIKit.framework in Frameworks */,
+				FF876B7819230C7300FC0C24 /* libGoogleAnalyticsServices.a in Frameworks */,
 				EB3F101C18EE35FE0078FD8E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +190,7 @@
 		EB3F100F18EE35FE0078FD8E = {
 			isa = PBXGroup;
 			children = (
+				FF876B2019230C6B00FC0C24 /* GoogleAnalytics */,
 				FF28362E190788FB00B683A1 /* AFNetworking */,
 				FF283642190788FB00B683A1 /* UIKit+AFNetworking */,
 				EB3F102D18EE35FE0078FD8E /* Main_iPhone.storyboard */,
@@ -207,6 +233,10 @@
 		EB3F101A18EE35FE0078FD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF876B7F19230F9F00FC0C24 /* libz.dylib */,
+				FF876B7D19230F3400FC0C24 /* SystemConfiguration.framework */,
+				FF876B7B19230F2200FC0C24 /* AdSupport.framework */,
+				FF876B7919230F1800FC0C24 /* CoreData.framework */,
 				EB6D9C8C19047E8B003AD400 /* CoreLocation.framework */,
 				EB3F101B18EE35FE0078FD8E /* Foundation.framework */,
 				EB3F101D18EE35FE0078FD8E /* CoreGraphics.framework */,
@@ -306,6 +336,30 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		FF876B2019230C6B00FC0C24 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				FF876B7719230C7300FC0C24 /* libGoogleAnalyticsServices.a */,
+				FF876B2119230C6B00FC0C24 /* Changelog.txt */,
+				FF876B4C19230C6B00FC0C24 /* Library */,
+				FF876B5319230C6B00FC0C24 /* Readme.txt */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		FF876B4C19230C6B00FC0C24 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				FF876B4D19230C6B00FC0C24 /* GAI.h */,
+				FF876B4E19230C6B00FC0C24 /* GAIDictionaryBuilder.h */,
+				FF876B4F19230C6B00FC0C24 /* GAIFields.h */,
+				FF876B5019230C6B00FC0C24 /* GAILogger.h */,
+				FF876B5119230C6B00FC0C24 /* GAITrackedViewController.h */,
+				FF876B5219230C6B00FC0C24 /* GAITracker.h */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,9 +440,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF876B7319230C6B00FC0C24 /* Readme.txt in Resources */,
 				EB3F103718EE35FE0078FD8E /* Images.xcassets in Resources */,
 				EB3F102F18EE35FE0078FD8E /* Main_iPhone.storyboard in Resources */,
 				EB3F102618EE35FE0078FD8E /* InfoPlist.strings in Resources */,
+				FF876B5419230C6B00FC0C24 /* Changelog.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +624,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HotOrNot/Thermal-Prefix.pch";
 				INFOPLIST_FILE = "HotOrNot/Thermal-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleAnalytics",
+				);
 				PRODUCT_NAME = Thermal;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -584,6 +644,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HotOrNot/Thermal-Prefix.pch";
 				INFOPLIST_FILE = "HotOrNot/Thermal-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleAnalytics",
+				);
 				PRODUCT_NAME = Thermal;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

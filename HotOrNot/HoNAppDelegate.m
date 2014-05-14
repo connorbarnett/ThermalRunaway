@@ -8,11 +8,23 @@
 
 #import "HoNAppDelegate.h"
 #import "HoNManager.h"
+#import "GAI.h"
 
 @implementation HoNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{// Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    NSLog([[[GAI sharedInstance] defaultTracker] name]);
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50962137-1"];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
         dispatch_async(dispatch_get_main_queue(), ^{
