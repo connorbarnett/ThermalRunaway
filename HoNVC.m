@@ -12,6 +12,9 @@
 #include "HoNManager.h"
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
@@ -43,6 +46,10 @@
     if([self.myHonManager deckEmpty]){
         [self.myHonManager loadDeck];
     }
+    [[GAI sharedInstance].defaultTracker  send:[[GAIDictionaryBuilder createEventWithCategory:@"screen_load"
+                                                                                       action:@"load_homepage"                                                             label:@"HoNVC Loaded"
+                                                                                        value:nil] build]];
+    [[GAI sharedInstance] dispatch];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

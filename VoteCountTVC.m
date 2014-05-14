@@ -51,6 +51,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[GAI sharedInstance].defaultTracker  send:[[GAIDictionaryBuilder createEventWithCategory:@"screen_load"
+                                                          action:@"load_table"                                                             label:@"TVC Loaded"
+                                                           value:nil] build]];
+    [[GAI sharedInstance] dispatch];
 }
 
 -(void) setTableDeck {
