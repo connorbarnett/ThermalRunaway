@@ -10,7 +10,10 @@
 #import "VoteCountTVC.h"
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
+#import "GAI.h"
 #import "MBProgressHUD.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @interface VoteCountTVC ()
 @property (strong, nonatomic) IBOutlet UITableView *reloadWheel;
@@ -59,6 +62,13 @@
 }
 
 - (IBAction)refresh:(id)sender {
+    NSMutableDictionary *event =
+    [[GAIDictionaryBuilder createEventWithCategory:@"UI"
+                                            action:@"buttonPress"
+                                             label:@"dispatchRefresh"
+                                             value:nil] build];
+    [[GAI sharedInstance].defaultTracker send:event];
+    [[GAI sharedInstance] dispatch];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.myHonManager loadAllCompanyCards];
 }
