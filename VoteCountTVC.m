@@ -11,6 +11,7 @@
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
 #import "GAI.h"
+#import "GAIFields.h"
 #import "MBProgressHUD.h"
 #import "GAIDictionaryBuilder.h"
 
@@ -46,6 +47,12 @@
 {
     [super viewWillAppear:YES];
     [self.myHonManager loadAllCompanyCards];
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker set:kGAIScreenName value:@"Table View Screen"];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)viewDidLoad

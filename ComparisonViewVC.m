@@ -8,6 +8,9 @@
 
 #import "ComparisonViewVC.h"
 #import "HoNManager.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface ComparisonViewVC ()
 @property (weak, nonatomic) IBOutlet UIButton *secondButton;
@@ -31,6 +34,14 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return _myHonManager;
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker set:kGAIScreenName value:@"Comparison Screen"];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
 - (IBAction)comparisonSkipped:(id)sender {
     [self updateCompanyCards];
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"skipped %@", self.firstCompanyLabel.text];

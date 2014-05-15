@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
 #import "GAI.h"
+#import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
 
 
@@ -22,7 +23,6 @@
 @property(strong, nonatomic) NSMutableArray *companiesFromServer;
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
 @property(strong, nonatomic) HoNManager *myHonManager;
-@property(strong, atomic) NSString *screenName;
 @end
 
 @implementation HoNVC
@@ -46,15 +46,15 @@
     if([self.myHonManager deckEmpty]){
         [self.myHonManager loadDeck];
     }
-    [[GAI sharedInstance].defaultTracker  send:[[GAIDictionaryBuilder createEventWithCategory:@"screen_load"
-                                                                                       action:@"load_homepage"                                                             label:@"HoNVC Loaded"
-                                                                                        value:nil] build]];
-    [[GAI sharedInstance] dispatch];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.screenName = @"About Screen";
+    id tracker = [[GAI sharedInstance] defaultTracker];
+
+    [tracker set:kGAIScreenName value:@"Home Screen"];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 - (IBAction)shareButton:(id)sender {
     NSString *text = @"check out thermal runaway, the new way to rate your favorite companies!";
