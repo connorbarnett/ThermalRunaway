@@ -91,7 +91,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [tracker set:kGAIScreenName value:[NSString stringWithFormat:@"Company Screen For %@", self.company]];
     
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-    [tracker dispatch];
+    [[GAI sharedInstance] dispatch];
 }
 
 -(void)updateInfo{

@@ -94,10 +94,12 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
+            NSLog(@"one");
             self.originalPoint = self.center;
             break;
         };
         case UIGestureRecognizerStateChanged:{
+            NSLog(@"two");
             CGFloat rotationStrength = MIN(xDistance / 320, 1);
             CGFloat rotationAngel = (CGFloat) (2*M_PI/16 * rotationStrength);
             CGFloat scaleStrength = 1 - fabsf(rotationStrength) / 4;
@@ -126,6 +128,22 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 [self removeFromSuperview];
             }
             else {
+                if(xDistance > 0){
+                    NSDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"returnedDrag"
+                                                            action:[NSString stringWithFormat:@"dragRightNoVoteFor%@", self.company]
+                                                             label:[NSString stringWithFormat:@"dragRightNoVoteFor%@", self.company]
+                                                             value:nil] build];
+                    [[GAI sharedInstance].defaultTracker send:event];
+                    [[GAI sharedInstance] dispatch];
+                }
+                if(xDistance < 0){
+                    NSDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"returnedDrag"
+                                                            action:[NSString stringWithFormat:@"dragLeftNoVoteFor%@", self.company]
+                                                             label:[NSString stringWithFormat:@"dragLeftNoVoteFor%@", self.company]
+                                                             value:nil] build];
+                    [[GAI sharedInstance].defaultTracker send:event];
+                    [[GAI sharedInstance] dispatch];
+                }
                 [self resetViewPositionAndTransformations];
             }
             break;

@@ -53,7 +53,7 @@
     [tracker set:kGAIScreenName value:@"Table View Screen"];
     
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-    [tracker dispatch];
+    [[GAI sharedInstance] dispatch];
 
 }
 

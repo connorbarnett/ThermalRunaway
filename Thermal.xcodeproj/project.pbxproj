@@ -662,7 +662,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = Thermal;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "104B3D56-BEF4-4341-9BDF-9CAD429F61BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -686,7 +686,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = Thermal;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "104B3D56-BEF4-4341-9BDF-9CAD429F61BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
