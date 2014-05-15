@@ -41,6 +41,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [tracker set:kGAIScreenName value:@"Comparison Screen"];
     
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    [tracker dispatch];
+
 }
 - (IBAction)comparisonSkipped:(id)sender {
     [self updateCompanyCards];

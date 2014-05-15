@@ -55,10 +55,12 @@
     [tracker set:kGAIScreenName value:@"Home Screen"];
     
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    [tracker dispatch];
+
 }
 - (IBAction)shareButton:(id)sender {
     NSString *text = @"check out thermal runaway, the new way to rate your favorite companies!";
-    NSURL *url = [NSURL URLWithString:@"http://stanford.edu/"];
+    NSURL *url = [NSURL URLWithString:@"http://stanford.edu/~connorb/cgi-bin/support.html/"];
     UIImage *image = [UIImage imageNamed:@"logo"];
 
     UIActivityViewController *controller =
@@ -66,8 +68,7 @@
      initWithActivityItems:@[text, url, image]
      applicationActivities:nil];
     
-    controller.excludedActivityTypes = @[UIActivityTypeMessage,
-                                         UIActivityTypePrint,
+    controller.excludedActivityTypes = @[UIActivityTypePrint,
                                          UIActivityTypeCopyToPasteboard,
                                          UIActivityTypeAssignToContact,
                                          UIActivityTypeSaveToCameraRoll,
