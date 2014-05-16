@@ -94,12 +94,10 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
-            NSLog(@"one");
             self.originalPoint = self.center;
             break;
         };
         case UIGestureRecognizerStateChanged:{
-            NSLog(@"two");
             CGFloat rotationStrength = MIN(xDistance / 320, 1);
             CGFloat rotationAngel = (CGFloat) (2*M_PI/16 * rotationStrength);
             CGFloat scaleStrength = 1 - fabsf(rotationStrength) / 4;

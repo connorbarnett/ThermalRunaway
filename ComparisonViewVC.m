@@ -48,19 +48,20 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self updateCompanyCards];
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"skipped %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"and %@", self.secondCompanyLabel.text];
+    [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:true];
 }
 
 - (IBAction)firstCardTouched:(id)sender{
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.secondCompanyLabel.text];
-    [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text];
+    [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:false];
     [self updateCompanyCards];
 }
 
 - (IBAction)secondCardTouched:(id)sender {
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.secondCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.firstCompanyLabel.text];
-    [self.myHonManager castComparisonForCompany:self.secondCompanyLabel.text overCompany:self.firstCompanyLabel.text];
+    [self.myHonManager castComparisonForCompany:self.secondCompanyLabel.text overCompany:self.firstCompanyLabel.text wasSkip:false];
     [self updateCompanyCards];
 }
 
