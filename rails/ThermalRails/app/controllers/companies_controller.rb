@@ -109,6 +109,7 @@ class CompaniesController < ApplicationController
     comparison.losing_company = losingCompany
     comparison.device_id = params[:device_id]
     comparison.vote_location = params[:vote_location]
+    comparison.was_skip = params[:was_skip] == "1" ? true : false
 
     respond_to do |format|
       if comparison.save
