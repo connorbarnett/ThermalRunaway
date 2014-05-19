@@ -11,6 +11,7 @@
 #import "CompanyProfileVC.h"
 #import "HoNManager.h"
 #import "GAI.h"
+#import "GAIFields.h"
 #import "MBProgressHUD.h"
 #import "GAIDictionaryBuilder.h"
 
@@ -46,15 +47,14 @@
 {
     [super viewWillAppear:YES];
     [self.myHonManager loadAllCompanyCards];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [[GAI sharedInstance].defaultTracker  send:[[GAIDictionaryBuilder createEventWithCategory:@"screen_load"
-                                                          action:@"load_table"                                                             label:@"TVC Loaded"
-                                                           value:nil] build]];
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker set:kGAIScreenName value:@"Table View Screen"];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     [[GAI sharedInstance] dispatch];
+
 }
 
 -(void) setTableDeck {

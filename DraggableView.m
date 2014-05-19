@@ -8,6 +8,8 @@
 #import "DraggableView.h"
 #import "OverlayView.h"
 #import "HoNManager.h"
+#import "GAi.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface DraggableView ()
 @property(strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -29,6 +31,15 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company
 {
     self = [super initWithFrame:frame];
+    
+    NSMutableDictionary *event =
+    [[GAIDictionaryBuilder createEventWithCategory:@"cardLoad"
+                                            action:[NSString stringWithFormat:@"loading card For %@", self.company]
+                                             label:[NSString stringWithFormat:@"loading card For %@", self.company]
+                                             value:nil] build];
+    [[GAI sharedInstance].defaultTracker send:event];
+    [[GAI sharedInstance] dispatch];
+    
     if (!self) return nil;
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
@@ -115,6 +126,22 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 [self removeFromSuperview];
             }
             else {
+                if(xDistance > 0){
+                    NSDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"returnedDrag"
+                                                            action:[NSString stringWithFormat:@"dragRightNoVoteFor%@", self.company]
+                                                             label:[NSString stringWithFormat:@"dragRightNoVoteFor%@", self.company]
+                                                             value:nil] build];
+                    [[GAI sharedInstance].defaultTracker send:event];
+                    [[GAI sharedInstance] dispatch];
+                }
+                if(xDistance < 0){
+                    NSDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"returnedDrag"
+                                                            action:[NSString stringWithFormat:@"dragLeftNoVoteFor%@", self.company]
+                                                             label:[NSString stringWithFormat:@"dragLeftNoVoteFor%@", self.company]
+                                                             value:nil] build];
+                    [[GAI sharedInstance].defaultTracker send:event];
+                    [[GAI sharedInstance] dispatch];
+                }
                 [self resetViewPositionAndTransformations];
             }
             break;

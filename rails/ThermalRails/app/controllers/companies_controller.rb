@@ -105,21 +105,14 @@ class CompaniesController < ApplicationController
     winningCompany = Company.find_by(name: params[:winningCompany])
     losingCompany = Company.find_by(name: params[:losingCompany])
     comparison = Comparison.new
-    comparison.winningCompany = params[:winningCompany]
-    comparison.losingCompany = params[:losingCompany]
-    comparison.deviceId = params[:device_id]
-    comparison.voteLocation = params[:vote_location]
-
-    if !winningCompany.nil?
-      winningCompany.comparisons << comparison
-    end
-
-    if !losingCompany.nil?
-      losingCompany.comparisons << comparison
-    end
+    comparison.winning_company = winningCompany
+    comparison.losing_company = losingCompany
+    comparison.device_id = params[:device_id]
+    comparison.vote_location = params[:vote_location]
+    comparison.was_skip = params[:was_skip] == "1" ? true : false
 
     respond_to do |format|
-      if winningCompany.save and losingCompany.save
+      if comparison.save
         format.html { redirect_to winningCompany, notice: 'Comparison succesfully recorded.' }
         format.json { render json: winningCompany }
       else

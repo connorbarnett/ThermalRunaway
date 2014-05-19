@@ -54,6 +54,8 @@
 		FF876B8019230F9F00FC0C24 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF876B7F19230F9F00FC0C24 /* libz.dylib */; };
 		FFB2B7F71914543D00649C0F /* DraggableGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB2B7F61914543D00649C0F /* DraggableGraphView.m */; };
 		FFC130D619133B9F00A99035 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC130BA19133B9F00A99035 /* MBProgressHUD.m */; };
+		FFCC4FF019231B8000EB01A8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCC4FEF19231B8000EB01A8 /* Security.framework */; };
+		FFCC4FF219231B8700EB01A8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCC4FF119231B8700EB01A8 /* MessageUI.framework */; };
 		FFF1C343190767BD00A24A99 /* HoNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C342190767BD00A24A99 /* HoNManager.m */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +155,8 @@
 		FFB2B7F61914543D00649C0F /* DraggableGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableGraphView.m; sourceTree = "<group>"; };
 		FFC130B919133B9F00A99035 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		FFC130BA19133B9F00A99035 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		FFCC4FEF19231B8000EB01A8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FFCC4FF119231B8700EB01A8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FFF1C341190767BD00A24A99 /* HoNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoNManager.h; sourceTree = "<group>"; };
 		FFF1C342190767BD00A24A99 /* HoNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoNManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +166,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFCC4FF219231B8700EB01A8 /* MessageUI.framework in Frameworks */,
+				FFCC4FF019231B8000EB01A8 /* Security.framework in Frameworks */,
 				FF876B8019230F9F00FC0C24 /* libz.dylib in Frameworks */,
 				FF876B7E19230F3400FC0C24 /* SystemConfiguration.framework in Frameworks */,
 				FF876B7C19230F2200FC0C24 /* AdSupport.framework in Frameworks */,
@@ -233,6 +239,8 @@
 		EB3F101A18EE35FE0078FD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFCC4FF119231B8700EB01A8 /* MessageUI.framework */,
+				FFCC4FEF19231B8000EB01A8 /* Security.framework */,
 				FF876B7F19230F9F00FC0C24 /* libz.dylib */,
 				FF876B7D19230F3400FC0C24 /* SystemConfiguration.framework */,
 				FF876B7B19230F2200FC0C24 /* AdSupport.framework */,
@@ -423,6 +431,27 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				ar,
+				ca,
+				cs,
+				es,
+				eu,
+				fi,
+				fr,
+				it,
+				ja,
+				ko,
+				nl,
+				no,
+				pl,
+				pt,
+				ru,
+				sk,
+				sv,
+				vi,
+				zh_CN,
+				zh_TW,
 			);
 			mainGroup = EB3F100F18EE35FE0078FD8E;
 			productRefGroup = EB3F101918EE35FE0078FD8E /* Products */;
@@ -621,6 +650,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HotOrNot/Thermal-Prefix.pch";
 				INFOPLIST_FILE = "HotOrNot/Thermal-Info.plist";
@@ -629,7 +662,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = Thermal;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "104B3D56-BEF4-4341-9BDF-9CAD429F61BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -641,6 +674,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HotOrNot/Thermal-Prefix.pch";
 				INFOPLIST_FILE = "HotOrNot/Thermal-Info.plist";
@@ -649,7 +686,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = Thermal;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "104B3D56-BEF4-4341-9BDF-9CAD429F61BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
