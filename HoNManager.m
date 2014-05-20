@@ -145,7 +145,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *curComparisonsDeck = (NSArray *)responseObject;
-        if([curComparisonsDeck count] > 0){
+        if([curComparisonsDeck count] > 1){//greater than 1 so there are at least 2 companies to compare
             [[NSUserDefaults standardUserDefaults] setObject:curComparisonsDeck forKey:@"curComparisonDeck"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCurComparisonDeckInfo" object:nil];
@@ -153,7 +153,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
         else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"comparisons deck empty"
-                                                                    message:@"sorry, you've already compared all companies.  vote again on your previous companies!"
+                                                                    message:@"sorry, you need to vote on more companies before you can compare! come back after you've compared more companies"
                                                                    delegate:nil
                                                           cancelButtonTitle:@"ok"
                                                           otherButtonTitles:nil];

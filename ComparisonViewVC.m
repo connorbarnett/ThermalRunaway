@@ -55,14 +55,33 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.secondCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:false];
-    [self updateCompanyCards];
+    [self.companies removeObjectAtIndex:1];
+    [self reloadIfNeeded];
 }
 
 - (IBAction)secondCardTouched:(id)sender {
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.secondCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.firstCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.secondCompanyLabel.text overCompany:self.firstCompanyLabel.text wasSkip:false];
-    [self updateCompanyCards];
+    [self.companies removeObjectAtIndex:0];
+    [self reloadIfNeeded];
+}
+
+- (void) reloadIfNeeded{
+    if([self.companies count] <= 1){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"comparisons deck empty"
+                                                                message:@"sorry, you've compared all available companies, please make comparisons again!"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        });
+        [self.companies removeAllObjects];
+        [self.myHonManager loadComparisonsDeck];
+    }
+    else
+        [self updateCompanyCards];
 }
 
 -(void)updateCompanyCards
@@ -75,14 +94,9 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
         }
     }
 
-    int firstCompanyIndex = arc4random() % [self.companies count];
-    int secondCompanyIndex = arc4random() % [self.companies count];
-    while (secondCompanyIndex == firstCompanyIndex) {
-        secondCompanyIndex = arc4random() % [self.companies count];
-    }
-    NSString *firstCompanyStr = [self.companies objectAtIndex:firstCompanyIndex];
+    NSString *firstCompanyStr = [self.companies objectAtIndex:0];
     
-    NSString *secondCompanyStr = [self.companies objectAtIndex:secondCompanyIndex];
+    NSString *secondCompanyStr = [self.companies objectAtIndex:1];
 
     [self loadImageDataForCompany:firstCompanyStr andSide:true];
     [self loadImageDataForCompany:secondCompanyStr andSide:false];
