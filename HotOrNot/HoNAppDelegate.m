@@ -42,9 +42,9 @@ static NSString *const kAllowTracking = @"allowTracking";
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"welcome to thermal runaway!"
                                                             message:@"here you can rate your favorite companies by swiping them left and right"
                                                            delegate:nil
