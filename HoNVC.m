@@ -16,7 +16,6 @@
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
 
-
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
