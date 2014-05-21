@@ -11,6 +11,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
+#import "HoNVC.h"
 
 @interface ComparisonViewVC ()
 @property (weak, nonatomic) IBOutlet UIButton *secondButton;
@@ -68,6 +69,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 }
 
 - (void) reloadIfNeeded{
+    
     if([self.companies count] <= 1){
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"comparisons deck empty"
@@ -88,6 +90,19 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 {
     if([self.companies count] == 0){
         NSArray *curComparisonDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"curComparisonDeck"];
+        if(curComparisonDeck == NULL || [curComparisonDeck count] < 2){
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"comparisons deck empty"
+//                                                                    message:@"sorry, you need to vote on more companies before you can compare! come back after you've compared more companies"
+//                                                                   delegate:nil
+//                                                          cancelButtonTitle:@"ok"
+//                                                          otherButtonTitles:nil];
+//                [alertView show];
+                HoNVC *vc = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"HoNVC"];
+                [self.navigationController pushViewController:vc animated:YES];
+//            });
+            return;
+        }
         for (NSDictionary *companyCard in curComparisonDeck) {
             NSString *companyName = [companyCard objectForKey:@"name"];
             [self.companies addObject:companyName];
