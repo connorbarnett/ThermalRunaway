@@ -189,21 +189,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhE-WT-1z9">
-<<<<<<< HEAD
                                 <rect key="frame" x="20" y="66" width="280" height="28"/>
-=======
-                                <rect key="frame" x="20" y="37" width="280" height="28"/>
->>>>>>> comparison
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0N-7g-TpU">
-<<<<<<< HEAD
                                 <rect key="frame" x="20" y="95" width="273" height="30"/>
-=======
-                                <rect key="frame" x="20" y="84" width="273" height="30"/>
->>>>>>> comparison
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
                                 <nil key="highlightedColor"/>
@@ -387,10 +379,7 @@
         <image name="ChartUp" width="25" height="21"/>
         <image name="Opposite_Arrows" width="23" height="24"/>
         <image name="logo" width="960" height="960"/>
-<<<<<<< HEAD
         <image name="round" width="256" height="256"/>
-=======
->>>>>>> comparison
         <image name="scale" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
