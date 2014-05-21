@@ -158,16 +158,17 @@
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double widthScaleFactor = width/(self.data.count-1);
-    double heightScaleFactor = height/([self findMostExtremeCount]*2);
+    long mean = [self findMean];
+    double heightScaleFactor = height/[self findDifference]/2;
     for(int i = 0; i < self.data.count-1; i++) {
         NSNumber *count = [self.data objectAtIndex:i];
         NSNumber *nextCount = [self.data objectAtIndex:i+1];
-        CGContextMoveToPoint(context, i*widthScaleFactor, height/2 - [count integerValue]*heightScaleFactor);
+        CGContextMoveToPoint(context, i*widthScaleFactor, height/2 - heightScaleFactor*([count integerValue]-mean));
         if(i == (self.data.count-2)) {
-            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, height/2 - [nextCount integerValue]*heightScaleFactor-20, 20, 20) andRank:nextCount];
+            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, height/2 - heightScaleFactor*([nextCount integerValue]-mean)-20, 20, 20) andRank:nextCount];
         }
-        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, height/2 - [count integerValue]*heightScaleFactor-20, 20, 20) andRank:count];
-        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, height/2 - [nextCount integerValue]*heightScaleFactor);
+        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, height/2 - heightScaleFactor*([count integerValue]-mean)-20, 20, 20) andRank:count];
+        CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, height/2 - heightScaleFactor*([nextCount integerValue]-mean));
         CGContextStrokePath(context);
     }
 }
@@ -200,6 +201,16 @@
     long max = [self findMax];
     long min = [self findMin];
     return (fabs(min) > fabs(max)) ? fabs(min) : fabs(max);
+}
+
+-(float)findMean
+{
+    float sum = 0;
+    for(NSNumber *n in self.data)
+    {
+        sum += [n integerValue];
+    }
+    return sum/self.data.count;
 }
 
 -(void)addLabelInPosition:(CGRect)rect andRank:(NSNumber*)rank

@@ -70,11 +70,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     NSString *secondCompanyStr = [self.companies objectAtIndex:secondCompanyIndex];
 
-    [self loadImageDataForCompany:firstCompanyStr andSide:true];
-    [self loadImageDataForCompany:secondCompanyStr andSide:false];
+    [self loadImageDataForCompany:firstCompanyStr andSide:YES];
+    [self loadImageDataForCompany:secondCompanyStr andSide:NO];
 }
 
-- (void)loadImageDataForCompany:(NSString *) company andSide:(BOOL *)first{
+- (void)loadImageDataForCompany:(NSString *) company andSide:(BOOL)first{
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@compareimage",company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, company]];
         
