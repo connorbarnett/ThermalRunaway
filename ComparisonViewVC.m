@@ -49,7 +49,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self updateCompanyCards];
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"skipped %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"and %@", self.secondCompanyLabel.text];
-    [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:true];
+    [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:YES];
 }
 
 - (IBAction)firstCardTouched:(id)sender{
@@ -113,11 +113,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     NSString *secondCompanyStr = [self.companies objectAtIndex:1];
 
-    [self loadImageDataForCompany:firstCompanyStr andSide:true];
-    [self loadImageDataForCompany:secondCompanyStr andSide:false];
+    [self loadImageDataForCompany:firstCompanyStr andSide:YES];
+    [self loadImageDataForCompany:secondCompanyStr andSide:NO];
 }
 
-- (void)loadImageDataForCompany:(NSString *) company andSide:(BOOL *)first{
+- (void)loadImageDataForCompany:(NSString *) company andSide:(BOOL)first{
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@compareimage",company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, company]];
         
