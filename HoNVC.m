@@ -68,7 +68,7 @@
 
     
     NSString *text = @"check out thermal runaway, the new way to rate your favorite companies!";
-    NSURL *url = [NSURL URLWithString:@"http://stanford.edu/~connorb/cgi-bin/home/"];
+    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/thermal-runaway/id874776578?mt=8"];
     UIImage *image = [UIImage imageNamed:@"logo"];
 
     UIActivityViewController *controller =
