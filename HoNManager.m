@@ -23,8 +23,8 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-static NSString * const BaseURLString = @"http://localhost:3000/";
+static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+//static NSString * const BaseURLString = @"http://localhost:3000/";
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -225,9 +225,8 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     }];
 }
 
-- (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany wasSkip:(BOOL *)wasSkip{
+- (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany wasSkip:(BOOL)wasSkip{
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
-    
     NSDictionary *parameters = @{@"winningCompany" : winningCompany, @"losingCompany" : losingCompany, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId, @"was_skip" : [NSNumber numberWithBool:wasSkip]};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
