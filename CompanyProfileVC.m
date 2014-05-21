@@ -13,6 +13,9 @@
 #import "MBProgressHUD.h"
 #import "GraphView.h"
 #import "DraggableGraphView.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 
 
 #define API_KEY "k9dg4qf3knc3vf36y7s29ch5"
@@ -79,6 +82,16 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             [alertView show];
         });
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker set:kGAIScreenName value:[NSString stringWithFormat:@"Company Screen For %@", self.company]];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    [[GAI sharedInstance] dispatch];
 }
 
 -(void)updateInfo{

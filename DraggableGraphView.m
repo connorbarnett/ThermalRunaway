@@ -1,4 +1,6 @@
 #import "DraggableGraphView.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface DraggableGraphView ()
 @property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
@@ -54,8 +56,20 @@
         };
         case UIGestureRecognizerStateEnded: {
             if((([self.graphType isEqualToString:@"votes"]) && (xDistance) > 80) || ([self.graphType isEqualToString:@"rankings"] && (xDistance <-80))) {
+                NSDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"returnedDrag"
+                                                                              action:[NSString stringWithFormat:@"removedGraphType%@", self.graphType]
+                                                                               label:[NSString stringWithFormat:@"removedGraphType%@", self.graphType]
+                                                                               value:nil] build];
+                [[GAI sharedInstance].defaultTracker send:event];
+                [[GAI sharedInstance] dispatch];
                 [self slowlyRemoveView:xDistance];
             } else {
+                NSDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"returnedDrag"
+                                                                              action:[NSString stringWithFormat:@"swipedNoRemoveGraphType%@", self.graphType]
+                                                                               label:[NSString stringWithFormat:@"swipedNoRemoveGraphType%@", self.graphType]
+                                                                               value:nil] build];
+                [[GAI sharedInstance].defaultTracker send:event];
+                [[GAI sharedInstance] dispatch];
                 [self resetViewPositionAndTransformations];
                 break;
             }

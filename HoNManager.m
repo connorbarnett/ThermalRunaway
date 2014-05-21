@@ -8,6 +8,7 @@
 
 #include "AFNetworking.h"
 #import "HoNManager.h"
+#import "GAI.h"
 
 @interface HoNManager () <CLLocationManagerDelegate>
 @property size_t curPage;
@@ -136,6 +137,29 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     [operation start];
 }
 
+- (void)loadComparisonsDeck {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/company/getcomparisons.json/?device_id=%@",BaseURLString, self.deviceId]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *curComparisonsDeck = (NSArray *)responseObject;
+        [[NSUserDefaults standardUserDefaults] setObject:curComparisonsDeck forKey:@"curComparisonDeck"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedCurComparisonDeckInfo" object:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading comparisons deck"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    [operation start];
+    
+}
+
 - (void)loadVoteTypesForCompany:(NSString *) company {
     NSString *defaultsKey = [NSString stringWithFormat:@"voteInfoFor%@",company];
 
@@ -190,6 +214,25 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager POST:@"vote.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Made succesful POST Request");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Posting Vote"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+}
+
+- (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany wasSkip:(BOOL *)wasSkip{
+    NSURL *baseURL = [NSURL URLWithString:BaseURLString];
+    
+    NSDictionary *parameters = @{@"winningCompany" : winningCompany, @"losingCompany" : losingCompany, @"vote_location" : [NSString stringWithFormat:@"%f,%f",self.lastLocation.coordinate.latitude,self.lastLocation.coordinate.longitude], @"device_id" : self.deviceId, @"was_skip" : [NSNumber numberWithBool:wasSkip]};
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager POST:@"compare.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Made succesful POST Request");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Posting Vote"

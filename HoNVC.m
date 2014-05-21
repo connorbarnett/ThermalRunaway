@@ -12,6 +12,10 @@
 #include "HoNManager.h"
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
 
@@ -42,6 +46,48 @@
     if([self.myHonManager deckEmpty]){
         [self.myHonManager loadDeck];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+
+    [tracker set:kGAIScreenName value:@"Home Screen"];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    [[GAI sharedInstance] dispatch];
+
+}
+- (IBAction)shareButton:(id)sender {
+    NSMutableDictionary *event =
+    [[GAIDictionaryBuilder createEventWithCategory:@"UI"
+                                            action:@"buttonPress"
+                                             label:@"shareButtonPressed"
+                                             value:nil] build];
+    [[GAI sharedInstance].defaultTracker send:event];
+    [[GAI sharedInstance] dispatch];
+
+    
+    NSString *text = @"check out thermal runaway, the new way to rate your favorite companies!";
+    NSURL *url = [NSURL URLWithString:@"http://stanford.edu/~connorb/cgi-bin/home/"];
+    UIImage *image = [UIImage imageNamed:@"logo"];
+
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:@[text, url, image]
+     applicationActivities:nil];
+    
+    controller.excludedActivityTypes = @[UIActivityTypePrint,
+                                         UIActivityTypeCopyToPasteboard,
+                                         UIActivityTypeAssignToContact,
+                                         UIActivityTypeSaveToCameraRoll,
+                                         UIActivityTypeAddToReadingList,
+                                         UIActivityTypePostToFlickr,
+                                         UIActivityTypePostToVimeo,
+                                         UIActivityTypePostToTencentWeibo,
+                                         UIActivityTypeAirDrop];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void) incomingVote:(NSNotification *)notification{

@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
+  skip_before_filter :verify_authenticity_token, :only => [:compare]
 
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
@@ -35,6 +36,26 @@ class CompaniesController < ApplicationController
       format.json { render json: arr }
     end
   end
+
+  #GET /company/getcomparisons
+  #GET /company/getcomparisons.json
+  def getcomparisons
+    device_id = params[:device_id]
+    companies = Company.all
+    arr = Array.new
+    companies.each{ |company|
+      votes = company.votes
+      if votes.where(device_id: device_id).count != 0
+        arr.push(company)#for now just adding everything
+      end
+    }
+
+    respond_to do |format|
+      format.html {render json: companies }#temporary
+      format.json { render json: arr }
+    end
+  end
+
   # GET /companies/1
   # GET /companies/1.json
   def show
@@ -80,6 +101,27 @@ class CompaniesController < ApplicationController
     end
   end
   
+  def compare
+    winningCompany = Company.find_by(name: params[:winningCompany])
+    losingCompany = Company.find_by(name: params[:losingCompany])
+    comparison = Comparison.new
+    comparison.winning_company = winningCompany
+    comparison.losing_company = losingCompany
+    comparison.device_id = params[:device_id]
+    comparison.vote_location = params[:vote_location]
+    comparison.was_skip = params[:was_skip] == "1" ? true : false
+
+    respond_to do |format|
+      if comparison.save
+        format.html { redirect_to winningCompany, notice: 'Comparison succesfully recorded.' }
+        format.json { render json: winningCompany }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: winningCompany, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /vote
   # Records a single vote for a single company
   # Need to pass in params of name, vote_type and vote_location
