@@ -28,7 +28,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     
     
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50962137-1"];
+    [[GAI sharedInstance] trackerWithTrackingId:kTrackingId];
     self.tracker = [[GAI sharedInstance] trackerWithName:@"Thermal Runaway"
                                               trackingId:kTrackingId];
 
@@ -55,7 +55,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     }
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     [myHonManager loadAllCompanyCards];
-//    [myHonManager startLocationServices];
+    [myHonManager startLocationServices];
     [myHonManager resetPageCount];
     return YES;
 }

@@ -92,14 +92,14 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
         NSArray *curComparisonDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"curComparisonDeck"];
         if(curComparisonDeck == NULL || [curComparisonDeck count] < 2){
 //            dispatch_async(dispatch_get_main_queue(), ^{
-//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"comparisons deck empty"
-//                                                                    message:@"sorry, you need to vote on more companies before you can compare! come back after you've compared more companies"
-//                                                                   delegate:nil
-//                                                          cancelButtonTitle:@"ok"
-//                                                          otherButtonTitles:nil];
-//                [alertView show];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"comparisons deck empty"
+                                                                    message:@"sorry, you need to vote on more companies before you can compare! come back after you've compared more companies"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"ok"
+                                                          otherButtonTitles:nil];
+                [alertView show];
                 HoNVC *vc = [[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"HoNVC"];
-                [self.navigationController pushViewController:vc animated:YES];
+                [self presentViewController:vc animated:NO completion:nil];
 //            });
             return;
         }
