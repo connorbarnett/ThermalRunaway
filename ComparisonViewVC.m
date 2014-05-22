@@ -98,11 +98,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                                                           cancelButtonTitle:@"ok"
                                                           otherButtonTitles:nil];
                 [alertView show];
-<<<<<<< HEAD
-            return;
-=======
                 return;
->>>>>>> master
             });
         }
         for (NSDictionary *companyCard in curComparisonDeck) {
