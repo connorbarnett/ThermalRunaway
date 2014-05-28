@@ -86,6 +86,9 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
         [self updateCompanyCards];
 }
 
+/**
+ *  <#Description#>
+ */
 -(void)updateCompanyCards
 {
     if([self.companies count] == 0){
