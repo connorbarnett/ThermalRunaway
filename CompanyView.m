@@ -24,6 +24,7 @@
     return self;
 }
 
+
 - (void)loadDraggableCustomViewWithCompany:(NSString *)company
 {
     self.draggableView = [[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 200, 260) company:company];
