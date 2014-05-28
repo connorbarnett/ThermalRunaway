@@ -4,7 +4,6 @@
 //
 //  Created by Robert Dunlevie on 4/22/14.
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
-//
 
 #include "AFNetworking.h"
 #import "HoNManager.h"

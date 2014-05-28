@@ -186,7 +186,7 @@ class CompaniesController < ApplicationController
       @company = Company.find(params[:id])
     end
 
-    #gets an array of a companies ranking among others over the last 10 days
+    #gets an array of a companies ranking among others within a single day over the last 10 days
     def recentRankingArray(company)
       i = 6
       if company.nil?

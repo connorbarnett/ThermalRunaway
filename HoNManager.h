@@ -10,7 +10,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-
+/**
+ *
+ */
 @interface HoNManager : NSObject
 
 
@@ -19,6 +21,10 @@
 -(CLLocationManager *)manager;
 -(CLGeocoder *)geocoder;
 
+
+/**
+ * @return
+ */
 - (void)startLocationServices;
 - (void)loadAllCompanyCards;
 - (void)loadDeck;
