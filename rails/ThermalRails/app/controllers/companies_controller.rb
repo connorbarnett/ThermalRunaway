@@ -101,6 +101,14 @@ class CompaniesController < ApplicationController
     end
   end
   
+  #POST /compare
+  #POST /compare.json
+  #Responds to HTTP POST Request to cast a comparison between two companies
+  #Has the comparison belong to both the winning company and the losing company
+  #If the comparison was a skipped comparison, the winning or losing company pointers are
+  #determined arbitrarily.
+  #Needs to pass in name of winningCompany, losingCompany, vote_location, device_id and boolean saying if comparison was a skip
+  #Returns winningCompany's json object on success and winningCompany's error json object on failure
   def compare
     winningCompany = Company.find_by(name: params[:winningCompany])
     losingCompany = Company.find_by(name: params[:losingCompany])
@@ -117,14 +125,16 @@ class CompaniesController < ApplicationController
         format.json { render json: winningCompany }
       else
         format.html { render action: 'edit' }
-        format.json { render json: winningCompany, status: :unprocessable_entity }
+        format.json { render json: winningCompany.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # POST /vote
+  # POST /vote.json
   # Records a single vote for a single company
-  # Need to pass in params of name, vote_type and vote_location
+  # Need to pass in params of name, vote_type and vote_location and device_id
+  # Renders company's json object on success and error report on failure
   def vote
     @company = Company.find_by(name: params[:name])
 
@@ -153,6 +163,10 @@ class CompaniesController < ApplicationController
   #GET /vote/info
   #GET /vote/info.json
   #Given company name, returns info about companies votes over time
+  #Info includes both trendingArray and rankingArray displayed by iPhone app's companyProfileVC
+  #Also includes total count of upvotes, downvotes and unknownvotes
+  #Needs to pass in parms of name, being the company's name
+  #Renders json object including information described above
   def voteInfo
     @company = Company.find_by(name: params[:name])
     trendingArray = recentTrendingArray(@company)
