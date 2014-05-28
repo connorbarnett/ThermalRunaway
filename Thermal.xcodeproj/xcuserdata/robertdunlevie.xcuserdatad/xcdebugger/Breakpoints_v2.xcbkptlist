@@ -306,11 +306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ComparisonViewVC.m"
-            timestampString = "422311664.557359"
+            timestampString = "422934527.984672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-comparisonSkipped:"
             landmarkType = "5">
          </BreakpointContent>

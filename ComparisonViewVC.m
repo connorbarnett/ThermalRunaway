@@ -14,19 +14,55 @@
 #import "HoNVC.h"
 
 @interface ComparisonViewVC ()
-@property (weak, nonatomic) IBOutlet UIButton *secondButton;
+
+/**
+ *  UIButton of first company being compared
+ */
 @property (weak, nonatomic) IBOutlet UIButton *firstButton;
 
+/**
+ *  UIButton of second company being compared
+ */
+@property (weak, nonatomic) IBOutlet UIButton *secondButton;
+
+
+/**
+ *  Array of all companies eligible for a comparison
+ */
 @property (strong, nonatomic) NSMutableArray* companies;
+
+/**
+ *  UILabel for first company being compared
+ */
 @property (weak, nonatomic) IBOutlet UILabel *firstCompanyLabel;
+
+/**
+ *  UILabel for second company being compared
+ */
 @property (weak, nonatomic) IBOutlet UILabel *secondCompanyLabel;
+
+/**
+ *  First half of label that reminds user of a comparison after casting
+ */
 @property (weak, nonatomic) IBOutlet UILabel *topConfirmationLabel;
+
+/**
+ *  Second half of label that reminds user of a comparison after casting
+ */
 @property (weak, nonatomic) IBOutlet UILabel *bottomConfirmationLabel;
+
+/**
+ *  Singleton instance of HoNManager shared across application for all communication with rails server
+ */
 @property(strong, nonatomic) HoNManager *myHonManager;
 
 @end
 
 @implementation ComparisonViewVC
+
+/**
+ *  static string used for uploading images pictures
+ */
 static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
 
 -(HoNManager *)myHonManager
@@ -35,6 +71,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return _myHonManager;
 }
 
+/**
+ *  calls viewWillAppear of super class and then records a screen view, dispatching to google analytics
+ *
+ *  @param animated UNUSED, inherited from super class
+ */
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     id tracker = [[GAI sharedInstance] defaultTracker];
@@ -45,13 +86,30 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [[GAI sharedInstance] dispatch];
 
 }
+
+/**
+ *  Method called when user hits skip button.
+ *  Updates display to say the two companies were skipped
+ *  and tells HoNManager to POST skip to rails server
+ *
+ *  @param sender id of method caller
+ */
 - (IBAction)comparisonSkipped:(id)sender {
     [self updateCompanyCards];
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"skipped %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"and %@", self.secondCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:YES];
+    [self.companies removeObjectAtIndex:0];
+    [self.companies removeObjectAtIndex:1];
+    [self reloadIfNeeded];
 }
 
+/**
+ *  Method called when user chooses the first (left) company to win a comparison.
+ *  Updates the display to show result of comparison and tells HoNManager to POST comparison result to rail server
+ *
+ *  @param sender id of method caller
+ */
 - (IBAction)firstCardTouched:(id)sender{
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.secondCompanyLabel.text];
@@ -60,6 +118,12 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self reloadIfNeeded];
 }
 
+/**
+ *  Method called when user chooses the second (right) company to win a comparison.
+ *  Updates the display to show result of comparison and tells HoNManager to POST comparison result to rail server
+ *
+ *  @param sender id of method caller
+ */
 - (IBAction)secondCardTouched:(id)sender {
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.secondCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.firstCompanyLabel.text];
@@ -68,6 +132,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self reloadIfNeeded];
 }
 
+/**
+ *  Method called when the a comparison is made by user.  If not enough companies are left to be compared, 
+ *  a notification saying so is posted, and all companies are reloaded for comparisons through the HoNManager.
+ *  Otherwise, the display is updated with a new pair of companies to be compared.
+ */
 - (void) reloadIfNeeded{
     
     if([self.companies count] <= 1){
@@ -87,7 +156,9 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 }
 
 /**
- *  <#Description#>
+ *  Updates the current set of two company cards being displayed for comparison.  Display update is made by
+ *  taking the first two companies in the current array of companies, ie the NSMutableArray companies.
+ *  If a user needs to vote on more companies before being allowed to compare, a notification is thrown.
  */
 -(void)updateCompanyCards
 {
@@ -118,6 +189,13 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self loadImageDataForCompany:secondCompanyStr andSide:NO];
 }
 
+/**
+ *  Loads a companies image from the company name param and BaseURLImage listed above.
+ *  Pushes that image onto the view in the proper location as determined by the first param.
+ *
+ *  @param company the name of the company whose image is being loaded
+ *  @param first  boolean flag saying whether the company is the first (leftmost) company in the view.  Used only for updating display properly
+ */
 - (void)loadImageDataForCompany:(NSString *) company andSide:(BOOL)first{
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@compareimage",company]]){
         NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.png",ImgsURLString, company]];
@@ -159,6 +237,12 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
 }
 
+/**
+ *  Calls super class's viewDidLoad and sets a notification listener to load comparisonDeckInfo from NSUserDefaults
+ *  after the HoNManager has received the proper information from rails server and stored it in NSUserDefaults.
+ *  Lastly calls the HoNManager's method for loading the proper information into NSUserDefaults.  Used because of 
+ * networking calls working off of main thread.
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -171,6 +255,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self.myHonManager loadComparisonsDeck];
 }
 
+/**
+ *  Lazy instantation of companies array
+ *
+ *  @return the instantiated array
+ */
 -(NSMutableArray *)companies
 {
     if(!_companies) _companies = [[NSMutableArray alloc] init];
