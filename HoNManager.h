@@ -38,32 +38,52 @@
 - (void)loadDeck;
 
 /**
- * @param company: the company whose information will be loaded
  * Loads votes information for company provided with param from rails server.
  * Resulting information stored in NSUserDefaults
+ 
+ * @param company the company whose information will be loaded
  */
 - (void)loadVoteTypesForCompany:(NSString *) company;
 
 /**
- * @param
- * Performs POST Request to rails server, casting vote of type vote_type for the company listed as the second paramater
+ *  Performs POST Request to rails server, casting a vote of type vote_type for a company passed in.
+ *
+ *  @param vote_type the type of vote cast
+ *  @param company   the company the vote was cast on
  */
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company;
 /**
- *  <#Description#>
+ *  Performs POST Request to rails server, casting a comparison between winningCompany and losingCompany.
+ *  Passes simple bool saying whether the comparison was skipped by the user
  *
- *  @param winningCompany <#winningCompany description#>
- *  @param losingCompany  <#losingCompany description#>
- *  @param wasSkip        <#wasSkip description#>
+ *  @param winningCompany the name of the company that won the comparison
+ *  @param losingCompany  the name of the company that lost the comparison
+ *  @param wasSkip        bool determining whether the comparison was simply a skip
  */
 - (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany wasSkip:(BOOL)wasSkip;
+
+/**
+ *  Loads a deck of all company cards and stores the deck in NSUserDefaults
+ *  Deck to be used in the ComparisonViewVC
+ */
 - (void)loadComparisonsDeck;
+
+/**
+ *  Pushes the company card for companyName onto the top of the deck of current company cards being used by the HoNManager
+ *
+ *
+ *  @param companyName the name of the company to be added to the votes deck
+ */
 - (void)addCompanyToDeck:(NSString *)companyName;
+
+/**
+ *  Pops the top company card from the company deck stored inside the HoNManager
+ */
 - (void)removeTopCompanyFromDeck;
 
 /**
  * Simple method that checks whether the current deck of company cards on the vote page is empty
- * @return BOOl saying whether the deck is empty
+ *  @return BOOl saying whether the deck is empty
  */
 - (BOOL)deckEmpty;
 

@@ -25,6 +25,12 @@
 static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
 //static NSString * const BaseURLString = @"http://localhost:3000/";
 
+#pragma mark - Singleton creation
+/**
+ *  Static instantiation of the HoNManager singleton.  This singleton instance is shared across the entire app
+ *
+ *  @return the instance of the singleton of self (ie the HoNManager that is shared across the application"
+ */
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
     static dispatch_once_t onceToken;
@@ -32,6 +38,29 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
         sharedHoNManager = [[self alloc] init];
     });
     return sharedHoNManager;
+}
+
+#pragma mark - simple incrementations
+
+-(void)addCompanyToDeck:(NSString *)companyName{
+    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, nil];
+    [self.currentDeck addObject:curCompany];
+}
+
+- (void)removeTopCompanyFromDeck{
+    if(!self.currentDeck) return;
+    
+    [self.currentDeck removeLastObject];
+}
+
+- (BOOL)deckEmpty{
+    BOOL deckEmpty = [self.currentDeck count] == 0;
+    return deckEmpty;
+}
+
+- (void)loadNextDeck{
+    [self incrementPageCount];
+    [self loadDeck];
 }
 
 - (void)incrementPageCount {
@@ -42,24 +71,46 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     self.curPage = 1;
 }
 
+#pragma mark - Property Lazy Instantiation
+
+/**
+ *  Lazy instantiation for the Location Manager
+ *
+ *  @return the location manager being instantiated
+ */
 -(CLLocationManager *)manager
 {
     if(!_manager) _manager = [[CLLocationManager alloc] init];
     return _manager;
 }
 
+/**
+ *  Lazy instantiation for the Geocoder
+ *
+ *  @return the geocoder being instantiated
+ */
 -(CLGeocoder *)geocoder
 {
     if(!_geocoder) _geocoder = [[CLGeocoder alloc] init];
     return _geocoder;
 }
 
+/**
+ *  Lazy instantiation of currentDeck array of company cards
+ *
+ *  @return the company card array being instantiated
+ */
 -(NSMutableArray *)currentDeck
 {
     if(!_currentDeck) _currentDeck = [[NSMutableArray alloc] init];
     return _currentDeck;
 }
 
+/**
+ *  Unique instantiation of companies unique deviceId.  Uses iOS's built in identifierForVendor method to find a devices UDID
+ *
+ *  @return the instantiated UDID of the device being used
+ */
 -(NSString *)deviceId
 {
     if(!_deviceId) {
@@ -69,13 +120,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     return _deviceId;
 }
 
-- (void)startLocationServices{
-    self.manager.delegate = self;
-    [self.manager setDelegate:self];
-    self.manager.distanceFilter = kCLDistanceFilterNone;
-    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.manager startUpdatingLocation];
-}
+#pragma mark - GET request methods
 
 - (void)loadAllCompanyCards{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]];
@@ -184,26 +229,9 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     [operation start];
 }
 
--(void)addCompanyToDeck:(NSString *)companyName{
-    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, nil];
-    [self.currentDeck addObject:curCompany];
-}
 
-- (void)removeTopCompanyFromDeck{
-    if(!self.currentDeck) return;
-    
-    [self.currentDeck removeLastObject];
-}
 
-- (BOOL)deckEmpty{
-    BOOL deckEmpty = [self.currentDeck count] == 0;
-    return deckEmpty;
-}
-
-- (void)loadNextDeck{
-    [self incrementPageCount];
-    [self loadDeck];
-}
+#pragma mark - POST Request methods
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
@@ -248,11 +276,35 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 #pragma mark - CLLocationManagerDelegate Methods
+
+/**
+ *  Begins location services by assigning preferences such as accuracy and then starting to update the location
+ */
+- (void)startLocationServices{
+    self.manager.delegate = self;
+    [self.manager setDelegate:self];
+    self.manager.distanceFilter = kCLDistanceFilterNone;
+    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.manager startUpdatingLocation];
+}
+
+/**
+ *  Logs location based errors to console or log files
+ *
+ *  @param manager LocationManager that experienced the error
+ *  @param error   The error that occured with location services
+ */
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location!");
 }
 
+/**
+ *  Method called in background only when location services are running and a new, unique location has been visited
+ *
+ *  @param manager   manager that is keeping track of location services
+ *  @param locations array containing all unique locations visited during location service's runtime.  Latest location visited by user stored as the last object in the array.
+ */
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.lastLocation = [locations lastObject];
