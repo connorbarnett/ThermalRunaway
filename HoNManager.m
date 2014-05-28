@@ -242,12 +242,6 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     }];
 }
 
--(void)clearUserDefaults{
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (id)init {
     self = [super init];
     return self;

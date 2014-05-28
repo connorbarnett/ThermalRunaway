@@ -67,6 +67,20 @@
 			remoteGlobalIDString = EB3F101718EE35FE0078FD8E;
 			remoteInfo = HotOrNot;
 		};
+		FF76916B1935696500438D30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF7691661935696500438D30 /* VVDocumenter-Xcode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D14380F3179551B900C829CE;
+			remoteInfo = "VVDocumenter-Xcode";
+		};
+		FF76916D1935696500438D30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF7691661935696500438D30 /* VVDocumenter-Xcode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1C462DA17999C2000EB7B23;
+			remoteInfo = VVDocumenterTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +152,7 @@
 		FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		FF283652190788FB00B683A1 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		FF7691661935696500438D30 /* VVDocumenter-Xcode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "VVDocumenter-Xcode.xcodeproj"; path = "VVDocumenter-Xcode/VVDocumenter-Xcode.xcodeproj"; sourceTree = "<group>"; };
 		FF876B2119230C6B00FC0C24 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
 		FF876B4D19230C6B00FC0C24 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		FF876B4E19230C6B00FC0C24 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -239,6 +254,7 @@
 		EB3F101A18EE35FE0078FD8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF7691661935696500438D30 /* VVDocumenter-Xcode.xcodeproj */,
 				FFCC4FF119231B8700EB01A8 /* MessageUI.framework */,
 				FFCC4FEF19231B8000EB01A8 /* Security.framework */,
 				FF876B7F19230F9F00FC0C24 /* libz.dylib */,
@@ -342,6 +358,15 @@
 				FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		FF7691671935696500438D30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF76916C1935696500438D30 /* VVDocumenter-Xcode.xcplugin */,
+				FF76916E1935696500438D30 /* VVDocumenterTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		FF876B2019230C6B00FC0C24 /* GoogleAnalytics */ = {
@@ -456,6 +481,12 @@
 			mainGroup = EB3F100F18EE35FE0078FD8E;
 			productRefGroup = EB3F101918EE35FE0078FD8E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FF7691671935696500438D30 /* Products */;
+					ProjectRef = FF7691661935696500438D30 /* VVDocumenter-Xcode.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EB3F101718EE35FE0078FD8E /* Thermal */,
@@ -463,6 +494,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FF76916C1935696500438D30 /* VVDocumenter-Xcode.xcplugin */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "VVDocumenter-Xcode.xcplugin";
+			remoteRef = FF76916B1935696500438D30 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF76916E1935696500438D30 /* VVDocumenterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VVDocumenterTests.xctest;
+			remoteRef = FF76916D1935696500438D30 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EB3F101618EE35FE0078FD8E /* Resources */ = {
@@ -663,6 +711,7 @@
 				);
 				PRODUCT_NAME = Thermal;
 				PROVISIONING_PROFILE = "104B3D56-BEF4-4341-9BDF-9CAD429F61BF";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -687,6 +736,7 @@
 				);
 				PRODUCT_NAME = Thermal;
 				PROVISIONING_PROFILE = "104B3D56-BEF4-4341-9BDF-9CAD429F61BF";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

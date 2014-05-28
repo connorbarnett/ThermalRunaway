@@ -14,6 +14,8 @@
 		<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
 		<key>CA68AE66-BF74-4100-B28E-2042550BEBC9</key>
 		<string>https://github.com/jdg/MBProgressHUD.git</string>
+		<key>DD9AEDFB-A1C7-4485-94E8-5228D833A2BE</key>
+		<string>https://github.com/onevcat/VVDocumenter-Xcode.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>../..</string>
 		<key>CA68AE66-BF74-4100-B28E-2042550BEBC9</key>
 		<string>../../MBProgressHUD</string>
+		<key>DD9AEDFB-A1C7-4485-94E8-5228D833A2BE</key>
+		<string>../../VVDocumenter-Xcode</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
@@ -47,6 +51,14 @@
 			<string>268AA050-CB26-41E2-B3EF-7786D43DBDBC</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ThermalRunaway</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD9AEDFB-A1C7-4485-94E8-5228D833A2BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>VVDocumenter-Xcode</string>
 		</dict>
 	</array>
 </dict>
