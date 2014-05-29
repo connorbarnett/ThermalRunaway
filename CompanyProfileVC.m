@@ -119,7 +119,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                                                       object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
-                                                      [self updateCopmarisonInfo];
+                                                      [self updateComparisonInfo];
                                                   }];
     [self.myHonManager loadComparisonInfoForCompany:self.company];
     
