@@ -9,11 +9,21 @@
 #import "OverlayView.h"
 
 @interface OverlayView ()
+
+/**
+ *  A thumb up or thumb down, translucent image
+ */
 @property (nonatomic, strong) UIImageView *imageView;
 @end
 
 @implementation OverlayView
-
+/**
+ *  Gives us the ability to have the translucent thumbs up/thumbs down appear over the company views
+ *
+ *  @param frame size and location of the thumb
+ *
+ *  @return OverlayView
+ */
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -36,6 +46,9 @@
     }
 }
 
+/**
+ *  Final styling of the frame
+ */
 - (void)layoutSubviews
 {
     [super layoutSubviews];

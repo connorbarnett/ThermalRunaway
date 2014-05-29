@@ -17,21 +17,43 @@
 #import "GAIDictionaryBuilder.h"
 
 @interface HoNVC ()  <CLLocationManagerDelegate>
-
+/**
+ *  The label above the company card that states the company's name
+ */
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
+
+/**
+ *  An array of companies to be displayed for voting
+ */
 @property(strong, nonatomic) NSMutableArray *companiesFromServer;
+
+/**
+ *  The label below the company card that confirms your vote on the previous company
+ */
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
+
+/**
+ *  Singleton for all networking calls
+ */
 @property(strong, nonatomic) HoNManager *myHonManager;
 @end
 
 @implementation HoNVC
 
+/**
+ *  Lazy instantiation of the networking singleton
+ *
+ *  @return HoNManager
+ */
 -(HoNManager *)myHonManager
 {
     if(!_myHonManager) _myHonManager = [HoNManager sharedHoNManager];
     return _myHonManager;
 }
 
+/**
+ *  Loads up a deck of company cards to be voted on and displays the first one
+ */
 -(void)viewDidLoad{
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCurDeckInfo"
@@ -47,16 +69,24 @@
     }
 }
 
+/**
+ *  Gets Google Analytics set up for this view
+ *
+ *  @param animated
+ */
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     id tracker = [[GAI sharedInstance] defaultTracker];
-
     [tracker set:kGAIScreenName value:@"Home Screen"];
-    
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     [[GAI sharedInstance] dispatch];
-
 }
+
+/**
+ *  Makes the share button fuctional, which allows users to text/email the app to their friends
+ *
+ *  @param sender
+ */
 - (IBAction)shareButton:(id)sender {
     NSMutableDictionary *event =
     [[GAIDictionaryBuilder createEventWithCategory:@"UI"
@@ -89,6 +119,11 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+/**
+ *  Records an actual vote
+ *
+ *  @param notification The notification contains a vote type that allows us to determine whether it was a yes or a now
+ */
 - (void) incomingVote:(NSNotification *)notification{
     NSDictionary *companyInfo = [notification object];
     NSString *voteType = [companyInfo objectForKey:@"voteType"];
@@ -99,7 +134,6 @@
         voteTypeForConfirmationLabel = @"no";
     }
     self.confirmationLabel.text = [NSString stringWithFormat:@"voted %@ on %@", voteTypeForConfirmationLabel, [companyInfo objectForKey:@"company"]];
-//    DraggableView *currCompany = (DraggableView *)[[self.view subviews] lastObject];
     long index = self.view.subviews.count -2;
     if([[self.view.subviews objectAtIndex:index] isKindOfClass:[DraggableView class]]) {
         DraggableView *currCompany = (DraggableView *)[[self.view subviews] objectAtIndex:index];
@@ -109,11 +143,22 @@
     }
 }
 
+/**
+ *  Lazy instantion for the company names from the server
+ *
+ *  @return companiesFromServer
+ */
 -(NSMutableArray *)companiesFromServer {
     if(!_companiesFromServer) _companiesFromServer = [[NSMutableArray alloc] init];
     return _companiesFromServer;
 }
 
+/**
+ *  Skip button allows users to skip on a company if they don't have feels for it.
+ *  NOTE- it currently says "i haven't heard of it" so it is a bit of a misnomer
+ *
+ *  @param sender
+ */
 - (IBAction)skip:(id)sender
 {
     UIView *toRemove = [[self.view subviews] lastObject];
@@ -139,12 +184,18 @@
         }
     }
 }
+/**
+ *  Sets the company label so that the company's name is above its logo in case you don't recognize its logo
+ */
 -(void)setCompanyLabel
 {
     DraggableView *currCompany = (DraggableView *)[[self.view subviews] lastObject];
     self.companyLabel.text = currCompany.company;
 }
 
+/**
+ *  Sets the deck of actual cards using the companies pulled from the server.
+ */
 -(void) setDeck {
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"curCompanyDeck"];
     NSMutableArray *curDeck = [[NSMutableArray alloc] init];
@@ -161,12 +212,4 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-
-
 @end
