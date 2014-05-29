@@ -279,7 +279,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "-incomingVote:"
+            landmarkName = "-shareButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
