@@ -82,8 +82,24 @@ class CompaniesController < ApplicationController
   def compareInfo
     company = Company.find_by(name: params[:name])
     hash = Hash.new
-    hash["winningComparisons"] = Comparison.find_by(winning_company_id: company.id, was_skip: false)
-    hash["losingComparisons"] = Comparison.find_by(losing_company_id: company.id, was_skip: false)
+    winningCompares = Comparison.where(winning_company_id: company.id, was_skip: false)
+    losingCompares = Comparison.where(losing_company_id: company.id, was_skip: false)
+
+    # if !winningCompares.nil?
+    #   winningCompares.each{ |comparison|
+    #     comparison["losing_company_id"] = Company.find(comparison.losing_company_id).name
+    #   }
+    # end
+
+    # if !losingCompares.nil?
+    #   losingCompares.each{ |comparison|
+    #     puts comparison.winning_company_id  
+    #     comparison["winning_company"] = Company.find(comparison.winning_company_id).name
+    #   }
+    # end
+
+    hash["winningCompares"] = winningCompares
+    hash["losingCompares"] = losingCompares
     respond_to do |format|
       format.html { redirect_to @company, notice: 'Company was successfully created.' }
       format.json { render json: hash}
@@ -154,6 +170,8 @@ class CompaniesController < ApplicationController
     comparison = Comparison.new
     comparison.winning_company = winningCompany
     comparison.losing_company = losingCompany
+    comparison.winning_company_name = winningCompany.name
+    comparison.losing_company_name = losingCompany.name
     comparison.device_id = params[:device_id]
     comparison.vote_location = params[:vote_location]
     comparison.was_skip = params[:was_skip] == "1" ? true : false
