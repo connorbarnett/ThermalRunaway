@@ -27,6 +27,12 @@ static
 @property (weak, nonatomic) NSDictionary *companyInfo;
 
 /**
+ *  Company's comparisons information, including all compares won and lost
+ *  As well as the opposing company
+ */
+@property (weak, nonatomic) NSDictionary *companyComparisonInfo;
+
+/**
  *  Label displaying number of upvotes
  */
 @property (weak, nonatomic) IBOutlet UILabel *upLabel;
@@ -109,6 +115,14 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedComparisonsFor%@",self.company]
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self updateCopmarisonInfo];
+                                                  }];
+    [self.myHonManager loadComparisonInfoForCompany:self.company];
+    
     [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVotesFor%@",self.company]
                                                       object:nil
                                                        queue:nil
@@ -116,6 +130,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                                                       [self updateInfo];
                                                   }];
     [self.myHonManager loadVoteTypesForCompany:self.company];
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasViewedProfileOnce"])
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -188,6 +203,14 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
         });
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+/**
+ *  Sets labels for displaying company's results during comparisons
+ */
+-(void)updateComparisonInfo{
+    self.companyComparisonInfo = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"compareInfoFor%@",self.company]];
+    //TODO: Add to comparison info to display
 }
 
 @end
