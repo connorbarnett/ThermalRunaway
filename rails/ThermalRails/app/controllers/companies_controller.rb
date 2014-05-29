@@ -51,11 +51,11 @@ class CompaniesController < ApplicationController
 
   #GET /company/getcomparisons
   #GET /company/getcomparisons.json
-  #given a device_id, returns an array of all companies that the device_id has voted on
-  #this array is to be used in the comparisonsViewVC on the iPhone application
-  #for now and quick development just returning all companies for comparisons
-  #need to pass device_id
-  #returns json array of the companies that were passed
+  #given a device_id, returns an array of all companies that the device_id has voted on.  
+  #this array is to be used in the comparisonsViewVC on the iPhone application 
+  #for now and quick development just returning all companies for comparisons.  
+  #need to pass device_id.  
+  #returns json array of the companies that were passed.  
   def getcomparisons
     device_id = params[:device_id]
     companies = Company.all
@@ -70,6 +70,23 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.html {render json: companies }#temporary
       format.json { render json: arr }
+    end
+  end
+
+  #GET /company/compareinfo
+  #GET /company/compareinfo.json
+  #given a company name, returns a hash containing information on both 
+  #comparisons the company has won and lost.  
+  #need to pass company name as only param.  
+  #hash of company's comparison information returned.
+  def compareInfo
+    company = Company.find_by(name: params[:name])
+    hash = Hash.new
+    hash["winningComparisons"] = Comparison.find_by(winning_company_id: company.id, was_skip: false)
+    hash["losingComparisons"] = Comparison.find_by(losing_company_id: company.id, was_skip: false)
+    respond_to do |format|
+      format.html { redirect_to @company, notice: 'Company was successfully created.' }
+      format.json { render json: hash}
     end
   end
 

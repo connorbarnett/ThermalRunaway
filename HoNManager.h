@@ -15,7 +15,11 @@
  */
 @interface HoNManager : NSObject
 
-
+/**
+ *  Static instantiation of the HoNManager singleton.  This singleton instance is shared across the entire app
+ *
+ *  @return the instance of the singleton of self (ie the HoNManager that is shared across the application"
+ */
 + (id)sharedHoNManager;
 
 /**
@@ -38,12 +42,26 @@
 - (void)loadDeck;
 
 /**
+ *  Loads a deck of all company cards and stores the deck in NSUserDefaults
+ *  Deck to be used in the ComparisonViewVC
+ */
+- (void)loadComparisonsDeck;
+
+/**
  * Loads votes information for company provided with param from rails server.
  * Resulting information stored in NSUserDefaults
  
  * @param company the company whose information will be loaded
  */
 - (void)loadVoteTypesForCompany:(NSString *) company;
+
+/**
+ *  Loads all information on comparisons won and lost by the company provided with param from rails server
+ *  Resulting information stored in NSUserDefaults
+ *
+ *  @param company the company whose compare information will be loaded
+ */
+- (void)loadComparisonInfoForCompany:(NSString *)company;
 
 /**
  *  Performs POST Request to rails server, casting a vote of type vote_type for a company passed in.
@@ -61,12 +79,6 @@
  *  @param wasSkip        bool determining whether the comparison was simply a skip
  */
 - (void)castComparisonForCompany:(NSString *) winningCompany overCompany:(NSString *) losingCompany wasSkip:(BOOL)wasSkip;
-
-/**
- *  Loads a deck of all company cards and stores the deck in NSUserDefaults
- *  Deck to be used in the ComparisonViewVC
- */
-- (void)loadComparisonsDeck;
 
 /**
  *  Pushes the company card for companyName onto the top of the deck of current company cards being used by the HoNManager
