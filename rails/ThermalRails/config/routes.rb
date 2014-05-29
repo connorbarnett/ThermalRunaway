@@ -1,5 +1,4 @@
 ThermalRails::Application.routes.draw do
-  get "test/index"
   resources :companies
   match '/vote',  to: 'companies#vote',       via: 'post'
   match '/vote.json', to: 'companies#vote', via: 'post'
@@ -11,6 +10,8 @@ ThermalRails::Application.routes.draw do
   match '/company/getcomparisons.json', to: 'companies#getcomparisons', via: 'get'
   match '/compare', to: 'companies#compare', via: 'post'
   match '/compare.json', to: 'companies#compare', via: 'post'
+  match '/company/compareinfo', to: 'companies#compareInfo', via: 'get'
+  match '/company/compareinfo.json', to: 'companies#compareInfo', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -22,15 +22,11 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-//static NSString * const BaseURLString = @"http://localhost:3000/";
+//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+static NSString * const BaseURLString = @"http://localhost:3000/";
 
 #pragma mark - Singleton creation
-/**
- *  Static instantiation of the HoNManager singleton.  This singleton instance is shared across the entire app
- *
- *  @return the instance of the singleton of self (ie the HoNManager that is shared across the application"
- */
+
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
     static dispatch_once_t onceToken;
@@ -218,7 +214,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Company Information"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company information"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
@@ -229,7 +225,30 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     [operation start];
 }
 
-
+- (void)loadComparisonInfoForCompany:(NSString *)company{
+   NSString *defaultsKey = [NSString stringWithFormat:@"compareInfoFor%@",company];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/compareinfo.json/?name=%@",BaseURLString, company]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *companyComparisonInfo = (NSDictionary *)responseObject;
+        [[NSUserDefaults standardUserDefaults] setObject:companyComparisonInfo forKey:defaultsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedComparisonsFor%@",company] object:nil];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company comparison information"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    [operation start];
+}
 
 #pragma mark - POST Request methods
 

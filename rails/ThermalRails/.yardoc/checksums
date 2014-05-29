@@ -1,0 +1,7 @@
+app/models/vote.rb 44ca983ecad048641fefd7d72af4937dc8afcdbc
+app/models/company.rb 15aaad4f784ba79dc2dbe2e1b2fe09885517aee9
+app/models/comparison.rb 174391052cb1cb7f18f76086faee3df9ab10f448
+app/helpers/companies_helper.rb d9230a16d7b327ba2b700f5d81776d6a7c81064d
+app/helpers/application_helper.rb c0191be0a4378d5b5843d3c17e02e9dbc425f1ac
+app/controllers/companies_controller.rb a2c34fbc6f608c0019bfc40e0a1fdb7f3ead7ad2
+app/controllers/application_controller.rb e36733ae69e89d5514cdd33f8e699e1d216f0fe0
