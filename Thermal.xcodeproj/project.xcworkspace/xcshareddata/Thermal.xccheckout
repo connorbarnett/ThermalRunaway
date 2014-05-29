@@ -5,60 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>DDCC624D-14B2-4338-BCFD-1658245631A7</string>
+	<string>17FE9B73-FFCD-4BA5-AB10-92AB983E53B4</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Thermal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>268AA050-CB26-41E2-B3EF-7786D43DBDBC</key>
-		<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
-		<key>CA68AE66-BF74-4100-B28E-2042550BEBC9</key>
-		<string>https://github.com/jdg/MBProgressHUD.git</string>
-		<key>DD9AEDFB-A1C7-4485-94E8-5228D833A2BE</key>
-		<string>https://github.com/onevcat/VVDocumenter-Xcode.git</string>
+		<key>82C3B286-D0AA-4776-B3B7-9B806B06B877</key>
+		<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>268AA050-CB26-41E2-B3EF-7786D43DBDBC</key>
+		<key>82C3B286-D0AA-4776-B3B7-9B806B06B877</key>
 		<string>../..</string>
-		<key>CA68AE66-BF74-4100-B28E-2042550BEBC9</key>
-		<string>../../MBProgressHUD</string>
-		<key>DD9AEDFB-A1C7-4485-94E8-5228D833A2BE</key>
-		<string>../../VVDocumenter-Xcode</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/connorbarnett/ThermalRunaway.git</string>
+	<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>268AA050-CB26-41E2-B3EF-7786D43DBDBC</string>
+	<string>82C3B286-D0AA-4776-B3B7-9B806B06B877</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CA68AE66-BF74-4100-B28E-2042550BEBC9</string>
+			<string>82C3B286-D0AA-4776-B3B7-9B806B06B877</string>
 			<key>IDESourceControlWCCName</key>
-			<string>MBProgressHUD</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>268AA050-CB26-41E2-B3EF-7786D43DBDBC</string>
-			<key>IDESourceControlWCCName</key>
-			<string>ThermalRunaway</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DD9AEDFB-A1C7-4485-94E8-5228D833A2BE</string>
-			<key>IDESourceControlWCCName</key>
-			<string>VVDocumenter-Xcode</string>
+			<string>Thermal</string>
 		</dict>
 	</array>
 </dict>

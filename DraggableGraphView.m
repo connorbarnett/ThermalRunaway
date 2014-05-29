@@ -3,10 +3,27 @@
 #import "GAIDictionaryBuilder.h"
 
 @interface DraggableGraphView ()
+
+/**
+ *  Gesture Recognizer to make the view draggable
+ */
 @property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+
+/**
+ *  The starting point for the graph used for animation purposes
+ */
 @property(nonatomic) CGPoint originalPoint;
+
+/**
+ *  An array of either votes or rankings to be graphed
+ */
 @property(strong, nonatomic) NSArray *data;
+
+/**
+ *  Either vote or ranking
+ */
 @property(strong, nonatomic) NSString *graphType;
+
 @end
 
 @implementation DraggableGraphView
@@ -35,6 +52,11 @@
     return self;
 }
 
+/**
+ *  Responds to dragging.  If the view is dragged beyond a certain point, it is swapped out and replaced by another view
+ *
+ *  @param gestureRecognizer
+ */
 - (void)dragged:(UIPanGestureRecognizer *)gestureRecognizer
 {
     CGFloat xDistance = [gestureRecognizer translationInView:self].x;
@@ -80,7 +102,9 @@
     }
 }
 
-
+/**
+ *  Animation.  Moves the view back to it's original point
+ */
 - (void)resetViewPositionAndTransformations
 {
     [UIView animateWithDuration:0.2
@@ -90,6 +114,11 @@
                      }];
 }
 
+/**
+ *  Animation.  Slowly removes the view when it reaches the appropriate threshold
+ *
+ *  @param xDistance the distance the view has been moved
+ */
 - (void)slowlyRemoveView:(CGFloat) xDistance {
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -107,11 +136,19 @@
      ];
 }
 
+/**
+ *  Deallocates the view
+ */
 - (void)dealloc
 {
     [self removeGestureRecognizer:self.panGestureRecognizer];
 }
 
+/**
+ *  Draws the actual graph
+ *
+ *  @param rect
+ */
 - (void)drawRect:(CGRect)rect
 {
     if([self.graphType isEqualToString:@"votes"]) {
@@ -122,7 +159,9 @@
     }
 }
 
-
+/**
+ *  Draws horizontal lines to display a scale on the rank graph
+ */
 - (void)drawScaleForRankGraph
 {
     float width = self.bounds.size.width;
@@ -137,9 +176,11 @@
         CGContextAddLineToPoint(context, width, currentHeight);
     }
     CGContextStrokePath(context);
-    
 }
 
+/**
+ *  Plots the rank graph
+ */
 -(void)plotRankGraph
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -162,10 +203,11 @@
     }
 }
 
-
+/**
+ *  Plots the vote graph
+ */
 -(void)plotVoteGraph
 {
-
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor yellowColor].CGColor);
     CGContextSetLineWidth(context, 4.0);
@@ -187,6 +229,11 @@
     }
 }
 
+/**
+ *  Self explanatory utility method used to scale the graph
+ *
+ *  @return min data point as a long
+ */
 -(long)findMin
 {
     long min = [(NSNumber *)[self.data firstObject] integerValue];
@@ -196,6 +243,11 @@
     return min;
 }
 
+/**
+ *  Self explanatory utility method used to scale the graph
+ *
+ *  @return max data point as a long
+ */
 -(long)findMax
 {
     long max = [(NSNumber *)[self.data firstObject] integerValue];
@@ -205,11 +257,21 @@
     return max;
 }
 
+/**
+ *  Self explanatory utility method used to scale the graph
+ *
+ *  @return difference between min and max data point as a long
+ */
 -(long)findDifference
 {
     return [self findMax] - [self findMin];
 }
 
+/**
+ *  Utility method used to scale the graph by finding whether the absolute vale of min or the max is greater
+ *
+ *  @return "most extreme" data point as a long
+ */
 -(long) findMostExtremeCount
 {
     long max = [self findMax];
@@ -217,6 +279,11 @@
     return (fabs(min) > fabs(max)) ? fabs(min) : fabs(max);
 }
 
+/**
+ *  Self explanatory utility method used to scale the graph
+ *
+ *  @return median as a float
+ */
 -(float)findMean
 {
     float sum = 0;
@@ -227,6 +294,12 @@
     return sum/self.data.count;
 }
 
+/**
+ *  Draws the labels for the graph that indicate the numerical value at each point
+ *
+ *  @param rect the graphing view's drawing space
+ *  @param rank the rank (or vote) to be written in the label
+ */
 -(void)addLabelInPosition:(CGRect)rect andRank:(NSNumber*)rank
 {
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
