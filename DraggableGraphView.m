@@ -23,7 +23,7 @@
  *  Either vote or ranking
  */
 @property(strong, nonatomic) NSString *graphType;
-
+#define NUM_COMPANIES 40
 @end
 
 @implementation DraggableGraphView
@@ -189,7 +189,7 @@
     float width = self.bounds.size.width;
     float height = self.bounds.size.height;
     double widthScaleFactor = width/(self.data.count-1);
-    double heightScaleFactor = height/20;
+    double heightScaleFactor = height/NUM_COMPANIES;
     for(int i = 0; i < self.data.count-1; i++) {
         NSNumber *rank = [self.data objectAtIndex:i];
         NSNumber *nextRank = [self.data objectAtIndex:i+1];
