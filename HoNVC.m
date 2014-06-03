@@ -34,6 +34,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *haventHeardButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *skipButton;
+
 /**
  *  Singleton for all networking calls
  */
@@ -162,30 +164,27 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 }
 
 /**
- *  Skip button allows users to skip on a company if they don't have feels for it.
- *  NOTE- it currently says "i haven't heard of it" so it is a bit of a misnomer
+ *  Method called when "haven't heard of it" or "got it"button is clicked by user.  For the two
+ *  cases it does the following:
+ *  Case 1: The button display's "havent heard of it:" A view that includes a brief description
+ *  and current valuation/worth of the top company card is added to the top of the HoNVC.
+ *  Also locks the view, removing a user's ability to swipe companies until the "got it" button is pressed.
+ *  Case 2:  The button display's "got it:"  Here the top view that displays a company's
+ *  description and valuation/worth is removed from the HoNVC, allowing users to once again vote on companies by swiping.
  *
- *  @param sender
+ *  @param sender the id of the button, for super class
  */
-- (IBAction)skip:(id)sender
-{
+- (IBAction)unheardOf:(id)sender {
     if ([self.haventHeardButton.titleLabel.text isEqualToString:@"got it"]) {
         UIView *toRemove = [[self.view subviews] lastObject];
         [toRemove removeFromSuperview];
         [self.haventHeardButton setTitle:@"haven't heard of it" forState:UIControlStateNormal];
+        self.skipButton.hidden = NO;
     } else {
-        
         UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(20, 130, 280, 280)];
-        //BOB - we need the networking call here to get images from db, currenty it will only show the text for google bc google is in image assets
-//        NSString *textImageStr = [self.companyLabel.text stringByAppendingString:@"text"];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:textImageStr]];
-//        imageView.frame = newView.bounds;
-//        [newView addSubview:imageView];
-//        [self.view addSubview:newView];
         [self.haventHeardButton setTitle:@"got it" forState:UIControlStateNormal];
-        
-        
-        
+        self.skipButton.hidden = YES;
+
         if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@imagetext",self.companyLabel.text]]){
             NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@text.png",ImgsURLString, self.companyLabel.text]];
             
@@ -213,6 +212,36 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 [self.view addSubview:newView];
             });
         }
+    }
+}
+
+/**
+ *  Skip button allows users to skip on a company if they don't have feels for it.
+ *
+ *  @param sender
+ */
+- (IBAction)skip:(id)sender {
+    UIView *toRemove = [[self.view subviews] lastObject];
+    DraggableView *toRemoveTmp = (DraggableView *)toRemove;
+    
+    if([self.myHonManager deckEmpty]){
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"company deck empty"
+                                                                                                    message:@"sorry, there are no more companies for you to vote on!"
+                                                                delegate:nil
+                                                                cancelButtonTitle:@"ok"
+                                                                otherButtonTitles:nil];
+            [alertView show];
+        }
+    else {
+        [self.myHonManager castVote:@"skip_vote" forCompany:toRemoveTmp.company];
+        self.confirmationLabel.text = [NSString stringWithFormat:@"skipped %@", toRemoveTmp.company];
+        [self.myHonManager removeTopCompanyFromDeck];
+        [toRemove removeFromSuperview];
+        if([self.myHonManager deckEmpty])
+            [self.myHonManager loadNextDeck];
+        else
+            [self setCompanyLabel];
+                    
     }
 }
 /**

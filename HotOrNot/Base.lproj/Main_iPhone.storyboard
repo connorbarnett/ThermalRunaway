@@ -21,18 +21,18 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUL-qj-Hzy">
-                                <rect key="frame" x="104" y="431" width="113" height="30"/>
+                                <rect key="frame" x="35" y="425" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <state key="normal" title="haven't heard of it">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="skip:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xLw-vd-gXf"/>
+                                    <action selector="unheardOf:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="768-xY-4ph"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6w2-MP-L1H">
-                                <rect key="frame" x="31" y="463" width="280" height="33"/>
+                                <rect key="frame" x="20" y="468" width="280" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
                                 <color key="textColor" red="0.31419384881090601" green="0.57302295918367352" blue="0.26395471692394967" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,6 +55,16 @@
                                     <action selector="shareButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JNn-kj-bUu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjt-WG-oC5">
+                                <rect key="frame" x="270" y="425" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skip:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4Q0-Bi-YZD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -63,6 +73,7 @@
                         <outlet property="companyLabel" destination="pFU-FN-4Mq" id="aJi-SN-66k"/>
                         <outlet property="confirmationLabel" destination="6w2-MP-L1H" id="JSt-RZ-4he"/>
                         <outlet property="haventHeardButton" destination="uUL-qj-Hzy" id="Phj-De-CpU"/>
+                        <outlet property="skipButton" destination="Cjt-WG-oC5" id="mhS-49-ViV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
