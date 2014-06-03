@@ -85,19 +85,6 @@ class CompaniesController < ApplicationController
     winningCompares = Comparison.where(winning_company_id: company.id, was_skip: false)
     losingCompares = Comparison.where(losing_company_id: company.id, was_skip: false)
 
-    # if !winningCompares.nil?
-    #   winningCompares.each{ |comparison|
-    #     comparison["losing_company_id"] = Company.find(comparison.losing_company_id).name
-    #   }
-    # end
-
-    # if !losingCompares.nil?
-    #   losingCompares.each{ |comparison|
-    #     puts comparison.winning_company_id  
-    #     comparison["winning_company"] = Company.find(comparison.winning_company_id).name
-    #   }
-    # end
-
     hash["winningCompares"] = winningCompares
     hash["losingCompares"] = losingCompares
     respond_to do |format|

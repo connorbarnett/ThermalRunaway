@@ -22,8 +22,8 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-//static NSString * const BaseURLString = @"http://localhost:3000/";
+//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+static NSString * const BaseURLString = @"http://localhost:3000/";
 
 #pragma mark - Singleton creation
 
@@ -178,7 +178,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)loadComparisonsDeck {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/company/getcomparisons.json/?device_id=%@",BaseURLString, self.deviceId]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/company/getcomparisons.json",BaseURLString]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
