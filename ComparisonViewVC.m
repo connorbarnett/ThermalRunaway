@@ -51,6 +51,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *bottomConfirmationLabel;
 
 /**
+ *  What percentage of the crowd chose what company over the other
+ */
+@property (weak, nonatomic) IBOutlet UILabel *crowdResultsLabel;
+
+/**
  *  Singleton instance of HoNManager shared across application for all communication with rails server
  */
 @property(strong, nonatomic) HoNManager *myHonManager;
@@ -101,6 +106,20 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self.companies removeObjectAtIndex:0];
     [self.companies removeObjectAtIndex:1];
     [self reloadIfNeeded];
+    [self updateCrowdResultsLabelWithFirstCompany:self.firstCompanyLabel.text andSecondCompany:self.secondCompanyLabel.text];
+}
+
+/**
+ *  Determines which company had a larger percentage of votes and sets a label to determine this
+ *
+ *  @param firstCompany  First Company in consideration
+ *  @param secondCompany Second Company in consideration
+ */
+-(void)updateCrowdResultsLabelWithFirstCompany:(NSString *)firstCompany andSecondCompany:(NSString*)secondCompany
+{
+    //BOB- make a networking call to figure out the actual percentage instead of just picking a random number
+    NSInteger randomNumber = arc4random() % 100;
+    self.crowdResultsLabel.text = [NSString stringWithFormat:@"%d%% of the crowd chose %@ over %@", randomNumber, firstCompany, secondCompany];
 }
 
 /**
@@ -115,6 +134,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:false];
     [self.companies removeObjectAtIndex:1];
     [self reloadIfNeeded];
+    [self updateCrowdResultsLabelWithFirstCompany:self.firstCompanyLabel.text andSecondCompany:self.secondCompanyLabel.text];
+
 }
 
 /**
@@ -129,6 +150,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     [self.myHonManager castComparisonForCompany:self.secondCompanyLabel.text overCompany:self.firstCompanyLabel.text wasSkip:false];
     [self.companies removeObjectAtIndex:0];
     [self reloadIfNeeded];
+    [self updateCrowdResultsLabelWithFirstCompany:self.firstCompanyLabel.text andSecondCompany:self.secondCompanyLabel.text];
+
 }
 
 /**
