@@ -114,7 +114,7 @@
                                          UIActivityTypePostToFlickr,
                                          UIActivityTypePostToVimeo,
                                          UIActivityTypePostToTencentWeibo,
-                                         UIActivityTypeAirDrop];
+       UIActivityTypeAirDrop];
     
     [self presentViewController:controller animated:YES completion:nil];
 }
