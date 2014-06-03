@@ -195,9 +195,9 @@
         NSNumber *nextRank = [self.data objectAtIndex:i+1];
         CGContextMoveToPoint(context, i*widthScaleFactor, [rank integerValue]*heightScaleFactor);
         if(i == (self.data.count-2)) {
-            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, [nextRank integerValue]*heightScaleFactor-20, 20, 20) andRank:nextRank];
+            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, [nextRank integerValue]*heightScaleFactor-20, 25, 20) andRank:nextRank];
         }
-        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, [rank integerValue]*heightScaleFactor-20, 20, 20) andRank:rank];
+        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, [rank integerValue]*heightScaleFactor-20, 25, 20) andRank:rank];
         CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, [nextRank integerValue]*heightScaleFactor);
         CGContextStrokePath(context);
     }
@@ -221,9 +221,9 @@
         NSNumber *nextCount = [self.data objectAtIndex:i+1];
         CGContextMoveToPoint(context, i*widthScaleFactor, height/2 - heightScaleFactor*([count integerValue]-mean));
         if(i == (self.data.count-2)) {
-            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, height/2 - heightScaleFactor*([nextCount integerValue]-mean)-20, 20, 20) andRank:nextCount];
+            [self addLabelInPosition:CGRectMake((i+1)*widthScaleFactor-10, height/2 - heightScaleFactor*([nextCount integerValue]-mean)-20, 25, 20) andRank:nextCount];
         }
-        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, height/2 - heightScaleFactor*([count integerValue]-mean)-20, 20, 20) andRank:count];
+        [self addLabelInPosition:CGRectMake(i*widthScaleFactor-10, height/2 - heightScaleFactor*([count integerValue]-mean)-20, 25, 20) andRank:count];
         CGContextAddLineToPoint(context, (i+1)*widthScaleFactor, height/2 - heightScaleFactor*([nextCount integerValue]-mean));
         CGContextStrokePath(context);
     }
