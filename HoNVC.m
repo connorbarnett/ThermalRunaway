@@ -197,7 +197,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
                     imageView.contentMode = UIViewContentModeScaleAspectFit;
                     [newView addSubview:imageView];
-                    [self.view addSubview:imageView];
+                    [self.view addSubview:newView];
                 });
                 [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@imagetext",self.companyLabel.text]];
                 [[NSUserDefaults standardUserDefaults] synchronize];
