@@ -43,6 +43,11 @@
 @implementation HoNVC
 
 /**
+ *  static string for url needed to load images of a companies description
+ */
+static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/texts/";
+
+/**
  *  Lazy instantiation of the networking singleton
  *
  *  @return HoNManager
@@ -169,14 +174,45 @@
         [toRemove removeFromSuperview];
         [self.haventHeardButton setTitle:@"haven't heard of it" forState:UIControlStateNormal];
     } else {
+        
         UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(20, 130, 280, 280)];
         //BOB - we need the networking call here to get images from db, currenty it will only show the text for google bc google is in image assets
-        NSString *textImageStr = [self.companyLabel.text stringByAppendingString:@"text"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:textImageStr]];
-        imageView.frame = newView.bounds;
-        [newView addSubview:imageView];
-        [self.view addSubview:newView];
+//        NSString *textImageStr = [self.companyLabel.text stringByAppendingString:@"text"];
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:textImageStr]];
+//        imageView.frame = newView.bounds;
+//        [newView addSubview:imageView];
+//        [self.view addSubview:newView];
         [self.haventHeardButton setTitle:@"got it" forState:UIControlStateNormal];
+        
+        
+        
+        if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@imagetext",self.companyLabel.text]]){
+            NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@text.png",ImgsURLString, self.companyLabel.text]];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                    [newView addSubview:imageView];
+                    [self.view addSubview:imageView];
+                });
+                [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:[NSString stringWithFormat:@"%@imagetext",self.companyLabel.text]];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            });
+        }
+        else{
+            NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@imagetext",self.companyLabel.text]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imageData];
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                [newView addSubview:imageView];
+                [self.view addSubview:newView];
+            });
+        }
     }
 }
 /**
