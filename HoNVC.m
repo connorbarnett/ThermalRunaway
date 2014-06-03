@@ -32,6 +32,8 @@
  */
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *haventHeardButton;
+
 /**
  *  Singleton for all networking calls
  */
@@ -56,6 +58,7 @@
  */
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self.haventHeardButton setTitle:@"haven't heard of it" forState:UIControlStateNormal];
     [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedCurDeckInfo"
                                                       object:nil
                                                        queue:nil
@@ -161,27 +164,19 @@
  */
 - (IBAction)skip:(id)sender
 {
-    UIView *toRemove = [[self.view subviews] lastObject];
-    DraggableView *toRemoveTmp = (DraggableView *)toRemove;
-
-    if([self.myHonManager deckEmpty]){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"company deck empty"
-                                                            message:@"sorry, there are no more companies for you to vote on!"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    else {
-        [self.myHonManager castVote:@"unknown_vote" forCompany:toRemoveTmp.company];
-        self.confirmationLabel.text = [NSString stringWithFormat:@"skipped %@", toRemoveTmp.company];
+    if ([self.haventHeardButton.titleLabel.text isEqualToString:@"got it"]) {
+        UIView *toRemove = [[self.view subviews] lastObject];
         [toRemove removeFromSuperview];
-        [self.myHonManager removeTopCompanyFromDeck];
-        if([self.myHonManager deckEmpty])
-            [self.myHonManager loadNextDeck];
-        if(![self.myHonManager deckEmpty]) {
-            [self setCompanyLabel];
-        }
+        [self.haventHeardButton setTitle:@"haven't heard of it" forState:UIControlStateNormal];
+    } else {
+        UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(20, 130, 280, 280)];
+        //BOB - we need the networking call here to get images from db, currenty it will only show the text for google bc google is in image assets
+        NSString *textImageStr = [self.companyLabel.text stringByAppendingString:@"text"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:textImageStr]];
+        imageView.frame = newView.bounds;
+        [newView addSubview:imageView];
+        [self.view addSubview:newView];
+        [self.haventHeardButton setTitle:@"got it" forState:UIControlStateNormal];
     }
 }
 /**

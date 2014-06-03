@@ -62,6 +62,7 @@
                     <connections>
                         <outlet property="companyLabel" destination="pFU-FN-4Mq" id="aJi-SN-66k"/>
                         <outlet property="confirmationLabel" destination="6w2-MP-L1H" id="JSt-RZ-4he"/>
+                        <outlet property="haventHeardButton" destination="uUL-qj-Hzy" id="Phj-De-CpU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
