@@ -226,7 +226,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     if([self.myHonManager deckEmpty]){
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"company deck empty"
-                                                                                                    message:@"sorry, there are no more companies for you to vote on!"
+                                                                message:@"sorry, there are no more companies for you to vote on!"
                                                                 delegate:nil
                                                                 cancelButtonTitle:@"ok"
                                                                 otherButtonTitles:nil];

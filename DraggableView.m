@@ -35,7 +35,7 @@
 @end
 
 @implementation DraggableView
-static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/logos";
+static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/logos/";
 
 -(HoNManager *)myHonManager
 {
