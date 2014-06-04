@@ -63,6 +63,24 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return self;
 }
 
+- (id)initNetworkFreeWithFrame:(CGRect)frame company:(NSString *)company
+{
+    self = [super initWithFrame:frame];
+
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
+    [self addGestureRecognizer:self.panGestureRecognizer];
+    self.company = company;
+    UIImage *image = [UIImage imageNamed:company];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:imageView];
+    self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
+    self.overlayView.alpha = 0;
+    [self addSubview:self.overlayView];
+    return self;
+
+}
+
 /**
  *  Makes a networking call to get the image data for the company logo, then sets the view to have the company's logo
  */

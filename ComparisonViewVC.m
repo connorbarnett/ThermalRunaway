@@ -119,7 +119,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 {
     //BOB- make a networking call to figure out the actual percentage instead of just picking a random number
     NSInteger randomNumber = arc4random() % 100;
-    self.crowdResultsLabel.text = [NSString stringWithFormat:@"%d%% of the crowd chose %@ over %@", randomNumber, firstCompany, secondCompany];
+    self.crowdResultsLabel.text = [NSString stringWithFormat:@"%ld%% of the crowd chose %@ over %@", (long)randomNumber, firstCompany, secondCompany];
 }
 
 /**
