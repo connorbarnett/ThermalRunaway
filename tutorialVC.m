@@ -10,12 +10,20 @@
 #import "DraggableView.h"
 
 @interface tutorialVC ()
+
+/**
+ *  A button that appears when they've finishd the tutorial so that they can play with the app
+ */
 @property (weak, nonatomic) IBOutlet UIButton *gotitButton;
 
 @end
 
 @implementation tutorialVC
 
+/**
+ *  Loads a company card, hides the "got it" button, and adds an observer so that when they swipe
+ *  the company card off screen, they can advane to the app itself
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
