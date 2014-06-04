@@ -12,6 +12,9 @@ ThermalRails::Application.routes.draw do
   match '/compare.json', to: 'companies#compare', via: 'post'
   match '/company/compareinfo', to: 'companies#compareInfo', via: 'get'
   match '/company/compareinfo.json', to: 'companies#compareInfo', via: 'get'
+  match '/company/comparePercentage', to: 'companies#comparePercentage', via: 'get'
+  match '/company/comparePercentage.json', to: 'companies#comparePercentage', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
