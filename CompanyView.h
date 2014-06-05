@@ -11,6 +11,10 @@
 
 @interface CompanyView : UIView
 - (id)initWithCompany:(NSString *)company;
+
+/**
+ *  Draggable View to make the company cards draggable
+ */
 @property(nonatomic, strong) DraggableView *draggableView;
 
 @end

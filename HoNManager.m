@@ -4,7 +4,6 @@
 //
 //  Created by Robert Dunlevie on 4/22/14.
 //  Copyright (c) 2014 Cbo Games. All rights reserved.
-//
 
 #include "AFNetworking.h"
 #import "HoNManager.h"
@@ -23,8 +22,10 @@
 @implementation HoNManager 
 
 //Needs to change to ec2 eventually
-static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
-//static NSString * const BaseURLString = @"http://localhost:3000/";
+//static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.amazonaws.com:3000/";
+static NSString * const BaseURLString = @"http://localhost:3000/";
+
+#pragma mark - Singleton creation
 
 + (id)sharedHoNManager {
     static HoNManager *sharedHoNManager = nil;
@@ -35,6 +36,29 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     return sharedHoNManager;
 }
 
+#pragma mark - simple incrementations
+
+-(void)addCompanyToDeck:(NSString *)companyName{
+    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, nil];
+    [self.currentDeck addObject:curCompany];
+}
+
+- (void)removeTopCompanyFromDeck{
+    if(!self.currentDeck) return;
+    
+    [self.currentDeck removeLastObject];
+}
+
+- (BOOL)deckEmpty{
+    BOOL deckEmpty = [self.currentDeck count] == 0;
+    return deckEmpty;
+}
+
+- (void)loadNextDeck{
+    [self incrementPageCount];
+    [self loadDeck];
+}
+
 - (void)incrementPageCount {
     self.curPage++;
 }
@@ -43,24 +67,46 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     self.curPage = 1;
 }
 
+#pragma mark - Property Lazy Instantiation
+
+/**
+ *  Lazy instantiation for the Location Manager
+ *
+ *  @return the location manager being instantiated
+ */
 -(CLLocationManager *)manager
 {
     if(!_manager) _manager = [[CLLocationManager alloc] init];
     return _manager;
 }
 
+/**
+ *  Lazy instantiation for the Geocoder
+ *
+ *  @return the geocoder being instantiated
+ */
 -(CLGeocoder *)geocoder
 {
     if(!_geocoder) _geocoder = [[CLGeocoder alloc] init];
     return _geocoder;
 }
 
+/**
+ *  Lazy instantiation of currentDeck array of company cards
+ *
+ *  @return the company card array being instantiated
+ */
 -(NSMutableArray *)currentDeck
 {
     if(!_currentDeck) _currentDeck = [[NSMutableArray alloc] init];
     return _currentDeck;
 }
 
+/**
+ *  Unique instantiation of companies unique deviceId.  Uses iOS's built in identifierForVendor method to find a devices UDID
+ *
+ *  @return the instantiated UDID of the device being used
+ */
 -(NSString *)deviceId
 {
     if(!_deviceId) {
@@ -70,13 +116,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     return _deviceId;
 }
 
-- (void)startLocationServices{
-    self.manager.delegate = self;
-    [self.manager setDelegate:self];
-    self.manager.distanceFilter = kCLDistanceFilterNone;
-    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.manager startUpdatingLocation];
-}
+#pragma mark - GET request methods
 
 - (void)loadAllCompanyCards{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/getall.json",BaseURLString]];
@@ -138,7 +178,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
 }
 
 - (void)loadComparisonsDeck {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/company/getcomparisons.json/?device_id=%@",BaseURLString, self.deviceId]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/company/getcomparisons.json",BaseURLString]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -174,7 +214,7 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedVotesFor%@",company] object:nil];
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Loading Company Information"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company information"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
@@ -185,26 +225,58 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     [operation start];
 }
 
--(void)addCompanyToDeck:(NSString *)companyName{
-    NSDictionary *curCompany = [[NSDictionary alloc] initWithObjectsAndKeys:@"name", companyName, nil];
-    [self.currentDeck addObject:curCompany];
-}
-
-- (void)removeTopCompanyFromDeck{
-    if(!self.currentDeck) return;
+- (void)loadComparisonInfoForCompany:(NSString *)company{
+   NSString *defaultsKey = [NSString stringWithFormat:@"compareInfoFor%@",company];
     
-    [self.currentDeck removeLastObject];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/compareinfo.json/?name=%@",BaseURLString, company]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *companyComparisonInfo = (NSDictionary *)responseObject;
+        [[NSUserDefaults standardUserDefaults] setObject:companyComparisonInfo forKey:defaultsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedComparisonsFor%@",company] object:nil];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company comparison information"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    [operation start];
 }
 
-- (BOOL)deckEmpty{
-    BOOL deckEmpty = [self.currentDeck count] == 0;
-    return deckEmpty;
+- (void)loadComparisonPercentageForCompany:(NSString *)firstCompany andOtherCompany:(NSString *)secondCompany{
+    NSString *defaultsKey = @"latestComparePercentage";
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/comparePercentage.json/?first_company_name=%@&second_company_name=%@",BaseURLString, firstCompany, secondCompany]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *companyComparisonInfo = (NSDictionary *)responseObject;
+        [[NSUserDefaults standardUserDefaults] setObject:companyComparisonInfo forKey:defaultsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"obtainedLatestComparisonsPercentage" object:nil];
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company comparison percentage"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    [operation start];
 }
 
-- (void)loadNextDeck{
-    [self incrementPageCount];
-    [self loadDeck];
-}
+
+#pragma mark - POST Request methods
 
 - (void)castVote:(NSString *)vote_type forCompany:(NSString *)company{
     NSURL *baseURL = [NSURL URLWithString:BaseURLString];
@@ -243,23 +315,41 @@ static NSString * const BaseURLString = @"http://ec2-54-224-194-212.compute-1.am
     }];
 }
 
--(void)clearUserDefaults{
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (id)init {
     self = [super init];
     return self;
 }
 
 #pragma mark - CLLocationManagerDelegate Methods
+
+/**
+ *  Begins location services by assigning preferences such as accuracy and then starting to update the location
+ */
+- (void)startLocationServices{
+    self.manager.delegate = self;
+    [self.manager setDelegate:self];
+    self.manager.distanceFilter = kCLDistanceFilterNone;
+    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.manager startUpdatingLocation];
+}
+
+/**
+ *  Logs location based errors to console or log files
+ *
+ *  @param manager LocationManager that experienced the error
+ *  @param error   The error that occured with location services
+ */
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location!");
 }
 
+/**
+ *  Method called in background only when location services are running and a new, unique location has been visited
+ *
+ *  @param manager   manager that is keeping track of location services
+ *  @param locations array containing all unique locations visited during location service's runtime.  Latest location visited by user stored as the last object in the array.
+ */
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.lastLocation = [locations lastObject];

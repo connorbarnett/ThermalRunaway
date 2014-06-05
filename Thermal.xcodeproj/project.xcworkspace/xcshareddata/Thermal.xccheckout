@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0E9D9E94-567D-4A4B-B8AD-37D8A8596A23</string>
+	<string>BCB8F3CE-28CA-472B-B978-4BCCFF4984E0</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Thermal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0867EE49-9A9E-4E8C-BE8A-C74F7184EAF3</key>
+		<key>7198D815-D929-4365-AA7D-B4B501AA86D0</key>
 		<string>https://github.com/connorbarnett/ThermalRunaway</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Thermal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0867EE49-9A9E-4E8C-BE8A-C74F7184EAF3</key>
+		<key>7198D815-D929-4365-AA7D-B4B501AA86D0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0867EE49-9A9E-4E8C-BE8A-C74F7184EAF3</string>
+	<string>7198D815-D929-4365-AA7D-B4B501AA86D0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0867EE49-9A9E-4E8C-BE8A-C74F7184EAF3</string>
+			<string>7198D815-D929-4365-AA7D-B4B501AA86D0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Thermal</string>
 		</dict>
