@@ -12,6 +12,7 @@
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
 #import "HoNVC.h"
+#import "MBProgressHUD.h"
 
 @interface ComparisonViewVC ()
 
@@ -166,6 +167,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
  */
 -(void)updateCompanyCards
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if([self.companies count] == 0){
         NSArray *curComparisonDeck = [[NSUserDefaults standardUserDefaults] valueForKey:@"curComparisonDeck"];
         if(curComparisonDeck == NULL || [curComparisonDeck count] < 2){
@@ -198,6 +200,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
     [self loadImageDataForCompany:firstCompanyStr andSide:YES];
     [self loadImageDataForCompany:secondCompanyStr andSide:NO];
+    [MBProgressHUD hideHUDForView:self.view animated:NO];
 }
 
 /**
@@ -244,7 +247,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             }
         });
     }
-
 }
 
 -(void) updatePercentageDisplay{
