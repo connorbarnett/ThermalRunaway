@@ -103,6 +103,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"skipped %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"and %@", self.secondCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:YES];
+    [self.myHonManager loadComparisonPercentageForCompany:self.firstCompanyLabel.text andOtherCompany:self.secondCompanyLabel.text];
     [self reloadIfNeeded];
 }
 
@@ -252,21 +253,21 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     
     NSString *winningCompany = [comparisonInformation valueForKey:@"winning_company_name"];
     NSString *losingCompany = [comparisonInformation valueForKey:@"losing_company_name"];
+    
     NSNumber *winPercentage = [comparisonInformation valueForKey:@"winPercentage"];
 
-    NSLog(winningCompany);
-    NSLog(losingCompany);
-    
-//    if([winPercentage.stringValue isEqual: @"-1"])
-//        self.crowdResultsLabel.text = [NSString stringWithFormat:@"you are the first to vote on %@ and %@", winningCompany, losingCompany];
-//    else if([winPercentage.stringValue isEqual: @"-2"]){
-//        
-//    }
-    
-
-    
-    NSLog(@"%@",winPercentage.stringValue);
-
+    if([winPercentage.stringValue isEqual: @"-1"])
+            self.crowdResultsLabel.text = [NSString stringWithFormat:@"these companies don't have comparisons yet"];
+    else if([winPercentage.stringValue isEqual: @"-2"]){
+            self.crowdResultsLabel.text = [NSString stringWithFormat:@"50%% of the crowd chose both %@ and %@", winningCompany, losingCompany];
+    }
+    else{
+        winPercentage = [NSNumber numberWithFloat:[winPercentage floatValue] * 100];
+        if([[winPercentage stringValue] length] >=4)
+            self.crowdResultsLabel.text = [NSString stringWithFormat:@"%@%% of the crowd chose %@ over %@", [[winPercentage stringValue] substringToIndex:4], winningCompany, losingCompany];
+        else
+            self.crowdResultsLabel.text = [NSString stringWithFormat:@"%@%% of the crowd chose %@ over %@", [winPercentage stringValue], winningCompany, losingCompany];
+    }
 }
 
 /**

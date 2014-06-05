@@ -322,17 +322,15 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HoNManager.m"
-            timestampString = "423617893.80425"
+            timestampString = "423628269.057564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-loadComparisonPercentageForCompany:andOtherCompany:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
-<<<<<<< HEAD
-=======
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
@@ -340,11 +338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ComparisonViewVC.m"
-            timestampString = "423619366.637907"
+            timestampString = "423632215.827556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-updatePercentageDisplay"
             landmarkType = "5">
          </BreakpointContent>
@@ -356,15 +354,14 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HoNManager.m"
-            timestampString = "423619487.806729"
+            timestampString = "423628269.057564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "-loadComparisonPercentageForCompany:andOtherCompany:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
->>>>>>> version3
    </Breakpoints>
 </Bucket>
