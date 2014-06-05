@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface VoteCountTVC : UITableViewController
+/**
+ *  ranked list of voted companies in order of vote difference
+ */
 @property(strong, nonatomic) NSMutableArray *rankedVotedCompanies;
 @end

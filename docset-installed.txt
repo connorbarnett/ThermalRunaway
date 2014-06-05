@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/robertdunlevie/Library/Developer/Shared/Documentation/DocSets/com.thermalrunaway.thermalrunaway.ThermalRunaway.docset
+Time: 2014-05-28 00:43:22 +0000

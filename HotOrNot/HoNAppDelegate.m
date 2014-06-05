@@ -42,16 +42,12 @@ static NSString *const kAllowTracking = @"allowTracking";
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
+        UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+        UIViewController *rvc = [storyboard instantiateViewControllerWithIdentifier:@"tutorial"];
+        self.window.rootViewController = rvc;
+        [self.window makeKeyAndVisible];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"welcome to thermal runaway!"
-                                                            message:@"here you can rate your favorite companies by swiping them left and right"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"get started"
-                                                  otherButtonTitles:nil];
-            [alertView show];
-            });
     }
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     [myHonManager loadAllCompanyCards];

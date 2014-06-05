@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CompanyProfileVC : UIViewController
+/**
+ *  Company name
+ */
 @property(strong, nonatomic)NSString *company;
 @end

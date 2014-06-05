@@ -12,15 +12,36 @@
 #import "GAIDictionaryBuilder.h"
 
 @interface DraggableView ()
+/**
+ *  Gesture recognizer for dragging
+ */
 @property(strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
+
+/**
+ *  Original point for the frame so that we can move it back if it is moved but a vote is not casted
+ */
 @property(nonatomic) CGPoint originalPoint;
+
+/**
+ *  The overlay that displays either the thumbs up or thumbs down as the view is being dragged
+ */
 @property(strong, nonatomic) OverlayView *overlayView;
+
+/**
+ *  Singleton used for networking calls to get the company image and cast the vote
+ */
 @property(strong, nonatomic) HoNManager *myHonManager;
+
+/**
+ *  Boolean saying whether the overlay view is being used in the tutorial or on the main votes page
+ *  Info needed to determine whether the actual vote should be cast.
+ */
 
 @end
 
 @implementation DraggableView
-static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/";
+static BOOL isTutorial;
+static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/logos/";
 
 -(HoNManager *)myHonManager
 {
@@ -30,6 +51,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company
 {
+    isTutorial = NO;
     self = [super initWithFrame:frame];
     
     NSMutableDictionary *event =
@@ -48,6 +70,27 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return self;
 }
 
+- (id)initNetworkFreeWithFrame:(CGRect)frame company:(NSString *)company{
+    isTutorial = YES;
+    self = [super initWithFrame:frame];
+
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
+    [self addGestureRecognizer:self.panGestureRecognizer];
+    self.company = company;
+    UIImage *image = [UIImage imageNamed:company];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:imageView];
+    self.overlayView = [[OverlayView alloc] initWithFrame:self.bounds];
+    self.overlayView.alpha = 0;
+    [self addSubview:self.overlayView];
+    return self;
+
+}
+
+/**
+ *  Makes a networking call to get the image data for the company logo, then sets the view to have the company's logo
+ */
 - (void)loadImageAndStyle
 {
     if(![[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"%@image",self.company]]){
@@ -88,6 +131,16 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.layer.shadowOpacity = 0.5;
 }
 
+/**
+ *  Determines whether the view has been swiped beyond two thresholds-
+ *  1) The view can be swiped sufficiently far to the left, casting a down vote
+ *  2) The view can be swiped sufficeintly far to the right, casting an up vote
+ *
+ *  If either of these events occur, a vote is recorded and a new company card (if available) replaces the old one
+ *  If not, the view snaps back into place.  Either way, Google Analytics monitors the interaction.
+ *
+ *  @param gestureRecognizer
+ */
 - (void)dragged:(UIPanGestureRecognizer *)gestureRecognizer
 {
     CGFloat xDistance = [gestureRecognizer translationInView:self].x;
@@ -119,11 +172,14 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 }
                 NSDictionary *voteDetails = @{@"company": self.company, @"voteType":voteType};
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"votedOnCompany" object:voteDetails];
-                [self.myHonManager castVote:voteType forCompany:self.company];
-                [self.myHonManager removeTopCompanyFromDeck];
-                if([self.myHonManager deckEmpty])
-                    [self.myHonManager loadNextDeck];
+                if(!isTutorial){
+                    [self.myHonManager castVote:voteType forCompany:self.company];
+                    [self.myHonManager removeTopCompanyFromDeck];
+                    if([self.myHonManager deckEmpty])
+                        [self.myHonManager loadNextDeck];
+                }
                 [self removeFromSuperview];
+                
             }
             else {
                 if(xDistance > 0){
@@ -152,6 +208,11 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     }
 }
 
+/**
+ *  Updates the overlay to have the approrpiate thumb (either up or down) based on the location of the card
+ *
+ *  @param distance how far the card has been dragged
+ */
 - (void)updateOverlay:(CGFloat)distance
 {
     if (distance > 0) {
@@ -163,6 +224,9 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.overlayView.alpha = overlayStrength;
 }
 
+/**
+ *  When the card is touched but a vote is not casted, we place the card back in the middle
+ */
 - (void)resetViewPositionAndTransformations
 {
     [UIView animateWithDuration:0.2
@@ -173,6 +237,9 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                      }];
 }
 
+/**
+ *  Deallocates the view
+ */
 - (void)dealloc
 {
     [self removeGestureRecognizer:self.panGestureRecognizer];
