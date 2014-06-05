@@ -163,7 +163,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             break;
         };
         case UIGestureRecognizerStateEnded: {
-            NSLog(@"%i", isTutorial);
             if (fabs(xDistance) > 100) {//case where vote has been issued
                 NSString *voteType;
                 if(xDistance > 0) {

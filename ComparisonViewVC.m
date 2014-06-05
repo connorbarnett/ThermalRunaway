@@ -217,7 +217,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage *image = [UIImage imageWithData:imageData];
                 if(first){
-                    NSLog(@"logging");
                     [self.firstButton setImage:image forState:UIControlStateNormal];
                     self.firstCompanyLabel.text = company;
                 }
