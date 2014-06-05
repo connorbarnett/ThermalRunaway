@@ -102,8 +102,8 @@ class CompaniesController < ApplicationController
   def comparePercentage
     firstCompany = Company.find_by(name: params[:first_company_name])
     secondCompany = Company.find_by(name: params[:second_company_name])
-    firstWins = Comparison.where(winning_company_id: firstCompany.id, losing_company_id: secondCompany.id).count
-    secondWins = Comparison.where(winning_company_id: secondCompany.id, losing_company_id: firstCompany.id).count
+    firstWins = Comparison.where(winning_company_id: firstCompany.id, losing_company_id: secondCompany.id, was_skip: false).count
+    secondWins = Comparison.where(winning_company_id: secondCompany.id, losing_company_id: firstCompany.id, was_skip: false).count
     result = Hash.new
 
     puts firstWins
