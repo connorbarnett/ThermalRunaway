@@ -51,7 +51,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     }
     HoNManager *myHonManager = [HoNManager sharedHoNManager];
     [myHonManager loadAllCompanyCards];
-//    [myHonManager startLocationServices];
+    [myHonManager startLocationServices];
     [myHonManager resetPageCount];
     return YES;
 }

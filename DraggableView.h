@@ -32,7 +32,8 @@
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company;
 
 /**
- *  Identical to the previous init, except that this relys on localhost instead of networking
+ *  Identical to the previous init, however this will not post votes when a company card is swiped.
+ *  To be used for the tutorialVC
  *
  *  @param frame   Frame passed for super class method
  *  @param company Name of thecompany to have a frame loaded for

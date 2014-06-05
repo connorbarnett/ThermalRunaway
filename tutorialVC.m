@@ -32,7 +32,6 @@
     self.gotitButton.hidden = YES;
     [[NSNotificationCenter defaultCenter] addObserverForName:@"votedOnCompany" object:nil queue:nil usingBlock:^(NSNotification *note) {
         self.gotitButton.hidden = NO;
-
     }];
 }
      

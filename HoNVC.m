@@ -259,7 +259,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 -(void) setDeck {
     self.companiesFromServer = [[NSUserDefaults standardUserDefaults] valueForKey:@"curCompanyDeck"];
     NSMutableArray *curDeck = [[NSMutableArray alloc] init];
-    for (NSDictionary *companyCard in _companiesFromServer) {
+    for (NSDictionary *companyCard in self.companiesFromServer) {
         NSString *companyName = [companyCard objectForKey:@"name"];
         [self.myHonManager addCompanyToDeck:companyName];
         [curDeck addObject:[[DraggableView alloc] initWithFrame:CGRectMake(20, 130, 300, 300) company:companyName]];

@@ -32,9 +32,15 @@
  */
 @property(strong, nonatomic) HoNManager *myHonManager;
 
+/**
+ *  Boolean saying whether the overlay view is being used in the tutorial or on the main votes page
+ *  Info needed to determine whether the actual vote should be cast.
+ */
+
 @end
 
 @implementation DraggableView
+static BOOL isTutorial;
 static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-bin/thermalrunaway/images/logos/";
 
 -(HoNManager *)myHonManager
@@ -45,6 +51,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
 - (id)initWithFrame:(CGRect)frame company:(NSString *)company
 {
+    isTutorial = NO;
     self = [super initWithFrame:frame];
     
     NSMutableDictionary *event =
@@ -63,8 +70,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     return self;
 }
 
-- (id)initNetworkFreeWithFrame:(CGRect)frame company:(NSString *)company
-{
+- (id)initNetworkFreeWithFrame:(CGRect)frame company:(NSString *)company{
+    isTutorial = YES;
     self = [super initWithFrame:frame];
 
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
@@ -156,6 +163,7 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
             break;
         };
         case UIGestureRecognizerStateEnded: {
+            NSLog(@"%i", isTutorial);
             if (fabs(xDistance) > 100) {//case where vote has been issued
                 NSString *voteType;
                 if(xDistance > 0) {
@@ -165,11 +173,14 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                 }
                 NSDictionary *voteDetails = @{@"company": self.company, @"voteType":voteType};
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"votedOnCompany" object:voteDetails];
-                [self.myHonManager castVote:voteType forCompany:self.company];
-                [self.myHonManager removeTopCompanyFromDeck];
-                if([self.myHonManager deckEmpty])
-                    [self.myHonManager loadNextDeck];
+                if(!isTutorial){
+                    [self.myHonManager castVote:voteType forCompany:self.company];
+                    [self.myHonManager removeTopCompanyFromDeck];
+                    if([self.myHonManager deckEmpty])
+                        [self.myHonManager loadNextDeck];
+                }
                 [self removeFromSuperview];
+                
             }
             else {
                 if(xDistance > 0){

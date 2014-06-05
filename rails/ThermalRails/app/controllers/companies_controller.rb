@@ -106,9 +106,6 @@ class CompaniesController < ApplicationController
     secondWins = Comparison.where(winning_company_id: secondCompany.id, losing_company_id: firstCompany.id, was_skip: false).count
     result = Hash.new
 
-    puts firstWins
-    puts secondWins
-
     if firstWins == 0 and secondWins == 0
       result["winning_company_name"] = firstCompany.name
       result["losing_company_name"] = secondCompany.name
@@ -129,7 +126,7 @@ class CompaniesController < ApplicationController
       result["losing_company_name"] = firstCompany.name
       result["winPercentage"] = (1.0*secondWins)/(firstWins+secondWins)
     end
-    puts result
+
     respond_to do |format|
       format.html { redirect_to firstCompany, notice: 'Company was successfully created.' }
       format.json { render json: result}

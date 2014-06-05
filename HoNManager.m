@@ -289,7 +289,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     [manager POST:@"vote.json" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Made succesful POST Request");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Posting Vote"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error posting vote"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
