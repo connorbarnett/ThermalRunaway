@@ -734,11 +734,7 @@
 				);
 				PRODUCT_NAME = Thermal;
 				PROVISIONING_PROFILE = "";
-<<<<<<< HEAD
-				TARGETED_DEVICE_FAMILY = 1;
-=======
 				TARGETED_DEVICE_FAMILY = "1,2";
->>>>>>> 9437faf726d8c7c988cb596ce3d7ff4b0d0bb086
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -763,11 +759,7 @@
 				);
 				PRODUCT_NAME = Thermal;
 				PROVISIONING_PROFILE = "";
-<<<<<<< HEAD
-				TARGETED_DEVICE_FAMILY = 1;
-=======
 				TARGETED_DEVICE_FAMILY = "1,2";
->>>>>>> 9437faf726d8c7c988cb596ce3d7ff4b0d0bb086
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
