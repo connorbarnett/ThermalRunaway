@@ -251,6 +251,7 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
 }
 
 - (void)loadComparisonPercentageForCompany:(NSString *)firstCompany andOtherCompany:(NSString *)secondCompany{
+//    NSString *defaultsKey = [NSString stringWithFormat:@"comparePercentageFor%@And%@", firstCompany, secondCompany];
     NSString *defaultsKey = @"latestComparePercentage";
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/comparePercentage.json/?first_company_name=%@&second_company_name=%@",BaseURLString, firstCompany, secondCompany]];
