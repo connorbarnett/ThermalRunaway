@@ -110,26 +110,26 @@ class CompaniesController < ApplicationController
     puts secondWins
 
     if firstWins == 0 and secondWins == 0
-      puts "one"
-      result["winning_company_name"] = nil
+      result["winning_company_name"] = firstCompany.name
+      result["losing_company_name"] = secondCompany.name
       result["winPercentage"] = -1
     end
-    if firstWins == secondWins
-      puts "two"
-      result["winning_company_name"] = nil
+    if firstWins == secondWins and firstWins != 0
+      result["winning_company_name"] = firstCompany.name
+      result["losing_company_name"] = secondCompany.name
       result["winPercentage"] = -2
     end
     if firstWins > secondWins
-       puts "three"
-     result["winning_company_name"] = firstCompany.name
+      result["winning_company_name"] = firstCompany.name
+      result["losing_company_name"] = secondCompany.name
       result["winPercentage"] = (1.0*firstWins)/(firstWins+secondWins)
     end
     if firstWins < secondWins
-       puts "four"
-     result["winning_company_name"] = secondCompany.name
+      result["winning_company_name"] = secondCompany.name
+      result["losing_company_name"] = firstCompany.name
       result["winPercentage"] = (1.0*secondWins)/(firstWins+secondWins)
     end
-
+    puts result
     respond_to do |format|
       format.html { redirect_to firstCompany, notice: 'Company was successfully created.' }
       format.json { render json: result}

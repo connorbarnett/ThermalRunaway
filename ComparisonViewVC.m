@@ -104,20 +104,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"and %@", self.secondCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:YES];
     [self reloadIfNeeded];
-    [self updateCrowdResultsLabelWithFirstCompany:self.firstCompanyLabel.text andSecondCompany:self.secondCompanyLabel.text];
-}
-
-/**
- *  Determines which company had a larger percentage of votes and sets a label to determine this
- *
- *  @param firstCompany  First Company in consideration
- *  @param secondCompany Second Company in consideration
- */
--(void)updateCrowdResultsLabelWithFirstCompany:(NSString *)firstCompany andSecondCompany:(NSString*)secondCompany
-{
-    //BOB- make a networking call to figure out the actual percentage instead of just picking a random number
-    NSInteger randomNumber = arc4random() % 100;
-    self.crowdResultsLabel.text = [NSString stringWithFormat:@"%ld%% of the crowd chose %@ over %@", (long)randomNumber, firstCompany, secondCompany];
 }
 
 /**
@@ -130,8 +116,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.firstCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.secondCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.firstCompanyLabel.text overCompany:self.secondCompanyLabel.text wasSkip:false];
+    [self.myHonManager loadComparisonPercentageForCompany:self.firstCompanyLabel.text andOtherCompany:self.secondCompanyLabel.text];
     [self reloadIfNeeded];
-    [self updateCrowdResultsLabelWithFirstCompany:self.firstCompanyLabel.text andSecondCompany:self.secondCompanyLabel.text];
 
 }
 
@@ -145,9 +131,8 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     self.topConfirmationLabel.text = [NSString stringWithFormat:@"voted %@", self.secondCompanyLabel.text];
     self.bottomConfirmationLabel.text = [NSString stringWithFormat:@"over %@", self.firstCompanyLabel.text];
     [self.myHonManager castComparisonForCompany:self.secondCompanyLabel.text overCompany:self.firstCompanyLabel.text wasSkip:false];
+    [self.myHonManager loadComparisonPercentageForCompany:self.firstCompanyLabel.text andOtherCompany:self.secondCompanyLabel.text];
     [self reloadIfNeeded];
-    [self updateCrowdResultsLabelWithFirstCompany:self.firstCompanyLabel.text andSecondCompany:self.secondCompanyLabel.text];
-
 }
 
 /**
@@ -262,9 +247,33 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
 
 }
 
+-(void) updatePercentageDisplay{
+    NSDictionary *comparisonInformation = [[NSUserDefaults standardUserDefaults] valueForKey:@"latestComparePercentage"];
+    
+    NSString *winningCompany = [comparisonInformation valueForKey:@"winning_company_name"];
+    NSString *losingCompany = [comparisonInformation valueForKey:@"losing_company_name"];
+    NSNumber *winPercentage = [comparisonInformation valueForKey:@"winPercentage"];
+
+    NSLog(winningCompany);
+    NSLog(losingCompany);
+    
+//    if([winPercentage.stringValue isEqual: @"-1"])
+//        self.crowdResultsLabel.text = [NSString stringWithFormat:@"you are the first to vote on %@ and %@", winningCompany, losingCompany];
+//    else if([winPercentage.stringValue isEqual: @"-2"]){
+//        
+//    }
+    
+
+    
+    NSLog(@"%@",winPercentage.stringValue);
+
+}
+
 /**
  *  Calls super class's viewDidLoad and sets a notification listener to load comparisonDeckInfo from NSUserDefaults
  *  after the HoNManager has received the proper information from rails server and stored it in NSUserDefaults.
+ *  Also sets a notification listener that will update the display with the proper percentage of comparisons won
+ *  between two companies after a user compares two companies
  *  Lastly calls the HoNManager's method for loading the proper information into NSUserDefaults.  Used because of 
  * networking calls working off of main thread.
  */
@@ -277,6 +286,13 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                                                   usingBlock:^(NSNotification *note) {
                                                       [self updateCompanyCards];
                                                   }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"obtainedLatestComparisonsPercentage"
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self updatePercentageDisplay];
+                                                  }];
+
     [self.myHonManager loadComparisonsDeck];
 }
 
