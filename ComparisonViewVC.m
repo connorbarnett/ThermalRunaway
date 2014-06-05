@@ -249,6 +249,16 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
     }
 }
 
+/**
+ *  Updates the display bar at the bottom of the view to list information about the most recently made comparison.
+ *  Does so by using HoNManager to query rails server about all previous comparisons between the two companies compared last.
+ *  Display value is one of three cases:
+ *  1)  If there are no other comparisons for the two companies given in the rails server, the display notifies the user
+ *  that no other comparisons have been made yet.
+ *  2)  If the two companies in the comparison have won the comparison an equal number of times, the display tells the user
+ *  that each company has won 50% of the time.
+ *  3)  Otherwise the display updates to say the percent of comparisons that the company who has won more comparisons actually wins the comparisons
+ */
 -(void) updatePercentageDisplay{
     NSDictionary *comparisonInformation = [[NSUserDefaults standardUserDefaults] valueForKey:@"latestComparePercentage"];
     
