@@ -336,11 +336,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ComparisonViewVC.m"
-            timestampString = "423634267.970572"
+            timestampString = "424031145.601238"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-updatePercentageDisplay"
             landmarkType = "5">
          </BreakpointContent>

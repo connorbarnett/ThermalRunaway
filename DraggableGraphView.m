@@ -236,9 +236,9 @@
  */
 -(long)findMin
 {
-    long min = [(NSNumber *)[self.data firstObject] integerValue];
+    long min = [(NSNumber *)[self.data firstObject] longValue];
     for(int i = 0; i < self.data.count; i++) {
-        if([(NSNumber *)[self.data objectAtIndex:i] integerValue] < min) min = [(NSNumber *)[self.data objectAtIndex:i] integerValue];
+        if([(NSNumber *)[self.data objectAtIndex:i] longValue] < min) min = [(NSNumber *)[self.data objectAtIndex:i] longValue];
     }
     return min;
 }
@@ -250,9 +250,9 @@
  */
 -(long)findMax
 {
-    long max = [(NSNumber *)[self.data firstObject] integerValue];
+    long max = [(NSNumber *)[self.data firstObject] longValue];
     for(int i = 0; i < self.data.count; i++) {
-        if([(NSNumber *)[self.data objectAtIndex:i] integerValue] > max) max = [(NSNumber *)[self.data objectAtIndex:i] integerValue];
+        if([(NSNumber *)[self.data objectAtIndex:i] longValue] > max) max = [(NSNumber *)[self.data objectAtIndex:i] longValue];
     }
     return max;
 }
@@ -303,7 +303,7 @@
 -(void)addLabelInPosition:(CGRect)rect andRank:(NSNumber*)rank
 {
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
-    label.text = [NSString stringWithFormat:@"%ld", (long)[rank integerValue]];
+    label.text = [NSString stringWithFormat:@"%ld", [rank longValue]];
     label.font = [UIFont fontWithName:@"DIN Alternate" size:17];
     label.textColor = [UIColor darkTextColor];
     [self addSubview:label];

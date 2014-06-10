@@ -1,0 +1,625 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>AFHTTPBodyPart Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">HereProjectName </a></h1>
+				<a id="developerHome" href="../index.html">HereProjectCompany</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AFHTTPBodyPart Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/body">&nbsp;&nbsp;&nbsp;&nbsp;body</option>
+	
+	<option value="//api/name/bodyContentLength">&nbsp;&nbsp;&nbsp;&nbsp;bodyContentLength</option>
+	
+	<option value="//api/name/boundary">&nbsp;&nbsp;&nbsp;&nbsp;boundary</option>
+	
+	<option value="//api/name/bytesAvailable">&nbsp;&nbsp;&nbsp;&nbsp;bytesAvailable</option>
+	
+	<option value="//api/name/contentLength">&nbsp;&nbsp;&nbsp;&nbsp;contentLength</option>
+	
+	<option value="//api/name/hasFinalBoundary">&nbsp;&nbsp;&nbsp;&nbsp;hasFinalBoundary</option>
+	
+	<option value="//api/name/hasInitialBoundary">&nbsp;&nbsp;&nbsp;&nbsp;hasInitialBoundary</option>
+	
+	<option value="//api/name/headers">&nbsp;&nbsp;&nbsp;&nbsp;headers</option>
+	
+	<option value="//api/name/inputStream">&nbsp;&nbsp;&nbsp;&nbsp;inputStream</option>
+	
+	<option value="//api/name/stringEncoding">&nbsp;&nbsp;&nbsp;&nbsp;stringEncoding</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/copyWithZone:">&nbsp;&nbsp;&nbsp;&nbsp;- copyWithZone:</option>
+	
+	<option value="//api/name/dealloc">&nbsp;&nbsp;&nbsp;&nbsp;- dealloc</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/read:maxLength:">&nbsp;&nbsp;&nbsp;&nbsp;- read:maxLength:</option>
+	
+	<option value="//api/name/readData:intoBuffer:maxLength:">&nbsp;&nbsp;&nbsp;&nbsp;- readData:intoBuffer:maxLength:</option>
+	
+	<option value="//api/name/stringForHeaders">&nbsp;&nbsp;&nbsp;&nbsp;- stringForHeaders</option>
+	
+	<option value="//api/name/transitionToNextPhase">&nbsp;&nbsp;&nbsp;&nbsp;- transitionToNextPhase</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/body">body</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/bodyContentLength">bodyContentLength</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/boundary">boundary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/bytesAvailable">bytesAvailable</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentLength">contentLength</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasFinalBoundary">hasFinalBoundary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasInitialBoundary">hasInitialBoundary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/headers">headers</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/inputStream">inputStream</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringEncoding">stringEncoding</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/copyWithZone:">copyWithZone:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dealloc">dealloc</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/read:maxLength:">read:maxLength:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/readData:intoBuffer:maxLength:">readData:intoBuffer:maxLength:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringForHeaders">stringForHeaders</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transitionToNextPhase">transitionToNextPhase</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="AFHTTPBodyPart Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AFHTTPBodyPart Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">AFURLRequestSerialization.m</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stringEncoding">&nbsp;&nbsp;stringEncoding</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/headers">&nbsp;&nbsp;headers</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/boundary">&nbsp;&nbsp;boundary</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/body">&nbsp;&nbsp;body</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bodyContentLength">&nbsp;&nbsp;bodyContentLength</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/inputStream">&nbsp;&nbsp;inputStream</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasInitialBoundary">&nbsp;&nbsp;hasInitialBoundary</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasFinalBoundary">&nbsp;&nbsp;hasFinalBoundary</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bytesAvailable">&nbsp;&nbsp;bytesAvailable</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentLength">&nbsp;&nbsp;contentLength</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/read:maxLength:">&ndash;&nbsp;read:maxLength:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dealloc">&ndash;&nbsp;dealloc</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stringForHeaders">&ndash;&nbsp;stringForHeaders</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/readData:intoBuffer:maxLength:">&ndash;&nbsp;readData:intoBuffer:maxLength:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transitionToNextPhase">&ndash;&nbsp;transitionToNextPhase</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/copyWithZone:">&ndash;&nbsp;copyWithZone:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/body" title="body"></a>
+	<h3 class="subsubtitle method-title">body</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) id body</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/bodyContentLength" title="bodyContentLength"></a>
+	<h3 class="subsubtitle method-title">bodyContentLength</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSUInteger bodyContentLength</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/boundary" title="boundary"></a>
+	<h3 class="subsubtitle method-title">boundary</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *boundary</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/bytesAvailable" title="bytesAvailable"></a>
+	<h3 class="subsubtitle method-title">bytesAvailable</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, assign, getter=hasBytesAvailable) BOOL bytesAvailable</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/contentLength" title="contentLength"></a>
+	<h3 class="subsubtitle method-title">contentLength</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, assign) NSUInteger contentLength</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hasFinalBoundary" title="hasFinalBoundary"></a>
+	<h3 class="subsubtitle method-title">hasFinalBoundary</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL hasFinalBoundary</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hasInitialBoundary" title="hasInitialBoundary"></a>
+	<h3 class="subsubtitle method-title">hasInitialBoundary</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL hasInitialBoundary</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/headers" title="headers"></a>
+	<h3 class="subsubtitle method-title">headers</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSDictionary *headers</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/inputStream" title="inputStream"></a>
+	<h3 class="subsubtitle method-title">inputStream</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSInputStream *inputStream</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stringEncoding" title="stringEncoding"></a>
+	<h3 class="subsubtitle method-title">stringEncoding</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSStringEncoding stringEncoding</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/copyWithZone:" title="copyWithZone:"></a>
+	<h3 class="subsubtitle method-title">copyWithZone:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)copyWithZone:(NSZone *)<em>zone</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dealloc" title="dealloc"></a>
+	<h3 class="subsubtitle method-title">dealloc</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)dealloc</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/read:maxLength:" title="read:maxLength:"></a>
+	<h3 class="subsubtitle method-title">read:maxLength:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSInteger)read:(uint8_t *)<em>buffer</em> maxLength:(NSUInteger)<em>length</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/readData:intoBuffer:maxLength:" title="readData:intoBuffer:maxLength:"></a>
+	<h3 class="subsubtitle method-title">readData:intoBuffer:maxLength:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSInteger)readData:(NSData *)<em>data</em> intoBuffer:(uint8_t *)<em>buffer</em> maxLength:(NSUInteger)<em>length</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stringForHeaders" title="stringForHeaders"></a>
+	<h3 class="subsubtitle method-title">stringForHeaders</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)stringForHeaders</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transitionToNextPhase" title="transitionToNextPhase"></a>
+	<h3 class="subsubtitle method-title">transitionToNextPhase</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)transitionToNextPhase</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 HereProjectCompany. All rights reserved. (Last updated: 2014-06-09)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

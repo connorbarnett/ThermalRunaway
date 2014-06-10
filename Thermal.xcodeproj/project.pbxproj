@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		FF64BB00194679710023A14A /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FF64BB03194679710023A14A /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				FF64BB05194679A10023A14A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		EB1D63A418F20506009A78B9 /* VoteCountTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A318F20506009A78B9 /* VoteCountTVC.m */; };
 		EB1D63A718F20B48009A78B9 /* CompanyProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1D63A618F20B48009A78B9 /* CompanyProfileVC.m */; };
@@ -155,6 +169,7 @@
 		FF283651190788FB00B683A1 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		FF283652190788FB00B683A1 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		FF283653190788FB00B683A1 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		FF64BB0919467A740023A14A /* readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.markdown; sourceTree = "<group>"; };
 		FF7691661935696500438D30 /* VVDocumenter-Xcode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "VVDocumenter-Xcode.xcodeproj"; path = "VVDocumenter-Xcode/VVDocumenter-Xcode.xcodeproj"; sourceTree = "<group>"; };
 		FF876B2119230C6B00FC0C24 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
 		FF876B4D19230C6B00FC0C24 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
@@ -214,6 +229,7 @@
 		EB3F100F18EE35FE0078FD8E = {
 			isa = PBXGroup;
 			children = (
+				FF64BB0919467A740023A14A /* readme.markdown */,
 				FF876B2019230C6B00FC0C24 /* GoogleAnalytics */,
 				FF28362E190788FB00B683A1 /* AFNetworking */,
 				FF283642190788FB00B683A1 /* UIKit+AFNetworking */,
@@ -408,7 +424,7 @@
 				EB3F101418EE35FE0078FD8E /* Sources */,
 				EB3F101518EE35FE0078FD8E /* Frameworks */,
 				EB3F101618EE35FE0078FD8E /* Resources */,
-				FFACCD5E1937BDC00034D88A /* ShellScript */,
+				FF47958A19467E1D00CB44E8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -497,6 +513,7 @@
 			targets = (
 				EB3F101718EE35FE0078FD8E /* Thermal */,
 				EB3F103B18EE35FF0078FD8E /* ThermalTests */,
+				FF64BB00194679710023A14A /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -542,7 +559,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FFACCD5E1937BDC00034D88A /* ShellScript */ = {
+		FF47958A19467E1D00CB44E8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -553,7 +570,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if [ ${CONFIGURATION} == \"Release\" ]; then\nAPPLEDOC_PATH=`which appledoc`\nif [ $APPLEDOC_PATH ]; then\n$APPLEDOC_PATH \\\n--project-name ${PRODUCT_NAME} \\\n--project-company \"thermal runaway\" \\\n--company-id \"thermal.runaway\" \\\n--output ${PRODUCT_NAME}Docs \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n${PROJECT_DIR}/${PRODUCT_NAME}\nfi;\n#fi;";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name HereProjectName \\\n--project-company \"HereProjectCompany\" \\\n--company-id com.companyName \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--exit-threshold 2 \\\n--output \"AppleDoc\" .\n";
+		};
+		FF64BB05194679A10023A14A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"Simplicate\" \\\n--company-id \"com.simplicate\" \\\n--output \"~/Projects/Help/${PROJECT_NAME}\" \\\n--install-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--merge-categories \\\n--exit-threshold 2 \\\n--docset-platform-family iphoneos \\\n--ignore \"*.m\" \\\n--include \"${PROJECT_DIR}/${PROJECT_NAME}/Documentation/Images\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}/${PROJECT_NAME}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -767,7 +797,7 @@
 		EB3F105118EE35FF0078FD8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HotOrNot.app/HotOrNot";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Thermal.app/Thermal";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -789,7 +819,7 @@
 		EB3F105218EE35FF0078FD8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HotOrNot.app/HotOrNot";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Thermal.app/Thermal";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -801,6 +831,20 @@
 				PRODUCT_NAME = ThermalTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		FF64BB01194679710023A14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF64BB02194679710023A14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -830,6 +874,15 @@
 			buildConfigurations = (
 				EB3F105118EE35FF0078FD8E /* Debug */,
 				EB3F105218EE35FF0078FD8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF64BB03194679710023A14A /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF64BB01194679710023A14A /* Debug */,
+				FF64BB02194679710023A14A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

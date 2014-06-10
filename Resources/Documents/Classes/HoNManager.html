@@ -1,0 +1,1591 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>HoNManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">HereProjectName </a></h1>
+				<a id="developerHome" href="../index.html">HereProjectCompany</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">HoNManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/curPage">&nbsp;&nbsp;&nbsp;&nbsp;curPage</option>
+	
+	<option value="//api/name/currentDeck">&nbsp;&nbsp;&nbsp;&nbsp;currentDeck</option>
+	
+	<option value="//api/name/deviceId">&nbsp;&nbsp;&nbsp;&nbsp;deviceId</option>
+	
+	<option value="//api/name/geocoder">&nbsp;&nbsp;&nbsp;&nbsp;geocoder</option>
+	
+	<option value="//api/name/lastLocation">&nbsp;&nbsp;&nbsp;&nbsp;lastLocation</option>
+	
+	<option value="//api/name/manager">&nbsp;&nbsp;&nbsp;&nbsp;manager</option>
+	
+	<option value="//api/name/placemark">&nbsp;&nbsp;&nbsp;&nbsp;placemark</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sharedHoNManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedHoNManager</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addCompanyToDeck:">&nbsp;&nbsp;&nbsp;&nbsp;- addCompanyToDeck:</option>
+	
+	<option value="//api/name/castComparisonForCompany:overCompany:wasSkip:">&nbsp;&nbsp;&nbsp;&nbsp;- castComparisonForCompany:overCompany:wasSkip:</option>
+	
+	<option value="//api/name/castVote:forCompany:">&nbsp;&nbsp;&nbsp;&nbsp;- castVote:forCompany:</option>
+	
+	<option value="//api/name/currentDeck">&nbsp;&nbsp;&nbsp;&nbsp;- currentDeck</option>
+	
+	<option value="//api/name/deckEmpty">&nbsp;&nbsp;&nbsp;&nbsp;- deckEmpty</option>
+	
+	<option value="//api/name/deviceId">&nbsp;&nbsp;&nbsp;&nbsp;- deviceId</option>
+	
+	<option value="//api/name/geocoder">&nbsp;&nbsp;&nbsp;&nbsp;- geocoder</option>
+	
+	<option value="//api/name/incrementPageCount">&nbsp;&nbsp;&nbsp;&nbsp;- incrementPageCount</option>
+	
+	<option value="//api/name/loadAllCompanyCards">&nbsp;&nbsp;&nbsp;&nbsp;- loadAllCompanyCards</option>
+	
+	<option value="//api/name/loadComparisonInfoForCompany:">&nbsp;&nbsp;&nbsp;&nbsp;- loadComparisonInfoForCompany:</option>
+	
+	<option value="//api/name/loadComparisonPercentageForCompany:andOtherCompany:">&nbsp;&nbsp;&nbsp;&nbsp;- loadComparisonPercentageForCompany:andOtherCompany:</option>
+	
+	<option value="//api/name/loadComparisonsDeck">&nbsp;&nbsp;&nbsp;&nbsp;- loadComparisonsDeck</option>
+	
+	<option value="//api/name/loadDeck">&nbsp;&nbsp;&nbsp;&nbsp;- loadDeck</option>
+	
+	<option value="//api/name/loadNextDeck">&nbsp;&nbsp;&nbsp;&nbsp;- loadNextDeck</option>
+	
+	<option value="//api/name/loadVoteTypesForCompany:">&nbsp;&nbsp;&nbsp;&nbsp;- loadVoteTypesForCompany:</option>
+	
+	<option value="//api/name/manager">&nbsp;&nbsp;&nbsp;&nbsp;- manager</option>
+	
+	<option value="//api/name/removeTopCompanyFromDeck">&nbsp;&nbsp;&nbsp;&nbsp;- removeTopCompanyFromDeck</option>
+	
+	<option value="//api/name/resetPageCount">&nbsp;&nbsp;&nbsp;&nbsp;- resetPageCount</option>
+	
+	<option value="//api/name/startLocationServices">&nbsp;&nbsp;&nbsp;&nbsp;- startLocationServices</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Extension Methods">Extension Methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/curPage">curPage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentDeck">currentDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deviceId">deviceId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/geocoder">geocoder</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastLocation">lastLocation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manager">manager</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/placemark">placemark</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedHoNManager">sharedHoNManager</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addCompanyToDeck:">addCompanyToDeck:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/castComparisonForCompany:overCompany:wasSkip:">castComparisonForCompany:overCompany:wasSkip:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/castVote:forCompany:">castVote:forCompany:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentDeck">currentDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deckEmpty">deckEmpty</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deviceId">deviceId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/geocoder">geocoder</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/incrementPageCount">incrementPageCount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadAllCompanyCards">loadAllCompanyCards</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadComparisonInfoForCompany:">loadComparisonInfoForCompany:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadComparisonPercentageForCompany:andOtherCompany:">loadComparisonPercentageForCompany:andOtherCompany:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadComparisonsDeck">loadComparisonsDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadDeck">loadDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadNextDeck">loadNextDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadVoteTypesForCompany:">loadVoteTypesForCompany:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/manager">manager</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeTopCompanyFromDeck">removeTopCompanyFromDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetPageCount">resetPageCount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startLocationServices">startLocationServices</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="HoNManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">HoNManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">HoNManager.h<br />HoNManager.m</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedHoNManager">+&nbsp;sharedHoNManager</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startLocationServices">&ndash;&nbsp;startLocationServices</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadAllCompanyCards">&ndash;&nbsp;loadAllCompanyCards</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadDeck">&ndash;&nbsp;loadDeck</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadComparisonsDeck">&ndash;&nbsp;loadComparisonsDeck</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadVoteTypesForCompany:">&ndash;&nbsp;loadVoteTypesForCompany:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadComparisonInfoForCompany:">&ndash;&nbsp;loadComparisonInfoForCompany:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadComparisonPercentageForCompany:andOtherCompany:">&ndash;&nbsp;loadComparisonPercentageForCompany:andOtherCompany:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/castVote:forCompany:">&ndash;&nbsp;castVote:forCompany:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/castComparisonForCompany:overCompany:wasSkip:">&ndash;&nbsp;castComparisonForCompany:overCompany:wasSkip:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addCompanyToDeck:">&ndash;&nbsp;addCompanyToDeck:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeTopCompanyFromDeck">&ndash;&nbsp;removeTopCompanyFromDeck</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deckEmpty">&ndash;&nbsp;deckEmpty</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadNextDeck">&ndash;&nbsp;loadNextDeck</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/incrementPageCount">&ndash;&nbsp;incrementPageCount</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetPageCount">&ndash;&nbsp;resetPageCount</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manager">&ndash;&nbsp;manager</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/geocoder">&ndash;&nbsp;geocoder</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentDeck">&ndash;&nbsp;currentDeck</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deviceId">&ndash;&nbsp;deviceId</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Extension Methods" name="task_Extension Methods"></a>
+						<h3 class="subsubtitle task-title">Extension Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/curPage">&nbsp;&nbsp;curPage</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/manager">&nbsp;&nbsp;manager</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/geocoder">&nbsp;&nbsp;geocoder</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/placemark">&nbsp;&nbsp;placemark</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentDeck">&nbsp;&nbsp;currentDeck</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lastLocation">&nbsp;&nbsp;lastLocation</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deviceId">&nbsp;&nbsp;deviceId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/curPage" title="curPage"></a>
+	<h3 class="subsubtitle method-title">curPage</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property size_t curPage</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentDeck" title="currentDeck"></a>
+	<h3 class="subsubtitle method-title">currentDeck</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSMutableArray *currentDeck</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deviceId" title="deviceId"></a>
+	<h3 class="subsubtitle method-title">deviceId</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *deviceId</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/geocoder" title="geocoder"></a>
+	<h3 class="subsubtitle method-title">geocoder</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) CLGeocoder *geocoder</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lastLocation" title="lastLocation"></a>
+	<h3 class="subsubtitle method-title">lastLocation</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, atomic) CLLocation *lastLocation</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/manager" title="manager"></a>
+	<h3 class="subsubtitle method-title">manager</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) CLLocationManager *manager</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/placemark" title="placemark"></a>
+	<h3 class="subsubtitle method-title">placemark</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) CLPlacemark *placemark</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedHoNManager" title="sharedHoNManager"></a>
+	<h3 class="subsubtitle method-title">sharedHoNManager</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Static instantiation of the HoNManager singleton.  This singleton instance is shared across the entire app</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)sharedHoNManager</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the instance of the singleton of self (ie the HoNManager that is shared across the application"</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Static instantiation of the HoNManager singleton.  This singleton instance is shared across the entire app</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addCompanyToDeck:" title="addCompanyToDeck:"></a>
+	<h3 class="subsubtitle method-title">addCompanyToDeck:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Pushes the company card for companyName onto the top of the deck of current company cards being used by the HoNManager</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addCompanyToDeck:(NSString *)<em>companyName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>companyName</em></dt>
+			<dd><p>the name of the company to be added to the votes deck</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Pushes the company card for companyName onto the top of the deck of current company cards being used by the HoNManager</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/castComparisonForCompany:overCompany:wasSkip:" title="castComparisonForCompany:overCompany:wasSkip:"></a>
+	<h3 class="subsubtitle method-title">castComparisonForCompany:overCompany:wasSkip:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs POST Request to rails server, casting a comparison between winningCompany and losingCompany.
+Passes simple bool saying whether the comparison was skipped by the user</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)castComparisonForCompany:(NSString *)<em>winningCompany</em> overCompany:(NSString *)<em>losingCompany</em> wasSkip:(BOOL)<em>wasSkip</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>winningCompany</em></dt>
+			<dd><p>the name of the company that won the comparison</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>losingCompany</em></dt>
+			<dd><p>the name of the company that lost the comparison</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>wasSkip</em></dt>
+			<dd><p>bool determining whether the comparison was simply a skip</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Performs POST Request to rails server, casting a comparison between winningCompany and losingCompany.
+Passes simple bool saying whether the comparison was skipped by the user</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/castVote:forCompany:" title="castVote:forCompany:"></a>
+	<h3 class="subsubtitle method-title">castVote:forCompany:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs POST Request to rails server, casting a vote of type vote_type for a company passed in.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)castVote:(NSString *)<em>vote_type</em> forCompany:(NSString *)<em>company</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vote_type</em></dt>
+			<dd><p>the type of vote cast</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>company</em></dt>
+			<dd><p>the company the vote was cast on</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Performs POST Request to rails server, casting a vote of type vote_type for a company passed in.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentDeck" title="currentDeck"></a>
+	<h3 class="subsubtitle method-title">currentDeck</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Lazy instantiation of currentDeck array of company cards</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)currentDeck</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the company card array being instantiated</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Lazy instantiation of currentDeck array of company cards</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deckEmpty" title="deckEmpty"></a>
+	<h3 class="subsubtitle method-title">deckEmpty</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Simple method that checks whether the current deck of company cards on the vote page is empty</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)deckEmpty</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>BOOl saying whether the deck is empty</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Simple method that checks whether the current deck of company cards on the vote page is empty</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deviceId" title="deviceId"></a>
+	<h3 class="subsubtitle method-title">deviceId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Unique instantiation of companies unique deviceId.  Uses iOS&rsquo;s built in identifierForVendor method to find a devices UDID</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)deviceId</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the instantiated UDID of the device being used</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Unique instantiation of companies unique deviceId.  Uses iOS&rsquo;s built in identifierForVendor method to find a devices UDID</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/geocoder" title="geocoder"></a>
+	<h3 class="subsubtitle method-title">geocoder</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Lazy instantiation for the Geocoder</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CLGeocoder *)geocoder</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the geocoder being instantiated</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Lazy instantiation for the Geocoder</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/incrementPageCount" title="incrementPageCount"></a>
+	<h3 class="subsubtitle method-title">incrementPageCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Increments page count variable that is used to tell rails server which page of company cards to load next</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)incrementPageCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Increments page count variable that is used to tell rails server which page of company cards to load next</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadAllCompanyCards" title="loadAllCompanyCards"></a>
+	<h3 class="subsubtitle method-title">loadAllCompanyCards</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Request information about all companies to be displayed in the <a href="../Classes/VoteCountTVC.html">VoteCountTVC</a> page.
+Loads companies in sorted manner based on net plus/minus of up_votes - down_votes
+Stores result in NSUserDefaults</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadAllCompanyCards</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Request information about all companies to be displayed in the <a href="../Classes/VoteCountTVC.html">VoteCountTVC</a> page.
+Loads companies in sorted manner based on net plus/minus of up_votes - down_votes
+Stores result in NSUserDefaults</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadComparisonInfoForCompany:" title="loadComparisonInfoForCompany:"></a>
+	<h3 class="subsubtitle method-title">loadComparisonInfoForCompany:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Loads all information on comparisons won and lost by the company provided with param from rails server
+Resulting information stored in NSUserDefaults</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadComparisonInfoForCompany:(NSString *)<em>company</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>company</em></dt>
+			<dd><p>the company whose compare information will be loaded</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Loads all information on comparisons won and lost by the company provided with param from rails server
+Resulting information stored in NSUserDefaults</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadComparisonPercentageForCompany:andOtherCompany:" title="loadComparisonPercentageForCompany:andOtherCompany:"></a>
+	<h3 class="subsubtitle method-title">loadComparisonPercentageForCompany:andOtherCompany:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Loads the percentage of comparisons won between two companies passed in as parameters from rails server.
+Loads a hashmap containing the winning company&rsquo;s name as well as the percentage of comparisons and
+stores the result into NSUserDefaults to later be displayed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadComparisonPercentageForCompany:(NSString *)<em>firstCompany</em> andOtherCompany:(NSString *)<em>secondCompany</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>firstCompany</em></dt>
+			<dd><p>the name of the first company to find compare percentages on</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>secondCompany</em></dt>
+			<dd><p>the name of the second company to find compare percentages on</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Loads the percentage of comparisons won between two companies passed in as parameters from rails server.
+Loads a hashmap containing the winning company&rsquo;s name as well as the percentage of comparisons and
+stores the result into NSUserDefaults to later be displayed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadComparisonsDeck" title="loadComparisonsDeck"></a>
+	<h3 class="subsubtitle method-title">loadComparisonsDeck</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Loads a deck of all company cards and stores the deck in NSUserDefaults
+Deck to be used in the <a href="../Classes/ComparisonViewVC.html">ComparisonViewVC</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadComparisonsDeck</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Loads a deck of all company cards and stores the deck in NSUserDefaults
+Deck to be used in the <a href="../Classes/ComparisonViewVC.html">ComparisonViewVC</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadDeck" title="loadDeck"></a>
+	<h3 class="subsubtitle method-title">loadDeck</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Requests information about the next set of company cards, as determined by the current page number.
+Result stored in NSUserDefaults, throws a notification in the case of an error.
+In the case that the next deck is empty, as flagged by the rails server, the page count is reset and the first deck is loaded again.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadDeck</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Requests information about the next set of company cards, as determined by the current page number.
+Result stored in NSUserDefaults, throws a notification in the case of an error.
+In the case that the next deck is empty, as flagged by the rails server, the page count is reset and the first deck is loaded again.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadNextDeck" title="loadNextDeck"></a>
+	<h3 class="subsubtitle method-title">loadNextDeck</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Loads the next set of five company cards to the currently displayed checked as determined by our rails server</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadNextDeck</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Loads the next set of five company cards to the currently displayed checked as determined by our rails server</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadVoteTypesForCompany:" title="loadVoteTypesForCompany:"></a>
+	<h3 class="subsubtitle method-title">loadVoteTypesForCompany:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<ul>
+<li>Loads votes information for company provided with param from rails server.</li>
+<li>Resulting information stored in NSUserDefaults</li>
+</ul>
+
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadVoteTypesForCompany:(NSString *)<em>company</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li>Loads votes information for company provided with param from rails server.</li>
+<li><p>Resulting information stored in NSUserDefaults</p></li>
+<li><p>@param company the company whose information will be loaded</p></li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/manager" title="manager"></a>
+	<h3 class="subsubtitle method-title">manager</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Lazy instantiation for the Location Manager</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CLLocationManager *)manager</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the location manager being instantiated</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Lazy instantiation for the Location Manager</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeTopCompanyFromDeck" title="removeTopCompanyFromDeck"></a>
+	<h3 class="subsubtitle method-title">removeTopCompanyFromDeck</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Pops the top company card from the company deck stored inside the HoNManager</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeTopCompanyFromDeck</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Pops the top company card from the company deck stored inside the HoNManager</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resetPageCount" title="resetPageCount"></a>
+	<h3 class="subsubtitle method-title">resetPageCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Resets page count back to 0 after the final page of company cards is loaded.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)resetPageCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Resets page count back to 0 after the final page of company cards is loaded.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startLocationServices" title="startLocationServices"></a>
+	<h3 class="subsubtitle method-title">startLocationServices</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Starts location services to be recorded when votes are cast</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)startLocationServices</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Starts location services to be recorded when votes are cast</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">HoNManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 HereProjectCompany. All rights reserved. (Last updated: 2014-06-09)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

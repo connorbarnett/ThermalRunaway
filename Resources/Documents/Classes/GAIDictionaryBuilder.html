@@ -1,0 +1,958 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GAIDictionaryBuilder Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">HereProjectName </a></h1>
+				<a id="developerHome" href="../index.html">HereProjectCompany</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GAIDictionaryBuilder Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/createAppView">&nbsp;&nbsp;&nbsp;&nbsp;+ createAppView</option>
+	
+	<option value="//api/name/createEventWithCategory:action:label:value:">&nbsp;&nbsp;&nbsp;&nbsp;+ createEventWithCategory:action:label:value:</option>
+	
+	<option value="//api/name/createExceptionWithDescription:withFatal:">&nbsp;&nbsp;&nbsp;&nbsp;+ createExceptionWithDescription:withFatal:</option>
+	
+	<option value="//api/name/createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:</option>
+	
+	<option value="//api/name/createSocialWithNetwork:action:target:">&nbsp;&nbsp;&nbsp;&nbsp;+ createSocialWithNetwork:action:target:</option>
+	
+	<option value="//api/name/createTimingWithCategory:interval:name:label:">&nbsp;&nbsp;&nbsp;&nbsp;+ createTimingWithCategory:interval:name:label:</option>
+	
+	<option value="//api/name/createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/build">&nbsp;&nbsp;&nbsp;&nbsp;- build</option>
+	
+	<option value="//api/name/get:">&nbsp;&nbsp;&nbsp;&nbsp;- get:</option>
+	
+	<option value="//api/name/set:forKey:">&nbsp;&nbsp;&nbsp;&nbsp;- set:forKey:</option>
+	
+	<option value="//api/name/setAll:">&nbsp;&nbsp;&nbsp;&nbsp;- setAll:</option>
+	
+	<option value="//api/name/setCampaignParametersFromUrl:">&nbsp;&nbsp;&nbsp;&nbsp;- setCampaignParametersFromUrl:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createAppView">createAppView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createEventWithCategory:action:label:value:">createEventWithCategory:action:label:value:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createExceptionWithDescription:withFatal:">createExceptionWithDescription:withFatal:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:">createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createSocialWithNetwork:action:target:">createSocialWithNetwork:action:target:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createTimingWithCategory:interval:name:label:">createTimingWithCategory:interval:name:label:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:">createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/build">build</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/get:">get:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/set:forKey:">set:forKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAll:">setAll:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCampaignParametersFromUrl:">setCampaignParametersFromUrl:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GAIDictionaryBuilder Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GAIDictionaryBuilder Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GAIDictionaryBuilder.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Helper class to build a dictionary of hit parameters and values.
+<br>
+Examples:
+<code>
+id<GAITracker> t = // get a tracker.
+[t send:[[[GAIDictionaryBuilder createEventWithCategory:@&ldquo;EventCategory&rdquo;
+action:@&ldquo;EventAction&rdquo;
+label:nil
+value:nil]
+set:@&ldquo;dimension1&rdquo; forKey:[GAIFields customDimensionForIndex:1]] build]];
+</code>
+This will send an event hit type with the specified parameters
+and a custom dimension parameter.
+<br>
+If you want to send a parameter with all hits, set it on <a href="../Protocols/GAITracker.html">GAITracker</a> directly.
+<code>
+[t set:kGAIScreenName value:@&ldquo;Home&rdquo;];
+[t send:[[GAIDictionaryBuilder createSocialWithNetwork:@&ldquo;Google+&rdquo;
+action:@&ldquo;PlusOne&rdquo;
+target:@&ldquo;SOME_URL&rdquo;] build]];
+[t send:[[GAIDictionaryBuilder createSocialWithNetwork:@&ldquo;Google+&rdquo;
+action:@&ldquo;Share&rdquo;
+target:@&ldquo;SOME_POST&rdquo;] build]];
+[t send:[[GAIDictionaryBuilder createSocialWithNetwork:@&ldquo;Google+&rdquo;
+action:@&ldquo;HangOut&rdquo;
+target:@&ldquo;SOME_CIRCLE&rdquo;]
+build]];
+</code>
+You can override a value set on the tracker by adding it to the dictionary.
+<code>
+[t set:kGAIScreenName value:@&ldquo;Home&rdquo;];
+[t send:&hellip;];
+[t send[[[GAIDictionaryBuilder createEventWithCategory:@&ldquo;click&rdquo;
+action:@&ldquo;popup&rdquo;
+label:nil
+value:nil]
+set:@&ldquo;popup title&rdquo; forKey:kGAIScreenName] build]];
+</code>
+The values set via [GAIDictionaryBuilder set] or
+[GAIDictionaryBuilder setAll] will override any existing values in the
+GAIDictionaryBuilder object (i.e. initialized by
+[GAIDictionaryBuilder createXYZ]). e.g.
+<code>
+GAIDictionaryBuilder *m =
+GAIDictionaryBuilder createTimingWithCategory:@&ldquo;category&rdquo;
+interval:@0
+name:@&ldquo;name&rdquo;
+label:nil];
+[t send:[m.set:@&ldquo;10&rdquo; forKey:kGAITimingVar] build];
+[t send:[m.set:@&ldquo;20&rdquo; forKey:kGAITimingVar] build];
+</code></p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/set:forKey:">&ndash;&nbsp;set:forKey:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAll:">&ndash;&nbsp;setAll:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/get:">&ndash;&nbsp;get:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/build">&ndash;&nbsp;build</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setCampaignParametersFromUrl:">&ndash;&nbsp;setCampaignParametersFromUrl:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createAppView">+&nbsp;createAppView</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createEventWithCategory:action:label:value:">+&nbsp;createEventWithCategory:action:label:value:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createExceptionWithDescription:withFatal:">+&nbsp;createExceptionWithDescription:withFatal:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:">+&nbsp;createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createSocialWithNetwork:action:target:">+&nbsp;createSocialWithNetwork:action:target:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createTimingWithCategory:interval:name:label:">+&nbsp;createTimingWithCategory:interval:name:label:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:">+&nbsp;createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/createAppView" title="createAppView"></a>
+	<h3 class="subsubtitle method-title">createAppView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an appview
+hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createAppView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an appview
+hit.</p>
+
+<p>Note that using this method will not set the screen name for followon hits.  To
+do that you need to call set:kGAIDescription value:<screenName> on the
+<a href="../Protocols/GAITracker.html">GAITracker</a> instance.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createEventWithCategory:action:label:value:" title="createEventWithCategory:action:label:value:"></a>
+	<h3 class="subsubtitle method-title">createEventWithCategory:action:label:value:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an event hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createEventWithCategory:(NSString *)<em>category</em> action:(NSString *)<em>action</em> label:(NSString *)<em>label</em> value:(NSNumber *)<em>value</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an event hit.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createExceptionWithDescription:withFatal:" title="createExceptionWithDescription:withFatal:"></a>
+	<h3 class="subsubtitle method-title">createExceptionWithDescription:withFatal:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an exception
+hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createExceptionWithDescription:(NSString *)<em>description</em> withFatal:(NSNumber *)<em>fatal</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an exception
+hit.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:" title="createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:"></a>
+	<h3 class="subsubtitle method-title">createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an item hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createItemWithTransactionId:(NSString *)<em>transactionId</em> name:(NSString *)<em>name</em> sku:(NSString *)<em>sku</em> category:(NSString *)<em>category</em> price:(NSNumber *)<em>price</em> quantity:(NSNumber *)<em>quantity</em> currencyCode:(NSString *)<em>currencyCode</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to an item hit.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createSocialWithNetwork:action:target:" title="createSocialWithNetwork:action:target:"></a>
+	<h3 class="subsubtitle method-title">createSocialWithNetwork:action:target:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to a social hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createSocialWithNetwork:(NSString *)<em>network</em> action:(NSString *)<em>action</em> target:(NSString *)<em>target</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to a social hit.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createTimingWithCategory:interval:name:label:" title="createTimingWithCategory:interval:name:label:"></a>
+	<h3 class="subsubtitle method-title">createTimingWithCategory:interval:name:label:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to a timing hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createTimingWithCategory:(NSString *)<em>category</em> interval:(NSNumber *)<em>intervalMillis</em> name:(NSString *)<em>name</em> label:(NSString *)<em>label</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to a timing hit.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:" title="createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:"></a>
+	<h3 class="subsubtitle method-title">createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to a transaction
+hit.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (GAIDictionaryBuilder *)createTransactionWithId:(NSString *)<em>transactionId</em> affiliation:(NSString *)<em>affiliation</em> revenue:(NSNumber *)<em>revenue</em> tax:(NSNumber *)<em>tax</em> shipping:(NSNumber *)<em>shipping</em> currencyCode:(NSString *)<em>currencyCode</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a GAIDictionaryBuilder object with parameters specific to a transaction
+hit.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/build" title="build"></a>
+	<h3 class="subsubtitle method-title">build</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an NSMutableDictionary object with all the parameters set in this</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableDictionary *)build</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Return an NSMutableDictionary object with all the parameters set in this</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/get:" title="get:"></a>
+	<h3 class="subsubtitle method-title">get:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the value for the input parameter paramName, or nil if paramName
+is not present.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)get:(NSString *)<em>paramName</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the value for the input parameter paramName, or nil if paramName
+is not present.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/set:forKey:" title="set:forKey:"></a>
+	<h3 class="subsubtitle method-title">set:forKey:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (GAIDictionaryBuilder *)set:(NSString *)<em>value</em> forKey:(NSString *)<em>key</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setAll:" title="setAll:"></a>
+	<h3 class="subsubtitle method-title">setAll:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Copies all the name-value pairs from params into this object, ignoring any
+keys that are not NSString and any values that are neither NSString or
+NSNull.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (GAIDictionaryBuilder *)setAll:(NSDictionary *)<em>params</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Copies all the name-value pairs from params into this object, ignoring any
+keys that are not NSString and any values that are neither NSString or
+NSNull.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setCampaignParametersFromUrl:" title="setCampaignParametersFromUrl:"></a>
+	<h3 class="subsubtitle method-title">setCampaignParametersFromUrl:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Parses and translates utm campaign parameters to analytics campaign param
+and returns them as a map.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (GAIDictionaryBuilder *)setCampaignParametersFromUrl:(NSString *)<em>urlString</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>params</em></dt>
+			<dd><p>url containing utm campaign parameters.</p>
+
+<p>Valid campaign parameters are:</p>
+
+<ul>
+<li>utm_id</li>
+<li>utm_campaign</li>
+<li>utm_content</li>
+<li>utm_medium</li>
+<li>utm_source</li>
+<li>utm_term</li>
+<li>dclid</li>
+<li>gclid</li>
+<li>gmob_t</li>
+</ul>
+
+
+<p><p>
+Example:
+<a href="http://my.site.com/index.html?utm">http://my.site.com/index.html?utm</a>_campaign=wow&amp;utm_source=source
+utm_campaign=wow&amp;utm_source=source.
+<p>
+For more information on auto-tagging, see
+<a href="http://support.google.com/googleanalytics/bin/answer.py?hl=en&amp;answer=55590">http://support.google.com/googleanalytics/bin/answer.py?hl=en&amp;answer=55590</a>
+<p>
+For more information on manual tagging, see
+<a href="http://support.google.com/googleanalytics/bin/answer.py?hl=en&amp;answer=55518">http://support.google.com/googleanalytics/bin/answer.py?hl=en&amp;answer=55518</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Parses and translates utm campaign parameters to analytics campaign param
+and returns them as a map.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GAIDictionaryBuilder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 HereProjectCompany. All rights reserved. (Last updated: 2014-06-09)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
