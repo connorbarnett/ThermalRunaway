@@ -224,30 +224,30 @@ static NSString * const BaseURLString = @"http://localhost:3000/";
     [operation start];
 }
 
-- (void)loadComparisonInfoForCompany:(NSString *)company{
-   NSString *defaultsKey = [NSString stringWithFormat:@"compareInfoFor%@",company];
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/compareinfo.json/?name=%@",BaseURLString, company]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *companyComparisonInfo = (NSDictionary *)responseObject;
-        [[NSUserDefaults standardUserDefaults] setObject:companyComparisonInfo forKey:defaultsKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedComparisonsFor%@",company] object:nil];
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company comparison information"
-                                                            message:[error localizedDescription]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }];
-    
-    [operation start];
-}
+//- (void)loadComparisonInfoForCompany:(NSString *)company{
+//   NSString *defaultsKey = [NSString stringWithFormat:@"compareInfoFor%@",company];
+//    
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@company/compareinfo.json/?name=%@",BaseURLString, company]];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+//    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSDictionary *companyComparisonInfo = (NSDictionary *)responseObject;
+////        [[NSUserDefaults standardUserDefaults] setObject:companyComparisonInfo forKey:defaultsKey];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"obtainedComparisonsFor%@",company] object:nil];
+//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"error loading company comparison information"
+//                                                            message:[error localizedDescription]
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:@"ok"
+//                                                  otherButtonTitles:nil];
+//        [alertView show];
+//    }];
+//    
+//    [operation start];
+//}
 
 - (void)loadComparisonPercentageForCompany:(NSString *)firstCompany andOtherCompany:(NSString *)secondCompany{
     NSString *defaultsKey = @"latestComparePercentage";

@@ -56,14 +56,6 @@
 - (void)loadVoteTypesForCompany:(NSString *) company;
 
 /**
- *  Loads all information on comparisons won and lost by the company provided with param from rails server
- *  Resulting information stored in NSUserDefaults
- *
- *  @param company the company whose compare information will be loaded
- */
-- (void)loadComparisonInfoForCompany:(NSString *)company;
-
-/**
  *  Loads the percentage of comparisons won between two companies passed in as parameters from rails server.
  *  Loads a hashmap containing the winning company's name as well as the percentage of comparisons and
  *  stores the result into NSUserDefaults to later be displayed.

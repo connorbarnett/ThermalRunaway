@@ -121,7 +121,6 @@ static NSString * const ImgsURLString = @"http://www.stanford.edu/~robdun11/cgi-
                                                   usingBlock:^(NSNotification *note) {
                                                       [self updateComparisonInfo];
                                                   }];
-    [self.myHonManager loadComparisonInfoForCompany:self.company];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:[NSString stringWithFormat:@"obtainedVotesFor%@",self.company]
                                                       object:nil
